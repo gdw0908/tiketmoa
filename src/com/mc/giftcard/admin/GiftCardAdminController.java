@@ -29,6 +29,7 @@ public class GiftCardAdminController {
 	public String giftCardIndexPage(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
 		log.debug("test");
 		log.debug("test");
+		log.debug("test");
 		return "/giftcard/admin/index";
 	}
 	
