@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail_send">
+	
+	<select id="list" parameterType="Map" resultType="mcmap">
+		<![CDATA[ 
+		SELECT
+			RN, SD_SEQ, TITLE, ETC, FROM_NM, FROM_EMAIL, TG_SEQ, TG_TITLE, TP_SEQ, TP_TITLE,
+			CASE STATUS
+				WHEN 0 THEN '발송 대기'
+				WHEN 1 THEN '발송중'
+				WHEN 2 THEN '발송완료'
+			END STATUS
+			, SEND_CNT, TO_CHAR(SEND_DT,'YYYY/MM/DD') AS SEND_DT, SEND_NM, TO_CHAR(SEND_END_DT,'YYYY/MM/DD') AS SEND_END_DT  
+		FROM (
+			SELECT 
+				T1.*, T2.TITLE AS TG_TITLE, T3.TITLE AS TP_TITLE, 
+				ROW_NUMBER() OVER(ORDER BY T1.SD_SEQ DESC) AS RN 
+			FROM 
+				NSH_MAILING_SEND T1, 
+				NSH_MAILING_TARGET T2, 
+				NSH_MAILING_TEMPLET T3 
+			WHERE 
+				T1.TG_SEQ=T2.TG_SEQ 
+			AND T1.TP_SEQ=T3.TP_SEQ 
+			AND T1.DEL_YN='N'
+		]]>
+		<if test="!(keyword == null or keyword == '')" >
+			AND ${condition} LIKE '%${keyword}%' 
+		</if>
+		<![CDATA[ 
+			) PT1
+			WHERE CEIL(RN/NVL(#{rows, jdbcType=INTEGER},10))=NVL(#{cpage, jdbcType=INTEGER},1)
+		]]>
+	</select>
+		
+	<select id="pageInfo" parameterType="Map" resultType="mcmap">
+		<![CDATA[ 
+			SELECT 
+				COUNT(1) AS TOTALCOUNT,
+				CEIL(COUNT(1)/NVL(#{rows, jdbcType=INTEGER},10)) AS TOTALPAGE
+			FROM 
+				NSH_MAILING_SEND T1, 
+				NSH_MAILING_TARGET T2, 
+				NSH_MAILING_TEMPLET T3 
+			WHERE 
+				T1.TG_SEQ=T2.TG_SEQ 
+			AND T1.TP_SEQ=T3.TP_SEQ 
+			AND T1.DEL_YN='N'
+		]]>
+		<if test="!(keyword == null or keyword == '')" >
+			AND ${condition} LIKE '%${keyword}%' 
+		</if>
+	</select>
+	
+	<select id="article" parameterType="Map" resultType="mcmap">
+		<![CDATA[ 
+			SELECT 
+				T1.SD_SEQ, T1.TITLE, T1.ETC, T1.FROM_NM, T1.FROM_EMAIL, T1.TG_SEQ, T1.TP_SEQ, T1.SEND_CNT,
+				T1.REG_DT, T1.REG_SEQ, T1.REG_NM, T2.TITLE TG_TITLE, T3.TITLE TP_TITLE
+			FROM 
+				NSH_MAILING_SEND  T1,
+				NSH_MAILING_TARGET T2,
+				NSH_MAILING_TEMPLET T3 
+			WHERE
+				T1.TG_SEQ=T2.TG_SEQ 
+			AND T1.TP_SEQ=T3.TP_SEQ 
+			AND T1.DEL_YN='N'
+			AND SD_SEQ = #{sd_seq}
+		]]>
+	</select>
+		
+	<select id="maxseq" parameterType="Map" resultType="String">
+		<![CDATA[ 
+			SELECT ISNULL(MAX(SEQ),0)+1 AS SD_SEQ FROM NSH_MAILING_TARGET
+		]]>
+	</select>
+	
+	<insert id="regist" parameterType="Map">
+		<![CDATA[ 
+			INSERT INTO NSH_MAILING_SEND(
+				SD_SEQ
+				,TITLE
+				,ETC
+				,FROM_NM
+				,FROM_EMAIL
+				,TG_SEQ
+				,TP_SEQ
+				,SEND_CNT
+				,REG_SEQ
+				,REG_NM
+			)VALUES(
+				SEQ_NSH_MAILING_SEND.nextval
+				,#{title}
+				,#{etc}
+				,#{from_nm}
+				,#{from_email}
+				,#{tg_seq}
+				,#{tp_seq}
+				,#{send_cnt}
+				,#{session_member_seq}
+				,#{session_member_nm}
+			)
+		]]>
+	</insert>
+	
+	<update id="delete" parameterType="Map">
+		<![CDATA[ 
+			UPDATE NSH_MAILING_SEND SET 
+				DEL_YN='Y'
+				,DEL_SEQ=#{session_member_seq}
+				,DEL_NM=#{session_member_nm}
+				,DEL_DT=sysdate
+			WHERE 
+				SD_SEQ IN (${sd_seq})
+		]]>
+	</update>
+	
+	<update id="modify" parameterType="Map">
+		<![CDATA[ 
+			UPDATE NSH_MAILING_SEND SET
+				TITLE = #{title}
+				,ETC = #{etc}
+				,FROM_NM = #{from_nm}
+				,FROM_EMAIL = #{from_email}
+				,TG_SEQ = #{tg_seq}
+				,TP_SEQ = #{tp_seq}
+				,SEND_CNT = #{send_cnt}
+				,MOD_Dt = sysdate
+				,MOD_SEQ = #{session_member_seq}
+				,MOD_NM = #{session_member_nm}
+			WHERE 
+				SD_SEQ = #{sd_seq}
+		]]>
+	</update>
+	
+	<update id="updateStart" parameterType="Map">
+		<![CDATA[ 
+			UPDATE NSH_MAILING_SEND SET
+				STATUS = '1'
+				,SEND_DT = sysdate
+				,MOD_DT = sysdate
+				,MOD_SEQ = #{session_member_seq}
+				,MOD_NM = #{session_member_nm}
+			WHERE 
+				SD_SEQ = #{sd_seq}
+		]]>
+	</update>
+	
+	<update id="updateEnd" parameterType="String">
+		<![CDATA[ 
+			UPDATE NSH_MAILING_SEND SET
+				STATUS = '2'
+				,SEND_END_DT = sysdate
+				,MOD_DT = sysdate
+				,MOD_SEQ = #{session_member_seq}
+				,MOD_NM = #{session_member_nm}
+			WHERE 
+				SD_SEQ = #{sd_seq}
+		]]>
+	</update>
+</mapper>

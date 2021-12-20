@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cooperation">
+	
+	<sql id="listWhere">
+		WHERE DEL_YN='N' 
+        <if test="!(keyword == null or keyword == '')" >
+        	AND ${condition} like '%${keyword}%' 
+        </if>
+         <if test="!(com_seq == null or com_seq == '')" >
+		AND	SEQ = #{com_seq}
+		</if>
+		<if test="!(carall == null or carall == '')" >
+        	AND CARALL = #{carall}
+        </if>
+	</sql>
+	
+	<sql id="cooperation_listWhere">
+		WHERE DEL_YN='N' 
+        <if test="!(sido == null or sido == '')" >
+        	AND SIDO_CD = #{sido} 
+        </if>
+        <if test="!(sigungu == null or sigungu == '')" >
+        	AND SIGUNGU_CD = #{sigungu} 
+        </if>
+        <if test="!(dong == null or dong == '')" >
+        	AND DONG_CD = #{dong} 
+        </if>
+        <if test="!(keyword == null or keyword == '')" >
+        	AND COM_NM like '%${keyword}%' 
+        </if>
+	</sql>
+		
+	<select id="list" parameterType="Map" resultType="mcmap">
+		SELECT PT1.* FROM (
+            SELECT
+                ROW_NUMBER() OVER(ORDER BY a.SEQ DESC) RN,
+                A.*, B.MEMBER_ID
+            FROM NSH_COOPERATION A LEFT OUTER JOIN (
+                SELECT
+                    SUBSTR(XMLAGG(XMLELEMENT(x,',',
+                        BB.MEMBER_ID
+                    ) ORDER BY BB.SEQ ASC).Extract('//text()'), 2) AS MEMBER_ID, PARENT_SEQ
+                FROM NSH_COOPERATION_MEMBER BB
+                GROUP BY PARENT_SEQ
+            ) B
+            ON A.SEQ = B.PARENT_SEQ
+		    <include refid="listWhere"/>
+		) PT1
+		WHERE CEIL(RN/NVL(#{rows},10))=NVL(#{cpage},1)
+	</select>
+	
+	<select id="pagination" parameterType="Map" resultType="mcmap">
+		SELECT
+			CEIL(COUNT(1)/NVL(#{rows}, 10)) TOTALPAGE,
+			COUNT(1) TOTALCOUNT
+		FROM NSH_COOPERATION
+		<include refid="listWhere"/>
+	</select>
+	
+	<update id="updateMemberLastLogin" parameterType="Map">
+		update MC_MEMBER set LAST_LOGIN = sysdate
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
+	<update id="modify" parameterType="Map">
+		update NSH_COOPERATION set
+			CUSTOMER_CATEGORY = #{customer_category} 
+			, COMMISSION = #{commission} 
+			, USER_COMMISSION = #{user_commission} 
+			, COM_COMMISSION = #{com_commission} 
+			, COM_NM = #{com_nm} 
+			, BUSI_NO = #{busi_no} 
+			, COMPTYP1 = #{comptyp1} 
+			, COMPTYP2 = #{comptyp2} 
+			, CEO_NM = #{ceo_nm} 
+			, STAFF_NM = #{staff_nm} 
+			, STAFF_NM2 = #{staff_nm2} 
+			, TEL = #{tel} 
+			, SMS_TEL = #{sms_tel} 
+			, FAX = #{fax} 
+			, STAFF_TEL = #{staff_tel} 
+			, STAFF_TEL2 = #{staff_tel2} 
+			, STAFF_EMAIL = #{staff_email} 
+			, HOLDER = #{holder} 
+			, BANK = #{bank} 
+			, ACC_NO = #{acc_no} 
+			, SIDO_CD = #{sido_cd} 
+			, SIGUNGU_CD = #{sigungu_cd} 
+			, DONG_CD = #{dong_cd} 
+			, MANAGE_NO = #{manage_no} 
+			, TELESALES_NO = #{telesales_no} 
+			, STATUS = #{status} 
+			, ZIP_CD = #{zip_cd} 
+			, ADDR1 = #{addr1} 
+			, ADDR2 = #{addr2} 
+			, X_COORD = #{x_coord} 
+			, Y_COORD = #{y_coord} 
+			, CONTS = #{conts}
+			, CARALL = #{carall}
+			, MOD_ID = #{session_member_id}
+			, MOD_DT = sysdate
+		WHERE SEQ = #{seq}
+	</update>
+	
+	<update id="statusUpdate" parameterType="Map">
+		update NSH_COOPERATION set
+			STATUS = #{status} 
+			, MOD_ID = #{session_member_id}
+			, MOD_DT = sysdate
+		WHERE SEQ = #{seq}
+	</update>
+	
+	<update id="write" parameterType="Map" useGeneratedKeys="true" keyColumn="seq" keyProperty="parent_seq">
+		INSERT INTO NSH_COOPERATION(
+			SEQ, CUSTOMER_CATEGORY, COMMISSION, USER_COMMISSION, COM_COMMISSION, COM_NM, BUSI_NO, COMPTYP1, COMPTYP2, CEO_NM, STAFF_NM, STAFF_NM2, STAFF_TEL, STAFF_TEL2, SMS_TEL, TEL, FAX, TELESALES_NO,
+			STAFF_EMAIL, HOLDER, BANK, ACC_NO, SIDO_CD, SIGUNGU_CD, DONG_CD, MANAGE_NO, STATUS, ZIP_CD, ADDR1, ADDR2, X_COORD, Y_COORD, CONTS, CARALL, 
+			REG_ID, REG_DT
+		)VALUES(
+			SEQ_NSH_COOPERATION.NEXTVAL, #{customer_category}, #{commission}, #{user_commission}, #{com_commission}, #{com_nm}, #{busi_no}, #{comptyp1}, #{comptyp2}, #{ceo_nm}, #{staff_nm}, #{staff_nm2}, #{staff_tel}, #{staff_tel2}, #{sms_tel}, #{tel}, #{fax}, #{telesales_no}, 
+			#{staff_email}, #{holder}, #{bank}, #{acc_no}, #{sido_cd}, #{sigungu_cd}, #{dong_cd}, #{manage_no}, #{status}, #{zip_cd}, #{addr1}, #{addr2}, #{x_coord}, #{y_coord}, #{conts}, #{carall}, 
+			#{session_member_id}, SYSDATE
+		)
+	</update>
+	
+	<!-- 시퀀스는 중복방지를 위해 회원시퀀스를 이용 -->
+	<update id="insertMember" parameterType="Map">
+		INSERT INTO NSH_COOPERATION_MEMBER(
+			SEQ, PARENT_SEQ, MEMBER_ID, MEMBER_PW, REG_ID, REG_DT, LOGIN_YN
+		)VALUES(
+			SEQ_NSH_MEMBER.nextVal, #{parent_seq}, #{member_id}, #{member_pw}, #{session_member_id}, sysdate, NVL(#{login_yn}, 'N')
+		)
+	</update>
+	
+	<update id="updateMember" parameterType="Map">
+		update NSH_COOPERATION_MEMBER set
+			MOD_ID = #{session_member_id}
+			, MOD_DT = sysdate
+			<if test="!(member_pw == null or member_pw == '')" >
+			, MEMBER_PW = #{member_pw}
+			</if>
+			, LOGIN_YN  = NVL(#{login_yn}, 'N')
+		WHERE SEQ = #{seq}
+	</update>
+	
+	<delete id="removeMember">
+		DELETE FROM NSH_COOPERATION_MEMBER WHERE MEMBER_ID = #{member_id} 
+	</delete>
+	
+	<select id="view" parameterType="Map" resultType="mcmap">
+		SELECT
+			SEQ, CUSTOMER_CATEGORY, COMMISSION, USER_COMMISSION, COM_COMMISSION, COM_NM, BUSI_NO, COMPTYP1, COMPTYP2, CEO_NM, STAFF_NM, STAFF_NM2, SMS_TEL, TEL, FAX, TELESALES_NO,
+			STAFF_EMAIL, HOLDER, BANK, ACC_NO, SIDO_CD, SIGUNGU_CD, DONG_CD, MANAGE_NO, TO_CHAR(REG_DT,'YYYY-MM-DD') REG_DT,
+			STATUS, ZIP_CD, ADDR1, ADDR2, X_COORD, Y_COORD, CONTS, CARALL, 
+			FN_GET_SPLIT(BUSI_NO, 1, '-', '') as BUSI_NO1,
+			FN_GET_SPLIT(BUSI_NO, 2, '-', '') as BUSI_NO2,
+			FN_GET_SPLIT(BUSI_NO, 3, '-', '') as BUSI_NO3,
+			FN_GET_SPLIT(ZIP_CD, 1, '-', '') as ZIP1, 
+			FN_GET_SPLIT(ZIP_CD, 2, '-', '') as ZIP2,
+			FN_GET_SPLIT(STAFF_TEL, 1, '-', '') as STAFF_TEL1,
+			FN_GET_SPLIT(STAFF_TEL, 2, '-', '') as STAFF_TEL2,
+			FN_GET_SPLIT(STAFF_TEL, 3, '-', '') as STAFF_TEL3,
+			FN_GET_SPLIT(STAFF_TEL2, 1, '-', '') as STAFF_TEL2_1,
+			FN_GET_SPLIT(STAFF_TEL2, 2, '-', '') as STAFF_TEL2_2,
+			FN_GET_SPLIT(STAFF_TEL2, 3, '-', '') as STAFF_TEL2_3,
+			FN_GET_SPLIT(SMS_TEL, 1, '-', '') as SMS_TEL1,
+			FN_GET_SPLIT(SMS_TEL, 2, '-', '') as SMS_TEL2,
+			FN_GET_SPLIT(SMS_TEL, 3, '-', '') as SMS_TEL3,
+			FN_GET_SPLIT(TEL, 1, '-', '') as TEL1,
+			FN_GET_SPLIT(TEL, 2, '-', '') as TEL2,
+			FN_GET_SPLIT(TEL, 3, '-', '') as TEL3,
+			FN_GET_SPLIT(FAX, 1, '-', '') as FAX1,
+			FN_GET_SPLIT(FAX, 2, '-', '') as FAX2,
+			FN_GET_SPLIT(FAX, 3, '-', '') as FAX3,
+			FN_GET_SPLIT(STAFF_EMAIL, 1, '@', '') as STAFF_EMAIL1, 
+			FN_GET_SPLIT(STAFF_EMAIL, 2, '@', '') as STAFF_EMAIL2,
+			(SELECT LOGIN_YN FROM NSH_COOPERATION_MEMBER WHERE PARENT_SEQ = #{seq} GROUP BY LOGIN_YN) AS LOGIN_YN
+		FROM NSH_COOPERATION 
+		WHERE SEQ = #{seq} 
+	</select>
+	
+	<select id="memberList" parameterType="Map" resultType="mcmap">
+		SELECT
+			SEQ, PARENT_SEQ, MEMBER_ID, LAST_LOGIN
+		FROM NSH_COOPERATION_MEMBER 
+		WHERE PARENT_SEQ = #{seq}
+		ORDER BY SEQ ASC
+	</select>
+	
+	<update id="del" parameterType="Map">
+		UPDATE NSH_COOPERATION SET
+			DEL_YN = 'Y'
+			,DEL_ID = #{session_member_id}
+			,DEL_IP = #{ip}
+			,DEL_DT = sysdate
+		WHERE SEQ = #{seq}
+	</update>
+	
+	
+	
+	<select id="cooperation_list" parameterType="Map" resultType="mcmap">
+		SELECT PT1.* FROM (
+            SELECT
+                ROW_NUMBER() OVER(ORDER BY a.SEQ DESC) RN,
+                A.*, C.DONG_NM, B.MEMBER_ID
+            FROM NSH_COOPERATION A LEFT OUTER JOIN (
+                SELECT
+                    SUBSTR(XMLAGG(XMLELEMENT(x,',',
+                        BB.MEMBER_ID
+                    ) ORDER BY BB.SEQ ASC).Extract('//text()'), 2) AS MEMBER_ID, PARENT_SEQ
+                FROM NSH_COOPERATION_MEMBER BB
+                GROUP BY PARENT_SEQ
+            ) B
+            ON A.SEQ = B.PARENT_SEQ
+            LEFT OUTER JOIN (
+            	SELECT
+            		SIDO,
+            		SIGUNGU,
+		    		DONG, 
+		    		TRIM(FN_GET_SPLIT(DONG_NM, 1, ' ', '')) || ' ' || TRIM(FN_GET_SPLIT(DONG_NM, 2, ' ', '')) || ' ' || FN_GET_SPLIT(DONG_NM, 3, ' ', '') AS DONG_NM
+				FROM NSH_DONG
+				WHERE USE_YN='Y'
+			    AND DONG ='000'
+	        ) C
+	        ON 
+	        C.SIDO = A.SIDO_CD 
+	        AND C.SIGUNGU = A.SIGUNGU_CD 
+		    <include refid="cooperation_listWhere"/>
+		) PT1
+		WHERE CEIL(RN/NVL(#{rows},10))=NVL(#{cpage},1)
+	</select>
+	
+	<select id="cooperation_pagination" parameterType="Map" resultType="mcmap">
+		SELECT
+			CEIL(COUNT(1)/NVL(#{rows}, 10)) TOTALPAGE,
+			COUNT(1) TOTALCOUNT
+		FROM NSH_COOPERATION
+		<include refid="cooperation_listWhere"/>
+	</select>
+	
+	<select id="cooperation_other_list" parameterType="Map" resultType="mcmap">
+		SELECT PT1.* FROM (
+            SELECT
+                ROW_NUMBER() OVER(ORDER BY a.ITEM_SEQ DESC) RN,
+                a.ITEM_SEQ, a.COM_SEQ, a.ERP_CODE, a.PRODUCTNM,a.CARYYYY,                
+                a.CARMAKERSEQ, a.CARMODELSEQ, a.CARGRADESEQ,
+                a.REG_DT,
+                (SELECT MAKERNM FROM V_IS_CARMAKER WHERE a.CARMAKERSEQ=CARMAKERSEQ) AS MAKERNM,
+                (SELECT CARMODELNM FROM V_IS_CARMODEL WHERE a.CARMODELSEQ=CARMODELSEQ) AS CARMODELNM,
+                (SELECT CARGRADENM FROM V_IS_CARGRADE WHERE a.CARGRADESEQ=CARGRADESEQ) AS CARGRADENM,
+                (SELECT CODENM FROM V_IS_CODEMST WHERE a.PART1=CODENO) AS PART1_NM,
+                (SELECT CODENM FROM V_IS_CODEMST WHERE a.PART2=CODENO) AS PART2_NM,
+                NVL((SELECT PARTNM FROM V_IS_CARPART WHERE DELYN='N' AND a.PART3=CARPARTSEQ),a.PRODUCTNM) AS PART3_NM,
+                ('/upload/board/'||b.YYYY||'/'||b.MM||'/'||b.UUID||'_thumb') AS THUMB
+            FROM NSH_GOODS a LEFT OUTER JOIN (
+                SELECT
+                    bb.*
+                FROM (SELECT max(uuid) as uuid FROM NSH_ATTACH GROUP BY TABLE_NM, TABLE_SEQ) aa LEFT OUTER JOIN NSH_ATTACH bb
+                ON aa.UUID = bb.UUID
+            ) b
+            ON b.TABLE_NM='NSH_GOODS' AND a.ITEM_SEQ = b.TABLE_SEQ
+            LEFT OUTER JOIN NSH_COOPERATION c
+            ON a.COM_SEQ = c.SEQ
+            LEFT OUTER JOIN V_IS_CARMAKER d
+            ON a.CARMAKERSEQ=d.CARMAKERSEQ
+            WHERE a.COM_SEQ = #{com_seq}
+            AND a.DEL_YN='N'
+            AND a.STOCK_NUM > 0
+			AND a.APPROVAL = 'Y'
+			AND b.UUID IS NOT NULL
+			AND nvl(a.USER_PRICE, 0) > 0
+		) PT1
+		WHERE CEIL(RN/NVL(#{rows},10))=NVL(#{cpage},1)
+	</select>
+	
+	<select id="cooperation_other_pagination" parameterType="Map" resultType="mcmap">
+		SELECT
+			CEIL(COUNT(1)/NVL(#{rows}, 10)) TOTALPAGE,
+			COUNT(1) TOTALCOUNT
+        FROM NSH_GOODS a LEFT OUTER JOIN (
+                SELECT
+                    bb.*
+                FROM (SELECT max(uuid) as uuid FROM NSH_ATTACH GROUP BY TABLE_NM, TABLE_SEQ) aa LEFT OUTER JOIN NSH_ATTACH bb
+                ON aa.UUID = bb.UUID
+            ) b
+        ON b.TABLE_NM='NSH_GOODS' AND a.ITEM_SEQ = b.TABLE_SEQ
+        LEFT OUTER JOIN NSH_COOPERATION c
+        ON a.COM_SEQ = c.SEQ
+        LEFT OUTER JOIN V_IS_CARMAKER d
+        ON a.CARMAKERSEQ=d.CARMAKERSEQ
+        WHERE a.COM_SEQ = #{com_seq} AND a.DEL_YN='N'
+        AND a.STOCK_NUM > 0
+			AND a.APPROVAL = 'Y'
+			AND b.UUID IS NOT NULL
+			AND nvl(a.USER_PRICE, 0) > 0
+	</select>
+	
+	<select id="repair_list" parameterType="Map" resultType="mcmap">
+		SELECT PT1.* FROM (
+            SELECT
+                ROW_NUMBER() OVER(ORDER BY a.SEQ DESC) RN,
+                A.*,
+                C.DONG_NM,
+                B.REPAIR_NM
+            FROM NSH_REPAIR A LEFT OUTER JOIN (
+            	SELECT
+            		SEQ, COM_NM AS REPAIR_NM
+            	FROM NSH_COOPERATION
+            ) B
+            ON A.PARENT_SEQ = B.SEQ
+            LEFT OUTER JOIN (
+            	SELECT
+            		SIDO,
+            		SIGUNGU,
+		    		DONG, 
+		    		TRIM(FN_GET_SPLIT(DONG_NM, 1, ' ', '')) || ' ' || TRIM(FN_GET_SPLIT(DONG_NM, 2, ' ', '')) || ' ' || FN_GET_SPLIT(DONG_NM, 3, ' ', '') AS DONG_NM
+				FROM NSH_DONG
+				WHERE USE_YN='Y'
+			    AND DONG ='000'
+	        ) C
+	        ON 
+	        C.SIDO = A.SIDO_CD 
+	        AND C.SIGUNGU = A.SIGUNGU_CD
+		    <include refid="cooperation_listWhere"/>
+		) PT1
+		WHERE CEIL(RN/NVL(#{rows},10))=NVL(#{cpage},1)
+	</select>
+	
+	<select id="repair_pagination" parameterType="Map" resultType="mcmap">
+		SELECT
+			CEIL(COUNT(1)/NVL(#{rows}, 10)) TOTALPAGE,
+			COUNT(1) TOTALCOUNT
+		FROM NSH_REPAIR
+		<include refid="cooperation_listWhere"/>
+	</select>
+	
+	<select id="repair_view" parameterType="Map" resultType="mcmap">
+		SELECT
+			SEQ, COM_NM, CEO_NM, STAFF_NM, STAFF_TEL, HOLDER, 
+			ZIP_CD, ADDR1, ADDR2, X_COORD, Y_COORD, CONTS, TO_CHAR(REG_DT,'YYYY-MM-DD') REG_DT
+		FROM NSH_REPAIR 
+		WHERE SEQ = #{seq} AND DEL_YN='N'
+	</select>
+	
+	<update id="updateCommonRate" parameterType="Map">
+		UPDATE NSH_COOPERATION SET 
+			COMMISSION=#{rate}
+			,MOD_ID = #{session_member_id}
+			,MOD_DT = sysdate
+	</update>
+	
+	<update id="updateUserCommission" parameterType="Map">
+		UPDATE NSH_COOPERATION SET 
+			USER_COMMISSION=#{rate}
+			,MOD_ID = #{session_member_id}
+			,MOD_DT = sysdate
+	</update>
+	
+	<update id="updateComCommission" parameterType="Map">
+		UPDATE NSH_COOPERATION SET 
+			COM_COMMISSION=#{rate}
+			,MOD_ID = #{session_member_id}
+			,MOD_DT = sysdate
+	</update>
+	
+</mapper>

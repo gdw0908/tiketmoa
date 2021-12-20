@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="selfcamera">
+
+	<select id="list" parameterType="Map" resultType="mcmap" >
+		SELECT 
+			PT1.* 
+		FROM (
+			SELECT 
+				PT1_SUB.*, 
+				ROW_NUMBER() OVER(ORDER BY PT1_SUB.SEQ DESC) RN
+			FROM (
+				SELECT
+					T1.SEQ, 
+					T1.COM_SEQ, 
+					T1.CONTENT, 
+					TO_CHAR(T1.REG_DT,'YYYY-MM-DD') REG_DT,
+					T1.REG_SEQ,
+					T1.STATE, 
+					T2.*,
+					CASE
+						WHEN T5.UUID IS NOT NULL THEN '/upload/board/' || T5.YYYY || '/' || T5.MM || '/' || T5.UUID
+						ELSE ''
+					END AS THUMB,
+					(SELECT DONG_NM FROM NSH_DONG WHERE T2.SIDO_CD = SIDO AND T2.SIGUNGU_CD = SIGUNGU AND T2.DONG_CD = DONG AND RI=00) DONG_NM
+				FROM NSH_SELFCAMERA T1
+				LEFT OUTER JOIN (
+	      			SELECT 
+	      				DISTINCT (B.SEQ) AS PSEQ,  
+	      				B.COM_NM, 
+	      				B.STAFF_NM, 
+	      				B.STAFF_TEL, 
+	      				B.ZIP_CD, 
+	      				B.ADDR1, 
+	      				B.ADDR2, 
+	      				B.SIDO_CD, 
+	      				B.SIGUNGU_CD, 
+	      				B.DONG_CD
+	      			FROM
+	      				NSH_COOPERATION_MEMBER A, NSH_COOPERATION B 
+	      			WHERE 
+	      				A.PARENT_SEQ = B.SEQ
+	    		) T2 ON T2.PSEQ = T1.COM_SEQ
+            	LEFT OUTER JOIN NSH_ATTACH T5 ON T5.TABLE_NM = 'NSH_SELFCAMERA' AND T5.TABLE_SEQ = T1.SEQ AND T5.ORDER_SEQ = 1
+				WHERE
+					T1.DEL_YN='N'
+			<if test="!(keyword == null or keyword == '')" >
+				AND T1.TITLE = #{keyword} 
+	        </if>
+	        <if test="!(sido_cd == null or sido_cd == '')" >
+	        	AND T2.SIDO_CD = #{sido_cd} 
+	        </if>
+	        <if test="!(sigungu_cd == null or sigungu_cd == '')" >
+	        	AND T2.SIGUNGU_CD = #{sigungu_cd} 
+	        </if>
+	        <if test="!(state == null or state == '')" >
+	        	AND T1.STATE = #{state} 
+	        </if>
+	        <if test="!(com_seq == null or com_seq == '')" >
+	        	AND T1.COM_SEQ = #{com_seq}
+	        </if>
+			) PT1_SUB
+		) PT1
+		WHERE CEIL(RN/NVL(#{rows, jdbcType=INTEGER},10))=NVL(#{cpage, jdbcType=INTEGER},1)  ORDER BY RN ASC
+	</select>
+	
+	<select id="pagination" parameterType="Map" resultType="mcmap" >
+		SELECT 
+			CEIL(COUNT(1)/NVL(#{rows, jdbcType=INTEGER},10)) TOTALPAGE,
+			COUNT(1) TOTALCOUNT
+		FROM (
+			SELECT 
+				PT1_SUB.*, 
+				ROW_NUMBER() OVER(ORDER BY PT1_SUB.SEQ DESC) RN
+			FROM (
+				SELECT
+					T1.SEQ, 
+					T1.COM_SEQ, 
+					T1.CONTENT, 
+					TO_CHAR(T1.REG_DT,'YYYY-MM-DD') REG_DT,
+					T1.REG_SEQ,
+					T1.STATE,
+					T2.*,
+					CASE
+						WHEN T5.UUID IS NOT NULL THEN '/upload/board/' || T5.YYYY || '/' || T5.MM || '/' || T5.UUID
+						ELSE ''
+					END AS THUMB,
+					(SELECT DONG_NM FROM NSH_DONG WHERE T2.SIDO_CD = SIDO AND T2.SIGUNGU_CD = SIGUNGU AND T2.DONG_CD = DONG AND RI=00) DONG_NM
+				FROM NSH_SELFCAMERA T1
+				LEFT OUTER JOIN (
+	      			SELECT 
+	      				DISTINCT (B.SEQ) AS PSEQ, 
+	      				B.COM_NM, 
+	      				B.STAFF_NM, 
+	      				B.STAFF_TEL, 
+	      				B.ZIP_CD, 
+	      				B.ADDR1, 
+	      				B.ADDR2, 
+	      				B.SIDO_CD, 
+	      				B.SIGUNGU_CD, 
+	      				B.DONG_CD
+	      			FROM
+	      				NSH_COOPERATION_MEMBER A, NSH_COOPERATION B 
+	      			WHERE 
+	      				A.PARENT_SEQ = B.SEQ
+	    		) T2 ON T2.PSEQ = T1.COM_SEQ
+            	LEFT OUTER JOIN NSH_ATTACH T5 ON T5.TABLE_NM = 'NSH_SELFCAMERA' AND T5.TABLE_SEQ = T1.SEQ AND T5.ORDER_SEQ = 1
+				WHERE
+					T1.DEL_YN='N'
+			<if test="!(keyword == null or keyword == '')" >
+				AND T1.TITLE = #{keyword} 
+	        </if>
+	        <if test="!(sido_cd == null or sido_cd == '')" >
+	        	AND T2.SIDO_CD = #{sido_cd} 
+	        </if>
+	        <if test="!(sigungu_cd == null or sigungu_cd == '')" >
+	        	AND T2.SIGUNGU_CD = #{sigungu_cd} 
+	        </if>
+	        <if test="!(state == null or state == '')" >
+	        	AND T1.STATE = #{state} 
+	        </if>
+	        <if test="!(com_seq == null or com_seq == '')" >
+	        	AND T1.COM_SEQ = #{com_seq}
+	        </if>
+			) PT1_SUB
+		) PT1
+	</select>
+	
+	<select id="view" parameterType="Map" resultType="mcmap">
+		SELECT 
+			PT1.* 
+		FROM (
+			SELECT 
+				PT1_SUB.*, 
+				ROW_NUMBER() OVER(ORDER BY PT1_SUB.SEQ DESC) RN
+			FROM (
+				SELECT
+					T1.SEQ, 
+					T1.COM_SEQ, 
+					T1.CONTENT, 
+					TO_CHAR(T1.REG_DT,'YYYY-MM-DD') REG_DT,
+					T1.REG_SEQ,
+					T1.STATE, 
+					T2.*,
+					(SELECT DONG_NM FROM NSH_DONG WHERE T2.SIDO_CD = SIDO AND T2.SIGUNGU_CD = SIGUNGU AND T2.DONG_CD = DONG AND RI=00) DONG_NM
+				FROM NSH_SELFCAMERA T1
+				LEFT OUTER JOIN (
+	      			SELECT 
+	      				DISTINCT (B.SEQ) AS PSEQ, 
+	      				B.COM_NM, 
+	      				B.STAFF_NM, 
+	      				B.STAFF_TEL, 
+	      				B.ZIP_CD, 
+	      				B.ADDR1, 
+	      				B.ADDR2, 
+	      				B.SIDO_CD, 
+	      				B.SIGUNGU_CD, 
+	      				B.DONG_CD
+	      			FROM
+	      				NSH_COOPERATION_MEMBER A, NSH_COOPERATION B 
+	      			WHERE 
+	      				A.PARENT_SEQ = B.SEQ
+	    		) T2 ON T2.PSEQ = T1.COM_SEQ
+				WHERE
+					T1.DEL_YN='N'
+	        	AND T1.SEQ = #{seq}
+			) PT1_SUB
+		) PT1
+		WHERE CEIL(RN/NVL(#{rows, jdbcType=INTEGER},10))=NVL(#{cpage, jdbcType=INTEGER},1)  ORDER BY RN ASC
+	</select>
+	
+	<insert id="insert" parameterType="Map">
+		INSERT INTO NSH_SELFCAMERA (
+			SEQ,
+			COM_SEQ,
+			CONTENT,
+			REG_DT,
+			REG_SEQ,
+			REG_NM,
+			DEL_YN,
+			STATE		
+		) VALUES (
+			#{seq},
+			#{com_seq},
+			#{content},
+			SYSDATE,
+			#{session_member_seq},
+			#{session_member_nm},
+			'N',
+			0
+		)
+	</insert>
+	
+	<update id="update" parameterType="Map">
+		UPDATE NSH_SELFCAMERA SET 
+			CONTENT=#{content}
+			,MOD_DT=SYSDATE
+			,MOD_SEQ=#{session_member_seq}
+			,MOD_NM=#{session_member_nm}
+			,STATE=#{state}
+		WHERE SEQ = #{seq}
+	</update>
+	
+	<update id="delete" parameterType="Map">
+		UPDATE NSH_SELFCAMERA SET 
+			DEL_YN='Y', 
+			DEL_DT=SYSDATE, 
+			DEL_SEQ=#{session_member_seq}, 
+			DEL_NM=#{session_member_nm}
+		WHERE SEQ in (${seq})
+	</update>
+
+</mapper>

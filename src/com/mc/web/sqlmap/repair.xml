@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repair">
+	
+	<select id="cooperationList" parameterType="Map" resultType="mcmap">
+        SELECT
+            *
+        FROM NSH_COOPERATION A
+        WHERE A.DEL_YN='N'
+            AND A.SEQ NOT IN (SELECT nvl(PARENT_SEQ, 0) FROM NSH_REPAIR WHERE DEL_YN='N' AND SEQ!=#{seq})
+	</select>
+	
+	<sql id="listWhere">
+		WHERE DEL_YN='N' 
+        <if test="!(keyword == null or keyword == '')" >
+        	AND ${condition} like '%${keyword}%' 
+        </if>
+	</sql>
+	
+	<select id="list" parameterType="Map" resultType="mcmap">
+		SELECT PT1.* FROM (
+            SELECT
+                ROW_NUMBER() OVER(ORDER BY a.SEQ DESC) RN,
+                A.*,
+                B.REPAIR_NM
+            FROM NSH_REPAIR A LEFT OUTER JOIN (
+            	SELECT
+            		SEQ, COM_NM AS REPAIR_NM
+            	FROM NSH_COOPERATION
+            ) B
+            ON A.PARENT_SEQ = B.SEQ
+		    <include refid="listWhere"/>
+		) PT1
+		WHERE CEIL(RN/NVL(#{rows},10))=NVL(#{cpage},1)
+	</select>
+	
+	<select id="pagination" parameterType="Map" resultType="mcmap">
+		SELECT
+			CEIL(COUNT(1)/NVL(#{rows}, 10)) TOTALPAGE,
+			COUNT(1) TOTALCOUNT
+		FROM NSH_REPAIR
+		<include refid="listWhere"/>
+	</select>
+	
+	<update id="modify" parameterType="Map">
+		update NSH_REPAIR set
+			PARENT_SEQ = #{parent_seq} 
+			, COM_NM = #{com_nm} 
+			, CEO_NM = #{ceo_nm} 
+			, STAFF_NM = #{staff_nm} 
+			, STAFF_TEL = #{staff_tel} 
+			, HOLDER = #{holder} 
+			, SIDO_CD = #{sido_cd} 
+			, SIGUNGU_CD = #{sigungu_cd} 
+			, DONG_CD = #{dong_cd} 
+			, MANAGE_NO = #{manage_no} 
+			, ZIP_CD = #{zip_cd} 
+			, ADDR1 = #{addr1} 
+			, ADDR2 = #{addr2} 
+			, X_COORD = #{x_coord} 
+			, Y_COORD = #{y_coord} 
+			, CONTS = #{conts} 
+			, MOD_ID = #{session_member_id}
+			, MOD_DT = sysdate
+		WHERE SEQ = #{seq}
+	</update>
+	
+	<update id="write" parameterType="Map" useGeneratedKeys="true" keyColumn="seq" keyProperty="parent_seq">
+		INSERT INTO NSH_REPAIR(
+			SEQ, PARENT_SEQ, COM_NM, CEO_NM, STAFF_NM, STAFF_TEL, HOLDER, SIDO_CD, SIGUNGU_CD, DONG_CD, MANAGE_NO, ZIP_CD, ADDR1, ADDR2, X_COORD, Y_COORD, CONTS,
+			REG_ID, REG_DT
+		)VALUES(
+			SEQ_NSH_REPAIR.NEXTVAL, #{parent_seq}, #{com_nm}, #{ceo_nm}, #{staff_nm}, #{staff_tel}, #{holder}, #{sido_cd}, #{sigungu_cd}, #{dong_cd}, #{manage_no}, #{zip_cd}, #{addr1}, #{addr2}, #{x_coord}, #{y_coord}, #{conts},
+			#{session_member_id}, SYSDATE
+		)
+	</update>
+	
+	<select id="view" parameterType="Map" resultType="mcmap">
+		SELECT
+			SEQ, PARENT_SEQ, COM_NM, CEO_NM, STAFF_NM, STAFF_TEL, HOLDER, SIDO_CD, SIGUNGU_CD, DONG_CD, MANAGE_NO, ZIP_CD, ADDR1, ADDR2, X_COORD, Y_COORD, CONTS,
+			FN_GET_SPLIT(ZIP_CD, 1, '-', '') as ZIP1, 
+			FN_GET_SPLIT(ZIP_CD, 2, '-', '') as ZIP2,
+			FN_GET_SPLIT(STAFF_TEL, 1, '-', '') as STAFF_TEL1,
+			FN_GET_SPLIT(STAFF_TEL, 2, '-', '') as STAFF_TEL2,
+			FN_GET_SPLIT(STAFF_TEL, 3, '-', '') as STAFF_TEL3
+		FROM NSH_REPAIR 
+		WHERE SEQ = #{seq} 
+	</select>
+	
+	<update id="del" parameterType="Map">
+		UPDATE NSH_REPAIR SET
+			DEL_YN = 'Y'
+			,DEL_ID = #{session_member_id}
+			,DEL_IP = #{ip}
+			,DEL_DT = sysdate
+		WHERE SEQ = #{seq}
+	</update>
+	
+</mapper>

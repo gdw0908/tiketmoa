@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="defaultStatementTimeout" value="25000"/>
+        <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+	<typeAliases>
+		<typeAlias alias="mcmap" type="com.mc.web.MCMap"/>
+		<package name="com.mc.web"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/mc/web/sqlmap/test.xml" />
+		<mapper resource="com/mc/web/sqlmap/code.xml" />
+		<!-- <mapper resource="com/mc/web/sqlmap/old_code.xml" /> -->
+		<mapper resource="com/mc/web/sqlmap/member.xml" />
+		<mapper resource="com/mc/web/sqlmap/cooperation.xml" />
+		<mapper resource="com/mc/web/sqlmap/repair.xml" />
+ 		<!-- <mapper resource="com/mc/web/sqlmap/article.xml" />-->
+ 		<mapper resource="com/mc/web/sqlmap/attach.xml" /> 
+ 		<!-- <mapper resource="com/mc/web/sqlmap/category.xml" /> -->
+ 		<!-- <mapper resource="com/mc/web/sqlmap/part.xml" /> -->
+ 		<!-- <mapper resource="com/mc/web/sqlmap/main.xml" /> -->
+ 		<mapper resource="com/mc/web/sqlmap/cart.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/popupzone.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/spell.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/state.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/seller.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/mail_send.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/mail_target.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/mail_templet.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/event.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/calculate.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/mmsInfo.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/admin.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/sales.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/selfcamera.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/carallbaro.xml" />
+ 		<mapper resource="com/mc/web/sqlmap/application.xml" />
+ 		
+ 		<!-- 데이터 이관 -->
+		<mapper resource="com/mc/web/sqlmap/transfer.xml" />
+		
+		<!-- 상품권관련 -->
+		<mapper resource="com/mc/giftcard/sqlmap/part.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/article.xml" />
+ 		<mapper resource="com/mc/giftcard/sqlmap/category.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/old_code.xml" />
+		 <mapper resource="com/mc/giftcard/sqlmap/main.xml" />
+		 
+	</mappers>
+</configuration>

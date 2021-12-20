@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mmsInfo">
+	
+	<select id="admin_cell" parameterType="Map" resultType="mcmap" >
+		SELECT 
+			CELL,
+			SMS_YN
+		FROM MC_MEMBER
+		WHERE MEMBER_ID = 'admin'
+	</select>
+	
+	<select id="cartno_cooperation_cell" parameterType="Map" resultType="mcmap" >
+		SELECT 
+		  B.PRODUCTNM,
+		  C.STAFF_TEL,
+		  NVL(C.SMS_TEL, C.STAFF_TEL) as SMS_TEL,
+		  A.CELL
+		FROM 
+		  NSH_CART A, NSH_GOODS B, NSH_COOPERATION C
+		WHERE A.ITEM_SEQ = B.ITEM_SEQ AND B.COM_SEQ = C.SEQ
+		AND A.CART_NO = #{cart_no}
+	</select>
+	
+	<select id="orderno_cooperation_cell" parameterType="Map" resultType="mcmap" >
+		SELECT 
+		  B.PRODUCTNM,
+		  C.STAFF_TEL,
+		  NVL(C.SMS_TEL, C.STAFF_TEL) as SMS_TEL,
+		  A.CELL
+		FROM 
+		  NSH_CART A, NSH_GOODS B, NSH_COOPERATION C
+		WHERE A.ITEM_SEQ = B.ITEM_SEQ AND B.COM_SEQ = C.SEQ
+		AND A.ORDERNO = #{orderno}
+	</select>
+	
+	<select id="orderno_cell" parameterType="Map" resultType="mcmap" >
+		SELECT 
+		  A.REHP,
+		  CASE 
+		    WHEN B.USER_ID IS NULL THEN 'GUEST'
+		    ELSE 'MEMBER'
+		  END AS MEMBER_TYPE
+		FROM NSH_ORDERMST A 
+		LEFT OUTER JOIN NSH_CART B ON B.ORDERNO = A.ORDERNO
+		WHERE A.ORDERNO = #{orderno}
+		GROUP BY A.REHP,B.USER_ID
+	</select>
+</mapper>
