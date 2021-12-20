@@ -57,21 +57,20 @@ public class GiftCardMainService {
 		params.put("client_yn", "Y");//사용자 페이지
 		Map rstMap = new HashMap();
 		
-		if("1".equals(params.get("tab"))){//현대
+		if("1".equals(params.get("tab"))){//롯데
 			params.put("carmakerseq", "1");
-		}else if("2".equals(params.get("tab"))){//기아
+		}else if("2".equals(params.get("tab"))){//신세계
 			params.put("carmakerseq", "2");
-		}else if("3".equals(params.get("tab"))){//쉐보레
-			params.put("carmakerseq", "4");
-		}else if("4".equals(params.get("tab"))){//삼성
+		}else if("3".equals(params.get("tab"))){//갤러리아
 			params.put("carmakerseq", "3");
-		}else if("5".equals(params.get("tab"))){//쌍용
-			params.put("carmakerseq", "6");
-		}else if("6".equals(params.get("tab"))){//수입차
-			params.put("nation", "N");
-		}else if("7".equals(params.get("tab"))){//기타
-			
-		}
+		} /*
+			 * else if("4".equals(params.get("tab"))){//삼성 params.put("carmakerseq", "3");
+			 * }else if("5".equals(params.get("tab"))){//쌍용 params.put("carmakerseq", "6");
+			 * }else if("6".equals(params.get("tab"))){//수입차 params.put("nation", "N");
+			 * }else if("7".equals(params.get("tab"))){//기타
+			 * 
+			 * }
+			 */
 		
 		rstMap.put("list", partDAO.list(params));
 		rstMap.put("pagination", partDAO.pagination(params));
