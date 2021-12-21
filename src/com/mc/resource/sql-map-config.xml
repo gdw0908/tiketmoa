@@ -51,7 +51,7 @@
 		<mapper resource="com/mc/giftcard/sqlmap/article.xml" />
  		<mapper resource="com/mc/giftcard/sqlmap/category.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/old_code.xml" />
-		 <mapper resource="com/mc/giftcard/sqlmap/main.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/main.xml" />
 		 
 	</mappers>
 </configuration>

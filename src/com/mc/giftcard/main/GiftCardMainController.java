@@ -34,7 +34,7 @@ public class GiftCardMainController {
 	@RequestMapping("/giftcard/popup/latest_part.do")	
 	public String latest_part(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
 		model.addAttribute("data", mainService.latest_part(params));
-		return "/giftcard/latest_part";
+		return "latest_part";
 	}
 	
 	@RequestMapping("/giftcard/inc/header.do")	
