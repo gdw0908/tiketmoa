@@ -516,13 +516,13 @@
 								</div>
 								<div class="md_bottom">
 									<p class="mb_1">
-										<strong>제품명</strong> : ${mdpart.prod_nm }
+										<strong>제품명</strong> : ${mdpart.PRODUCTNM }
 									</p>
 									<p class="mb_1">
-										<strong>브랜드</strong> : ${mdpart.prod_classnm }
+										<strong>브랜드</strong> : ${mdpart.MAKERNM }
 									</p>
 									<p class="mb_3">
-										<strong>판매가격 : </strong> <span class="c1">${suf:getThousand(mdpart.prod_price) }
+										<strong>판매가격 : </strong> <span class="c1">${suf:getThousand(mdpart.USER_PRICE) }
 											원</span>
 									</p>
 								</div>
