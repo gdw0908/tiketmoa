@@ -371,7 +371,7 @@
 		</c:if>
 	</c:forEach>
 	<c:if test="${left == 'true'}">
-		<div class="side_banner_l">
+		<div class="side_banner_l"> 
 			<ul>
 				<c:forEach var="item" items="${list.quick_popup }"
 					varStatus="status">
