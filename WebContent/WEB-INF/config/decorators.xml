@@ -36,7 +36,7 @@
 	<!-- 서브 끝 -->
 	
 	<!-- 서브2 -->
-    <decorator name="sub2.left" page="/inc/left.do"/>
+    <decorator name="sub2.left" page="/giftcard/inc/left.do"/>
     <decorator name="sub2" page="/layout/sub2.do">
         <pattern>/giftcard/mypage/*</pattern>
         <pattern>/giftcard/company.do</pattern>
