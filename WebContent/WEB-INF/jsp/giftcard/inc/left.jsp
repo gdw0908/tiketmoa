@@ -48,27 +48,27 @@ $( document ).ready(function() {
 <!-- All Menu E -->
   <div id="left_menu">
     <ul class="">
-      <li class="left_depth2"><a class="left_menu_a" href="/mypage/notice/index.do" menu_level="2"><span>공지사항</span></a></li>
-      <li class="left_depth2"><a class="left_menu_a" href="/mypage/forces/index.do" menu_level="2"><span>문의하기</span></a></li>
+      <li class="left_depth2"><a class="left_menu_a" href="/giftcard/mypage/notice/index.do" menu_level="2"><span>공지사항</span></a></li>
+      <li class="left_depth2"><a class="left_menu_a" href="/giftcard/mypage/forces/index.do" menu_level="2"><span>문의하기</span></a></li>
       <li class="left_depth2">
       <a href="#" class="left_menu_a" menu_level="2"><span class="plus">나의쇼핑</span><i class="xi-angle-down"></i></a>
       <ul class="left_menu_ul" style="display:none;">
-        <li class="left_depth3"><a href="/mypage/shopping/cart/index.do" class="left_menu_b" menu_level="3">장바구니</a></li>
-        <li class="left_depth3"><a href="/mypage/shopping/state/index.do?mode=list1" class="left_menu_b" menu_level="3">주문/배송조회</a></li>
-        <li class="left_depth3"><a href="/mypage/shopping/state/index.do?mode=list2" class="left_menu_b" menu_level="3">취소/반품/교환 조회</a></li>
-        <li class="left_depth3"><a href="/mypage/shopping/state/index.do?mode=list3" class="left_menu_b" menu_level="3">환불/입금내역</a></li>
+        <li class="left_depth3"><a href="/giftcard/mypage/shopping/cart/index.do" class="left_menu_b" menu_level="3">장바구니</a></li>
+        <li class="left_depth3"><a href="/giftcard/mypage/shopping/state/index.do?mode=list1" class="left_menu_b" menu_level="3">주문/배송조회</a></li>
+        <li class="left_depth3"><a href="/giftcard/mypage/shopping/state/index.do?mode=list2" class="left_menu_b" menu_level="3">취소/반품/교환 조회</a></li>
+        <li class="left_depth3"><a href="/giftcard/mypage/shopping/state/index.do?mode=list3" class="left_menu_b" menu_level="3">환불/입금내역</a></li>
       </ul>
       </li>
       <li class="left_depth2">
       <a href="#" class="left_menu_a" menu_level="2"><span class="plus">회원정보</span><i class="xi-angle-down"></i></a>
       <ul class="left_menu_ul" style="display:none">
       <c:if test = "${sessionScope.member.group_seq eq '2' or sessionScope.member.group_seq eq '9' }">
-	    <li class="left_depth3"><a href="/mypage/member/index.do?mode=<c:choose><c:when test = "${not empty sessionData.busi_no }">busi</c:when><c:otherwise>join</c:otherwise></c:choose>" class="left_menu_b" menu_level="3">회원정보 변경</a></li>
+	    <li class="left_depth3"><a href="/giftcard/mypage/member/index.do?mode=<c:choose><c:when test = "${not empty sessionData.busi_no }">busi</c:when><c:otherwise>join</c:otherwise></c:choose>" class="left_menu_b" menu_level="3">회원정보 변경</a></li>
 	  </c:if>
         
-        <li class="left_depth3"><a href="/mypage/member/index.do?mode=myaddress" class="left_menu_b" menu_level="3">나의 배송지관리</a></li>
+        <li class="left_depth3"><a href="/giftcard/mypage/member/index.do?mode=myaddress" class="left_menu_b" menu_level="3">나의 배송지관리</a></li>
         <c:if test = "${sessionScope.member.group_seq eq '2' }">
-        	<li class="left_depth3"><a href="/mypage/member/index.do?mode=withdraw" class="left_menu_b" menu_level="3">회원탈퇴</a></li>
+        	<li class="left_depth3"><a href="/giftcard/mypage/member/index.do?mode=withdraw" class="left_menu_b" menu_level="3">회원탈퇴</a></li>
         </c:if>
       </ul>
       </li>
@@ -78,10 +78,10 @@ $( document ).ready(function() {
       <li class="left_depth2">
       <a href="#" class="left_menu_a" menu_level="2"><span class="plus">이용약관</span><i class="xi-angle-down"></i></a>
       <ul class="left_menu_ul" style="display:none">
-        <li class="left_depth3"><a href="/mypage/annc/annc1.do" class="left_menu_b" menu_level="3">서비스이용약관</a></li>
-        <li class="left_depth3"><a href="/mypage/annc/annc2.do" class="left_menu_b" menu_level="3">전자금융거래약관</a></li>
-		<li class="left_depth3"><a href="/mypage/annc/annc3.do" class="left_menu_b" menu_level="3">개인정보수집</a></li>
-		<li class="left_depth3"><a href="/mypage/annc/annc4.do" class="left_menu_b" menu_level="3">이메일수집</a></li>
+        <li class="left_depth3"><a href="/giftcard/mypage/annc/annc1.do" class="left_menu_b" menu_level="3">서비스이용약관</a></li>
+        <li class="left_depth3"><a href="/giftcard/mypage/annc/annc2.do" class="left_menu_b" menu_level="3">전자금융거래약관</a></li>
+		<li class="left_depth3"><a href="/giftcard/mypage/annc/annc3.do" class="left_menu_b" menu_level="3">개인정보수집</a></li>
+		<li class="left_depth3"><a href="/giftcard/mypage/annc/annc4.do" class="left_menu_b" menu_level="3">이메일수집</a></li>
       </ul>
       </li>
       <!-- <li class="left_depth2"><a class="left_menu_a" href="#" menu_level="2"><span>사이트맵</span></a></li> -->
