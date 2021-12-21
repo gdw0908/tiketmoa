@@ -26,7 +26,7 @@
  		<!-- <mapper resource="com/mc/web/sqlmap/category.xml" /> -->
  		<!-- <mapper resource="com/mc/web/sqlmap/part.xml" /> -->
  		<!-- <mapper resource="com/mc/web/sqlmap/main.xml" /> -->
- 		<mapper resource="com/mc/web/sqlmap/cart.xml" />
+ 		<!-- <mapper resource="com/mc/web/sqlmap/cart.xml" /> -->
  		<mapper resource="com/mc/web/sqlmap/popupzone.xml" />
  		<mapper resource="com/mc/web/sqlmap/spell.xml" />
  		<mapper resource="com/mc/web/sqlmap/state.xml" />
@@ -52,6 +52,7 @@
  		<mapper resource="com/mc/giftcard/sqlmap/category.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/old_code.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/main.xml" />
+		 <mapper resource="com/mc/giftcard/sqlmap/cart.xml" />
 		 
 	</mappers>
 </configuration>

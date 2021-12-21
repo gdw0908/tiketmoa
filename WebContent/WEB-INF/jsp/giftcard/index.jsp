@@ -424,13 +424,13 @@
 								<p>카테고리</p>
 								<ul class="category_tab">
 									<li id="tabNavTitle0201" class="on">
-										<a href="javascript:void();" onclick="shwoTabNav2(1); return false;" onfocus="this.onclick();">갤러리아</a>
+										<a href="javascript:void();" onclick="shwoTabNav2(1); return false;" onfocus="this.onclick();">롯데</a>
 									</li>
 									<li id="tabNavTitle0202">
 										<a href="javascript:void();" onclick="shwoTabNav2(2); return false;" onfocus="this.onclick();">신세계</a>
 									</li>
 									<li id="tabNavTitle0203">
-										<a href="javascript:void();" onclick="shwoTabNav2(3); return false;" onfocus="this.onclick();">롯데 </a>
+										<a href="javascript:void();" onclick="shwoTabNav2(3); return false;" onfocus="this.onclick();">갤러리아 </a>
 									</li>
 								</ul>
 							</div>
@@ -516,13 +516,13 @@
 								</div>
 								<div class="md_bottom">
 									<p class="mb_1">
-										<strong>제품명</strong> : ${mdpart.prod_nm }
+										<strong>제품명</strong> : ${mdpart.PRODUCTNM }
 									</p>
 									<p class="mb_1">
-										<strong>브랜드</strong> : ${mdpart.prod_classnm }
+										<strong>브랜드</strong> : ${mdpart.MAKERNM }
 									</p>
 									<p class="mb_3">
-										<strong>판매가격 : </strong> <span class="c1">${suf:getThousand(mdpart.prod_price) }
+										<strong>판매가격 : </strong> <span class="c1">${suf:getThousand(mdpart.USER_PRICE) }
 											원</span>
 									</p>
 								</div>

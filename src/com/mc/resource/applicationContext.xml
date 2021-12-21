@@ -77,6 +77,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/**" />
+			<mvc:mapping path="/giftcard/admin/**" />
 			<bean class="com.mc.interceptor.AdminLoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
