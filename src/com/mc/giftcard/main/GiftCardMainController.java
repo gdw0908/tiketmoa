@@ -34,7 +34,7 @@ public class GiftCardMainController {
 	@RequestMapping("/giftcard/popup/latest_part.do")	
 	public String latest_part(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
 		model.addAttribute("data", mainService.latest_part(params));
-		return "latest_part";
+		return "/giftcard/latest_part";
 	}
 	
 	@RequestMapping("/giftcard/inc/header.do")	
@@ -46,7 +46,7 @@ public class GiftCardMainController {
 	@RequestMapping("/giftcard/inc/all_menu_box.do")	
 	public String all_menu(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
 		model.addAttribute("data", mainService.all_menu());
-		return "/inc/all_menu_box";
+		return "/giftcard/inc/all_menu_box";
 	}
 	
 	@RequestMapping("/giftcard/index.do")	

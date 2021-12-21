@@ -15,9 +15,9 @@
 	<!-- 제외 항목 끝-->
 	
 	<!-- 공통 -->
-    <decorator name="gnb" page="/inc/gnb.do"/>
-    <decorator name="header" page="/inc/header.do"/>
-    <decorator name="footer" page="/inc/footer.do"/>
+    <decorator name="gnb" page="/giftcard/inc/gnb.do"/>
+    <decorator name="header" page="/giftcard/inc/header.do"/>
+    <decorator name="footer" page="/giftcard/inc/footer.do"/>
 	<!--//공통  -->
 	
 	<!-- 메인 화면 시작 -->

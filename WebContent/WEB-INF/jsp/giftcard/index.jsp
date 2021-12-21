@@ -169,7 +169,7 @@
 			clearTimeout(lastest_timer);
 		}
 		$("#tabNav0201").load(
-				"/popup/latest_part.do?cpage=" + page + "&tab=" + tab,
+				"/giftcard/popup/latest_part.do?cpage=" + page + "&tab=" + tab,
 				function() {
 					$("#tabNav0201 img").on(
 							"error",
@@ -371,7 +371,7 @@
 		</c:if>
 	</c:forEach>
 	<c:if test="${left == 'true'}">
-		<div class="side_banner_l">
+		<div class="side_banner_l"> 
 			<ul>
 				<c:forEach var="item" items="${list.quick_popup }"
 					varStatus="status">
@@ -430,7 +430,7 @@
 										<a href="javascript:void();" onclick="shwoTabNav2(2); return false;" onfocus="this.onclick();">신세계</a>
 									</li>
 									<li id="tabNavTitle0203">
-										<a href="javascript:void();" onclick="shwoTabNav2(3); return false;" onfocus="this.onclick();">갤러리아 </a>
+										<a href="javascript:void();" onclick="shwoTabNav2(3); return false;" onfocus="this.onclick();">갤러리아</a>
 									</li>
 								</ul>
 							</div>
@@ -504,14 +504,14 @@
 							<li>
 								<div class="md_top">
 									<p class="mt_img">
-										<a href="/goods/view.do?seq=${mdpart.item_seq }"><img src="${mdpart.thumb }" alt=""></a>
+										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"><img src="${mdpart.THUMB }" alt=""></a>
 									</p>
 									<p class="mt_btn">
-										<a href="/goods/view.do?seq=${mdpart.item_seq }"
+										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"
 											target="_blank">새창</a> <a
-											href="/mypage/shopping/cart/index.do?mode=add_cart&seq=${mdpart.item_seq }&qty=1">장바구니</a>
+											href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${mdpart.item_seq }&qty=1">장바구니</a>
 										<a
-											href="/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
+											href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
 									</p>
 								</div>
 								<div class="md_bottom">
@@ -536,7 +536,7 @@
 
 	</div>
 	<form id="cartFrm" name="cartFrm" method="post"
-		action="/mypage/shopping/cart/index.do">
+		action="/giftcard/mypage/shopping/cart/index.do">
 		<input type="hidden" name="mode" value="" /> <input type="hidden"
 			name="seq" value="" /> <input type="hidden" name="qty" value="1" />
 	</form>
