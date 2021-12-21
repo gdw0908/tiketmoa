@@ -108,6 +108,21 @@ function goBody(target_url){
         </li>
       </ul>
     </li>
+    <li>
+      <div> <span class="name1"><a href="#">시스템관리</a></span> </div>
+      <ul>
+        <li>
+          <div> <span class="name2"><a href="#">게시판관리</a></span> </div>
+          <ul>
+             <li class="last">
+                <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/system/board/notice/index.do')">공지사항</a></span> </div>
+             </li>
+             <li class="last">
+                <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/system/board/forces/index.do')">문의사항</a></span> </div>
+             </li>
+          </ul>
+        </li>
+      </ul>
     </c:when>
    </c:choose>
   </ul>
