@@ -27,6 +27,7 @@ public class GiftCardAdminController {
 	
 	@RequestMapping("/giftcard/admin/index.do")	
 	public String giftCardIndexPage(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
+		log.debug("커밋되나 e다시 aaaaaaaaaaa");
 		return "/giftcard/admin/index";
 	}
 	
