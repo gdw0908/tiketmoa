@@ -100,11 +100,11 @@ $( document ).ready(function() {
 			
 			<ul class="mo_member_wrap">
         		<c:if test="${empty sessionScope.member }">
-        			<li class="last"><a href="/join/join_2.do">가입하기</a></li>
+        			<li class="last"><a href="/giftcard/join/join_2.do">가입하기</a></li>
         		</c:if>
         		<c:if test="${!empty sessionScope.member }">
         		<c:if test = "${sessionScope.member.group_seq eq '2' or sessionScope.member.group_seq eq '9' }">
-					<li class="last"><a href="/mypage/member/index.do?mode=join">회원정보</a></li>
+					<li class="last"><a href="/giftcard/mypage/member/index.do?mode=join">회원정보</a></li>
 				</c:if>
 				</c:if>
 		
@@ -134,7 +134,7 @@ $( document ).ready(function() {
      </ul>
      <jsp:include page="/giftcard/inc/all_menu_box.do" />
      
-     <h1 class="top_logo"><a href="/"><img src="/images/logo/logo.svg" alt="티켓모아"></a></h1>
+     <h1 class="top_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓모아"></a></h1>
      
      <ul>
        <li>

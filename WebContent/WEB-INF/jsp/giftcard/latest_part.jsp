@@ -21,9 +21,9 @@
                         	<c:forEach var="item" items="${data.list }">
                             <li>
                             	<div class="md_top">
-                              		<p class="mt_img"><a href="/goods/view.do?seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a></p>
+                              		<p class="mt_img"><a href="/giftcard/goods/view.do?seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a></p>
                               		<p class="mt_btn">
-                                		<a href="/goods/view.do?seq=${item.item_seq }" target="_blank">새창</a>
+                                		<a href="/giftcard/goods/view.do?seq=${item.item_seq }" target="_blank">새창</a>
                                 		<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
                                 		<c:choose><c:when test="${item.inquiry_yn eq 'Y' }"><a href="javascript:inquery_y();">바로구매</a>
                                 			</c:when><c:otherwise><a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
