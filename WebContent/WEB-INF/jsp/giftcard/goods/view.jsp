@@ -156,7 +156,7 @@ function view(opt) {
 							<li>
 								<a href="javascript:cntCalc();">
 									<span>구매수량</span>
-									<input type="number" class="count_input" name="count" id="count" value="1">
+									<input type="number" class="count_input" name="count" id="count" value="1" onblur="cntCalc()" onkeyup="cntCalc()">
 								</a>
 							</li>
 						</ul>
@@ -168,19 +168,19 @@ function view(opt) {
 						</p>
 					</div>
 
-					<c:choose>
+<%-- 					<c:choose>
 						<c:when test="${view.inquiry_yn eq 'Y' }">
 							<p class="d_info_guide">
 								고객센터 <b class="c1">1544-6444</b> 로 연락주시기 바랍니다.
 							</p>
 						</c:when>
-						<c:otherwise>
+						<c:otherwise> --%>
 							<div class="d_info_btn">
-								<a class="cart_btn" href="/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">장바구니담기</a>
-								<a class="buy_btn" href="/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
+								<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">장바구니담기</a>
+								<a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
 							</div>
-						</c:otherwise>
-					</c:choose>
+					<%-- 	</c:otherwise>
+					</c:choose> --%>
 				</div>
 			</div>
 			
@@ -223,7 +223,7 @@ function view(opt) {
 					<section id="tab-1" class="tab-content current">
 						<h3 class="tit">상품상세 설명</h3>
 						<div class="content">
-							<img src="../images/sub/poduct_img.png">
+							${view.conts } 
 						</div>
 					</section>
 
@@ -314,11 +314,10 @@ function view(opt) {
 				if($("#count").val() > 0){
 					var userPrice = Number('${view.USER_PRICE}');
 					var toPrice =Number($("#count").val())*userPrice;
-					alert(toPrice.replace('/\B(?=(\d{3})+(?!\d))/g', ","));
-					$(".to_price").html(toPrice.replace('/\B(?=(\d{3})+(?!\d))/g', ","));
+					$(".to_price").html(String(toPrice).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 				}else{
-					$("#count").val(1); 
-					$(".to_price").html('${suf:getThousand(view.USER_PRICE) }');					
+					$("#count").val(''); 
+					$(".to_price").html('0');					
 				}				
 			}
 	</script>
