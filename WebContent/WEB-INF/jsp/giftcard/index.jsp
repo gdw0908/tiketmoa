@@ -354,7 +354,6 @@
        			 <div class="swiper-slide"><img src="../images/banner/banner3.png" alt="상품권싸게사자"></div>
         		 <div class="swiper-slide"><img src="../images/banner/banner2.png" alt="상품권 구매는 티켓모아"></div>
         		 <div class="swiper-slide"><img src="../images/banner/banner1.png" alt="할인이 쏟아진다"></div>
-        		 <div class="swiper-slide"><img src="../images/banner/banner1.png" alt="설마.."></div>
       		</div>
       		<div class="swiper-pagination"></div>
     	</div>
