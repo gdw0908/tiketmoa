@@ -539,6 +539,7 @@ td.cart_main .pb_r_2 p.last_2 span.input_box a.btn_x img {margin:6px 0 0 5px;}
 .product_info .price {
 	width: 100%;
 	font-size: 40px;
+	font-weight: 600;
 	padding-bottom: 20px;
 	color: var(--main-text);
 	border-bottom: 1px solid #bfbfbf;
@@ -557,12 +558,25 @@ td.cart_main .pb_r_2 p.last_2 span.input_box a.btn_x img {margin:6px 0 0 5px;}
 	margin-top: 30px;
 }
 .product_info .info_list li a {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	font-size: 16px;
 	font-weight: 400;
 }
-.product_info .info_list li a span:nth-child(2) {
+.product_info .info_list li a .delivery_info {
+	display: none;
+	position: absolute;
+	top: 20px;
+	left: 60px;
+	padding: 10px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+	box-sizing: border-box;
+	z-index: 1;
+}
+.product_info .info_list li a > span:nth-child(2) {
 	font-size: 14px;
 	font-weight: 300;
 }

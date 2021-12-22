@@ -1,43 +1,5 @@
 @charset "utf-8";
 
-/* header
-#header {background:url(/images/header/header_b_bg.gif) repeat-x bottom; border-top:2px solid #9ec359;}
-#header .h_wrap {width:1100px; padding:28px 0 25px 0; margin:0 auto;}
-#header .h_wrap:after {display:block; clear:both; content:"";}
-/*
-
-
-/* search_line
-h1 {float:left; margin:40px 77px 0 0;}
-.search_box {position:relative; float:left; width:520px; margin:39px 0 0 0; z-index:3000;}
-#question {position:absolute; top:19px; left:38px; width:200px; height:150px; background:#fcf9a6; border:1px solid #ddd; z-index:999;}
-.search_top {overflow:hidden;}
-.search_top input.main_search {width:320px; height:19px; padding:11px 50px 11px 10px; .margin:-1px 0; background:#f8f8f8 url(/images/header/input_search.gif) no-repeat 340px 10px; border:2px solid #75c700; font-family:'Nanum Gothic'; font-size:16px;}
-.search_top span.question {float:left; margin-top:7px;}
-.search_top span.search {float:left; margin-left:12px;}
-.search_top span.btn_search {position:absolute; top:0px; right:0px;}
-
-.search_box ul {overflow:hidden; margin:10px 0 0 30px;}
-.search_box ul li {float:left; padding:0 15px 0 14px; background:url(/images/header/search_cut.gif) no-repeat right 0px;}
-.search_box ul li.last {background:none; padding:0 0 0 14px;}
-.search_box ul li a {font-family:'Nanum Gothic'; font-weight:bold; letter-spacing:-1px; color:#757575;}
-
-.sh_text {float:right; margin-top:42px;}
-
-.util_navi {position:absolute; top:0px; left:0px; width:100%; border-bottom:1px solid #d6decd;}
-.util_navi .util_wrap {width:1100px; margin:0 auto; height:12px; padding:8px 0 7px 0;}
-.util_navi ul {overflow:hidden;}
-.util_navi ul.util_l {float:left;}
-.util_navi ul.util_l li a {color:#707f68;}
-.util_navi ul.util_r {float:right;}
-.util_navi ul.util_r li {background:url(/images/header/util_cut.gif) no-repeat right 1px;}
-.util_navi ul.util_r li a {font-size:11px; color:#61675e;}
-.util_navi ul li {float:left; padding:0 17px 0 16px; background:url(/images/header/util_cut.gif) no-repeat right 0px; letter-spacing:-1px;}
-.util_navi ul li.last {background:none;}
-.util_navi ul li.c1 a {color:#78c130; font-weight:bold;}
-/*
-
-
 /* main_visual_wrap */
 
 .main_visual_wrap {max-width:1400px; width: 100%;  margin:0 auto; }
@@ -317,7 +279,7 @@ ul.tabs li.current{
 .tab-content{
    display: none;
 	background: #fff;
-	padding: 20px 0;
+	padding: 20px;
 	border: 1px solid var(--border-color); 
 	border-top: none;
 }
@@ -343,7 +305,6 @@ ul.tabs li.current{
 }
 
 .content_container .guide_content {
-	padding: 0 20px;
 	margin-bottom: 40px;
 	box-sizing: border-box;
 }

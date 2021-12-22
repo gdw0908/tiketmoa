@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page" %>
 <%@ taglib prefix="dtf" uri="/WEB-INF/tlds/DateUtil_fn.tld" %>
 <%@ taglib prefix="suf" uri="/WEB-INF/tlds/StringUtil_fn.tld" %>
-<c:if test="${((pageContext.request.requestURI) eq '/' or (pageContext.request.requestURI) eq '/index.do')}" >
+<c:if test="${((pageContext.request.requestURI) eq '/' or (pageContext.request.requestURI) eq '/giftcard/index.do')}" >
 <script type="text/javascript">
 function setCookie( name, value, expiredays ) { 
 	var todayDate = new Date(); 

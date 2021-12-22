@@ -9,13 +9,13 @@
     <div class="all_menu_wrap">
       <div class="menu_con_box">
         <div class="viewcate">
-          <h3><a href="/giftcard/goods/list.do?menu=menu1">갤러리아</a></h3>
+          <h3><a href="/giftcard/goods/list.do?menu=menu1">롯데</a></h3>
         </div>
         <div class="viewcate">
           <h3><a href="/giftcard/goods/list.do?menu=menu2">신세계</a></h3>
         </div>
         <div class="viewcate">
-          <h3><a href="/giftcard/goods/list.do?menu=menu3">롯데</a></h3>
+          <h3><a href="/giftcard/goods/list.do?menu=menu3">갤러리아</a></h3>
         </div>
       </div>
     </div>

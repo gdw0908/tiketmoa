@@ -184,7 +184,10 @@ function directOrder(item_seq){
 </head>
 
 <body>
-   <div class="container" style="background: #E8EBE8;">
+	<article class="menu_info_wrap">
+  		<h3 class="menu_info">홈 > 카테고리 > 상품 페이지</h3>
+	</article>
+   <div class="container">
     <div class="gnb_wrap">
         <!-- gnb메뉴 -->
 <%-- 		<page:applyDecorator name="gnb" /> --%>
@@ -196,40 +199,10 @@ function directOrder(item_seq){
         <div class="sl_wrap">
           <div class="sl_l" id="content_view">
           	<c:choose>
-          		<c:when test="${param.menu eq 'menu1' }"><h3>마이크</h3></c:when>
-          		<c:when test="${param.menu eq 'menu2' }"><h3>앰프</h3></c:when>
-          		<c:when test="${param.menu eq 'menu3' }"><h3>오디오믹서</h3></c:when>
-          		<c:when test="${param.menu eq 'menu4' }"><h3>스피커</h3></c:when>
-          		<c:when test="${param.menu eq 'menu5' }"><h3>전관방송</h3></c:when>
-          		<c:when test="${param.menu eq 'menu6' }"><h3>소스/프로세서</h3></c:when>
-          		<c:when test="${param.menu eq 'menu7' }"><h3>랙/하드케이스</h3></c:when>
-          		<c:when test="${param.menu eq 'menu8' }"><h3>스탠드/보면대</h3></c:when>
-          		<c:when test="${param.menu eq 'menu9' }"><h3>케이블/커넥터</h3></c:when>
-          		<c:when test="${param.menu eq 'menu10' }"><h3>영상기기</h3></c:when>
-          		<c:when test="${param.menu eq 'menu11' }"><h3>패키지</h3></c:when>
-          		<c:when test="${param.menu eq 'menu9' }"><c:if test="${param.part2 == '050901006003'}"><h3><img src="/images/sub/title_7_1.gif" alt="알터네이터"></h3></c:if><c:if test="${param.part2 == '050901006001'}"><h3><img src="/images/sub/title_7_2.gif" alt="A/C콤프레서"></h3></c:if><c:if test="${param.part2 == '050901006002'}"><h3><img src="/images/sub/title_7_3.gif" alt="스타트모터"></h3></c:if></c:when>
+          		<c:when test="${param.menu eq 'menu1' }"><h3>롯데</h3></c:when>
+          		<c:when test="${param.menu eq 'menu2' }"><h3>신세계</h3></c:when>
+          		<c:when test="${param.menu eq 'menu3' }"><h3>갤러리아</h3></c:when>
           	</c:choose>
-<!--             <p> -->
-<!--             <span><strong>홈</strong></span> &gt; -->
-<!--             <span> -->
-<%--            		<c:choose> --%>
-<%--           			<c:when test="${param.menu eq 'menu1' }">마이크</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu2' }">앰프</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu3' }">오디오믹서</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu4' }">스피커</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu5' }">전관방송</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu6' }">소스/프로세서</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu7' }">랙/하드케이스</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu8' }">스탠드/보면대</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu9' }">케이블/커넥터</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu10' }">영상기기</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu11' }">패키지</c:when> --%>
-<%--           			<c:when test="${param.menu eq 'menu9' }"><c:if test="${param.part2 == '050901006003' }">재제조 &gt; 알터네이터</c:if><c:if test="${param.part2 == '050901006001' }">재제조 &gt; A/C 콤프레서</c:if><c:if test="${param.part2 == '050901006002' }">재제조 &gt; 스타트모터</c:if></c:when> --%>
-<%--           			<c:otherwise> --%>
-<!--           				전체검색 -->
-<%--           			</c:otherwise> --%>
-<%--           		</c:choose> --%>
-<!--             </span> &gt; -->
             <c:choose>
             	<c:when test = "${not empty param.menu}">
             	
@@ -259,175 +232,7 @@ function directOrder(item_seq){
     	<c:when test="${empty data.list && param.menu eq 'menu9'}">
     	</c:when>
     	<c:otherwise>
-      <!-- all_menu on -->
-      <div class="sm_wrap" style="display:block;" id="sub_menu">
-        <div class="sub_menu">
 
-<!--           <div class="product_list"> -->
-<%--           <c:set var="actionURL" value="/goods/list.do?menu=${param.menu }"/> --%>
-<%--           <c:if test="${param.menu eq '' || param.menu eq null}"> --%>
-<%--           	<c:set var="actionURL" value="/goods/list.do"/> --%>
-<%--           </c:if> --%>
-<%--           <form action="${actionURL }" method="post" id="frm" name="frm"> --%>
-<%--             <input type="hidden" name="search_all_text" value="${param.search_all_text }"> --%>
-<!--             <p class="pl_title">※ 검색조건과 함께 찾으시는 부품을 선택해 주세요</p> -->
-<!--             <table> -->
-<%--             <colgroup> --%>
-            
-<%--             <col width="15.5%"> --%>
-<%--             <col width="18%"> --%>
-<%--             <col width=""> --%>
-<%--             <col width="10%"> --%>
-<%--             <c:if test="${param.menu eq '' || param.menu eq null}"> --%>
-<%--             <col width="7%"> --%>
-<%--             </c:if> --%>
-<%-- 			<c:if test="${param.menu eq 'menu1' || param.menu eq 'menu2' || param.menu eq 'menu3' || param.menu eq 'menu4' || param.menu eq 'menu9' || param.menu eq '' || param.menu eq null}"> --%>
-<%--             <col width="18%"> --%>
-<%--             </c:if> --%>
-<%--             <col width="12%"> --%>
-<%--             </colgroup> --%>
-<!--             <thead> -->
-<!--             <tr> -->
-<!--               <th scope="col">제조사</th> -->
-<!--               <th scope="col">차량명</th> -->
-<!--               <th scope="col">모델명</th> -->
-<!--               <th scope="col">연식</th> -->
-<%--               <c:if test="${param.menu eq '' || param.menu eq null}"> --%>
-<!-- 	          <th scope="col">구분</th> -->
-<%-- 	          </c:if> --%>
-<%-- 			  <c:if test="${param.menu eq 'menu1' || param.menu eq 'menu2' || param.menu eq 'menu3' || param.menu eq 'menu4' || param.menu eq 'menu9' || param.menu eq '' || param.menu eq null}"> --%>
-<!--               <th scope="col">부품</th> -->
-<%--               </c:if> --%>
-<!--               <th scope="col">등급</th> -->
-<!--             </tr> -->
-<!--             </thead> -->
-<!--             <tbody> -->
-<!--             <tr> -->
-            
-            
-	        
-<!--               <td> -->
-<!--               	<select id="carmakerseq" name="carmakerseq" class="select_sm1" size="8" onchange="changeCarmaker()"> -->
-<!--               	<option value="">선 택</option> -->
-<%--                 	<c:forEach var="item" items="${data.carmaker }"> --%>
-<%--                 	<option value="${item.carmakerseq }" <c:if test="${item.carmakerseq eq param.carmakerseq }">selected="selected"</c:if>>${item.makernm }</option> --%>
-<%--                 	</c:forEach> --%>
-<!-- 				</select> -->
-<!--               </td> -->
-
-<!--               <td> -->
-<!--               	<select id="carmodelseq" name="carmodelseq" class="select_sm1" size="8" onchange="changeCarmodel()"> -->
-<!--               	<option value="">선 택</option> -->
-<%--                 	<c:forEach var="item" items="${data.carmodel }"> --%>
-<%--                 	<option value="${item.carmodelseq }" <c:if test="${item.carmodelseq eq param.carmodelseq }">selected="selected"</c:if>>${item.carmodelnm }</option> --%>
-<%--                 	</c:forEach> --%>
-<!--               	</select> -->
-<!--               </td> -->
-
-<!--               <td> -->
-<!--               	<select id="cargradeseq" name="cargradeseq" class="select_sm1" size="8"> -->
-<!--               	<option value="">선 택</option> -->
-<%--                 	<c:forEach var="item" items="${data.cargrade }"> --%>
-<%--                 	<option value="${item.cargradeseq }" <c:if test="${item.cargradeseq eq param.cargradeseq }">selected="selected"</c:if>>${item.cargradenm }</option> --%>
-<%--                 	</c:forEach> --%>
-<!--               	</select> -->
-<!--               </td> -->
-
-<!--               <td> -->
-<!--               	<select id="caryyyy" name="caryyyy" class="select_sm1" size="8"> -->
-<!--               	<option value="">선 택</option> -->
-<%--               	<c:forEach var="item" begin="1995" end="${dtf:getTime('yyyy') }"> --%>
-<%--               		<option value="${item }" <c:if test="${item eq param.caryyyy }">selected="selected"</c:if>>${item }년</option> --%>
-<%--                	</c:forEach> --%>
-<!--               	</select> -->
-<!--               </td> -->
-			  
-<%-- 			  <c:if test="${param.menu eq '' || param.menu eq null}"> --%>
-<!--               <td> -->
-<!--               	<select id="menu_id" name="menu" class="select_sm1" size="8" onchange="changeMenu();"> -->
-<!-- 					<option value="menu1">바디</option> -->
-<!-- 					<option value="menu2">의장</option> -->
-<!-- 					<option value="menu3">엔진</option> -->
-<!-- 					<option value="menu4">샤시</option> -->
-<!-- 					<option value="menu9">재제조</option> -->
-<!--                 </select> -->
-<!--               </td> -->
-<%-- 	          </c:if> --%>
-	          
-<%-- 			  <c:if test="${param.menu eq 'menu1' || param.menu eq 'menu2' || param.menu eq 'menu3' || param.menu eq 'menu4' || param.menu eq 'menu9' || param.menu eq '' || param.menu eq null}"> --%>
-<!--               <td> -->
-<!--               	<select id="part2_1" name="part2_1" class="select_sm1" size="8" multiple="multiple"> -->
-<!--               	<option value="">선 택</option> -->
-<%--               	<c:forEach var="item" items="${data.part2 }"> --%>
-<%--               		<option value="${item.code }" <c:if test="${item.code eq param.part2_1 }">selected="selected"</c:if>>${item.code_nm }</option> --%>
-<%--               	</c:forEach> --%>
-<!--               	</select> -->
-<!--               </td> -->
-<%--               </c:if> --%>
-
-<!--               <td> -->
-<!--               	<select id="grade" name="grade" class="select_sm1" size="8"> -->
-<!--               	<option value="">선 택</option> -->
-<%--               	<c:forEach var="item" items="${data.grade }"> --%>
-<%--               		<option value="${item.code }" <c:if test="${item.code eq param.grade }">selected="selected"</c:if>>${item.code_nm }</option> --%>
-<%--               	</c:forEach> --%>
-<!--               	</select> -->
-<!--               </td> -->
-
-<!--             </tr> -->
-<!--             </tbody> -->
-<!--             </table> -->
-
-<!--             <div class="pl_bottom"> -->
-
-<!--               <p class="plb_l"> -->
-<!--               <span class="cb_1">지역별</span> -->
-
-<!--               <span> -->
-<!--               <select id="sido" name="sido" class="select_1" onchange="changeSido()"> -->
-<!--               	<option value="">시/도</option> -->
-<%--               	<c:forEach var="item" items="${data.sido }"> --%>
-<%--               		<option value="${item.sido }" <c:if test="${item.sido eq param.sido }">selected="selected"</c:if>>${item.dong_nm }</option> --%>
-<%--               	</c:forEach> --%>
-<!--               </select> -->
-<!--               </span> -->
-
-<!--               <span> -->
-<!--               <select id="sigungu" name="sigungu" class="select_1" onchange="changeSigungu()"> -->
-<!--               	<option value="">시/군/구</option> -->
-<%--               	<c:forEach var="item" items="${data.sigungu }"> --%>
-<%--               		<option value="${item.sigungu }" <c:if test="${item.sigungu eq param.sigungu }">selected="selected"</c:if>>${item.dong_nm }</option> --%>
-<%--               	</c:forEach> --%>
-<!--               </select> -->
-<!--               </span> -->
-
-<!--               <span> -->
-<!--               <select id="dong" name="dong" class="select_1"> -->
-<!--               <option value="">읍/면/동</option> -->
-<%--               	<c:forEach var="item" items="${data.dong }"> --%>
-<%--               		<option value="${item.dong }" <c:if test="${item.dong eq param.dong }">selected="selected"</c:if>>${item.dong_nm }</option> --%>
-<%--               	</c:forEach> --%>
-<!--               </select> -->
-<!--               </span> -->
-
-<!--               </p> -->
-
-<!--               <p class="plb_r"> -->
-<!--               <span class="cb_1">조건 내 검색</span> -->
-
-<%--               <span class="input_box"><input type="text" name="keyword" class="input_1" value="${param.keyword }"></span>               --%>
-<!--               <span><a href="javascript:goSubmit();"><img src="/images/container/pl_btn_2.gif" alt="검색"></a></span> -->
-<!--               <span><a href="javascript:frmreset();"><img src="/images/container/pl_btn_1.gif" alt="초기화"></a></span> -->
-              
-
-<!--               </p> -->
-
-<!--             </div> -->
-<!-- 			</form> -->
-<!--           </div> -->
-
-        </div>
-      </div>
     </div>
     <!-- all_menu on End -->
     	</c:otherwise>
@@ -450,30 +255,20 @@ function directOrder(item_seq){
       </div>
     </div>
     </c:when>
-    <c:otherwise>    
-    <div class="sub_wrap">
-    	<!--  가격대 조건 검색  -->
-<!--     	<article class="condition_wrap"> -->
-<!--     		<div class="condition_content"> -->
-<!--     			<p>가격대</p> -->
-<!--     			<ul> -->
-<!--     				<li data-filter="all">전체</li> -->
-<!--     				<li data-filter="1">~1만원</li> -->
-<!--     				<li data-filter="2">1~5만원</li> -->
-<!--     				<li data-filter="3">5~15만원</li> -->
-<!--     				<li data-filter="4">15~30만원</li> -->
-<!--     				<li data-filter="5">30만원~</li> -->
-<!--     			</ul> -->
-<!--     			<div class="input_wrap"> -->
-<!--     				<input type="text"   /> 원 ~  -->
-<!--     				<input type="text"   /> 원    			 -->
-<!--     			</div> -->
-<!--     			<a href="#" class="serch_btn">검색</a> -->
-<!--     		</div> -->
-<!--     	</article> -->
+    <c:otherwise>   
+   
+     
+    <div class="sub_wrap product_container">
+    	<aside class="side_menu">
+    	    <h6>카테고리</h6>
+    		<ul>
+    			<li><a href="./list.do?menu=menu1">롯데</a></li>
+    			<li><a href="./list.do?menu=menu2">갤러리아</a></li>
+    			<li><a href="./list.do?menu=menu3">신세계</a></li>
+    		</ul>
+    	</aside>
     	
         <div class="sub_contents">
-      
 			<div class="sc_top">
 		          <ul class="sc_tab">
 		            <li><a <c:if test = "${empty param.focus}">class="on"</c:if> href="javascript:go_url('${paramset }show=${param.show }&rows=${param.rows }');">최근등록순</a></li>
@@ -482,8 +277,6 @@ function directOrder(item_seq){
 		          </ul>
 		
 		          <div class="sc_type">
-		            <span><a href="javascript:go_url('${paramset }show=1&rows=10&sort=${param.sort}&focus=${param.focus}');"><img src="/images/sub/sc_type_btn1_<c:choose><c:when test = "${param.show eq '1' || empty param.show }">on</c:when><c:otherwise>off</c:otherwise></c:choose>.gif" alt=""></a></span>
-		            <span><a href="javascript:go_url('${paramset }show=2&rows=12&sort=${param.sort}&focus=${param.focus}');"><img src="/images/sub/sc_type_btn2_<c:choose><c:when test = "${param.show eq '2' }">on</c:when><c:otherwise>off</c:otherwise></c:choose>.gif" alt=""></a></span>
 		            <span>
 		            <c:choose>
 		            	<c:when test="${param.show == '2' }">
@@ -505,8 +298,6 @@ function directOrder(item_seq){
 		          </div>
 		        </div>
         
-		<c:choose>
-			<c:when test = "${empty param.show || param.show eq '1' }">
 				<!-- 방명록 스타일 시작 -->
 		        <div class="sub_list">
 		        
@@ -516,7 +307,10 @@ function directOrder(item_seq){
 		         				 <c:forEach var="item" items="${data.list }">
 		          			<li class="item_list">
 		          				<div class="item">
-		          					<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" class="img_wrap"><img src="${item.thumb }" alt="${item.part3_nm }"></a>
+		          					<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" class="img_wrap">
+<%-- 		          						<img src="${item.thumb }" alt="${item.part3_nm }"> --%>
+										<img src="/images/products/gal_1.jpg" alt="${item.part3_nm }">
+		          					</a>
 		          					<div class="m_btn">
 		                				<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" target="_blank">새창</a>
 		                				<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
@@ -530,52 +324,17 @@ function directOrder(item_seq){
 		                			</div>
 		          				</div>
 		          				<div class="list_info">
-		          					<span class="tit">${item.part3_nm }</span>
+<%-- 		          					<span class="tit">${item.part3_nm }</span> --%>
+		          					<span class="tit">갤러리아 상품권 1만원</span>
 		          					<ul>
-		          						<li>${item.part1_nm } / ${item.part2_nm }</li>
-		          						<li>
-		          							<c:choose>
-				        						<c:when test="${item.inquiry_yn eq 'Y' }">
-				        							<span class="price">협의</span>
-				        						</c:when>
-				        						<c:otherwise>
-						        					<c:if test="${item.discount_rate > 0}">
-					              						<span class="price_un">${suf:getThousand(item.user_price) }</span>
-					              						<span class="price">${suf:getThousand(item.sale_price) } 원</span>
-				            						</c:if>
-													<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
-					              						<span class="price">${suf:getThousand(item.user_price) } 원</span>
-				            						</c:if>
-				        						</c:otherwise>
-				       						 </c:choose>
-		          						</li>
+<%-- 		          						<li>${item.part1_nm } / ${item.part2_nm }</li> --%>
+		          						<li>10,000원</li>
 		          					</ul>
 		          				</div>
 		          			</li>
 		         		    </c:forEach>
 		          		</ul>
 		          	</div>
-		
-
-<%-- 		          <colgroup> --%>
-<%-- 		          <col width=""> --%>
-<%-- 		          <col width="15%"> --%>
-<%-- 		          <col width="30%"> --%>
-<%-- 		          <col width="20%"> --%>
-<%-- 		          </colgroup> --%>
-		
-<!-- 		          <thead> -->
-<!-- 		          <tr> -->
-<!-- 		            <th>제품사진</th> -->
-<!-- 		            <th>제품정보</th> -->
-<!--  		            <th>협력사가</th> -->
-<!-- 		            <th>상품코드</th> --> 
-<!-- 		            <th>판매가격</th> -->
-<!-- 		            <th>혜택</th>  -->
-<!-- 		            <th>판매자</th> -->
-<!-- 		          </tr> -->
-<!-- 		          </thead> -->
-	
 		          
 					<jsp:include page="/inc/paging2.do">
 						<jsp:param  name="cpage" value="${param.cpage }"/>
@@ -584,58 +343,7 @@ function directOrder(item_seq){
 					</jsp:include>
 		
 		        </div>
-        	<!-- 방명록 스타일 끝 -->
-			</c:when>
-			<c:otherwise>
-			
-				<!-- 바둑판 형 스타일 시작 -->
-				
-		        <div class="sub_list">
 
-		          <ul class="sl_type_2">
-					<c:forEach var="item" items="${data.list }">
-			            <li>
-			            <div>
-			              <a href="view.do?menu=${param.menu }&seq=${item.item_seq }">
-			              <span class="img"><img src="${item.thumb }" alt="${item.part3_nm }"></span>
-			              <span class="f_type1">${item.carmodelnm } (${item.caryyyy }년식) / ${item.part3_nm } / ${item.grade }등급 <c:if test = "${not empty item.discount_rate && item.discount_rate > 0 }"><span class="f_style_1">${item.discount_rate }%↓</span></c:if></span>
-			              </a>
-			            </div>
-			            <div class="text">
-<%-- 			              <p class="f_type2">${item.com_nm } / <b class="phone">${item.sigungu_nm }</b></p> --%>
-<%-- 						  <p class="f_type2">상품코드 / <b class="phone">${item.item_code }</b></p> --%>
-			             <!--  <p class="f_type3"><strong>협력사가</strong> : <b class="c2">10,000,000 원<span class="price_un">90,000</span></b></p>  --> 
-			              <p class="f_type3"><strong>판매가격</strong> : 
-			              <b class="c2">
-			              	<c:choose>
-					        	<c:when test="${item.inquiry_yn eq 'Y' }">
-					        	협의
-					        	</c:when>
-					        	<c:otherwise>
-							        <c:if test="${item.discount_rate > 0}">
-						              ${suf:getThousand(item.sale_price) } 원
-						              <span class="price_un">${suf:getThousand(item.user_price) }</span>
-					            	</c:if>
-									<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
-						              ${suf:getThousand(item.user_price) } 원
-					            	</c:if>
-					        	</c:otherwise>
-					        </c:choose>
-			              </b>
-			              </p>
-			            </div>
-			            </li>
-					</c:forEach>
-		          </ul>
-		         	<jsp:include page="/inc/paging2.do">
-						<jsp:param name="cpage" value="${param.cpage }"/>
-						<jsp:param name="rows" value="${param.rows }"/>
-						<jsp:param name="totalpage" value="${data.pagination.totalpage }"/>
-					</jsp:include>
-		        </div>
-		        <!-- 바둑판 형 스타일 끝 -->
-			</c:otherwise>
-		</c:choose>
       </div>
     </div>
     </c:otherwise>
