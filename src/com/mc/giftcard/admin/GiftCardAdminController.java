@@ -29,8 +29,7 @@ public class GiftCardAdminController {
 	public String giftCardIndexPage(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
 		log.debug("커밋되나 2222");
 		log.debug("커밋되나 33333");
-		log.debug("이건 빅맨이 수정!!!");
-		log.debug("이건 빅맨이 또 수정!!!");
+		
 		return "/giftcard/admin/index";
 	}
 	
