@@ -13,6 +13,8 @@ function login_proc(obj)
 	if(obj.member_id.value == "")
 	{
 		alert("아이디를 입력하세요.");
+		alert("아이디를 입력하세요.");
+		alert("아이디를 입력하세요.");
 		obj.member_id.focus();
 		return false;
 	}
