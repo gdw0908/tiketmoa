@@ -171,20 +171,10 @@ function view(opt) {
 							총 상품금액<span class="to_price">${suf:getThousand(view.USER_PRICE) }</span><span class="unit">원</span>
 						</p>
 					</div>
-
-<%-- 					<c:choose>
-						<c:when test="${view.inquiry_yn eq 'Y' }">
-							<p class="d_info_guide">
-								고객센터 <b class="c1">1544-6444</b> 로 연락주시기 바랍니다.
-							</p>
-						</c:when>
-						<c:otherwise> --%>
-							<div class="d_info_btn">
-								<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1">장바구니담기</a>
-								<a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
-							</div>
-					<%-- 	</c:otherwise>
-					</c:choose> --%>
+					<div class="d_info_btn">
+						<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">장바구니담기</a>
+						<a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
+					</div>
 				</div>
 			</div>
 			
@@ -236,21 +226,18 @@ function view(opt) {
 							<h3>1. 배송</h3>
 							<ul>
 								<li>택배 집하시간은 4시까지이며, 익일배송을 원칙으로 처리하여 드립니다.</li>
-								<li>단, 부피가 큰 부품이나 고객이 원할 경우 1톤, 다마스 차량으로 운송하며, 지방의 경우 화물택배로
-									배송하여드립니다.</li>
 								<li>기타 궁금하신 사항은 1661-8431 고객센터로 문의주시면 언제든지 상세히 답변 드리도록
-									하겠습니다.</li>
-								<li>주문 예) 화물, 일반, 퀵서비스 선택 가능</li>
+									하겠습니다.
+								</li>
 							</ul>
 						</div>
 						<div class="guide_content">
 							<h3>2. 배송비</h3>
 							<ul>
 								<li>모든 배송비는 착불을 기본으로 합니다.</li>
-								<li>- 택배 가능 부품(한사람이 들 수 있는 무게/부피가 작은 부품)은 기본이 5,000원이며,
-									무게/부피에 따라 배송비가 증가 됩니다.</li>
-								<li>- 택배 불가능한 부품은 경동택배를 통해 발송되며, 배송비는 기본 5,000원으로 무게/부피에 따라
-									배송비가 증가 됩니다.</li>
+								<li>도서산간배송비 추가</li>
+								<li>- 제주: 10,000원</li>
+								<li>- 도서산간지역: 20,000원</li>
 							</ul>
 						</div>
 						<div class="guide_content">
