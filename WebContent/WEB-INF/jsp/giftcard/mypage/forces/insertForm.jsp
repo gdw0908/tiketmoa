@@ -16,7 +16,7 @@
 <meta name="description" content="안녕하세요  티켓모아 입니다." />
 <meta name="Keywords"
 	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
-<title>협력사 문의</title>
+<title>문의하기</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
