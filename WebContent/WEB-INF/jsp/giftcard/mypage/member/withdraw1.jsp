@@ -35,7 +35,7 @@ function withdrawFormChk()
           <div class="secession_con">
 
             <div class="t_box2">
-              <p class="last">파츠모아 <strong>회원탈퇴 시 비밀번호 인증</strong>이 필요합니다. 가입하신 비밀번호를 다시한번 입력하시기 바랍니다.</p>
+              <p class="last">티켓모아 <strong>회원탈퇴 시 비밀번호 인증</strong>이 필요합니다. 가입하신 비밀번호를 다시한번 입력하시기 바랍니다.</p>
             </div>
 			<form name = "withdrawForm" id = "withdrawForm" method = "post" action = "${servletPath }" onsubmit = "return withdrawFormChk();">
 			<input type = "hidden" name = "mode" value = "withdraw1">

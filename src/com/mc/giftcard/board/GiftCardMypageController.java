@@ -638,7 +638,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -686,7 +686,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		params.put("ip", request.getRemoteHost());
@@ -730,7 +730,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -748,7 +748,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -780,7 +780,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -802,7 +802,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -823,7 +823,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -845,7 +845,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -869,7 +869,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -921,7 +921,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -956,7 +956,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -990,7 +990,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		
@@ -1035,7 +1035,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/login/login.do");
+    		request.setAttribute("redirect", "/giftcard/login/login.do");
 			return "message";
     	}
 		params.put("ip", request.getRemoteHost());
@@ -1375,7 +1375,7 @@ public class GiftCardMypageController extends MCController {
 		
 		if(member == null){
 			request.setAttribute("message", "로그인 후 이용가능합니다.");
-    		request.setAttribute("redirect", "/mobile/login/login.do?mode=mlogin");
+    		request.setAttribute("redirect", "/giftcard/mobile/login/login.do?mode=mlogin");
 			return "message";
     	}
 		

@@ -94,7 +94,7 @@ jQuery(document).ready(function(){
 	</ul>
     <div id="tab-1" id="tabNav0101"  class="tab-content current">
       <div class="login_wrap">
-        <form action="/login/login.do" id="login_form" name="login_form" method="post" onsubmit = "return login_proc(this);">
+        <form action="/giftcard/login/login.do" id="login_form" name="login_form" method="post" onsubmit = "return login_proc(this);">
           <input type = "hidden" name = "member" value = "1"/>
           <input type = "hidden" name = "mode" value = "proc"/>
           <input type = "hidden" name = "returnURL" value = ""/>

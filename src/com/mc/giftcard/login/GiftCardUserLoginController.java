@@ -102,7 +102,7 @@ public class GiftCardUserLoginController {
 //    			request.setAttribute("redirect", params.get("returnURL"));
 //    			return "message";
     		}else{
-    			return "redirect:/";
+    			return "redirect:/giftcard/index.do";
     		}
     		
 		}

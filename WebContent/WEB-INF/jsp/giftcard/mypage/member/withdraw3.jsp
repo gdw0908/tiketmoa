@@ -28,7 +28,7 @@
             <p class="last">기타 문의는 고객센터전화 <b>1544-6444</b>로 문의주시기 바랍니다. </p>
             </div>
 
-            <div class="secession_btn_2"><a href="/"><img src="/images/join/join4_btn_1.gif" alt="메인화면"></a></div>
+            <div class="secession_btn_2"><a href="/giftcard/index.do"><img src="/images/join/join4_btn_1.gif" alt="메인화면"></a></div>
 
           </div>
 
