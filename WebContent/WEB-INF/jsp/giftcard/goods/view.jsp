@@ -146,6 +146,7 @@ function view(opt) {
 									</c:choose>
 								</a>
 							</li>
+
 							<li>
 								<a href="javascript:void();">
 									<span>수령방법</span>
