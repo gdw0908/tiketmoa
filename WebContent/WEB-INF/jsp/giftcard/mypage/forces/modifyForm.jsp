@@ -76,7 +76,7 @@
 	</table>
 
 	<div class="vr_btn">
-		<input type="image" src="/images/article/board_btn6.gif" alt="견적등록" />
-		<a href="${servletPath }?mode=list&amp;cpage=${params.cpage }&amp;rows=${params.rows }&amp;condition=${params.condition }&amp;keyword=${params.keyword }"><img src="/images/article/board_btn5.gif" alt="입력취소"></a>
+		<input type="button" value="문의등록" class="check_btn" />
+		<a href="${servletPath }?mode=list&amp;cpage=${params.cpage }&amp;rows=${params.rows }&amp;condition=${params.condition }&amp;keyword=${params.keyword }" class="clear_btn">입력취소</a>
 	</div>
 </form>

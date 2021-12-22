@@ -6,23 +6,14 @@
 <c:choose>
   <c:when test="${params.mode == 'del' }">
     <c:set var='article_mode' value='삭제'/>
-    <c:set var='article_mode_image' value='<input type="image" src="/images/article/board_btn1.gif" alt="문의취소">'/>
   </c:when>
   <c:otherwise>
     <c:set var='article_mode' value='수정'/>
-    <c:set var='article_mode_image' value='<input type="image" src="/images/sub_2/d_btn_4.gif" alt="확인">'/>
+    <c:set var='article_mode_image' value='<input class="check_btn" type="button" value="확인">'/>
   </c:otherwise>
 </c:choose>
 <div id="sub">
-  <div class="strapline">
-    <h3><img src="/images/sub_2/h3_img_3_a.gif" alt="문의사항"></h3>
-    <div class="state"> <span>홈</span> &gt; <span>고객센터</span> &gt; <span><strong>문의사항</strong></span> </div>
-  </div>
   <div class="contents">
-    <div class="write_top">
-      <h4>티켓모아에 문의하기</h4>
-      <p><strong>티켓모아</strong>쇼핑몰에 관련한 문의/의견 등을 등록하시면 빠른 시일내에 답변 드리겠습니다.</p>
-    </div>
     <form name="wFrm" id="wFrm" action="${servletPath }" method="post" onSubmit="return articleSubmit(this);">
       <input type="hidden" name="mode" value="${params.mode }"/>
       <input type="hidden" name="article_seq" value="${params.article_seq }"/>
@@ -38,7 +29,9 @@
           </tr>
         </tbody>
       </table>
-      <div class="vr_btn"> ${article_mode_image } <a href="${servletPath }?mode=list&amp;cpage=${params.cpage }&amp;rows=${params.rows }&amp;condition=${params.condition }&amp;keyword=${params.keyword }"><img src="/images/article/board_btn5.gif" alt="입력취소"></a> </div>
+      <div class="vr_btn"> ${article_mode_image } 
+      	<a class="clear_btn" href="${servletPath }?mode=list&amp;cpage=${params.cpage }&amp;rows=${params.rows }&amp;condition=${params.condition }&amp;keyword=${params.keyword }">입력취소</a>
+      </div>
     </form>
   </div>
 </div>

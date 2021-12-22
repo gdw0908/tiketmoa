@@ -73,7 +73,7 @@
 	function changeQty(idx) {
 		var obj = $("input[name='chk']").eq(idx);
 		var qty = $("input[name='qty']").eq(idx).val();
-		$.getJSON("/mypage/shopping/cart/index.do?mode=qtyChange", {
+		$.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=qtyChange", {
 			cart_no : obj.val(),
 			item_seq : obj.attr("item_seq"),
 			qty : qty
@@ -95,7 +95,7 @@
 		var obj = $("input[name='chk']").eq(idx);
 		var cart_no = obj.val();
 		obj.attr("cod_yn", val);
-		$.getJSON("/mypage/shopping/cart/index.do?mode=changeCod", {
+		$.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=changeCod", {
 			cart_no : cart_no,
 			cod_yn : val
 		}, function(data) {
@@ -142,7 +142,7 @@
 				cart_no : $(this).val()
 			});
 		});
-		$.getJSON("/mypage/shopping/cart/index.do?mode=remove_cart", {
+		$.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=remove_cart", {
 			jData : JSON.stringify({
 				del : rst
 			})
@@ -202,25 +202,21 @@
 									<tr>
 										<td class="b_none" style=" padding: 15px;">
 											<input type="checkbox" name="chk" value="${item.cart_no }" 
-											item_seq="${item.item_seq }" sale_price="${item.sale_price }"
-											prod_price="${item.prod_price }" qty="${item.qty }"
-											discount_rate="${item.discount_rate }"
-											supplier_pricing_yn="${item.supplier_pricing_yn }"
-											supplier_price="${item.supplier_price }"
-											cod_yn="${item.cod_yn }" fee_amt="${item.fee_amt}">
+											item_seq="${item.item_seq }"  prod_price="${item.user_price }" qty="${item.qty }"
+											 fee_amt="${item.fee_amt}">
 										</td>
 										<td class="cart_main">
 											<div class="product_box">
 												<div class="pb_l">
-													<a href="/goods/view.do?menu=menu2&seq=${item.item_seq }">
+													<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
 														<img src="${item.thumb }" alt="">
 													</a>
 												</div>
 												<div class="pb_r ws_1">
 													<p>
-														<a href="/goods/view.do?menu=menu2&seq=${item.item_seq }">
-															<span><strong>${item.prod_nm }</strong></span> <span class="pro_name">
-															<strong>${item.prod_classnm }</strong></span> 
+														<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
+															<span><strong>${item.MAKERNM }</strong></span> <span class="pro_name">
+															<strong>${item.PRODUCTNM }</strong></span> 
 														</a>
 													</p>
 												</div>
@@ -236,7 +232,7 @@
 										</td>
 										<td class="price_calc">
 											<p>
-												<b class="c1">${suf:getThousand(item.prod_price * item.qty) }원</b>
+												<b class="c1">${suf:getThousand(item.USER_PRICE * item.QTY) }원</b>
 											<p>
 										</td>
 										<td class="b_none">
@@ -250,7 +246,7 @@
 															<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착불</option>
 													</select>
 													<br />
-	              										(${suf:getThousand(item.prod_price) } 원)
+	              										(${suf:getThousand(item.FEE_AMOUNT) } 원)
 	              									</c:when>
 												<c:otherwise>무료</c:otherwise>
 											</c:choose> 
@@ -278,10 +274,10 @@
 						<p>
 							<b id="user_price">0</b>원
 						</p>
-						<p class="pb_type">
+						<!-- <p class="pb_type">
 							<span class="pb_l">선결제배송비</span>
 							<span class="pb_r"><b id="fee_price">0</b>원</span>
-						</p>
+						</p> -->
 					</div>
 				</div>
 				<div class="p_check2">
@@ -290,7 +286,7 @@
 							<strong>할인금액</strong>
 						</span>
 						<span class="pt_r">
-							<a href="#"><img src="/images/sub_2/guide_btn1.gif" alt="?"></a>
+							<a href=""><img src="/images/sub_2/guide_btn1.gif" alt="?"></a>
 						</span>
 					</div>
 					<div class="bottom">

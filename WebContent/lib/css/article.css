@@ -564,7 +564,7 @@ td.cart_main .pb_r_2 p.last_2 span.input_box a.btn_x img {margin:6px 0 0 5px;}
 	font-size: 16px;
 	font-weight: 400;
 }
-.product_info .info_list li a .delivery_info {
+.product_info .info_list li a.deliver_hover .delivery_info {
 	display: none;
 	position: absolute;
 	top: 20px;
@@ -576,10 +576,23 @@ td.cart_main .pb_r_2 p.last_2 span.input_box a.btn_x img {margin:6px 0 0 5px;}
 	box-sizing: border-box;
 	z-index: 1;
 }
+.product_info .info_list li a.deliver_hover .delivery_info p {
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+.product_info .info_list li a.deliver_hover .delivery_info span {
+	display: block;
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+.product_info .info_list li a.deliver_hover:hover .delivery_info { display: block; }
 .product_info .info_list li a > span:nth-child(2) {
+	display: flex;
 	font-size: 14px;
 	font-weight: 300;
 }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { height: 100%; }
 .product_info .info_list li a select {
 	width: 90px;
 	font-size: 14px;
