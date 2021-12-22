@@ -525,7 +525,7 @@ ul.lately_list li a span.text {color:#454545; letter-spacing:-1px;}
 }
 .brand_roll > div > p.roll_next {position:absolute; top:213px; right: 0px; z-index:90;}
 .brand_roll > div > p.roll_prev {position:absolute; top:213px; left: 30px; z-index:90;}
-.brand_roll > div > div {position:relative; max-width:1040px; width: 100%; }
+.brand_roll > div > div {position:relative; max-width:1320px; width: 100%; }
 .brand_roll > div > div > ul {
 	position:absolute; 
 	left:0px; 

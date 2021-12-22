@@ -749,8 +749,8 @@ span.mb_2_2 {float:left;  font-size:10px; color:var(--main-color); font-weight:b
 span.mb_2_3 {float:right; font-size:11px;  color:#b5b5b5; text-decoration:line-through;}
 
 p.mb_3 {overflow:hidden; margin-top:10px;}
-p.mb_3 strong {float:left; margin-top:1px;}
-p.mb_3 span {float:right; font-size:14px; font-weight:bold; letter-spacing:-1px;}
+p.mb_3 strong { margin-top:1px;}
+p.mb_3 span {font-size:14px; font-weight:bold; letter-spacing:-1px;}
 p.mb_3 span.c1 {color: var(--main-color);}
 p.mb_3 span.c2 {color:#3a81d0;}
 
