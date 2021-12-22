@@ -23,16 +23,16 @@ function withdrawFormAgreeChk()
 </head>
 
 <body>
-<div class="wrap">
+<div class="wrap" style="width: 100%;">
       <div id="sub">
         <div class="strapline">
-          <h3><img src="/images/sub_2/h3_img_5_3.gif" alt="회원탈퇴"></h3>
+          <h3>회원탈퇴</h3>
           <div class="state"> <span>홈</span> &gt; <span>고객센터</span> &gt; <span><strong>회원정보</strong></span> </div>
         </div>
         <div class="contents">
           <div class="secession_con">
 
-            <p class="sece_t_text">※ 파츠모아쇼핑몰의 회원탈퇴를 하시는 여러분께 알려드리는 사항입니다.</p>
+            <p class="sece_t_text">※ 티켓모아쇼핑몰의 회원탈퇴를 하시는 여러분께 알려드리는 사항입니다.</p>
 
             <div class="t_box2">
               <p><strong>기존 아이디로 재가입이 불가능 합니다. </strong></p>
@@ -41,7 +41,7 @@ function withdrawFormAgreeChk()
             </div>
 			<form name = "withdrawFormAgree" id = "withdrawFormAgree" method = "post" action = "${servletPath }" onsubmit = "return withdrawFormAgreeChk();">
 			<input type = "hidden" name = "mode" value = "withdraw2">
-            <div class="secession_checkbox"><label><input type="checkbox" id="agree" name="agree" class="check">위 사항에 모두 확인하였으며 파츠모아쇼핑몰의 회원탈퇴를 신청합니다.</label></div>
+            <div class="secession_checkbox"><label><input type="checkbox" id="agree" name="agree" class="check">위 사항에 모두 확인하였으며 티켓모아쇼핑몰의 회원탈퇴를 신청합니다.</label></div>
             <div class="secession_btn_2">
               <a href="/"><img src="/images/sub_2/btn_secession_2.gif" alt=""></a>
               <input type = "image" src = "/images/sub_2/btn_secession_3.gif">

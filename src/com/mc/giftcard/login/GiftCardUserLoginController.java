@@ -52,7 +52,7 @@ public class GiftCardUserLoginController {
 	public String logout(ModelMap model, @RequestParam Map<String, String> params, HttpServletRequest request, HttpSession session){
 		session.removeAttribute("member");
 		session.invalidate();
-		request.setAttribute("redirect", "/");
+		request.setAttribute("redirect", "/giftcard/login/login.do");
 		return "message";
 	}
 	

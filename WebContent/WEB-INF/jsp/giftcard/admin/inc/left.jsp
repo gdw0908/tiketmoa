@@ -123,6 +123,10 @@ function goBody(target_url){
           </ul>
         </li>
       </ul>
+	  <!-- 회원관리시작-->
+	  <li>
+	  	<div> <span class="name1"><a href="#" onClick="goBody('/giftcard/admin/member/index.do')">회원관리</a></span> </div>
+	  </li>
     </c:when>
    </c:choose>
   </ul>

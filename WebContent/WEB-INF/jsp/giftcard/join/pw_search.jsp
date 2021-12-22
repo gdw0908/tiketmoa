@@ -71,39 +71,51 @@ String ipinsitepwd = Util.getProperty("ipin.ipinsitepwd");
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
+<meta name="author" content="31system" />
+<meta name="description" content="안녕하세요  티켓모아 입니다." />
+<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
 <title>비밀번호찾기</title>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="/lib/css/join.css" type="text/css">
+<script type="text/javascript" src="/lib/js/common.js"></script>
 <script type = "text/javascript">
-function openPop()
-{
-	if(document.getElementById("auth_member_nm_input").value == "")
-	{
-		alert("이름을 입력하세요.");
-		document.getElementById("auth_member_nm_input").value = "";
-		document.getElementById("auth_member_nm_input").focus();
-		return;
-	}
-	else if(document.getElementById("member_id").value == "")
-	{
-		alert("아이디를 입력하세요.");
-		document.getElementById("member_id").value = "";
-		document.getElementById("member_id").focus();
-		return;
-	}
-	else
-	{
-		if(document.pw_search_method.CheckUser[0].checked == true)
-		{
-			checkReadName();
-		}
-		else
-		{
-			iPinPop();
-		}
+$(function() {
+
+// function openPop()
+// {
+// 	if(document.getElementById("auth_member_nm_input").value == "")
+// 	{
+// 		alert("이름을 입력하세요.");
+// 		document.getElementById("auth_member_nm_input").value = "";
+// 		document.getElementById("auth_member_nm_input").focus();
+// 		return;
+// 	}
+// 	else if(document.getElementById("member_id").value == "")
+// 	{
+// 		alert("아이디를 입력하세요.");
+// 		document.getElementById("member_id").value = "";
+// 		document.getElementById("member_id").focus();
+// 		return;
+// 	}
+// 	else
+// 	{
+// 		if(document.pw_search_method.CheckUser[0].checked == true)
+// 		{
+// 			checkReadName();
+// 		}
+// 		else
+// 		{
+// 			iPinPop();
+// 		}
 		
-	}
+// 	}
 	
-}
+// }
 
 function checkReadName()
 {
@@ -228,47 +240,20 @@ function busi_search_form_chk()
 </head>
 
 <body>
-<div class="title_rocation">
-  <div class="tr_wrap">
-    <h3><img src="/images/join/pw_search_title.gif" alt="비밀번호찾기"></h3>
-  </div>
-</div>
 <div class="j_wrap">
-  <div class="pw_visual"> 파츠모아쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. <strong>등록정보로 ID의 비밀번호를 재발급 받으실 수 있습니다.<br>
-    이름, 상호명은 띄어쓰기 없이 입력해 주세요. (아이핀으로 회원가입을 하신경우, 아이핀 인증을 통해 아이디를 찾을 수 있습니다.)</strong> </div>
+   <h3 class="tit">비밀번호 찾기</h3>
   <div id="tabNav_j1" class="join_tab pw_search_tab">
-    <h4 id="tabNavTitle0101" class="on"><a href="#" onclick="shwoTabNav('01', 2, 1); return false;" onfocus="this.onclick();">사업자회원</a></h4>
-    <div id="tabNav0101" style="display: block;">
+<!--     <h4 id="tabNavTitle0101" class="on"><a href="#" onclick="shwoTabNav('01', 2, 1); return false;" onfocus="this.onclick();">사업자회원</a></h4> -->
+	<ul class="tabs">
+		<li class="tab_link current" data-tab="tab-1">개인회원 비밀번호찾기</li>
+		<li class="tab_link" data-tab="tab-2">사업자회원 비밀번호찾기</li>
+	</ul>
+    <div id="tab-1" id="tabNav0101" class="tab-content current">
       <div class="t_box1">
         <p><strong>개인회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 휴대폰 또는 아이핀 또는 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
         <p><strong>사업자회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 사업자 인증정보 기재&nbsp;&nbsp;&nbsp;② 이메일 전송 선택&nbsp;&nbsp;&nbsp;③ 선택한 인증 방식으로 비밀번호 재발급</p>
       </div>
       <div class="authentication auth_2">
-        <div class="phone phone_3">
-          <dl class="type_2">
-            <dt> 휴대폰/아이핀 본인인증 <span>본인명의의 휴대폰 번호나 아이핀으로 가입 및 본인여부를 확인합니다.<br>
-              타인명의/법인휴대폰 회원님은 휴대폰 본인인증이 불가합니다.</span> </dt>
-            <form name = "pw_search_method">
-              <dd><span class="standard_ra">인증방식</span><span>
-                <label>
-                  <input type="radio" id="CheckUser" name="CheckUser" value = "phone" class="radio" checked>
-                  휴대폰</label>
-                </span><span>
-                <label>
-                  <input type="radio" id="CheckUser" name="CheckUser" value = "ipin" class="radio">
-                  아이핀</label>
-                </span></dd>
-            </form>
-            <dd><span class="standard">이름</span><span>
-              <input type="text" id="auth_member_nm_input" name="member_nm" class="input_1">
-              </span></dd>
-            <dd> <span class="standard">아이디</span> <span>
-              <input type="text" id="member_id" name="member_id" class="input_1 ws_2">
-              </span> </dd>
-            <!-- <dd class="btn"><a href="/html/join/pw_search_2.html"><img class="btn" src="/images/join/pw_auth_btn_off.gif" alt="확인"></a></dd> -->
-            <dd class="btn"><img class="btn" src="/images/join/pw_auth_btn_off.gif" alt="확인" onclick = "openPop();" style = "cursor:pointer;"></dd>
-          </dl>
-        </div>
         <div class="ipin ipin_3">
         <form name = "search_email_form" id = "search_email_form" method = "post" action = "/giftcard/join/pw_search_2.do" onsubmit = "return search_email_form_fnc();">
             <input type = "hidden" name = "mode" id = "mode" value = "pw_search"/>
@@ -286,21 +271,21 @@ function busi_search_form_chk()
               <input type="text" id="email" name="email" class="input_1 ws_2">
               </span> </dd>
             <dd class="btn">
-              <input type = "image" src = "/images/join/pw_auth_btn_off.gif">
+              <input type = "submit" value="확인" class="search_btn" style="padding: 10px 25px;">
             </dd>
             </dl>
           </form>
         </div>
       </div>
       <div class="b_gui_2">
-        <p><strong>위의 방법으로도 찾지 못했다면, 파츠모아쇼핑몰 고객센터로 문의주십시오</strong><br>
+        <p><strong>위의 방법으로도 찾지 못했다면, 티켓모아쇼핑몰 고객센터로 문의주십시오</strong><br>
           고객센터 전화문의 : 1566-6444 (상담가능시간: 평일 오전 9시~오후 6시)</p>
       </div>
     </div>
-    <h4 id="tabNavTitle0102"><a href="#" onclick="shwoTabNav('01', 2, 2); return false;" onfocus="this.onclick();">개인회원</a></h4>
-    <div id="tabNav0102" style="display: none;">
+<!--     <h4 id="tabNavTitle0102"><a href="#" onclick="shwoTabNav('01', 2, 2); return false;" onfocus="this.onclick();">개인회원</a></h4> -->
+    <div id="tab-2" id="tabNav0102" class="tab-content">
       <div class="t_box1">
-        <p><strong>개인회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 휴대폰 또는 아이핀 또는 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
+        <p><strong>개인회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
         <p><strong>사업자회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 사업자 인증정보 기재&nbsp;&nbsp;&nbsp;② 이메일 인증 방식으로 비밀번호 재발급</p>
       </div>
       <form name = "busi_search_form" id = "busi_search_form" method = "post" action = "/giftcard/join/pw_search_2.do" onsubmit = "return busi_search_form_chk();">
@@ -324,31 +309,43 @@ function busi_search_form_chk()
         </dl>
         </div>
         <div class="pw_s_btn">
-          <input type = "image" src = "/images/join/pw_btn1_off.gif">
+          <input type = "submit" value="이메일로 비밀번호 발급받기">
         </div>
       </form>
       <div class="b_gui_2">
-        <p><strong>위의 방법으로도 찾지 못했다면, 파츠모아쇼핑몰 고객센터로 문의주십시오</strong><br>
-          고객센터 전화문의 : 1566-6444 (상담가능시간: 평일 오전 9시~오후 6시)</p>
+        <p><strong>위의 방법으로도 찾지 못했다면, 티켓모아쇼핑몰 고객센터로 문의주십시오</strong><br>
+          고객센터 전화문의 : 11661-8431 (상담가능시간: 평일 오전 9시~오후 6시)</p>
       </div>
     </div>
   </div>
   <script type="text/javascript">
-      function shwoTabNav(eName, totalNum, showNum) {
-      	for(i=1; i<=totalNum; i++){
-      		var zero = (i >= 10) ? "" : "0";
-      		var e = document.getElementById("tabNav" + eName + zero + i);
-      		var eTitle = document.getElementById("tabNavTitle" + eName + zero + i);
-      		e.style.display = "none";
-      		eTitle.className = "";
-      	}
+	//tabs
+	$(function() {
+	  $('ul.tabs li').click(function() {
+	    var tab_id = $(this).attr('data-tab');
+	    
+	    $('ul.tabs li').removeClass('current');
+	    $('.tab-content').removeClass('current');
+	    
+	    $(this).addClass('current');
+	    $('#' + tab_id).addClass('current');
+	  });
+	});
+//       function shwoTabNav(eName, totalNum, showNum) {
+//       	for(i=1; i<=totalNum; i++){
+//       		var zero = (i >= 10) ? "" : "0";
+//       		var e = document.getElementById("tabNav" + eName + zero + i);
+//       		var eTitle = document.getElementById("tabNavTitle" + eName + zero + i);
+//       		e.style.display = "none";
+//       		eTitle.className = "";
+//       	}
 
-      	var zero = (showNum >= 10) ? "" : "0";
-      	var e = document.getElementById("tabNav" + eName + zero + showNum);
-      	var eTitle = document.getElementById("tabNavTitle" + eName + zero + showNum);
-      	e.style.display = "block";
-      	eTitle.className = "on";
-      }
+//       	var zero = (showNum >= 10) ? "" : "0";
+//       	var e = document.getElementById("tabNav" + eName + zero + showNum);
+//       	var eTitle = document.getElementById("tabNavTitle" + eName + zero + showNum);
+//       	e.style.display = "block";
+//       	eTitle.className = "on";
+//       }
       </script> 
 </div>
 <form name="form_chk" method="post">

@@ -12,10 +12,10 @@
 </head>
 
 <body>
-<div class="wrap">
+<div class="wrap" style="width: 100%;">
       <div id="sub">
         <div class="strapline">
-          <h3><img src="/images/sub_2/h3_img_5_3.gif" alt="회원탈퇴"></h3>
+          <h3>회원탈퇴</h3>
           <div class="state"> <span>홈</span> &gt; <span>고객센터</span> &gt; <span><strong>회원정보</strong></span> </div>
         </div>
         <div class="contents">
@@ -28,7 +28,7 @@
             <p class="last">기타 문의는 고객센터전화 <b>1544-6444</b>로 문의주시기 바랍니다. </p>
             </div>
 
-            <div class="secession_btn_2"><a href="/giftcard/index.do"><img src="/images/join/join4_btn_1.gif" alt="메인화면"></a></div>
+            <div class="secession_btn_2"><a href="/"><img src="/images/join/join4_btn_1.gif" alt="메인화면"></a></div>
 
           </div>
 
