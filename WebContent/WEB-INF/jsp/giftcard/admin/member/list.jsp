@@ -13,8 +13,8 @@
           <li data-ng-class="{on:param.group_seq=='1'}"><a data-ng-click="goPage('1');">관리자</a></li>
           <li data-ng-class="{on:param.group_seq=='2'}"><a data-ng-click="goPage('2');">일반회원</a></li>
           <li data-ng-class="{on:param.group_seq=='4'}"><a data-ng-click="goPage('4');">기업회원</a></li>
-          <li data-ng-class="{on:param.group_seq=='8'}"><a data-ng-click="goPage('8');">자원관리회원</a></li>
-          <li data-ng-class="{on:param.group_seq=='9'}"><a data-ng-click="goPage('9');">장착점회원</a></li>
+          <!-- <li data-ng-class="{on:param.group_seq=='8'}"><a data-ng-click="goPage('8');">자원관리회원</a></li>
+          <li data-ng-class="{on:param.group_seq=='9'}"><a data-ng-click="goPage('9');">장착점회원</a></li> -->
         </ul>
       </div>
     </div>
@@ -76,8 +76,8 @@
           <td data-ng-if = "item.group_seq == 1">관리자</td>
           <td data-ng-if = "item.group_seq == 2">일반회원</td>
           <td data-ng-if = "item.group_seq == 4">기업회원</td>
-          <td data-ng-if = "item.group_seq == 8">자원관리회원</td>
-          <td data-ng-if = "item.group_seq == 9">장착점회원</td>
+          <!-- <td data-ng-if = "item.group_seq == 8">자원관리회원</td>
+          <td data-ng-if = "item.group_seq == 9">장착점회원</td> -->
         </tr>
       </table>
       <pagination total-page="board.totalPage" current-page="board.currentPage" on-select-page="board.go(page)"></pagination>
