@@ -129,7 +129,13 @@ function view(opt) {
 								<a href="javascript:void();"> <span>브랜드</span> <span>${view.MAKERNM } </span></a>
 							</li>
 							<li>
-								<a href="javascript:void();"> <span>배송비</span> 
+								<a href="javascript:void();" class="deliver_hover">
+									<span>배송비<i class="xi-help-o"></i></span> 
+									<div class="delivery_info">
+										<p>도서산간배송비 추가</p>
+										<span>제주: 10,000원</span>
+										<span>도서산간지역: 20,000원</span>
+									</div>
 									<c:choose>
 										<c:when test="${view.FEE_YN == 'Y' }">
 											<span>${suf:getThousand(view.FEE_AMOUNT) }원</span>
@@ -139,9 +145,6 @@ function view(opt) {
 										</c:otherwise>
 									</c:choose>
 								</a>
-							</li>
-							<li>
-								<span>도서산간배송비 추가</br> 제주: 10,000원</br> 도서산간지역: 20,000원</span>
 							</li>
 							<li>
 								<a href="javascript:void();">
@@ -176,7 +179,7 @@ function view(opt) {
 						</c:when>
 						<c:otherwise> --%>
 							<div class="d_info_btn">
-								<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">장바구니담기</a>
+								<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1">장바구니담기</a>
 								<a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
 							</div>
 					<%-- 	</c:otherwise>
