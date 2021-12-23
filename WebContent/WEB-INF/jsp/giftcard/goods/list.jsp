@@ -201,70 +201,24 @@ function directOrder(item_seq){
           	<c:choose>
           		<c:when test="${param.menu eq 'menu1' }"><h3>롯데</h3></c:when>
           		<c:when test="${param.menu eq 'menu2' }"><h3>신세계</h3></c:when>
-          		<c:when test="${param.menu eq 'menu3' }"><h3>갤러리아</h3></c:when>
+          		<c:when test="${param.menu eq 'menu3' }"><h3>갤러리아</h3></c:when>          		
           	</c:choose>
-            <c:choose>
-            	<c:when test = "${not empty param.menu}">
-            	
-            	</c:when>
-            	<c:otherwise>
-            	
-            	</c:otherwise>
-            </c:choose>
             <c:if test = "${not empty param.menu}">
             <span>${param.cname }</span>
             </c:if>
              <!-- &gt; <span><strong>총 부품 : <b>${suf:getThousand(data.pagination.totalcount) }</b> 개</strong></span>  -->
 <!--             </p> -->
           </div>
-          <c:choose>
-    		<c:when test="${empty data.list && param.menu eq 'menu9'}">
-    		</c:when>
-    		<c:otherwise>
-<!--           <div class="sl_r"> -->
-<!--             <span class="sr_3"><img id="submenu_open" src="/images/sub/sub_menu_close.gif" alt="상세조건 검색버튼" style="cursor:pointer;"></span> -->
-<!--           </div> -->
-          	</c:otherwise>
-          </c:choose>
         </div>
       </div>
-	<c:choose>
-    	<c:when test="${empty data.list && param.menu eq 'menu9'}">
-    	</c:when>
-    	<c:otherwise>
-
-    </div>
-    <!-- all_menu on End -->
-    	</c:otherwise>
-    </c:choose>
-    <c:choose>
-    <c:when test="${empty data.list && param.menu eq 'menu9'}">
-    <div class="sub_wrap">
-      <div class="sub_contents">
-        <div class="sub_contents_img">
-    	<c:if test="${param.part2 == '050901006003'}">
-    	<p><img src="/images/sub/contents_img_01.gif" alt="알터네이터 문의"></p>
-    	</c:if>
-    	<c:if test="${param.part2 == '050901006001'}">
-    	<p><img src="/images/sub/contents_img_02.gif" alt="A/C콤프레서 문의"></p>
-    	</c:if>
-    	<c:if test="${param.part2 == '050901006002'}">
-    	<p><img src="/images/sub/contents_img_03.gif" alt="스타트모터 문의"></p>
-    	</c:if>
-    	</div>
-      </div>
-    </div>
-    </c:when>
-    <c:otherwise>   
-   
-     
+    
     <div class="sub_wrap product_container">
     	<aside class="side_menu">
     	    <h6>카테고리</h6>
     		<ul>
     			<li><a href="./list.do?menu=menu1">롯데</a></li>
-    			<li><a href="./list.do?menu=menu2">갤러리아</a></li>
-    			<li><a href="./list.do?menu=menu3">신세계</a></li>
+    			<li><a href="./list.do?menu=menu2">신세계</a></li>
+    			<li><a href="./list.do?menu=menu3">갤러리아</a></li>
     		</ul>
     	</aside>
     	
@@ -308,8 +262,8 @@ function directOrder(item_seq){
 		          			<li class="item_list">
 		          				<div class="item">
 		          					<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" class="img_wrap">
-<%-- 		          						<img src="${item.thumb }" alt="${item.part3_nm }"> --%>
-										<img src="/images/products/gal_1.jpg" alt="${item.part3_nm }">
+ 		          						<img src="${item.thumb }" alt="${item.PRODUCTNM }">
+<%-- 										<img src="/images/products/gal_1.jpg" alt="${item.part3_nm }"> --%>
 		          					</a>
 		          					<div class="m_btn">
 		                				<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" target="_blank">새창</a>
@@ -325,10 +279,10 @@ function directOrder(item_seq){
 		          				</div>
 		          				<div class="list_info">
 <%-- 		          					<span class="tit">${item.part3_nm }</span> --%>
-		          					<span class="tit">갤러리아 상품권 1만원</span>
+		          					<span class="tit">${item.PRODUCTNM }</span>
 		          					<ul>
 <%-- 		          						<li>${item.part1_nm } / ${item.part2_nm }</li> --%>
-		          						<li>10,000원</li>
+		          						<li>${suf:getThousand(item.USER_PRICE) }</li>
 		          					</ul>
 		          				</div>
 		          			</li>
@@ -346,8 +300,6 @@ function directOrder(item_seq){
 
       </div>
     </div>
-    </c:otherwise>
-    </c:choose>
     <form id="cartFrm" name="cartFrm" method="post" action="/giftcard/mypage/shopping/cart/index.do">
     	<input type="hidden" name="mode" value=""/>
     	<input type="hidden" name="seq" value=""/>

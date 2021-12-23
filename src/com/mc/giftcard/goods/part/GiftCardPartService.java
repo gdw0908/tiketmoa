@@ -170,43 +170,11 @@ public class GiftCardPartService {
 		Map rstMap = new HashMap();
 		if(!StringUtil.isEmptyByParam((String)params.get("menu"))){
 			if("menu1".equals(params.get("menu"))){
-				params.put("part1", "050901001");
-				params.put("upcodeno", "050901001");
-				rstMap.put("part2", codeDAO.oldCodeList(params));
+				params.put("carmakerseq", "1");
 			}else if("menu2".equals(params.get("menu"))){
-				params.put("part1", "050901002");
-				params.put("upcodeno", "050901002");
-				rstMap.put("part2", codeDAO.oldCodeList(params));
+				params.put("carmakerseq", "2");
 			}else if("menu3".equals(params.get("menu"))){
-				params.put("part1", "050901003");
-				params.put("upcodeno", "050901003");
-				rstMap.put("part1", codeDAO.oldCodeList(params));
-			}else if("menu4".equals(params.get("menu"))){
-				params.put("part1", "050901004");
-				params.put("upcodeno", "050901004");
-				rstMap.put("part2", codeDAO.oldCodeList(params));
-			}else if("menu5".equals(params.get("menu"))){
-				params.put("nation", "Y");
-			}else if("menu6".equals(params.get("menu"))){
-				params.put("nation", "N");
-			}else if("menu9".equals(params.get("menu"))){
-				//050901006003 알터네이터
-				//050901006002 스타트모터
-				//050901006001 에어컨컴프레셔
-				params.put("part1", "050901006");
-				params.put("upcodeno", "050901006");
-				/*if(params.get("type") == null || params.get("type").equals("1")){
-					params.put("part2", "050901006003");					
-				}else if(params.get("type").equals("2")){
-					params.put("part2", "050901006001");
-				}else if(params.get("type").equals("3")){
-					params.put("part2", "050901006002");
-				}*/
-				rstMap.put("part2", codeDAO.oldCodeList(params));
-			}else if("menu10".equals(params.get("menu"))){
-				params.put("gubun", "2");
-			}else if("menu11".equals(params.get("menu"))){
-				params.put("gubun", "3");
+				params.put("carmakerseq", "3");
 			}
 		}
 		//codeDAO 리스트 받아올때 keyword로 인한 오류로 인한 추가 2015.03.31
@@ -220,27 +188,7 @@ public class GiftCardPartService {
 		}
 		params.remove("keyword");
 		params.remove("condition");
-		
-		rstMap.put("carmaker", partDAO.carmaker(params));
-		
-		if(!StringUtil.isEmptyByParam((String)params.get("carmakerseq"))){
-			rstMap.put("carmodel", partDAO.carmodel(params));
-		}
-		if(!StringUtil.isEmptyByParam((String)params.get("cargradeseq"))){
-			rstMap.put("cargrade", partDAO.cargrade(params));
-		}
-		
-		params.put("code_group_seq", "38");
-		rstMap.put("grade", codeDAO.codeList(params));
-		
 
-		rstMap.put("sido", codeDAO.sido(params));
-		if(!StringUtil.isEmptyByParam((String)params.get("sigungu"))){
-			rstMap.put("sigungu", codeDAO.sigungu(params));
-		}
-		if(!StringUtil.isEmptyByParam((String)params.get("dong"))){
-			rstMap.put("dong", codeDAO.dong(params));
-		}
 		//검색시 condition이 없어서 오류로 인한 추가 2015.03.31 
 		if(!keyword.equals("")){
 			params.put("keyword", keyword);
