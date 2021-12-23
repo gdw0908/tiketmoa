@@ -18,7 +18,7 @@
 * Copyright AEGIS ENTERPRISE.Co.,Ltd. All rights reserved.
 *
 **********************************************************************************************/
-request.setCharacterEncoding("UTF-8");
+/* request.setCharacterEncoding("UTF-8");
 
 //공통사용
 String AuthTy 		= request.getParameter("AuthTy");												//결제형태
@@ -103,7 +103,7 @@ for (int i=0 ; i < digest.length ; i++) {
 String rAGS_HASHDATA = strBuf.toString();
 String errResMsg ="";
 if (!(rAGS_HASHDATA.equals(AGS_HASHDATA))) errResMsg = "결재금액 변조 발생. 확인 바람.";
-
+ */
 %>
 <c:set var="user_price" value="0"/>
 <c:set var="discount_price" value="0"/>
@@ -135,7 +135,7 @@ openwin.close();
 *
 *************************************************************************/
 function show_receipt() {
-	if("<%=rSuccYn%>"== "y" && "<%=AuthTy%>" =="card")
+<%-- 	if("<%=rSuccYn%>"== "y" && "<%=AuthTy%>" =="card")
 	{
 		var send_dt = frm.appr_tm.value;
 
@@ -150,7 +150,7 @@ function show_receipt() {
 	else
 	{
 		alert("해당하는 결제내역이 없습니다");
-	}
+	} --%>
 }
 
 </script>
@@ -180,7 +180,7 @@ function show_receipt() {
               <th scope="row" rowspan="1">
               			<%
 
-							if(AuthTy.equals("card"))
+							/* if(AuthTy.equals("card"))
 							{
 								if(SubTy.equals("isp"))
 								{
@@ -211,10 +211,10 @@ function show_receipt() {
 							else if(AuthTy.equals("virtual"))
 							{
 								out.println( "가상계좌결제");
-							}
+							} */
 							%>
               </th>
-              <td>결제금액 : <b class="b_num"><%=StringUtil.getThousand(rAmt) %></b>원</td>
+              <td>결제금액 : <b class="b_num"><%-- <%=StringUtil.getThousand(rAmt) %> --%></b>원</td>
             </tr>
             </tbody>
             </table>
@@ -305,7 +305,7 @@ function show_receipt() {
 			</td>
             <c:if test="${status.first }">
             <td class="b_none" rowspan="${fn:length(data.list) }">
-              <p class="first"><%=rOrdNo%></p>
+              <p class="first"><%-- <%=rOrdNo%> --%></p>
               <c:choose>
               	<c:when test="${data.resultInfo.paytyp eq 'card' }">
               		<p><input type="button" value="영수증" onclick="javascript:show_receipt();"/></p>
@@ -467,10 +467,10 @@ function show_receipt() {
     </div>
 <form name="frm" method="post">
 <!--영수증출력을위해서보내주는값-------------------->
-<input type=hidden name=sRetailer_id value="<%=rStoreId%>" /><!--상점아이디-->
+<%-- <input type=hidden name=sRetailer_id value="<%=rStoreId%>" /><!--상점아이디-->
 <input type=hidden name=approve value="<%=rApprNo%>" /><!---승인번호-->
 <input type=hidden name=send_no value="<%=rDealNo%>" /><!--거래고유번호-->
-<input type=hidden name=appr_tm value="<%=rApprTm%>" /><!--승인시각-->
+<input type=hidden name=appr_tm value="<%=rApprTm%>" /><!--승인시각--> --%>
 <!--영수증출력을위해서보내주는값-------------------->
 </form>
 </body>

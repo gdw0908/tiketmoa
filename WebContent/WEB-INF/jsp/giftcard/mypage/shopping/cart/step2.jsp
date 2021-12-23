@@ -450,13 +450,20 @@ function fn_checkByte(obj){
   }
 }
 
-
+function goStep3() {
+ 	alert("121212");
+	$("#frm").submit();
+}
 </script>
 </head>
 <body>
-	<form name="frmAGS_pay" method="post"
+<!-- 	<form name="frmAGS_pay" method="post"
+		action="/giftcard/mypage/shopping/cart/index.do?mode=pay_ing"
+		style="width: 100%;"> -->
+		<form name="frm"  id="frm" method="post"
 		action="/giftcard/mypage/shopping/cart/index.do?mode=pay_ing"
 		style="width: 100%;">
+		<input type="hidden" id="devTest" name="devTest" value="T"/>
 		<div id="sub">
 			<div class="contents">
 				<div class="title_rocation">
@@ -483,7 +490,8 @@ function fn_checkByte(obj){
 					</thead>
 					<tbody>
 						<c:forEach var="item" items="${data.list }" varStatus="status">
-							<c:set var="user_price_l" value="0" />
+							<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
+							<c:set var="prod_price" value="${prod_price + user_price_l }"/>							
 							<c:set var="discount_price_l" value="0" />
 							<c:set var="fee_price_l" value="0" />
 							<%-- <c:choose>
@@ -518,15 +526,15 @@ function fn_checkByte(obj){
 										</div>
 										<div class="pb_r ws_2">
 											<p>
-												<a href="#"> <span><strong>${item.prod_nm }</strong></span>
-													<span><strong>${item.prod_classnm } </strong></span> <%-- <span>${item.grade }등급 / ${item.com_nm }</span> --%>
+												<a href="#"> <span><strong>${item.MAKERNM }</strong></span>
+													<span><strong>${item.PRODUCTNM } </strong></span> <%-- <span>${item.grade }등급 / ${item.com_nm }</span> --%>
 												</a>
 											</p>
 										</div>
 									</div>
 								</td>
 								<td>${item.qty }개</td>
-								<td>${suf:getThousand(item.prod_price) } 원 <c:if
+								<td>${suf:getThousand(item.USER_PRICE) } 원 <c:if
 										test="${item.qty>1 }"> x ${item.qty}</c:if>
 								</td>
 								<!--             <td> -->
@@ -558,15 +566,14 @@ function fn_checkByte(obj){
 												<option value="Y"
 													<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
 												<option value="N"
-													<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착
-													불</option>
+													<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착불</option>
 											</select>
 											<br />
 	              	(${suf:getThousand(item.fee_amt) } 원)
 	              	</c:when>
 										<c:otherwise>무료</c:otherwise>
 									</c:choose></td>
-								<td class="b_none">${suf:getThousand(item.prod_price)} 원</td>
+								<td class="b_none">${suf:getThousand(user_price_l)} 원</td>
 
 							</tr>
 						</c:forEach>
@@ -695,8 +702,8 @@ function fn_checkByte(obj){
 										<strong>주의!</strong> : 판매자와 사전에 협의되지 않은 선택정보 변경 기재는 반영되지 않을 수 있습니다.
 									</div> <c:forEach var="item" items="${data.list }" varStatus="status">
 										<div class="middle">
-											<p class="color_1">상품명 : ${item.part3_nm } /
-												${item.carmodelnm } ${item.cargradenm } (${item.caryyyy })</p>
+											<p class="color_1">상품명 : ${item.MAKERNM } /
+												${item.PRODUCTNM } </p>
 											<p>
 												<input type="text" name="message" class="input_2 ws_4 message" maxlength="100" maxlength="100" onkeyup="fn_checkByte(this)"> 
 												<span id="titleByte">0</span>Byte (최대 100Byte까지 입력할 수 있습니다.)
@@ -723,9 +730,9 @@ function fn_checkByte(obj){
 							<p>
 								<b>${suf:getThousand(prod_price)}</b>원
 							</p>
-							<p class="pb_type">
+							<%-- <p class="pb_type">
 								<span class="pb_l">선결제배송비</span><span class="pb_r">${suf:getThousand(fee_price) }원</span>
-							</p>
+							</p> --%>
 						</div>
 					</div>
 					<div class="p_check2">
@@ -756,8 +763,9 @@ function fn_checkByte(obj){
 					</div>
 				</div>
 				<div class="pay_btn">
-					<a href="#" onclick="return Pay(frmAGS_pay)">결제하기</a> <a
-						href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
+				<a href="javascript:goStep3()">결제하기</a> <a
+				<!-- <a href="#" onclick="return Pay(frmAGS_pay)">결제하기</a> --> 
+				<a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
 				</div>
 
 				<div id="mask"></div>
