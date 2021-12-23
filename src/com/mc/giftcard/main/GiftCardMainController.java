@@ -1,5 +1,8 @@
 package com.mc.giftcard.main;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mc.giftcard.shopping.cart.GiftCardCartService;
 import com.mc.web.Globals;
+import com.mc.web.MCMap;
 
 @Controller
 public class GiftCardMainController {
@@ -22,6 +27,9 @@ public class GiftCardMainController {
 	@Autowired
 	private GiftCardMainService mainService;
 	
+	@Autowired
+	private GiftCardCartService cartService;
+
 	@Autowired
 	private Globals globals;
 	
@@ -40,6 +48,13 @@ public class GiftCardMainController {
 	@RequestMapping("/giftcard/inc/header.do")	
 	public String header(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
 		model.addAttribute("list", mainService.headerList());
+		params.put("sessionid", session.getId());
+		MCMap member = (MCMap) session.getAttribute("member");
+		if(member != null){
+			params.put("session_member_id", (String) member.get("member_id"));
+		}
+		model.addAttribute("cartCnt", cartService.list(params));	
+		
 		return "/giftcard/inc/header";
 	}
 

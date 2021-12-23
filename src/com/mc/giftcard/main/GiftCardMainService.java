@@ -16,6 +16,7 @@ import com.googlecode.ehcache.annotations.Cacheable;
 import com.mc.common.util.StringUtil;
 import com.mc.giftcard.code.GiftCardCodeDAO;
 import com.mc.giftcard.goods.part.GiftCardPartDAO;
+import com.mc.web.MCMap;
 import com.mc.web.code.CodeDAO;
 import com.mc.web.goods.part.PartDAO;
 
@@ -127,7 +128,7 @@ public class GiftCardMainService {
 		rst.put("total_goods_cnt", mainDAO.total_goods_cnt().getStrNullVal("totalcount", "0"));
 		
 		Map rst2 = new HashMap();
-		rst.put("category", partDAO.carmaker(rst2));
+		rst.put("category", partDAO.carmaker(rst2));		
 		return rst;
 	}
 	
