@@ -245,6 +245,7 @@ function chk_email(value)
 									name="busi_no2" class="input_1 ws_1" maxlength="2"> - <input
 									type="text" id="busi_no3" name="busi_no3" class="input_1 ws_1"
 									maxlength="5">
+									console.log("test");
 								</span>
 							</dd>
 							<dd class="btn">
