@@ -31,13 +31,13 @@
                 <c:otherwise> <span>: 회원정보 휴대폰 (${article.cell })</span> </c:otherwise>
               </c:choose>
             </dd>
-            <dd class="btn_2"> <a href="/"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a> <a href="/giftcard/login/login.do"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a> </dd>
+            <dd class="btn_2"> <a href="/giftcard/index.do"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a> <a href="/giftcard/login/login.do"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a> </dd>
           </dl>
         </c:when>
         <c:otherwise>
           <dl class="type_2">
             <dt>일치하는 회원 정보가 없습니다.</dt>
-            <dd class="btn_2"> <a href="/"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a> <a href="/giftcard/login/login.do"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a> </dd>
+            <dd class="btn_2"> <a href="/giftcard/index.do"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a> <a href="/giftcard/login/login.do"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a> </dd>
           </dl>
         </c:otherwise>
       </c:choose>

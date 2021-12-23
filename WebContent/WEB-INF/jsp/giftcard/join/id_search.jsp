@@ -22,9 +22,6 @@
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type="text/javascript">
 
-$(function() {
-	
-}
 function phone_chk_submit(obj) {
 	if(jQuery("#member_nm").val() == "")
 	{

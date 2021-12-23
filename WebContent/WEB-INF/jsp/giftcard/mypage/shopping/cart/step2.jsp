@@ -495,29 +495,29 @@ function goStep3() {
 							<c:set var="discount_price_l" value="0" />
 							<c:set var="fee_price_l" value="0" />
 							<%-- <c:choose>
-	       		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
-	       			<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-					<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-					<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.supplier_price * item.qty)) }"/>
-					<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.supplier_price * item.qty) }"/>
-	       		</c:when>
-	       		<c:otherwise>
-	       			<c:if test="${item.discount_rate > 0}">
-		        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-	          			<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.sale_price * item.qty)) }"/>
-						<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-						<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.sale_price * item.qty) }"/>
-	            	</c:if>
-					<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
-		        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-						<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-	            	</c:if>
-	       		</c:otherwise>
-       		</c:choose> 
-       		 <c:if test="${item.cod_yn eq 'Y' }">
-            	<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
-            	<c:set var="fee_price_l" value="${item.fee_amt }"/>
-            </c:if> --%>
+					       		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
+					       			<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
+									<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
+									<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.supplier_price * item.qty)) }"/>
+									<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.supplier_price * item.qty) }"/>
+					       		</c:when>
+					       		<c:otherwise>
+					       			<c:if test="${item.discount_rate > 0}">
+						        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
+					          			<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.sale_price * item.qty)) }"/>
+										<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
+										<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.sale_price * item.qty) }"/>
+					            	</c:if>
+									<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
+						        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
+										<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
+					            	</c:if>
+					       		</c:otherwise>
+				       		</c:choose> 
+				       		<c:if test="${item.cod_yn eq 'Y' }">
+				            	<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
+				            	<c:set var="fee_price_l" value="${item.fee_amt }"/>
+				            </c:if> --%>
 							<tr>
 								<td class="cart_main">
 									<div class="product_box">
@@ -558,8 +558,8 @@ function goStep3() {
 								<td id="fee_price"><c:if test="${fee_price_l > 0  }">${fee_price_l} 원<br>
 									</c:if> <c:choose>
 										<c:when test="${item.fee_yn eq 'C' }">
-	              	착불
-	              	</c:when>
+						              		착불
+						              	</c:when>
 										<c:when test="${item.fee_yn eq 'Y' }">
 											<select name="cod_yn"
 												onchange="changeCod('${item.cart_no }', this.value)">
@@ -569,8 +569,8 @@ function goStep3() {
 													<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착불</option>
 											</select>
 											<br />
-	              	(${suf:getThousand(item.fee_amt) } 원)
-	              	</c:when>
+						              		(${suf:getThousand(item.fee_amt) } 원)
+						              	</c:when>
 										<c:otherwise>무료</c:otherwise>
 									</c:choose></td>
 								<td class="b_none">${suf:getThousand(user_price_l)} 원</td>
@@ -763,7 +763,7 @@ function goStep3() {
 					</div>
 				</div>
 				<div class="pay_btn">
-				<a href="javascript:goStep3()">결제하기</a> <a
+				<a href="javascript:goStep3()">결제하기</a>
 				<!-- <a href="#" onclick="return Pay(frmAGS_pay)">결제하기</a> --> 
 				<a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
 				</div>
