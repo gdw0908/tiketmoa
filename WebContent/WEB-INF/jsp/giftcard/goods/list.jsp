@@ -348,7 +348,7 @@ function directOrder(item_seq){
     </div>
     </c:otherwise>
     </c:choose>
-    <form id="cartFrm" name="cartFrm" method="post" action="/mypage/shopping/cart/index.do">
+    <form id="cartFrm" name="cartFrm" method="post" action="/giftcard/mypage/shopping/cart/index.do">
     	<input type="hidden" name="mode" value=""/>
     	<input type="hidden" name="seq" value=""/>
     	<input type="hidden" name="qty" value="1"/>

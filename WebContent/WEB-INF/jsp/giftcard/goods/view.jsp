@@ -61,7 +61,7 @@ function cart(seq){
 			alert("재고수량이 없습니다.");
 		</c:when>
 		<c:otherwise>
-			location.href="/mypage/shopping/cart/index.do?mode=add_cart&seq="+seq+"&qty="+$("#qty").val();
+			location.href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq="+seq+"&qty="+$("#qty").val();
 		</c:otherwise>
 	</c:choose>
 }
