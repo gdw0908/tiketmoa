@@ -143,7 +143,7 @@ public class GiftCardCartController {
 			}
 		}else if(member == null){
 			request.setAttribute("params", params);
-			request.setAttribute("redirect", "/login/login_2.do?mode=guest");
+			request.setAttribute("redirect", "/giftcard/login/login_2.do?mode=guest");
 			return "message";
 		}
 
@@ -481,7 +481,7 @@ public class GiftCardCartController {
 		
 		model.addAttribute("agspay", agspay);
 		model.addAttribute("pathIndex", index);
-		return "mypage/shopping/cart/pay_ing";
+		return "/giftcard/mypage/shopping/cart/pay_ing";
 	}
 	
 	@RequestMapping(params="mode=pay_result")
