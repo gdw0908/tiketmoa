@@ -18,7 +18,7 @@
 		<mapper resource="com/mc/web/sqlmap/test.xml" />
 		<!-- <mapper resource="com/mc/web/sqlmap/code.xml" /> -->
 		<!-- <mapper resource="com/mc/web/sqlmap/old_code.xml" /> -->
-		<mapper resource="com/mc/web/sqlmap/member.xml" />
+		<!-- <mapper resource="com/mc/web/sqlmap/member.xml" /> -->
 		<mapper resource="com/mc/web/sqlmap/cooperation.xml" />
 		<mapper resource="com/mc/web/sqlmap/repair.xml" />
  		<!-- <mapper resource="com/mc/web/sqlmap/article.xml" />-->
@@ -54,6 +54,7 @@
 		<mapper resource="com/mc/giftcard/sqlmap/main.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/cart.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/code.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/member.xml" />
 		 
 	</mappers>
 </configuration>
