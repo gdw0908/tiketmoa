@@ -168,6 +168,15 @@ public class GiftCardCartController {
 	@RequestMapping(params="mode=pay_ing")
 	@Transactional(rollbackFor = { Exception.class })
 	public String pay_int(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params, @PathVariable("index") String index, @RequestParam(value="cart_no", required=true, defaultValue="") String[] cart_no, @RequestParam(value="message", required=false, defaultValue="[]") String[] message) throws Exception{
+		
+		
+		if(request.getParameter("devTest").equals("T")) {
+			
+			request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
+			request.setAttribute("redirect", "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
+			
+			return "message";
+		}
 		/**********************************************************************************************
 		*
 		* 파일명 : AGS_pay_ing.jsp
@@ -487,7 +496,7 @@ public class GiftCardCartController {
 	@RequestMapping(params="mode=pay_result")
 	public String pay_result(ModelMap model, HttpServletRequest request, HttpSession session, @PathVariable("index") String index, @RequestParam Map params) throws Exception{
 		String returnPath = "";
-		model.addAttribute("data", cartService.pay_result(params));
+		//TODO: 개발위해 주석 model.addAttribute("data", cartService.pay_result(params));
 		if("index".equals(index)){
 			returnPath = "/giftcard/mypage/shopping/cart/pay_result";
 		}else{

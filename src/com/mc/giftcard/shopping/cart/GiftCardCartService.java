@@ -105,7 +105,7 @@ public class GiftCardCartService {
 		Map rstMap = new HashMap();
 		params.put("item_seq", params.get("seq"));
 		
-		MCMap mcmap = cartDAO.inquiry_yn(params);
+		/*MCMap mcmap = cartDAO.inquiry_yn(params);
 		if(mcmap != null){
 			if("Y".equals(mcmap.getStrNull("inquiry_yn"))){
 				rstMap.put("rst", "-1");
@@ -116,7 +116,7 @@ public class GiftCardCartService {
 			rstMap.put("rst", "-1");
 			rstMap.put("msg", "협의가 필요한 물품입니다.\\n고객센터로 문의 바랍니다.");
 			return rstMap;
-		}
+		}*/
 		
 		Map cartMap = cartDAO.in_cart(params);
 		if(cartMap != null){//이미 같은상품이 장바구니에 담겨있을경우

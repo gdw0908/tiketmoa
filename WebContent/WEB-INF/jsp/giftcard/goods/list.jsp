@@ -336,7 +336,7 @@ function directOrder(item_seq){
 		          		</ul>
 		          	</div>
 		          
-					<jsp:include page="/inc/paging2.do">
+					<jsp:include page="/giftcard/inc/paging2.do">
 						<jsp:param  name="cpage" value="${param.cpage }"/>
 						<jsp:param  name="rows" value="${param.rows }"/>
 						<jsp:param  name="totalpage" value="${data.pagination.totalpage }"/>
