@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.googlecode.ehcache.annotations.Cacheable;
 import com.mc.common.util.StringUtil;
+import com.mc.giftcard.code.GiftCardCodeDAO;
+import com.mc.giftcard.goods.part.GiftCardPartDAO;
 import com.mc.web.code.CodeDAO;
 import com.mc.web.goods.part.PartDAO;
 
@@ -27,10 +29,10 @@ public class GiftCardMainService {
 	private GiftCardMainDAO mainDAO;
 	
 	@Autowired
-	private PartDAO partDAO;
+	private GiftCardPartDAO partDAO;
 	
 	@Autowired
-	private CodeDAO codeDAO;
+	private GiftCardCodeDAO codeDAO;
 
 	@Cacheable(cacheName="mainCache")
 	public Map menu_category() throws Exception {
@@ -91,7 +93,8 @@ public class GiftCardMainService {
 		rst.put("newPartsList", mainDAO.newPartsList());
 		rst.put("mobile_popup", mainDAO.mobile_popup());
 		rst.put("cart_total", mainDAO.getCartListCount((String)params.get("member_id")));
-
+		rst.put("category", partDAO.carmaker(params));
+		
 		String part_view_seq = "";
 		String part_view_seq_orderby = "";
 		Cookie[] cook = request.getCookies();
@@ -122,6 +125,9 @@ public class GiftCardMainService {
 		rst.put("top_popup", mainDAO.top_popup());
 		rst.put("layer_popup", mainDAO.layer_popup());
 		rst.put("total_goods_cnt", mainDAO.total_goods_cnt().getStrNullVal("totalcount", "0"));
+		
+		Map rst2 = new HashMap();
+		rst.put("category", partDAO.carmaker(rst2));
 		return rst;
 	}
 	
@@ -213,6 +219,8 @@ public class GiftCardMainService {
 		rst.put("menu5", mainDAO.menu_category_nation("Y"));
 		rst.put("menu6", mainDAO.menu_category_nation("N"));
 		rst.put("menu7", mainDAO.menu_category_sido());
+		Map rst2 = new HashMap();
+		rst.put("category", partDAO.carmaker(rst2));		
 		return rst;
 	}
 

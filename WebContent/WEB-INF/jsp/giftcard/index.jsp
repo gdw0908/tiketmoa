@@ -423,7 +423,12 @@
 								<h3>인기 상품</h3>
 								<p>카테고리</p>
 								<ul class="category_tab">
-									<li id="tabNavTitle0201" class="on">
+									<c:forEach var="item" items="${list.category }" varStatus="status">
+										<li id="tabNavTitle020${status.count}" class="on">
+											<a href="javascript:void();" onclick="shwoTabNav2(${status.count}); return false;" onfocus="this.onclick();">${item.makernm }</a>
+										</li>
+									</c:forEach>
+									<!-- <li id="tabNavTitle0201" class="on">
 										<a href="javascript:void();" onclick="shwoTabNav2(1); return false;" onfocus="this.onclick();">롯데</a>
 									</li>
 									<li id="tabNavTitle0202">
@@ -431,7 +436,7 @@
 									</li>
 									<li id="tabNavTitle0203">
 										<a href="javascript:void();" onclick="shwoTabNav2(3); return false;" onfocus="this.onclick();">갤러리아</a>
-									</li>
+									</li> -->
 								</ul>
 							</div>
 							<div id="tabNav0201" class="animated"></div>

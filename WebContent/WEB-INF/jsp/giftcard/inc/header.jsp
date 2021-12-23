@@ -92,9 +92,12 @@ $( document ).ready(function() {
 	<div class="mo_menu_wrap">
 		<nav>
 			<ul class="mo_menu">
-				<li><a href="/giftcard/goods/list.do?menu=menu1">갤러리아</a></li>
+				<!-- <li><a href="/giftcard/goods/list.do?menu=menu1">갤러리아</a></li>
 				<li><a href="/giftcard/goods/list.do?menu=menu2">신세계</a></li>
-				<li><a href="/giftcard/goods/list.do?menu=menu3">롯데</a></li>
+				<li><a href="/giftcard/goods/list.do?menu=menu3">롯데</a></li> -->
+				<c:forEach var="item" items="${list.category }" varStatus="status">
+					<li><a href="/giftcard/goods/list.do?menu=menu${status.count}">${item.makernm }</a></li>
+				</c:forEach>		
 				<li><a href="/giftcard/mypage/notice/index.do">고객센터</a></li>
 			</ul>
 			

@@ -216,9 +216,12 @@ function directOrder(item_seq){
     	<aside class="side_menu">
     	    <h6>카테고리</h6>
     		<ul>
-    			<li><a href="./list.do?menu=menu1">롯데</a></li>
+    		<c:forEach var="item" items="${data.category }" varStatus="status">
+    			<li><a href="./list.do?menu=menu${status.count}">${item.makernm }</a></li>
+    		</c:forEach>
+    			<!-- <li><a href="./list.do?menu=menu1">롯데</a></li>
     			<li><a href="./list.do?menu=menu2">신세계</a></li>
-    			<li><a href="./list.do?menu=menu3">갤러리아</a></li>
+    			<li><a href="./list.do?menu=menu3">갤러리아</a></li> -->
     		</ul>
     	</aside>
     	

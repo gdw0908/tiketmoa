@@ -198,6 +198,8 @@ public class GiftCardPartService {
 				params.put("condition", "a.SEARCH_TAG");
 			}				
 		}
+		Map rst2 = new HashMap();
+		rstMap.put("category", partDAO.carmaker(rst2));		
 		if(params.get("search_all_text") != null){
 			String search_all_text = (String)params.get("search_all_text");
 			String[] search_all_textList = null;

@@ -28,7 +28,7 @@
         <if test="!(nation == null or nation == '')" >
         	AND NATION = #{nation}
         </if>
-        ORDER BY NATION DESC, MAKERNM ASC, ORDERNUM ASC
+        ORDER BY ORDERNUM ASC
 	</select>
 	
 	<select id="carmodel" parameterType="Map" resultType="mcmap">
