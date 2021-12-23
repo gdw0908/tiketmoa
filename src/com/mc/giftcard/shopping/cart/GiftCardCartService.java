@@ -163,7 +163,7 @@ public class GiftCardCartService {
 		}
 		rstMap.put("orderno", params.get("orderno"));
 		rstMap.put("list", cartDAO.dir_cart(params));
-		rstMap.put("rst", "1");
+ 		rstMap.put("rst", "1");
 		return rstMap;
 	}
 
