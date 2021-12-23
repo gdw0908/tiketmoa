@@ -85,7 +85,7 @@ $(function() {
 
 		<div class="vr_btn"><a href="${servletPath }?mode=insertForm">문의하기</a></div>
 
-		<jsp:include page="/inc/paging.do" />
+		<jsp:include page="/giftcard/inc/paging.do" />
 
 		<div class="bottom_search">
   			<form action="${servletPath }" name="articleSearchForm" id="articleSearchForm" method="post" onsubmit="return goPage(1);">
