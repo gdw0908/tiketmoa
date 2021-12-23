@@ -3,10 +3,10 @@
 <%@ page import="com.mc.common.util.*" %>
 <%
 	String home_url = Util.getProperty("home.url");
-String namesitecd = Util.getProperty("name.namesitecd");
-String namesitepwd = Util.getProperty("name.namesitepwd");
-String ipinsitecd = Util.getProperty("ipin.ipinsitecd");
-String ipinsitepwd = Util.getProperty("ipin.ipinsitepwd");
+	String namesitecd = Util.getProperty("name.namesitecd");
+	String namesitepwd = Util.getProperty("name.namesitepwd");
+	String ipinsitecd = Util.getProperty("ipin.ipinsitecd");
+	String ipinsitepwd = Util.getProperty("ipin.ipinsitepwd");
 	/* 실명인증 시작 */
     
 	NiceID.Check.CPClient niceCheck = new  NiceID.Check.CPClient();
@@ -84,7 +84,7 @@ String ipinsitepwd = Util.getProperty("ipin.ipinsitepwd");
 <link rel="stylesheet" href="/lib/css/join.css" type="text/css">
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type = "text/javascript">
-$(function() {
+
 
 // function openPop()
 // {

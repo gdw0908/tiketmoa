@@ -34,12 +34,12 @@
                 <dt>해당 정보가 없습니다.</dt>
               </c:otherwise>
             </c:choose>
-            <dd class="btn_2"> <a href="/"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a> <a href="/giftcard/login/login.do"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a> </dd>
+            <dd class="btn_2"> <a href="/giftcard/index.do"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a> <a href="/giftcard/login/login.do"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a> </dd>
           </dl>
         </div>
       </c:if>
       <div class="b_gui">
-        <p class="gui_l"><span class="text">아직 파츠모아 회원이 아니세요?</span><span><a href="/giftcard/join/join_1.do"><img class="btn" src="/images/join/btn_join.gif" alt=""></a></span></p>
+        <p class="gui_l"><span class="text">아직 파츠모아 회원이 아니세요?</span><span><a href="/giftcard/join/join_2.do"><img class="btn" src="/images/join/btn_join.gif" alt=""></a></span></p>
         <p class="gui_r"><span class="text">아직 파츠모아 회원이 아니세요?</span><span><a href="/giftcard/join/pw_search.do"><img class="btn" src="/images/join/btn_pw_search.gif" alt=""></a></span></p>
       </div>
     </div>
