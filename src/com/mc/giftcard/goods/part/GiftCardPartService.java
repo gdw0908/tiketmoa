@@ -22,9 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.googlecode.ehcache.annotations.TriggersRemove;
 import com.googlecode.ehcache.annotations.When;
 import com.mc.common.util.StringUtil;
-import com.mc.common.util.Util;
 import com.mc.web.MCMap;
-import com.mc.web.code.CodeDAO;
 import com.mc.web.common.FileDAO;
 import com.mc.web.common.FileUtil;
 
@@ -49,7 +47,7 @@ public class GiftCardPartService {
 	private GiftCardPartDAO partDAO;
 	
 	@Autowired
-	private CodeDAO codeDAO;
+	private GiftCardPartDAO codeDAO;
 	
 	public Map adminlist(Map params) throws Exception {
 		Map rstMap = new HashMap();
