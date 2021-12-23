@@ -172,7 +172,7 @@ function view(opt) {
 						</p>
 					</div>
 					<div class="d_info_btn">
-						<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">장바구니담기</a>
+						<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1">장바구니담기</a>
 						<a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
 					</div>
 				</div>
