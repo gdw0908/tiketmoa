@@ -491,7 +491,7 @@ function show_receipt()
           });
           </script>
 
-          <div class="pay_btn"> <a href="/mypage/shopping/state/index.do?mode=list1"><img src="/images/sub_2/btn_pay_4.gif" alt="나의쇼핑정보"></a> </div>
+          <div class="pay_btn"> <a href="/giftcard/mypage/shopping/state/index.do?mode=list1"><img src="/images/sub_2/btn_pay_4.gif" alt="나의쇼핑정보"></a> </div>
 
           <ul class="pay_c_list">
             <li class="c1"><strong>PARTSMOA</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 <strong>PARTSMOA</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>

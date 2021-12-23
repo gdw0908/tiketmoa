@@ -389,7 +389,7 @@ function Check_Common(form){
 function changeCod(idx, val){
 
 	$.ajax({
-		url : "/mypage/shopping/cart/index.do?mode=changeCod", 
+		url : "/giftcard/mypage/shopping/cart/index.do?mode=changeCod", 
 		type: "POST", 
 		data : {cart_no : idx, cod_yn : val}, 
 		dataType : "json", 
@@ -455,7 +455,7 @@ function fn_checkByte(obj){
 </head>
 <body>
 	<form name="frmAGS_pay" method="post"
-		action="/mypage/shopping/cart/index.do?mode=pay_ing"
+		action="/giftcard/mypage/shopping/cart/index.do?mode=pay_ing"
 		style="width: 100%;">
 		<div id="sub">
 			<div class="contents">
@@ -757,7 +757,7 @@ function fn_checkByte(obj){
 				</div>
 				<div class="pay_btn">
 					<a href="#" onclick="return Pay(frmAGS_pay)">결제하기</a> <a
-						href="/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
+						href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
 				</div>
 
 				<div id="mask"></div>

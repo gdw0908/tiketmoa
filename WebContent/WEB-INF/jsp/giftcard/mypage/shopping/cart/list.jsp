@@ -73,7 +73,7 @@
 	function changeQty(idx) {
 		var obj = $("input[name='chk']").eq(idx);
 		var qty = $("input[name='qty']").eq(idx).val();
-		$.getJSON("/mypage/shopping/cart/index.do?mode=qtyChange", {
+		$.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=qtyChange", {
 			cart_no : obj.val(),
 			item_seq : obj.attr("item_seq"),
 			qty : qty
@@ -95,7 +95,7 @@
 		var obj = $("input[name='chk']").eq(idx);
 		var cart_no = obj.val();
 		obj.attr("cod_yn", val);
-		$.getJSON("/mypage/shopping/cart/index.do?mode=changeCod", {
+		$.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=changeCod", {
 			cart_no : cart_no,
 			cod_yn : val
 		}, function(data) {
@@ -142,7 +142,7 @@
 				cart_no : $(this).val()
 			});
 		});
-		$.getJSON("/mypage/shopping/cart/index.do?mode=remove_cart", {
+		$.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=remove_cart", {
 			jData : JSON.stringify({
 				del : rst
 			})
@@ -212,13 +212,13 @@
 										<td class="cart_main">
 											<div class="product_box">
 												<div class="pb_l">
-													<a href="/goods/view.do?menu=menu2&seq=${item.item_seq }">
+													<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
 														<img src="${item.thumb }" alt="">
 													</a>
 												</div>
 												<div class="pb_r ws_1">
 													<p>
-														<a href="/goods/view.do?menu=menu2&seq=${item.item_seq }">
+														<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
 															<span><strong>${item.prod_nm }</strong></span> <span class="pro_name">
 															<strong>${item.prod_classnm }</strong></span> 
 														</a>

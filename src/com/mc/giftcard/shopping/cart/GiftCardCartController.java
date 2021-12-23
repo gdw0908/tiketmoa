@@ -490,7 +490,7 @@ public class GiftCardCartController {
 		
 		model.addAttribute("agspay", agspay);
 		model.addAttribute("pathIndex", index);
-		return "/giftcard/mypage/shopping/cart/pay_ing";
+		return "mypage/shopping/cart/pay_ing";
 	}
 	
 	@RequestMapping(params="mode=pay_result")

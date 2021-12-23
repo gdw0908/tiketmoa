@@ -14,7 +14,7 @@ $(function(){
 </head>
 <!-- <body > -->
 <body>
-<form name="frmAGS_pay_ing" method=post action="/mypage/shopping/cart/${pathIndex }.do?mode=pay_result">
+<form name="frmAGS_pay_ing" method=post action="/giftcard/mypage/shopping/cart/${pathIndex }.do?mode=pay_result">
 
 <!-- 각 결제 공통 사용 변수 -->
 <input type=hidden name=AuthTy value="<%=agspay.getResult("AuthTy")%>">		<!-- 결제형태 -->

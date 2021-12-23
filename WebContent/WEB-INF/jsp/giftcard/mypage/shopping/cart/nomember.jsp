@@ -396,7 +396,7 @@ function Pay(form){
 function changeCod(idx, val){
 
 	$.ajax({
-		url : "/mypage/shopping/cart/index.do?mode=changeCod", 
+		url : "/giftcard/mypage/shopping/cart/index.do?mode=changeCod", 
 		type: "POST", 
 		data : {cart_no : idx, cod_yn : val}, 
 		dataType : "json", 
@@ -432,7 +432,7 @@ $(function(){
 </script>
 </head>
 <body>
-<form name="frmAGS_pay" method="post" action="/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;">
+<form name="frmAGS_pay" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;">
 	<div class="title_rocation">
       <div class="tr_wrap">
         <h3>주문/결제</h3>
@@ -687,7 +687,7 @@ $(function(){
           <div class="pay_btn"> 
 <!--           <a href="/html/join/no_member_3.html"><img src="/images/sub_2/btn_pay_2.gif" alt="결제하기"></a>  -->
 	          <a href="#" onclick="return Pay(frmAGS_pay)" style="color: #fff;">결제하기</a> 
-	          <a href="/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a> 
+	          <a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a> 
           </div>
 
     </div>
