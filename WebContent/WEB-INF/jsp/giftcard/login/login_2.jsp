@@ -132,9 +132,9 @@ jQuery(document).ready(function(){
                 <div class="btn_lnk">
                 	<ul>
                   		<li class="first"><label style="cursor: pointer;"><input type="checkbox" id="id_save" name="id_save" class="check"><span class="icon"></span> 아이디저장</label></li>
-                  		<li><a href="/join/join_1.do">회원가입</a></li>
-                  		<li><a href="/join/id_search.do">아이디 찾기</a></li>
-                  		<li class="last"><a href="/join/pw_search.do">비밀번호 찾기</a></li>
+                  		<li><a href="/giftcard/join/join_2.do">회원가입</a></li>
+                  		<li><a href="/giftcard/join/id_search.do">아이디 찾기</a></li>
+                  		<li class="last"><a href="/giftcard/join/pw_search.do">비밀번호 찾기</a></li>
                 	</ul>
               	</div>
               
