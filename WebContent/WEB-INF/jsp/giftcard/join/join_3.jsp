@@ -328,9 +328,10 @@
 								</tr>
 								<tr>
 									<th scope="row"><b>*</b> 휴대폰번호</th>
-									<td><input type="text" id="cell1" name="cell1"
-										class="input_j1 ws_3" maxlength="3"> - <input
-										type="text" id="cell2" name="cell2" class="input_j1 ws_4"
+									<td><select type="text" id="cell1" name="cell1" class="select_j1">
+											<option value="010">010</option>
+											<option value="011">011</option>
+										</select> - <input type="text" id="cell2" name="cell2" class="input_j1 ws_4"
 										maxlength="4"> - <input type="text" id="cell3"
 										name="cell3" class="input_j1 ws_4" maxlength="4"></td>
 								</tr>
