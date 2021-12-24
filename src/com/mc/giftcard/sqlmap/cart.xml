@@ -35,32 +35,16 @@
 		SELECT PT1.* FROM (
             SELECT
                 ROW_NUMBER() OVER(ORDER BY a.ITEM_SEQ DESC) RN,
-                a.ITEM_SEQ, a.COM_SEQ, a.ERP_CODE, a.PRODUCTNM,a.CARYYYY, a.GRADE, a.USER_PRICE, a.SUPPLIER_PRICING_YN, a.SUPPLIER_PRICE, a.SALE_PRICE,
-                CASE
-                WHEN a.SALE_SDATE &lt;= SYSDATE AND a.SALE_EDATE &gt; SYSDATE-1 THEN a.DISCOUNT_RATE
-                ELSE 0
-                END AS DISCOUNT_RATE,
-                a.DISCOUNT_RATE AS DISCOUNT_RATE2, 
+                a.ITEM_SEQ, a.PRODUCTNM, a.USER_PRICE, 
                 a.FEE_YN, a.BESTYN, a.EVENTYN, a.NEWYN, a.PUBLICYN, a.RECOMMYN, a.SALEYN, a.PLANYN,
-                a.CARMAKERSEQ, a.CARMODELSEQ, a.CARGRADESEQ, a.PART1, a.PART2, a.PART3, a.COLOR,
+                a.CARMAKERSEQ, a.CARMODELSEQ, 
                 a.REG_DT,
                 (SELECT MAKERNM FROM V_IS_CARMAKER WHERE a.CARMAKERSEQ=CARMAKERSEQ) AS MAKERNM,
                 (SELECT CARMODELNM FROM V_IS_CARMODEL WHERE a.CARMODELSEQ=CARMODELSEQ) AS CARMODELNM,
-                (SELECT CARGRADENM FROM V_IS_CARGRADE WHERE a.CARGRADESEQ=CARGRADESEQ) AS CARGRADENM,
-                (SELECT CODENM FROM V_IS_CODEMST WHERE a.PART1=CODENO) AS PART1_NM,
-                (SELECT CODENM FROM V_IS_CODEMST WHERE a.PART2=CODENO) AS PART2_NM,
-                NVL((SELECT PARTNM FROM V_IS_CARPART WHERE a.PART3=CARPARTSEQ),a.PRODUCTNM) AS PART3_NM,
-                (SELECT CODE_NM FROM MC_COMMON_CODE WHERE CODE_GROUP_SEQ = '37' AND a.COLOR=CODE) AS COLOR_NM,
                 DECODE(a.APPROVAL, 'Y', '승인', '비승인') as APPROVAL,
                 ('/upload/board/'||b.YYYY||'/'||b.MM||'/'||b.UUID) AS THUMB,
                 b.ATTACH_NM,
-                c.COM_NM, c.STAFF_TEL,
-                CASE 
-                    WHEN (SELECT COUNT(SEQ) FROM NSH_COOPERATION_MEMBER WHERE MEMBER_ID= #{session_member_id})>0 AND a.SUPPLIER_PRICING_YN='Y' THEN c.COMMISSION
-                    ELSE '0'
-                END AS COM_DISCOUNT_RATE,
-                e.QTY, e.CART_NO, e.COD_YN, e.FEE_AMT,
-                (SELECT DONG_NM FROM NSH_DONG WHERE c.SIDO_CD=SIDO AND c.SIGUNGU_CD=SIGUNGU AND DONG='000') as SIGUNGU_NM
+                e.QTY, e.CART_NO, e.COD_YN, e.FEE_AMT
             FROM GC_GOODS a LEFT OUTER JOIN (
                 SELECT
                     bb.*
@@ -68,8 +52,6 @@
                 ON aa.UUID = bb.UUID
             ) b
             ON b.TABLE_NM='GC_GOODS' AND a.ITEM_SEQ = b.TABLE_SEQ
-            LEFT OUTER JOIN NSH_COOPERATION c
-            ON a.COM_SEQ = c.SEQ
             LEFT OUTER JOIN V_IS_CARMAKER d
             ON a.CARMAKERSEQ=d.CARMAKERSEQ
             JOIN (SELECT ITEM_SEQ, QTY, CART_NO, COD_YN, FEE_AMT FROM NSH_CART WHERE STATUS='0' AND CART_NO = #{cart_no}) e

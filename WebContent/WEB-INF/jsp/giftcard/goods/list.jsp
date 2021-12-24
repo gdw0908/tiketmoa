@@ -271,13 +271,7 @@ function directOrder(item_seq){
 		          					<div class="m_btn">
 		                				<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" target="_blank">새창</a>
 		                				<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
-		                				<c:choose>
-		                					<c:when test="${item.inquiry_yn eq 'Y' }"><a href="javascript:inquery_y();">바로구매</a>
-		                					</c:when>
-		                					<c:otherwise>
-		                						<a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
-		                					</c:otherwise>
-		                				</c:choose>
+		                				<a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
 		                			</div>
 		          				</div>
 		          				<div class="list_info">
