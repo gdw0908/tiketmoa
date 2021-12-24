@@ -172,9 +172,9 @@
 					<caption>장바구니 리스트</caption>
 					<colgroup>
 						<col width="8%">
-						<col width="45%">
+						<col width="42%">
 						<col width="15%">
-						<col width="15%">
+						<col width="17%">
 						<col width="17%">
 					</colgroup>
 					<thead>
@@ -200,7 +200,7 @@
 							<c:otherwise>
 								<c:forEach var="item" items="${data.list }" varStatus="status">
 									<tr>
-										<td class="b_none" style=" padding: 15px;">
+										<td class="b_none">
 											<input type="checkbox" name="chk" value="${item.cart_no }" 
 											item_seq="${item.item_seq }"  prod_price="${item.user_price }" qty="${item.qty }"
 											 fee_amt="${item.fee_amt}">
@@ -239,7 +239,7 @@
 											<c:choose>
 												<c:when test="${item.fee_yn eq 'C' }">착불</c:when>
 												<c:when test="${item.fee_yn eq 'Y' }">
-													<select name="cod_yn" onchange="changeCod('${status.index }', this.value)">
+													<select class="delivery_sel" name="cod_yn" onchange="changeCod('${status.index }', this.value)">
 														<option value="Y"
 															<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
 														<option value="N"

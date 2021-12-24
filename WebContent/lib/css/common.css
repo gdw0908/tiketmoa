@@ -284,6 +284,7 @@ body.active { overflow-y: hidden; }
 	top: 20%;
 	right: 0;
 	font-size: 18px;
+	color: var(--text-main);
 }
 .search_top span.btn_search {
 	float:left; 

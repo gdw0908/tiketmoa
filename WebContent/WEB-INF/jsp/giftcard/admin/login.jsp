@@ -84,7 +84,7 @@ app.controller("loginCtrl", function($scope, ajaxService) {
   <div id="login_wrap">
     <div class="loginbox"> 
 	  <div class="memberlogin">
-	      <h1>상품권관리자</h1>	  
+	      <h1 class="login_tit"><img src="/images/admin/header/logo.svg"></h1>	  
 		  <form id="frm" name="frm" ng-submit="login()" method="post">
 		      <fieldset>
 		        <legend>로그인</legend>

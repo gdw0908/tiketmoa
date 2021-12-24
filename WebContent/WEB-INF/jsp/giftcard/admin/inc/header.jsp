@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>파츠모아 관리시스템</title>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link href="/lib/css/cmsbase.css" rel="stylesheet" type="text/css" />
 <link href="/lib/css/cmsadmin.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -21,7 +22,7 @@ function goBody(target_url){
 <body>
 <div id="headerwrap">
 
-  <h1><a href="#"><img src="/images/admin/header/logo.png" alt="상품권 홈페이지 관리시스템" /></a><span>상품권관리&nbsp;<span>통합관리시스템</span></span></h1>
+  <h1><a href="#"><img src="/images/admin/header/logo.svg" alt="상품권 홈페이지 관리시스템" /></a><span>상품권관리&nbsp;<span>통합관리시스템</span></span></h1>
   
 	  <div class="admin_profile">
 	<%--   <c:if test = "${sessionScope.member.group_seq ne '8' }">
@@ -35,9 +36,12 @@ function goBody(target_url){
 	    <span><a href = "javascript:goBody('/admin/system/board/application/index.do');">국산차 부품문의건수:<span>${data.cnt6 }</span>&nbsp;건</a></span>
 	    <span><a href = "javascript:goBody('/admin/system/board/application_import/index.do');">수입차 부품문의건수:<span>${data.cnt7 }</span>&nbsp;건</a></span>
 	    </c:if> --%>
-	    <p class="profileico"><span>${sessionScope.member.member_nm }</span>님 이 로그인 하셨습니다.</p>
+	    <p class="profileico">
+	    	<i class="xi-user"></i>
+	    	<span>${sessionScope.member.member_nm }</span>님 이 로그인 하셨습니다.
+	    </p>
 <!--    <p class="profileicoa"><a href="#"><img src="/images/admin/header/heard_20.gif" alt="정보수정" /></a></p> -->
-	    <p class="profileicob"><a href="javascript:logout()"><img src="/images/admin/header/heard_22.gif" alt="로그아웃" /></a></p>
+	    <p class="profileicob"><a href="javascript:logout()">로그아웃</a></p>
 	  </div>
 	
 </div>

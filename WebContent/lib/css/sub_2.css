@@ -207,20 +207,42 @@
 }
 
 /* 주문/결제 */
-h5.pay_type {margin:28px 0 8px 0; font-size:16px; color:#353535;}
-h5.pay_type span {font-size:12px; font-weight:normal;}
-h5.pay_type span i {background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px; padding-left:8px; font-style:normal;}
+p.pay_type {margin:28px 0 5px 0; font-size:14px; font-weight: 600; }
+p.pay_type span {font-size:12px; font-weight:normal;}
+p.pay_type span i {background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px; padding-left:8px; font-style:normal;}
 
 /* 주문완료 */
+.pay_tit {
+	font-size: 26px;
+	text-align:center;
+	color: var(--main-color);
+	margin:50px 0 8px 0;
+}
+.pay_sub_tit {
+	font-size: 14px;
+	font-weight: 400;
+	text-align: center;
+	margin-bottom: 50px;
+	color: var(--sub-color);
+}
+.pay_history {
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
 
-p.shopping_img {text-align:center; margin:53px 0 25px 0;}
+.no_tit {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--main-color);
+	text-align: center;
+	margin-top: 30px;
+}
 
 .info_b1 {overflow:hidden;}
-.info_b1 .info_l {float:left; width:414px;}
-.info_b1 .info_r {float:right; width:414px;}
+
 
 /* sub_tab */
-
 .sub_tab {margin:30px 0;}
 .sub_tab ul.tab {height:38px; background:url(/images/sub_2/tab_ul.gif) repeat-x 0px 37px;}
 .sub_tab ul.tab li {float:left; height:38px; margin-right:2px; background:url(/images/sub_2/tab_bg.gif) repeat-x;}
@@ -564,8 +586,8 @@ p.ev_img img {width:100%;}
 	.left_box { width: 100%; padding: 0 20px; }
 	.left_box > h2 { font-size: 28px; padding: 30px 0; }
 	#left_menu > ul { flex-direction: column; }
-	#left_menu > ul > li { width: 100%; border-bottom: none; border-left: 1px solid var(--border-color); }
-	#left_menu > ul > li:last-child {  border-bottom: 1px solid var(--border-color); }
+	#left_menu > ul > li { width: 100%; border-bottom: none; border-left: 1px solid #ccc; }
+	#left_menu > ul > li:last-child {  border-bottom: 1px solid #ccc; }
 	
 	#sub .sub_tit { margin-top: 30px; }
 	

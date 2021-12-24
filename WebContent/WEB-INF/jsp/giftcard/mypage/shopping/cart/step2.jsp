@@ -469,7 +469,7 @@ function goStep3() {
 				<div class="title_rocation">
 					<h4>주문/결제</h4>
 				</div>
-				<h5 class="pay_type">1. 주문제품</h5>
+				<p class="pay_type">1. 주문제품</p>
 				<table class="cart_style_1">
 					<caption>장바구니 리스트</caption>
 					<colgroup>
@@ -561,8 +561,7 @@ function goStep3() {
 						              		착불
 						              	</c:when>
 										<c:when test="${item.fee_yn eq 'Y' }">
-											<select name="cod_yn"
-												onchange="changeCod('${item.cart_no }', this.value)">
+											<select class="deliver_sel" name="cod_yn" onchange="changeCod('${item.cart_no }', this.value)">
 												<option value="Y"
 													<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
 												<option value="N"
@@ -583,7 +582,7 @@ function goStep3() {
 					<li><strong>티켓모아</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
 						<strong>티켓모아</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
 				</ul>
-				<h5 class="pay_type">2. 주문회원 정보</h5>
+				<p class="pay_type">2. 주문회원 정보</p>
 				<div class="sub_table_1">
 					<table>
 						<colgroup>
@@ -620,9 +619,9 @@ function goStep3() {
 				</div>
 				<!--div class="table_text_1">수정내용을 회원정보에 저장합니다. <a href="#"><img src="/images/sub_2/pay_s_btn3.gif" alt="회원정보 저장"></a></div-->
 
-				<h5 class="pay_type">
+				<p class="pay_type">
 					3. 배송지정보<span>( <i>필수입력사항입니다.)</i></span>
-				</h5>
+				</p>
 
 				<div class="sub_table_1">
 					<table>
@@ -717,7 +716,7 @@ function goStep3() {
 					</table>
 				</div>
 
-				<h5 class="pay_type">4. 결제금액 및 구매혜택</h5>
+				<p class="pay_type">4. 결제금액 및 구매혜택</p>
 
 				<div class="pricecheck">
 					<div class="p_check1">
@@ -763,9 +762,9 @@ function goStep3() {
 					</div>
 				</div>
 				<div class="pay_btn">
+				<a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
 				<a href="javascript:goStep3()">결제하기</a>
 				<!-- <a href="#" onclick="return Pay(frmAGS_pay)">결제하기</a> --> 
-				<a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
 				</div>
 
 				<div id="mask"></div>

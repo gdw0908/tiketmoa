@@ -111,7 +111,15 @@ if (!(rAGS_HASHDATA.equals(AGS_HASHDATA))) errResMsg = "결재금액 변조 발�
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<title>상품검색</title>
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
+<meta name="author" content="31system" />
+<meta name="description" content="안녕하세요  티켓모아 입니다." />
+<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<title>주문완료</title>
+
 <script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/lib/js/jquery.lck.util.js"></script>
 <script language=javascript>//"지불처리중"팝업창 닫는 부분 (AGS_pay.html에서 submit 전에 띄운 팝업 창을 닫는 스크립트)
@@ -158,105 +166,66 @@ function show_receipt()
 <body>
 	<div class="c_wrap">
       <div id="sub">
-        <div class="strapline">
-          <h3>나의쇼핑</h3>
-          <div class="state"> <span>홈</span> &gt; <span>고객센터</span> &gt; <span><strong>나의쇼핑</strong></span> </div>
-        </div>
         <div class="contents">
           <div class="title_rocation">
             <h4>주문완료</h4>
           </div>
-          <p class="shopping_img"><img src="/images/sub_2/shopping_img_1.gif" alt="PARTS MOA를 이용해 주셔서 감사합니다 주문하신 내역은 나의 쇼핑정보에서 다시 확인이 가능합니다"></p>
-          <h5 class="pay_type">결제내역</h5>
+          <h5 class="pay_tit">티켓모아를 이용해 주셔서 감사합니다</h5>
+          <h6 class="pay_sub_tit">주문하신 내역은 나의 쇼핑정보에서 다시 확인이 가능합니다</h6>
+          <p class="pay_history">결제내역</p>
 
           <div class="cart_style_2">
 
             <table>
-            <colgroup>
-            <col width="20%">
-            <col width="">
-            </colgroup>
-            <tbody>
-            <tr>
-              <th scope="row" rowspan="2">
-              			<%-- <%
-
-							if(AuthTy.equals("card"))
-							{
-								if(SubTy.equals("isp"))
-								{
-									out.println( "신용카드결제-안전결제(ISP)");
-								}	
-								else if(SubTy.equals("visa3d"))
-								{
-									out.println( "신용카드결제-안심클릭");
-								}
-								else if(SubTy.equals("normal"))
-								{
-									out.println( "신용카드결제-일반결제");
-								}
-								
-							}
-							else if(AuthTy.equals("iche"))
-							{
-								out.println( "계좌이체");
-							}
-							else if(AuthTy.equals("hp"))
-							{
-								out.println( "핸드폰결제");
-							}
-							else if(AuthTy.equals("ars"))
-							{
-								out.println( "ARS결제");
-							}
-							else if(AuthTy.equals("virtual"))
-							{
-								out.println( "가상계좌결제");
-							}
-							%> --%>
-              </th>
-              <td>결제금액 : <b class="b_num"><%-- <%=StringUtil.getThousand(rAmt) %> --%></b>원</td>
-            </tr>
-            <tr> 
-              <td>납부방식 : ${param.rCardNm }</td>
-            </tr>
-            </tbody>
+            	<colgroup>
+            		<col width="20%">
+            		<col width="">
+            	</colgroup>
+            	<tbody>
+            		<tr>
+              			<th scope="row" rowspan="2">결제정보</th>
+              			<td>결제금액 : <b class="b_num"><%-- <%=StringUtil.getThousand(rAmt) %> --%></b>원</td>
+           			 </tr>
+           		 	<tr> 
+              			<td>납부방식 : ${param.rCardNm }</td>
+           			 </tr>
+            	</tbody>
             </table>
 
           </div>
           
-          <h5 class="pay_type">주문내역</h5>
+          <p class="pay_type">주문내역</p>
 
           <table class="cart_style_1">
           <caption>
           장바구니 리스트
           </caption>
           <colgroup>
-          <col width="">
-          <col width="7%">
-          <col width="10.5%">
-          <col width="9%">
-          <col width="9%">
-          <col width="10%">
-          <col width="15%">
+          	<col width="">
+          	<col width="7%">
+          	<col width="10.5%">
+          	<col width="9%">
+          	<col width="9%">
+          	<col width="10%">
+          	<col width="15%">
           </colgroup>
           <thead>
-          <tr>
-            <th scope="col">제품정보</th>
-            <th scope="col">수량</th>
-            <th scope="col">가격</th>
-            <th scope="col">할인</th>
-            <th scope="col">배송비</th>
-            <th scope="col">합계</th>
-            <th scope="col">주문번호/영수증</th>
-          </tr>
+          	<tr>
+            	<th scope="col">제품정보</th>
+            	<th scope="col">수량</th>
+            	<th scope="col">가격</th>
+            	<th scope="col">할인</th>
+            	<th scope="col">배송비</th>
+            	<th scope="col">합계</th>
+            	<th scope="col">주문번호/영수증</th>
+          	</tr>
           </thead>
           <tbody>
-          <c:forEach var="item" items="${data.list }" varStatus="status">
-			<c:set var="user_price_l" value="0"/>
-			<c:set var="discount_price_l" value="0"/>
-			<c:set var="fee_price_l" value="0"/>
-          	<c:choose>
+          	<c:forEach var="item" items="${data.list }" varStatus="status">
+				<c:set var="user_price_l" value="0"/>
+				<c:set var="discount_price_l" value="0"/>
+				<c:set var="fee_price_l" value="0"/>
+          		<c:choose>
 	       		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
 	       			<c:set var="user_price" value="${user_price + (item.supplier_price * item.qty) }"/>
 					<c:set var="user_price_l" value="${item.supplier_price * item.qty }"/>
@@ -386,83 +355,81 @@ function show_receipt()
 
             <div class="info_l">
 
-              <h5 class="pay_type">주문회원 정보</h5>
+              <p class="pay_type">주문회원 정보</p>
 
               <div class="sub_table_1">
                 <table>
-                <colgroup>
-                <col width="30%">
-                <col width="">
-                </colgroup>
-                <tbody>
-                <tr>
-                  <th scope="row">주문자</th>
-                  <td>${data.resultInfo.order_nm }</td>
-                </tr>
-                <tr>
-                  <th scope="row">주소</th>
-                  <td>
-                    <p>(${data.resultInfo.zipcd }) ${data.resultInfo.addr }</p>
-                    <p>${data.resultInfo.addrdetail }</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">이메일</th>
-                  <td>${data.resultInfo.email }</td>
-                </tr>
-                <tr>
-                  <th scope="row">주문자 휴대폰</th>
-                  <td>${data.resultInfo.rehp }</td>
-                </tr>
-                <tr>
-                  <th scope="row">주문자 연락처</th>
-                  <td>${data.resultInfo.retel }</td>
-                </tr>
-                </tbody>
+                	<colgroup>
+                		<col width="20%">
+                		<col width="">
+                	</colgroup>
+                	<tbody>
+                		<tr>
+                  			<th scope="row">주문자</th>
+                  			<td>${data.resultInfo.order_nm }</td>
+                		</tr>
+                		<tr>
+                  			<th scope="row">주소</th>
+                  			<td>
+                    			<p>(${data.resultInfo.zipcd }) ${data.resultInfo.addr }</p>
+                    			<p>${data.resultInfo.addrdetail }</p>
+                  			</td>
+                		</tr>
+                		<tr>
+                  			<th scope="row">이메일</th>
+                  			<td>${data.resultInfo.email }</td>
+                		</tr>
+                		<tr>
+                  			<th scope="row">주문자 휴대폰</th>
+                  			<td>${data.resultInfo.rehp }</td>
+                		</tr>
+                		<tr>
+                  			<th scope="row">주문자 연락처</th>
+                  			<td>${data.resultInfo.retel }</td>
+                		</tr>
+                	</tbody>
                 </table>
               </div>
 
             </div>
 
             <div class="info_r">
-
-              <h5 class="pay_type">배송정보 내역</h5>
+              <p class="pay_type">배송정보 내역</p>
 
               <div class="sub_table_1">
                 <table>
-                <colgroup>
-                <col width="30%">
-                <col width="">
-                </colgroup>
-                <tbody>
-                <tr>
-                  <th scope="row">수취인</th>
-                  <td>${data.resultInfo.receiver }</td>
-                </tr>
-                <tr>
-                  <th scope="row">배송지 주소</th>
-                  <td>
-                    <p>(${data.resultInfo.re_zipcd }) ${data.resultInfo.re_addr1 }</p>
-                    <p>${data.resultInfo.re_addr2 }</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">수취인 휴대폰</th>
-                  <td>${data.resultInfo.re_cell }</td>
-                </tr>
-                <tr>
-                  <th scope="row">수취인 연락처</th>
-                  <td>${data.resultInfo.re_tel }</td>
-                </tr>
-                </tbody>
+                	<colgroup>
+                	<col width="20%">
+                	<col width="">
+                	</colgroup>
+                	<tbody>
+                		<tr>
+                  			<th scope="row">수취인</th>
+                  			<td>${data.resultInfo.receiver }</td>
+                		</tr>
+                		<tr>
+                  			<th scope="row">배송지 주소</th>
+                  			<td>
+                    			<p>(${data.resultInfo.re_zipcd }) ${data.resultInfo.re_addr1 }</p>
+                    			<p>${data.resultInfo.re_addr2 }</p>
+                  			</td>
+                		</tr>
+                		<tr>
+                  			<th scope="row">수취인 휴대폰</th>
+                  			<td>${data.resultInfo.re_cell }</td>
+                		</tr>
+                		<tr>
+                  			<th scope="row">수취인 연락처</th>
+                  			<td>${data.resultInfo.re_tel }</td>
+                		</tr>
+                	</tbody>
                 </table>
               </div>
-
             </div>
 
           </div>
 
-          <h5 class="pay_type">배송시 요청사항</h5>
+          <p class="pay_type">배송시 요청사항</p>
 
           <div class="sub_table_1">
             <table>
@@ -491,20 +458,7 @@ function show_receipt()
           });
           </script>
 
-          <div class="pay_btn"> <a href="/giftcard/mypage/shopping/state/index.do?mode=list1"><img src="/images/sub_2/btn_pay_4.gif" alt="나의쇼핑정보"></a> </div>
-
-          <ul class="pay_c_list">
-            <li class="c1"><strong>PARTSMOA</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 <strong>PARTSMOA</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
-            <li>구매주문내역, 배송상태 확인, 구매영수증 출력, 구매취소/반품/교환은 사이트상단의 주문/배송조회에서 확인할 수 있습니다.</li>
-            <li class="c1">
-            고객님의 주문이 체결된 후 상품품절 및 단종 등에 의해 배송이 불가능할 경우, 전자상거래등에서의 소비자 보호에 관한 법률 제15조 2항에 의거하여
-            3영업일(공휴일제외) 이내에 자동으로 취소될 수 있으며, 이 경우 취소 안내 메일이 고객님께 발송되오니 양지 바랍니다. 
-            </li>
-            <li>극히 일부 상품의 경우, 상품페이지의 팔자주문수량이 해당 상품의 실제 재고수량과 다를 수 있는 점 양해바랍니다. </li>
-            <li>일부상품에 대해 수량부족, 카드결제승인오류 등의 사례가 간혹 있을 수 있으니 나의쇼핑정보에서 다시 한번 확인해주세요. </li>
-            <li>무통장 입금으로 구매하셨을 경우, 입금 하신 후 판매자에게 입금확인이 되었는지를 다시 한번 확인해주세요. </li>
-            <li>배송주소를 추가하거나 변경, 삭제 등의 관리는 나의 쇼핑정보 > 나의정보에서 가능합니다. </li>
-          </ul>
+          <div class="pay_btn"> <a href="/giftcard/mypage/shopping/state/index.do?mode=list1">나의 쇼핑 정보</a> </div>
 
         </div>
       </div>

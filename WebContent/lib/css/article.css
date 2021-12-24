@@ -345,7 +345,11 @@ li.comm_2 .comm_text {padding:0 0 0 18px;}
 
 
 /* cart style1 */
-.cart_style_1 {width:100%; border-top:2px solid var(--main-color);}
+.cart_style_1 {
+	width:100%; 
+	margin-bottom: 60px;
+	border-top:2px solid var(--main-color);
+}
 .cart_style_1 th {padding:15px 0; border-top:1px solid var(--main-color); border-bottom:1px solid var(--main-color);}
 .cart_style_1 td { height: 144px; padding:15px 0; text-align:center; border-right:1px solid #e3e3e3; border-bottom:1px solid #b9b9b9;}
 .cart_style_1 td.cart_main {text-align:left; padding:15px 0 15px 8px;}
@@ -390,7 +394,7 @@ td.cart_main .pb_r_2 p.last_2 span.input_box a.btn_x img {margin:6px 0 0 5px;}
 .cart_style_2 table th {padding:13px 0 12px 0; background:#fafafa;}
 .cart_style_2 table td { padding:10px 0 10px 13px; border-bottom:1px solid #e3e3e3;}
 .cart_style_2 table td.last {border-bottom:none;}
-.cart_style_2 table td b.b_num {font:bold 24px tahoma,dotum; color:#ff6c00;}
+.cart_style_2 table td b.b_num {font:bold 24px tahoma,dotum; color: var(--main-color);}
 
 /* t_top_style_1 */
 
@@ -404,14 +408,14 @@ td.cart_main .pb_r_2 p.last_2 span.input_box a.btn_x img {margin:6px 0 0 5px;}
 
 
 /* sub style1 */
-.sub_table_1 {overflow:hidden; border:1px solid #575757;}
+.sub_table_1 {overflow:hidden; border:1px solid var(--border-color);}
 .sub_table_1 table {width:100%;}
 .sub_table_1 table input { 
 	padding: 15px 5px; 
 	border-radius: 5px;
 	box-sizing: border-box; 
 }
-.sub_table_1 table th {font-size: 15px; font-weight: 500; text-align:left; padding:13px 0 12px 16px; background:#fafafa; border-bottom:1px solid #e3e3e3;}
+.sub_table_1 table th {font-size: 14px; font-weight: 500; text-align:left; padding:12px; background:#fafafa; border-bottom:1px solid #e3e3e3;}
 .sub_table_1 table th span {background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px; padding-left:9px;}
 .sub_table_1 table th p.btn_s5 {margin:5px 0 0 10px;}
 .sub_table_1 table td {font-size: 14px; padding:13px 18px 12px 16px; border-bottom:1px solid #e3e3e3;}
@@ -699,7 +703,6 @@ p.none_text {font-size:16px; font-weight:bold;}
 .refunds_style_1 td input.input_1  {width:40%;}
 
 /* 주문/결제 */
-
 .pay_btn1 { display: flex; margin:10px 0 0 14px;}
 .table_text_1 {color:#eb710f;}
 .table_text_1 {color:#eb710f; margin-top:10px; background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px; padding-left:8px;}
@@ -709,15 +712,19 @@ p.none_text {font-size:16px; font-weight:bold;}
 a.btn_img img {margin-top:-3px;}
 strong.c2 {color:#f97000;}
 p.color_1 {padding:15px 0 8px 0; color:#5686bd; background:url(/images/sub_2/pay_cut.gif) repeat-x top;}
+.deliver_sel { width: 80px; }
+
 
 .pay_btn {
 	text-align:center; 
 	margin-top: 70px;
 }
 .pay_btn a {
+	display: inline-block;
 	font-size: 16px;
 	padding: 20px 70px;
 	margin-right:5px;
+	margin-bottom: 40px;
 	color: #fff;
 	background: var(--main-color);
 	box-sizing: border-box;
@@ -861,4 +868,5 @@ p.color_1 {padding:15px 0 8px 0; color:#5686bd; background:url(/images/sub_2/pay
 	
 	.pro_name {width:70px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 }
+
 

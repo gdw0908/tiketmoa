@@ -29,15 +29,48 @@ function goBody(target_url){
 	  <c:choose>
 	  	<c:when test = "${sessionScope.member.group_seq ne '8'}">
 	  		<c:if test="${sessionScope.member.carall eq 'N' or sessionScope.member.group_seq eq '1' }">
-				<li><a href="javascript:;" onclick = "goBody('/admin/resources/index.do');"><img src="/images/admin/contents/main_img1.png" alt="4대자원관리" /></a></li>
-				<li><a href="javascript:;" onclick = "goBody('/admin/goods/part/index.do');"><img src="/images/admin/contents/main_img2.png" alt="상품관리" /></a></li>
-				<li><a href="javascript:;" onclick = "goBody('/admin/supply/cooperation/index.do');"><img src="/images/admin/contents/main_img3.png" alt="협력업체관리" /></a></li>
+<!-- 				<li> -->
+<!-- 					<a href="javascript:;" onclick = "goBody('/admin/resources/index.do');"> -->
+<!-- 						<img src="/images/admin/contents/main_img1.png" alt="4대자원관리" /> -->
+<!-- 					</a> -->
+<!-- 				</li> -->
+				<li>
+					<a href="javascript:;" onclick = "goBody('/admin/goods/part/index.do');">
+						<img src="/images/admin/contents/main_icon1.png" alt="상품관리" />
+						<span>상품관리</span>
+					</a>
+				</li>
+<!-- 				<li> -->
+<!-- 					<a href="javascript:;" onclick = "goBody('/admin/supply/cooperation/index.do');"> -->
+<!-- 						<img src="/images/admin/contents/main_img3.png" alt="협력업체관리" /> -->
+<!-- 					</a> -->
+<!-- 				</li> -->
 				<c:if test = "${sessionScope.member.group_seq eq '1'}">
-				<li><a href="javascript:;" onclick = "goBody('/admin/member/index.do');"><img src="/images/admin/contents/main_img4.png" alt="회원관리" /></a></li>
-				<li><a href="javascript:;" onclick = "goBody('/admin/system/board/notice/index.do');"><img src="/images/admin/contents/main_img5.png" alt="시스템관리" /></a></li>
-				<li><a href="javascript:;" onclick = "goBody('/admin/statistics/statistics.do');"><img src="/images/admin/contents/main_img6.png" alt="통계관리" /></a></li>
+				<li>
+					<a href="javascript:;" onclick = "goBody('/admin/member/index.do');">
+						<img src="/images/admin/contents/main_icon2.png" alt="회원관리" />
+						<span>회원관리</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" onclick = "goBody('<c:choose><c:when test = "${sessionScope.member.group_seq eq '1'}">/admin/calculate/deadline.do</c:when><c:otherwise>/admin/calculate/day_search.do</c:otherwise></c:choose>');">
+						<img src="/images/admin/contents/main_icon3.png" alt="정산관리" />
+						<span>정산관리</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" onclick = "goBody('/admin/system/board/notice/index.do');">
+						<img src="/images/admin/contents/main_icon4.png" alt="시스템관리" />
+						<span>시스템관리</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;" onclick = "goBody('/admin/statistics/statistics.do');">
+						<img src="/images/admin/contents/main_icon5.png" alt="통계관리" />
+						<span>통계관리</span>
+					</a>
+				</li>
 				</c:if>
-				<li><a href="javascript:;" onclick = "goBody('<c:choose><c:when test = "${sessionScope.member.group_seq eq '1'}">/admin/calculate/deadline.do</c:when><c:otherwise>/admin/calculate/day_search.do</c:otherwise></c:choose>');"><img src="/images/admin/contents/main_img7.png" alt="정산관리" /></a></li>
 			</c:if>
 	  	</c:when>
 	  	<c:otherwise>
