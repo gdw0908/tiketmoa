@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>파츠모아 관리시스템</title>
+<title>티켓모아 관리시스템</title>
 <link href="/lib/css/cmsbase.css" rel="stylesheet" type="text/css" />
 <link href="/lib/css/cmsadmin.css" rel="stylesheet" type="text/css" />
 <link href="/lib/css/redmond/jquery-ui-1.9.1.custom.min.css" rel="stylesheet" type="text/css" />
