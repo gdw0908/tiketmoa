@@ -22,6 +22,7 @@
 	
 	<!-- 메인 화면 시작 -->
     <decorator name="main" page="/layout/main.do">
+        <pattern>/index.*</pattern>
         <pattern>/giftcard/index.*</pattern>
     </decorator>
 	<!-- 메인 화면 끝 -->
