@@ -122,7 +122,7 @@ function go_update()
                 </c:forEach>
              
              </table>
-             <jsp:include page="/WEB-INF/jsp/paging.jsp" />
+             <jsp:include page="/WEB-INF/jsp/giftcard/paging.jsp" />
          </div>
          <div class="category_right carright">
            <table class="style_1" style="table-layout: fixed;">

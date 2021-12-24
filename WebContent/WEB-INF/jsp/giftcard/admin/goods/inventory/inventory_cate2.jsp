@@ -101,7 +101,7 @@ function  go_delete()
                
                
              </table>
-             <jsp:include page="/WEB-INF/jsp/paging.jsp" />
+             <jsp:include page="/WEB-INF/jsp/giftcard/paging.jsp" />
          </div>
          
          <div class="category_right carright">
