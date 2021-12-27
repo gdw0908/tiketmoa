@@ -75,7 +75,7 @@
           </td>
           <td data-ng-if = "item.group_seq == 1">관리자</td>
           <td data-ng-if = "item.group_seq == 2">일반회원</td>
-          <td data-ng-if = "item.group_seq == 4">기업회원</td>
+          <!-- <td data-ng-if = "item.group_seq == 4">기업회원</td> -->
           <!-- <td data-ng-if = "item.group_seq == 8">자원관리회원</td>
           <td data-ng-if = "item.group_seq == 9">장착점회원</td> -->
         </tr>
