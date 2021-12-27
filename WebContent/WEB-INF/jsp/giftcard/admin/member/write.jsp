@@ -44,8 +44,8 @@
           <th>회원선택</th>
           <td colspan="3">
             <label><input type="radio" data-ng-model="form.member_type" value="1" data-ng-init="form.member_type='1'"/><span>일반회원</span></label>
-            <label data-ng-if="form.group_seq != '9'"><input type="radio" data-ng-model="form.member_type" value="2"/><span>기업회원</span></label>
-            <label data-ng-if="form.group_seq != '9'"><input type="radio" data-ng-model="form.member_type" value="8"/><span>자원관리회원</span></label>
+            <!-- <label data-ng-if="form.group_seq != '9'"><input type="radio" data-ng-model="form.member_type" value="2"/><span>기업회원</span></label>
+            <label data-ng-if="form.group_seq != '9'"><input type="radio" data-ng-model="form.member_type" value="8"/><span>자원관리회원</span></label> -->
           </td>
         </tr>
         <tr data-ng-if="form.member_type=='1' || form.member_type=='8'">
