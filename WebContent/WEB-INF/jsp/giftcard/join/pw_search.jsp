@@ -244,10 +244,10 @@ function search_email_form_fnc()
    <h3 class="tit">비밀번호 찾기</h3>
   <div id="tabNav_j1" class="join_tab pw_search_tab">
 <!--     <h4 id="tabNavTitle0101" class="on"><a href="#" onclick="shwoTabNav('01', 2, 1); return false;" onfocus="this.onclick();">사업자회원</a></h4> -->
-	<ul class="tabs">
+	<!-- <ul class="tabs">
 		<li class="tab_link current" data-tab="tab-1">개인회원 비밀번호찾기</li>
-		<!-- <li class="tab_link" data-tab="tab-2">사업자회원 비밀번호찾기</li> -->
-	</ul>
+		<li class="tab_link" data-tab="tab-2">사업자회원 비밀번호찾기</li>
+	</ul> -->
     <div id="tab-1" id="tabNav0101" class="tab-content current">
       <div class="t_box1">
         <p><strong>개인회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 휴대폰 또는 아이핀 또는 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
