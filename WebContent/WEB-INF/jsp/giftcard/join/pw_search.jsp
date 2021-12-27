@@ -186,7 +186,7 @@ function search_email_form_fnc()
 	}
 }
 
-function busi_search_form_chk()
+/* function busi_search_form_chk()
 {
 	if(document.getElementById("busi_member_id").value == "")
 	{
@@ -234,7 +234,7 @@ function busi_search_form_chk()
 			return false;
 		}
 	}
-}
+} */
 
 </script>
 </head>
@@ -246,12 +246,12 @@ function busi_search_form_chk()
 <!--     <h4 id="tabNavTitle0101" class="on"><a href="#" onclick="shwoTabNav('01', 2, 1); return false;" onfocus="this.onclick();">사업자회원</a></h4> -->
 	<ul class="tabs">
 		<li class="tab_link current" data-tab="tab-1">개인회원 비밀번호찾기</li>
-		<li class="tab_link" data-tab="tab-2">사업자회원 비밀번호찾기</li>
+		<!-- <li class="tab_link" data-tab="tab-2">사업자회원 비밀번호찾기</li> -->
 	</ul>
     <div id="tab-1" id="tabNav0101" class="tab-content current">
       <div class="t_box1">
         <p><strong>개인회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 휴대폰 또는 아이핀 또는 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
-        <p><strong>사업자회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 사업자 인증정보 기재&nbsp;&nbsp;&nbsp;② 이메일 전송 선택&nbsp;&nbsp;&nbsp;③ 선택한 인증 방식으로 비밀번호 재발급</p>
+        <!-- <p><strong>사업자회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 사업자 인증정보 기재&nbsp;&nbsp;&nbsp;② 이메일 전송 선택&nbsp;&nbsp;&nbsp;③ 선택한 인증 방식으로 비밀번호 재발급</p> -->
       </div>
       <div class="authentication auth_2">
         <div class="ipin ipin_3">
@@ -283,7 +283,7 @@ function busi_search_form_chk()
       </div>
     </div>
 <!--     <h4 id="tabNavTitle0102"><a href="#" onclick="shwoTabNav('01', 2, 2); return false;" onfocus="this.onclick();">개인회원</a></h4> -->
-    <div id="tab-2" id="tabNav0102" class="tab-content">
+    <!-- <div id="tab-2" id="tabNav0102" class="tab-content">
       <div class="t_box1">
         <p><strong>개인회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
         <p><strong>사업자회원이신경우</strong> :&nbsp;&nbsp;&nbsp;① 사업자 인증정보 기재&nbsp;&nbsp;&nbsp;② 이메일 인증 방식으로 비밀번호 재발급</p>
@@ -307,7 +307,7 @@ function busi_search_form_chk()
             <input type="text" id="busi_no3" name="busi_no3" class="input_1 ws_1"  maxlength = "5">
             </span> </dd>
         </dl>
-        </div>
+        </div> -->
         <div class="pw_s_btn">
           <input type = "submit" value="이메일로 비밀번호 발급받기">
         </div>

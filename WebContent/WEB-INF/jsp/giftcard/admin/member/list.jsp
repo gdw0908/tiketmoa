@@ -12,7 +12,7 @@
         <ul>
           <li data-ng-class="{on:param.group_seq=='1'}"><a data-ng-click="goPage('1');">관리자</a></li>
           <li data-ng-class="{on:param.group_seq=='2'}"><a data-ng-click="goPage('2');">일반회원</a></li>
-          <li data-ng-class="{on:param.group_seq=='4'}"><a data-ng-click="goPage('4');">기업회원</a></li>
+          <!-- <li data-ng-class="{on:param.group_seq=='4'}"><a data-ng-click="goPage('4');">기업회원</a></li> -->
           <!-- <li data-ng-class="{on:param.group_seq=='8'}"><a data-ng-click="goPage('8');">자원관리회원</a></li>
           <li data-ng-class="{on:param.group_seq=='9'}"><a data-ng-click="goPage('9');">장착점회원</a></li> -->
         </ul>

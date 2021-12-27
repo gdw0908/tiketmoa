@@ -86,7 +86,7 @@ function email_chk_submit(obj)
 	}
 }
 
-function busi_chk_submit(obj)
+/* function busi_chk_submit(obj)
 {
 	if(jQuery("#busi_nm").val() == "")
 	{
@@ -120,7 +120,7 @@ function busi_chk_submit(obj)
 	{
 		return true;	
 	}
-}
+} */
 
 function chk_email(value)
 {
@@ -136,9 +136,9 @@ function chk_email(value)
 	<div class="j_wrap">
 		<h3 class="tit">아이디찾기</h3>
 		<div id="tabNav_j1" class="join_tab search_tab">
-			<ul class="tabs">
+			<ul class="tabs" data-tab="tab-1">
 				<li class="tab_link current" data-tab="tab-1">개인회원 아이디찾기</li>
-				<li class="tab_link" data-tab="tab-2">사업자회원 아이디찾기</li>
+				<!-- <li class="tab_link" data-tab="tab-2">사업자회원 아이디찾기</li> -->
 			</ul>
 			<div id="tab-1" id="tabNav0101" class="tab-content current">
 				<div class="t_box1">
@@ -215,7 +215,7 @@ function chk_email(value)
 					</p>
 				</div>
 			</div>
-			<div id="tab-2" id="tabNav0102" class="tab-content">
+			<!-- <div id="tab-2" id="tabNav0102" class="tab-content">
 				<div class="t_box1">
 					<p>
 						티켓모아쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. <strong>등록정보로
@@ -262,7 +262,7 @@ function chk_email(value)
 								src="/images/join/btn_pw_search.gif" alt=""></a></span>
 					</p>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<script type="text/javascript">
 	// tabs
