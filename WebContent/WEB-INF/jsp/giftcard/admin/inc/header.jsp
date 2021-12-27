@@ -13,16 +13,12 @@
 function logout(){
 	window.top.location.href = "/giftcard/admin/login.do?mode=logout";
 }
-
-function goBody(target_url){
-	parent.bodyFrame.location.href = target_url;
-}
 </script>
 </head>
 <body>
 <div id="headerwrap">
 
-  <h1><a href="#"><img src="/images/admin/header/logo.svg" alt="상품권 홈페이지 관리시스템" /></a><span>상품권관리&nbsp;<span>통합관리시스템</span></span></h1>
+  <h1><a href="javascript:window.top.location.reload();"><img src="/images/admin/header/logo.svg" alt="상품권 홈페이지 관리시스템" /></a><span>상품권관리&nbsp;<span>통합관리시스템</span></span></h1>
   
 	  <div class="admin_profile">
 	<%--   <c:if test = "${sessionScope.member.group_seq ne '8' }">
