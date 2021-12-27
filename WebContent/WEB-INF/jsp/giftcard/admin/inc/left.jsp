@@ -127,6 +127,45 @@ function goBody(target_url){
 	  <li>
 	  	<div> <span class="name1"><a href="#" onClick="goBody('/giftcard/admin/member/index.do')">회원관리</a></span> </div>
 	  </li>
+	  <!-- 통계관리시작-->
+      <li>
+        <div> <span class="name1"><a href="#" onclick="goBody('/giftcard/admin/statistics/statistics.do')">통계관리</a></span> </div>
+      </li>
+       <!-- 정산관리시작-->
+	    <li>
+	      <div> <span class="name1"><a href="#">정산관리</a></span> </div>
+	      <ul>
+	        <!-- <li class="last">
+	          <div> <span class="name2"><a href="#">일일정산등록</a></span> </div>
+	        </li> -->
+	        <c:if test = "${sessionScope.member.group_seq eq '1'}">
+	        <li class="last">
+	          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/calculate/deadline_cancel.do')">대기중 데이터 관리</a></span> </div>
+	        </li>
+	        <li class="last">
+	          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/calculate/deadline.do')">마감정산등록</a></span> </div>
+	        </li>
+	        <li class="last">
+	          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/calculate/confirm_list.do')">마감정산조회</a></span> </div>
+	        </li>
+	        </c:if>
+	        <li class="last">
+	          <div> <span class="name2" ><a href="#" onclick="goBody('/giftcard/admin/calculate/day_search.do')">일정산조회</a></span> </div>
+	        </li>
+	        <li class="last">
+	          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/calculate/week_search.do')">주정산조회</a></span> </div>
+	        </li>
+	        <li class="last">
+	          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/calculate/month_search.do')">월별정산조회</a></span> </div>
+	        </li>
+	        <li class="last">
+	          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/calculate/branch_search.do')">분기별정산조회</a></span> </div>
+	        </li>
+	        <li class="last">
+	          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/calculate/year_search.do')">년도별정산조회</a></span> </div>
+	        </li>
+	      </ul>
+	    </li>
     </c:when>
    </c:choose>
   </ul>

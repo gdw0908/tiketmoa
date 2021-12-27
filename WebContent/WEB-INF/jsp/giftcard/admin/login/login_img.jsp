@@ -35,7 +35,7 @@ function goBody(target_url){
 <!-- 					</a> -->
 <!-- 				</li> -->
 				<li>
-					<a href="javascript:;" onclick = "goBody('/admin/goods/part/index.do');">
+					<a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/part/index.do');">
 						<img src="/images/admin/contents/main_icon1.png" alt="상품관리" />
 						<span>상품관리</span>
 					</a>
@@ -47,25 +47,25 @@ function goBody(target_url){
 <!-- 				</li> -->
 				<c:if test = "${sessionScope.member.group_seq eq '1'}">
 				<li>
-					<a href="javascript:;" onclick = "goBody('/admin/member/index.do');">
+					<a href="javascript:;" onclick = "goBody('/giftcard/admin/member/index.do');">
 						<img src="/images/admin/contents/main_icon2.png" alt="회원관리" />
 						<span>회원관리</span>
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;" onclick = "goBody('<c:choose><c:when test = "${sessionScope.member.group_seq eq '1'}">/admin/calculate/deadline.do</c:when><c:otherwise>/admin/calculate/day_search.do</c:otherwise></c:choose>');">
+					<a href="javascript:;" onclick = "goBody('<c:choose><c:when test = "${sessionScope.member.group_seq eq '1'}">/giftcard/admin/calculate/deadline.do</c:when><c:otherwise>/giftcard/admin/calculate/day_search.do</c:otherwise></c:choose>');">
 						<img src="/images/admin/contents/main_icon3.png" alt="정산관리" />
 						<span>정산관리</span>
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;" onclick = "goBody('/admin/system/board/notice/index.do');">
+					<a href="javascript:;" onclick = "goBody('/giftcard/admin/system/board/notice/index.do');">
 						<img src="/images/admin/contents/main_icon4.png" alt="시스템관리" />
 						<span>시스템관리</span>
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;" onclick = "goBody('/admin/statistics/statistics.do');">
+					<a href="javascript:;" onclick = "goBody('/giftcard/admin/statistics/statistics.do');">
 						<img src="/images/admin/contents/main_icon5.png" alt="통계관리" />
 						<span>통계관리</span>
 					</a>
@@ -73,11 +73,6 @@ function goBody(target_url){
 				</c:if>
 			</c:if>
 	  	</c:when>
-	  	<c:otherwise>
-	  			<c:if test = "${sessionScope.member.carall eq 'N'}">
-	  			<li><a href="javascript:;" onclick = "goBody('/admin/resources/index.do');"><img src="/images/admin/contents/main_img1.png" alt="4대자원관리" /></a></li>
-	  			</c:if>
-	  	</c:otherwise>
 	  </c:choose>
 	  </ul>
   </div>
