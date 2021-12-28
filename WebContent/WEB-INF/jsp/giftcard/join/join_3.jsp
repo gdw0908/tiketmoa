@@ -346,9 +346,8 @@
 									<th scope="row"><b>*</b> 이메일</th>
 									<td><input type="text" id="email1" name="email1"
 										class="input_j1 ws_5"> @ <input type="text"
-										id="email2" name="email2" class="input_j1 ws_5"> <select
-										id="" name="" class="select_j2"
-										onchange="inputEmail2(this.value);">
+										id="email2" name="email2" class="input_j1 ws_5"> 
+										<select id="" name="" class="select_j2" onchange="inputEmail2(this.value);">
 											<option value="hanmail.net">hanmail.net</option>
 											<option value="naver.com">naver.com</option>
 											<option value="daum.net">daum.net</option>
@@ -360,22 +359,24 @@
 											<option value="yahoo.co.kr">yahoo.co.kr</option>
 											<option value="sportal.or.kr">sportal.or.kr</option>
 											<option value="" selected>직접입력</option>
-									</select></td>
+										</select></td>
 								</tr>
 								<tr>
 									<th scope="row" class="fs_1">광고성 메일 수신</th>
-									<td><p>
-											<label> <input type="checkbox" id="email_yn"
-												name="email_yn" class="check" value="Y"> 수신함
-											</label> <label style="margin-left: 15px;"> <input
-												type="checkbox" id="email_yn" name="email_yn" class="check"
-												value="N"> 수신안함
+									<td>
+										<p>
+											<label> 
+												<input type="radio" id="email_yn" name="email_yn" class="check" value="Y"> 수신함
+											</label> 
+											<label style="margin-left: 15px;"> 
+												<input type="radio" id="email_yn" name="email_yn" class="check" value="N"> 수신안함
 											</label>
 										</p>
 										<p class="c2">
 											※ 주요 공지사항 및 알림 등은 설정에 관계 없이 발송되며,<br> 설정변경은 고객센터>회원정보 에서
 											변경 가능합니다.
-										</p></td>
+										</p>
+									</td>
 								</tr>
 								<tr>
 									<th scope="row"><b>*</b> 주소</th>
