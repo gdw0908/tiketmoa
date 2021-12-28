@@ -174,7 +174,7 @@
 			, PRODUCTNM = #{productnm} 
 			, FEE_YN = #{fee_yn} 
 			, FEE_AMOUNT = #{fee_amount}
-			, USER_PRICING_YN = #{user_pricing_yn} 
+			, USER_PRICING_YN = 'Y'
 			, USER_PRICE = #{user_price}
 			, CONTS = #{conts}
 			, APPROVAL = #{approval}
@@ -188,7 +188,7 @@
 			, RECOMMYN = #{recommyn} 
 			, SALEYN = #{saleyn} 
 			, PLANYN = #{planyn}
-			, STOCK_YN = #{stock_yn}
+			, STOCK_YN = 'Y'
 			, STOCK_NUM = #{stock_num}
 		WHERE ITEM_SEQ = #{item_seq}
 	</update>
@@ -200,8 +200,8 @@
 			SALEYN, PLANYN, APPROVAL, CONTS, REG_ID, REG_DT, STOCK_YN, STOCK_NUM
 		)VALUES(
 			SEQ_GC_GOODS.NEXTVAL, 'P' || TO_CHAR(SYSDATE, 'YYMMDD') || to_char(10000000+SEQ_GC_GOODS.nextval), #{carmakerseq}, #{carmodelseq}, #{productnm}, 
-			#{user_pricing_yn}, #{user_price},#{fee_yn}, #{fee_amount},#{search_tag}, #{bestyn}, #{eventyn}, #{newyn}, #{publicyn}, #{recommyn}, 
-			#{saleyn}, #{planyn}, #{approval}, #{conts},#{session_member_id}, SYSDATE, #{stock_yn}, #{stock_num}
+			'Y', #{user_price},#{fee_yn}, #{fee_amount},#{search_tag}, #{bestyn}, #{eventyn}, #{newyn}, #{publicyn}, #{recommyn}, 
+			#{saleyn}, #{planyn}, #{approval}, #{conts},#{session_member_id}, SYSDATE, 'Y', #{stock_num}
 		)
 	</update>
 	
