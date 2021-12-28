@@ -24,6 +24,7 @@
                               		<p class="mt_img"><a href="/giftcard/goods/view.do?seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a></p>
                               		<p class="mt_btn">
                                 		<a href="/giftcard/goods/view.do?seq=${item.item_seq }" target="_blank">새창</a>
+                                		<%-- <a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a> --%>
                                 		<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
                                 		<c:choose><c:when test="${item.inquiry_yn eq 'Y' }"><a href="javascript:inquery_y();">바로구매</a>
                                 			</c:when><c:otherwise><a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
@@ -57,5 +58,21 @@ $("#lastest_page").html("<b>${param.cpage}</b>/${totalpage}");
 $("#lastest_page").data("totalpage", "${totalpage}");
 function inquery_y(){
 	alert("협의가 필요한 물품입니다.\n고객센터로 문의 바랍니다.");
+}
+function addCart(item_seq){
+	var check = confirm("장바구니에 추가되었습니다.\n장바구니로 이동하시겠습니까?");
+    
+    if(check){
+	    alert("장바구니로 이동합니다.");
+	    $("#cartFrm>[name='mode']").val("add_cart");
+	   	$("#cartFrm>[name='seq']").val(item_seq);
+	   	$("#cartFrm").submit();
+   		return false;
+   		
+    } else {
+    	return;
+    	
+    }
+    
 }
 </script>
