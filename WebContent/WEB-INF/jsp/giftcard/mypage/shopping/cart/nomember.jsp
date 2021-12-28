@@ -37,12 +37,12 @@
 <script type="text/javascript" src="/lib/js/jquery.lck.util.js"></script>
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type="text/javascript">
-StartSmartUpdate();
+/* StartSmartUpdate();
 
 $(function(){
 	Enable_Flag(frmAGS_pay);
 	
-});
+}); */
 
 //<![CDATA[
 function wrapWindowByMask(){
@@ -111,9 +111,9 @@ function openAddr(){
 }
 
 function setAddr(roadAddrPart1, addrDetail, zipNo, jibunAddr) {
-	var zip = zipNo.split("-");
-	$("#zip1").val(zip[0]);
-	$("#zip2").val(zip[1]);
+	//var zip = zipNo.split("-");
+	$("#zip1").val(zipNo.substring(0,3));
+	$("#zip2").val(zipNo.substring(3,5));
 	$("#addr1").val(jibunAddr);
 	$("#addr2").val(addrDetail);
 }
@@ -173,6 +173,8 @@ function Check_Common(form){
 		alert("우편번호를 정확히 입력해주세요");
 		form.zip1.focus();
 		return false;
+	}else{
+		$("#m_zip_cd").val(form.zip1.value+"-"+form.zip2.value);
 	}
 	/*if(form.zip2.value == "" || isNaN(form.zip2.value)){
 		alert("우편번호를 정확히 입력해주세요");
@@ -183,6 +185,9 @@ function Check_Common(form){
 		alert("배송지 주소를 입력해주세요");
 		form.addr1.focus();
 		return false;
+	}else{
+		$("#m_addr1").val(form.addr1.value);
+		$("#m_addr2").val(form.addr2.value);
 	}
 	if(form.receiver.value == ""){
 		alert("수취인 이름을 입력해주세요");
@@ -204,7 +209,8 @@ function Check_Common(form){
 		form.cell3.focus();
 		return false;
 	}
-	if(form.tel1.value == "" || isNaN(form.tel1.value)){
+	$("#m_cell").val(form.m_cell1.value+"-"+form.m_cell2.value+"-"+form.m_cell3.value);
+	/*if(form.tel1.value == "" || isNaN(form.tel1.value)){
 		alert("휴대폰 번호를 정확히 입력해주세요");
 		form.tel1.focus();
 		return false;
@@ -243,10 +249,10 @@ function Check_Common(form){
 	else if(form.MallUrl.value == ""){
 		alert("상점URL을 입력하십시오.");
 		return false;
-	}
+	} */
 	return true;
 }
-function Pay(form){
+/* function Pay(form){
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MakePayMessage() 가 호출되면 올더게이트 플러그인이 화면에 나타나며 Hidden 필드
@@ -390,7 +396,7 @@ function Pay(form){
 			}
 		}
 	}
-}
+} */
 
 //배송비 선결제 설정
 function changeCod(idx, val){
@@ -429,10 +435,16 @@ $(function(){
 		$(this).autocomplete("search");
 	});
 });
+function goStep3() {
+	if(Check_Common(frm) == true){
+		$("#frm").submit();
+	}
+}
 </script>
 </head>
 <body>
-<form name="frmAGS_pay" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;">
+<!-- <form name="frmAGS_pay" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;"> -->
+<form name="frm"  id="frm" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;">
 	<div class="title_rocation">
       <div class="tr_wrap">
         <h3>주문/결제</h3>
@@ -465,10 +477,11 @@ $(function(){
           </thead>
           <tbody>
           <c:forEach var="item" items="${data.list }" varStatus="status">
-			<c:set var="user_price_l" value="0"/>
+          	<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
+			<c:set var="prod_price" value="${prod_price + user_price_l }"/>
 			<c:set var="discount_price_l" value="0"/>
 			<c:set var="fee_price_l" value="0"/>
-      		<c:if test="${item.discount_rate > 0}">
+      		<%-- <c:if test="${item.discount_rate > 0}">
         		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
          		<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.sale_price * item.qty)) }"/>
 				<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
@@ -481,18 +494,16 @@ $(function(){
        		<c:if test="${item.cod_yn eq 'Y' }">
             	<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
             	<c:set var="fee_price_l" value="${item.fee_amt }"/>
-            </c:if>
+            </c:if> --%>
           <tr>
             <td class="cart_main">
               <div class="product_box">
                 <div class="pb_l"> <a href="#"><img src="${item.thumb }" alt=""></a> </div>
                 <div class="pb_r ws_2">
                   <p>
-                  <a href="#">
-                  <span><strong>${item.part3_nm }</strong></span>
-                  <span class="pro_name"><strong>${item.carmodelnm } ${item.cargradenm } (${item.caryyyy })</strong></span>
-                  <span>${item.grade }등급 / ${item.com_nm }</span>
-                  </a>
+					<a href="#"> <span><strong>${item.MAKERNM }</strong></span>
+						<span><strong>${item.PRODUCTNM } </strong></span> <%-- <span>${item.grade }등급 / ${item.com_nm }</span> --%>
+					</a>
                   </p>
                 </div>
               </div>
@@ -514,8 +525,7 @@ $(function(){
 <!--               </p> -->
 <!--             </td> -->
             <td>
-            	${fee_price_l } 원
-            	<br>
+            	<c:if test="${fee_price_l > 0  }">${fee_price_l} 원<br></c:if> 
             	 <c:choose>
 	              	<c:when test="${item.fee_yn eq 'C' }">
 	              	착불
@@ -530,9 +540,7 @@ $(function(){
 	              	<c:otherwise>무료</c:otherwise>
 				</c:choose>
             </td>
-            <td class="b_none">
-            	${suf:getThousand(user_price_l - discount_price_l + fee_price_l) } 원
-            </td>
+            <td class="b_none">${suf:getThousand(user_price_l)} 원</td>
           </tr>
           </c:forEach>
           </tbody>
@@ -638,7 +646,7 @@ $(function(){
                 <div class="color_2"><strong>주의!</strong> : 판매자와 사전에 협의되지 않은 선택정보 변경 기재는 반영되지 않을 수 있습니다.</div>
                 <c:forEach var="item" items="${data.list }" varStatus="status">
                 <div class="middle">
-                  <p class="color_1">상품명 : ${item.part3_nm } / ${item.carmodelnm } ${item.cargradenm } (${item.caryyyy }) </p>
+                  <p class="color_1">상품명 : ${item.MAKERNM } / ${item.PRODUCTNM } </p>
                   <p><input type="text" name="message" class="input_2 ws_4" maxlength="100"> ( 0/100 bytes )</p>
                   <input type="hidden" name="cart_no" value="${item.cart_no }"/>
                 </div>
@@ -658,8 +666,8 @@ $(function(){
                 <span class="pt_r">선택상품 : <b>${fn:length(data.list) }</b>개</span>
               </div>
               <div class="bottom">
-                <p><b>${suf:getThousand(user_price) }</b>원</p>
-                <p class="pb_type"><span class="pb_l">선결제배송비</span><span class="pb_r"><b>${suf:getThousand(fee_price) }</b>원</span></p>
+                <p><b>${suf:getThousand(prod_price) }</b>원</p>
+                <%-- <p class="pb_type"><span class="pb_l">선결제배송비</span><span class="pb_r"><b>${suf:getThousand(fee_price) }</b>원</span></p> --%>
               </div>
             </div>
             <div class="p_check2">
@@ -677,7 +685,7 @@ $(function(){
                 <span class="pt_l"><strong>총 구매금액</strong></span>
               </div>
               <div class="bottom">
-              	<c:set var="actual_price" value="${user_price - discount_price + fee_price}" scope="request"/>
+              	<c:set var="actual_price" value="${prod_price - discount_price + fee_price}" scope="request"/>
                 <p class="equal"><b>${suf:getThousand(actual_price) }</b>원</p>
               </div>
             </div>
@@ -686,8 +694,8 @@ $(function(){
           
           <div class="pay_btn"> 
 <!--           <a href="/html/join/no_member_3.html"><img src="/images/sub_2/btn_pay_2.gif" alt="결제하기"></a>  -->
-	          <a href="#" onclick="return Pay(frmAGS_pay)" style="color: #fff;">결제하기</a> 
-	          <a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a> 
+	          <a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
+	          <a href="#" onclick="javascript:goStep3()" style="color: #fff;">결제하기</a> 
           </div>
 
     </div>
@@ -724,11 +732,11 @@ $(function(){
 	String AGS_HASHDATA = strBuf.toString();
  
 %>
-<input type="hidden" name="m_zip_cd" value=""/>
-<input type="hidden" name="m_addr1" value=""/>
-<input type="hidden" name="m_addr2" value=""/>
-<input type="hidden" name="m_cell" value=""/>
-<input type="hidden" name="m_tel" value=""/>
+<input type="hidden" name="m_zip_cd" id="m_zip_cd" value=""/>
+<input type="hidden" name="m_addr1" id="m_addr1" value=""/>
+<input type="hidden" name="m_addr2" id="m_addr2" value=""/>
+<input type="hidden" name="m_cell" id="m_cell" value=""/>
+<input type="hidden" name="m_tel" id="m_tel" value=""/>
 
 <input type="hidden" name="Job" value=""/>
 <input type="hidden" name="StoreId" value="<%=StoreId %>"/>

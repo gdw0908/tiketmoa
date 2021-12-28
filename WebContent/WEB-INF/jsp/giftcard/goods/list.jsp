@@ -165,20 +165,10 @@ function inquery_y(){
 }
 
 function addCart(item_seq){
-	var check = confirm("장바구니에 추가되었습니다.\n장바구니로 이동하시겠습니까?");
-    
-    if(check){
-	    alert("장바구니로 이동합니다.");
-	    $("#cartFrm>[name='mode']").val("add_cart");
-	   	$("#cartFrm>[name='seq']").val(item_seq);
-	   	$("#cartFrm").submit();
-   		return false;
-   		
-    } else {
-    	return;
-    	
-    }
-    
+	$("#cartFrm>[name='mode']").val("add_cart");
+	$("#cartFrm>[name='seq']").val(item_seq);
+	$("#cartFrm").submit();
+	return false;
 }
 
 function directOrder(item_seq){
@@ -190,18 +180,6 @@ function directOrder(item_seq){
 <c:if test="${empty data.list}">
 	replaceApplication();
 </c:if>
-
-/* function cartAdd() {   
-    var check = confirm("장바구니에 추가되었습니다.\n장바구니로 이동하시겠습니까?");
-    
-    if(check){
-	        alert("장바구니로 이동합니다.");
-	        return addCart('${item.item_seq }')
-    } else {
-			return
-    }
-    
-} */
 </script>
 </head>
 
@@ -292,7 +270,6 @@ function directOrder(item_seq){
 		          					</a>
 		          					<div class="m_btn">
 		                				<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" target="_blank">새창</a>
-		                				<%-- <a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a> --%>
 		                				<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
 		                				<a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
 		                			</div>

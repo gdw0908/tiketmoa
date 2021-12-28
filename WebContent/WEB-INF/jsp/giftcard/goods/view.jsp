@@ -36,11 +36,11 @@
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type="text/javascript">
     	
-$(window).scrollTop($("#content_view").offset().top);
+/* $(window).scrollTop($("#content_view").offset().top);
 	nmap({ngTitle:"${view.com_nm}" ,ngXcoord:"${view.x_coord}", ngYcoord:"${view.y_coord}", ngWidth: 416, ngHeight:342});
 	other_listPage(1);
 
-});
+}); */
 
 function setCookie(cname,cvalue,exdays) {
 	var d = new Date();
@@ -63,6 +63,17 @@ function cart(seq){
 		</c:when>
 		<c:otherwise>
 			location.href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq="+seq+"&qty="+$("#qty").val();
+		</c:otherwise>
+	</c:choose>
+}
+
+function directOrder(seq){
+	<c:choose>
+		<c:when test="${empty view.stock_num || view.stock_num <= 0}">
+			alert("재고수량이 없습니다.");
+		</c:when>
+		<c:otherwise>
+			location.href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq="+seq+"&qty="+$("#qty").val();
 		</c:otherwise>
 	</c:choose>
 }
@@ -147,21 +158,22 @@ function view(opt) {
 									</c:choose>
 								</a>
 							</li>
-
-							<li>
-								<a href="javascript:void();">
-									<span>수령방법</span>
-									<select name="" id="">
-										<option value="0">선택</option>
-										<option value="1">직접 수령</option>
-										<option value="2">배송 수령</option>
-									</select>
-								</a>
-							</li>
+							<c:if test="${view.FEE_YN == 'Y' }">
+								<li>
+									<a href="javascript:void();">
+										<span>수령방법</span>
+										<select name="" id="">
+											<option value="0">선택</option>
+											<option value="1">직접 수령</option>
+											<option value="2">배송 수령</option>
+										</select>
+									</a>
+								</li>
+							</c:if>
 							<li>
 								<a href="javascript:cntCalc();">
 									<span>구매수량</span>
-									<input type="number" class="count_input" name="count" id="count" value="1" onblur="cntCalc()" onkeyup="cntCalc()">
+									<input type="number" class="count_input" name="qty" id="qty" value="1" onblur="cntCalc()" onkeyup="cntCalc()">
 								</a>
 							</li>
 						</ul>
@@ -173,8 +185,8 @@ function view(opt) {
 						</p>
 					</div>
 					<div class="d_info_btn">
-						<a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1">장바구니담기</a>
-						<a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
+						<a class="cart_btn" href="javascript:cart(${param.seq });">장바구니담기</a>
+						<a class="buy_btn" href="javascript:directOrder(${param.seq });">구매하기</a>
 					</div>
 				</div>
 			</div>
@@ -190,6 +202,21 @@ function view(opt) {
 							<p class="pro_pay">${suf:getThousand(item.user_price) }<span>원</span></p>
 						</div>
 					</c:forEach>
+					<!-- <div class="swiper-slide item">
+						<img src="/images/products/gal_3.jpg">
+						<p class="pro_tit">상품명</p>
+						<p class="pro_pay">30,000<span>원</span></p>
+					</div>
+					<div class="swiper-slide item">
+						<img src="/images/products/gal_5.jpg">
+						<p class="pro_tit">상품명</p>
+						<p class="pro_pay">50,000<span>원</span></p>
+					</div>
+					<div class="swiper-slide item">
+						<img src="/images/products/gal_7.jpg">
+						<p class="pro_tit">상품명</p>
+						<p class="pro_pay">70,000<span>원</span></p>
+					</div> -->
            		</div>
           	</article>
 			
@@ -257,7 +284,7 @@ function view(opt) {
     	  });
     	  
     	  
-    	  $("#count").spinner();
+    	  $("#qty").spinner();
     	  
     	// slide
     	    var other_slide = new Swiper('.other_slide', {
@@ -290,12 +317,12 @@ function view(opt) {
     		  location.href = "./question_view.do";
     	  }
     	  function cntCalc() {
-				if($("#count").val() > 0){
+				if($("#qty").val() > 0){
 					var userPrice = Number('${view.USER_PRICE}');
-					var toPrice =Number($("#count").val())*userPrice;
+					var toPrice =Number($("#qty").val())*userPrice;
 					$(".to_price").html(String(toPrice).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 				}else{
-					$("#count").val(''); 
+					$("#qty").val(''); 
 					$(".to_price").html('0');					
 				}				
 			}

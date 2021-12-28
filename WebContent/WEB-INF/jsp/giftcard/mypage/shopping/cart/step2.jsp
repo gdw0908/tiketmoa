@@ -161,9 +161,9 @@ function openAddr(){
 }
 
 function setAddr(roadAddrPart1, addrDetail, zipNo, jibunAddr) {
-	var zip = zipNo.split("-");
-	$("#zip1").val(zip[0]);
-	$("#zip2").val(zip[1]);
+	//var zip = zipNo.split("-");
+	$("#zip1").val(zipNo.substring(0,3));
+	$("#zip2").val(zipNo.substring(3,5));
 	$("#addr1").val(jibunAddr);
 	$("#addr2").val(addrDetail);
 }
@@ -204,7 +204,7 @@ function Check_Common(form){
 		form.cell3.focus();
 		return false;
 	}
-	if(form.tel1.value == "" || isNaN(form.tel1.value)){
+	/* if(form.tel1.value == "" || isNaN(form.tel1.value)){
 		alert("연락처를 정확히 입력해주세요");
 		form.tel1.focus();
 		return false;
@@ -243,7 +243,7 @@ function Check_Common(form){
 	else if(form.MallUrl.value == ""){
 		alert("상점URL을 입력하십시오.");
 		return false;
-	}
+	} */
 	
 	return true;
 }
@@ -451,8 +451,9 @@ function fn_checkByte(obj){
 }
 
 function goStep3() {
- 	//alert("121212");
-	$("#frm").submit();
+	if(Check_Common(frm) == true){
+		$("#frm").submit();
+	}
 }
 </script>
 </head>
@@ -701,8 +702,7 @@ function goStep3() {
 										<strong>주의!</strong> : 판매자와 사전에 협의되지 않은 선택정보 변경 기재는 반영되지 않을 수 있습니다.
 									</div> <c:forEach var="item" items="${data.list }" varStatus="status">
 										<div class="middle">
-											<p class="color_1">상품명 : ${item.MAKERNM } /
-												${item.PRODUCTNM } </p>
+											<p class="color_1">상품명 : ${item.MAKERNM } / ${item.PRODUCTNM } </p>
 											<p>
 												<input type="text" name="message" class="input_2 ws_4 message" maxlength="100" maxlength="100" onkeyup="fn_checkByte(this)"> 
 												<span id="titleByte">0</span>Byte (최대 100Byte까지 입력할 수 있습니다.)

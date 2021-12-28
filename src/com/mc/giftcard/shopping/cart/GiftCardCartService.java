@@ -119,9 +119,17 @@ public class GiftCardCartService {
 		}*/
 		
 		Map cartMap = cartDAO.in_cart(params);
-		if(cartMap != null){//이미 같은상품이 장바구니에 담겨있을경우
+		if(cartMap != null){//이미 같은상품이 장바구니에 담겨있을경우 하나 증가
 			params.put("cart_no", cartMap.get("cart_no"));
+			String strQty = StringUtil.nvl((String)cartMap.get("qty"), "0");
+			int qty = Integer.parseInt(strQty)+Integer.parseInt((String)params.get("qty"));
+			params.put("qty", String.valueOf(qty));
 //			cartDAO.add_cartQty(params);
+			rstMap = qtyChange(params);
+			if("-1".equals(rstMap.get("rst"))) {
+				rstMap.put("msg","해당 상품의 최대 구매하실수 있는 수량은 " + cartMap.get("qty")+ " 입니다.");
+				return rstMap;
+			}
 		}else{
 			cartDAO.add_cart(params);
 		}
@@ -222,7 +230,7 @@ public class GiftCardCartService {
 		if("N".equals(params.get("memberLogin"))){
 			//if(!paytyp.equals("virtual")){
 				logger.info("success virtual");
-				params.put("mmsMessage", "상품의 주문 및 결제가 완료 되었습니다. 주문번호 : "+params.get("orderno"));
+				params.put("mmsMessage", "상품의 주문이 완료 되었습니다. 주문번호 : "+params.get("orderno"));
 				//mmsService.guestMMS(params);
 				logger.info("success guestMMS");
 			//}

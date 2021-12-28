@@ -183,8 +183,11 @@ function show_receipt() {
             	<tbody>
             		<tr>
              	 		<th scope="row" rowspan="1">결제정보</th>
-              			<td>결제금액 : <b class="b_num"><%-- <%=StringUtil.getThousand(rAmt) %> --%></b>원</td>
+              			<td>결제금액 : <b class="b_num">${suf:getThousand(data.resultInfo.payamt) }</b>원</td>
             		</tr>
+					<tr> 
+              			<td>납부방식 : <%-- ${param.rCardNm } --%>가상계좌결제 계좌번호&nbsp;<b class="b_num">110-176-113-299</b></td>
+           			 </tr>
             	</tbody>
             </table>
           </div>
@@ -209,7 +212,7 @@ function show_receipt() {
             		<th scope="col">할인</th>
             		<th scope="col">배송비</th>
             		<th scope="col">합계</th>
-            		<th scope="col">주문번호/영수증</th>
+            		<th scope="col">주문번호</th>
           		</tr>
           	</thead>
           	<tbody>
@@ -217,72 +220,78 @@ function show_receipt() {
 					<c:set var="user_price_l" value="0"/>
 					<c:set var="discount_price_l" value="0"/>
 					<c:set var="fee_price_l" value="0"/>
-      				<c:if test="${item.discount_rate > 0}">
-        				<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-         				<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.sale_price * item.qty)) }"/>
-						<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-						<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.sale_price * item.qty) }"/>
-           			</c:if>
-					<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
-        				<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-						<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-           			</c:if>
-           			<c:if test="${item.cod_yn eq 'Y' }">
-            			<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
-            			<c:set var="fee_price_l" value="${item.fee_amt }"/>
-            		</c:if>
-          		<tr>
-            		<td class="cart_main">
-              			<div class="product_box">
-                		<div class="pb_l"> <a href="#"><img src="${item.thumb }" alt=""></a> </div>
-                		<div class="pb_r ws_3">
-                  		<p>
-                  			<a href="#">
-                  				<span><strong>${item.part3_nm }</strong></span>
-                  				<span><strong>${item.carmodelnm } ${item.cargradenm } (${item.caryyyy })</strong></span>
-                  				<span>${item.grade }등급 / ${item.com_nm }</span>
-                  			</a>
-                  		</p>
-                	</div>
-              	</div>
-            </td>
-            <td>${item.qty }개</td>
-            <td>
-	            ${suf:getThousand(item.user_price) } 원 
-              	<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
-            </td>
-            <td>
-            	<p class="first">
-            	<c:if test="${item.discount_rate > 0}">
-	              ${suf:getThousand(item.user_price - item.sale_price) }
-            	</c:if>
-				<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
-	              0
-            	</c:if> 원 
-              	<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
-              	</p>
-            </td>
-            <td>
-            	${fee_price_l } 원
-            </td>
-            <td>
-            	${suf:getThousand(user_price_l - discount_price_l + fee_price_l) } 원
-			</td>
-            <c:if test="${status.first }">
-            <td class="b_none" rowspan="${fn:length(data.list) }">
-              <p class="first"><%-- <%=rOrdNo%> --%></p>
-              <c:choose>
-              	<c:when test="${data.resultInfo.paytyp eq 'card' }">
-              		<p><input type="button" value="영수증" onclick="javascript:show_receipt();"/></p>
-              	</c:when>
-              	<c:otherwise>
-<!--               <p><a href="#"><img src="/images/sub_2/pay_c_btn1.gif" alt="현금영수증신청"></a></p> -->
-              	</c:otherwise>
-              </c:choose>
-            </td>
-            </c:if>
-          </tr>
-          </c:forEach>
+	          		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
+					<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
+	       		<c:if test="${item.cod_yn eq 'Y' }">
+	            	<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
+	            	<c:set var="fee_price_l" value="${item.fee_amt }"/>
+	            </c:if>
+	          <tr>
+	            <td class="cart_main">
+	              <div class="product_box">
+	                <div class="pb_l"> <a href="#"><img src="${item.thumb }" alt=""></a> </div>
+	                <div class="pb_r ws_3">
+	                  <p>
+	                  <a href="#">
+	                  <span><strong>${item.MAKERNM }</strong></span>
+	                  <span><strong>${item.PRODUCTNM }</strong></span>
+	                  <%-- <span>${item.grade }등급 / ${item.com_nm }</span> --%>
+	                  </a>
+	                  </p>
+	                </div>
+	              </div>
+	            </td>
+	            <td>${item.qty }개</td>
+	            <td>
+	            	<c:choose>
+	              		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
+	              			${suf:getThousand(item.supplier_price) }
+	              		</c:when>
+	              		<c:otherwise>
+		              		${suf:getThousand(item.user_price) }
+	              		</c:otherwise>
+	              	</c:choose> 원 
+	              	<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
+	            </td>
+	            <td>
+	            	<p class="first">
+	              	<c:choose>
+	              		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
+	              			${suf:getThousand(item.user_price - item.supplier_price) }
+	              		</c:when>
+	              		<c:otherwise>
+	              			<c:if test="${item.discount_rate > 0}">
+				              ${suf:getThousand(item.user_price - item.sale_price) }
+			            	</c:if>
+							<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
+				              0
+			            	</c:if>
+	              		</c:otherwise>
+	              	</c:choose> 원 
+	              	<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
+	              	</p>
+	            </td>
+	            <td>
+	            	${fee_price_l } 원
+	            </td>
+	            <td>
+	            	${suf:getThousand(user_price_l - discount_price_l + fee_price_l) } 원
+	            </td>
+	            <c:if test="${status.first }">
+	            <td class="b_none" rowspan="${fn:length(data.list) }">
+	              <p class="first">${data.resultInfo.orderno}</p>
+	              <c:choose>
+	              	<c:when test="${data.resultInfo.paytyp eq 'card' }">
+	              		<p><input type="button" value="영수증" onclick="javascript:show_receipt();"/></p>
+	              	</c:when>
+	              	<c:otherwise>
+	<!--               <p><a href="#"><img src="/images/sub_2/pay_c_btn1.gif" alt="현금영수증신청"></a></p> -->
+	              	</c:otherwise>
+	              </c:choose>
+	            </td>
+	            </c:if>
+	          </tr>
+	          </c:forEach>
           </tbody>
           </table>
           
@@ -332,20 +341,20 @@ function show_receipt() {
                 <col width="30%">
                 <col width="">
                 </colgroup>
-                <tbody>
-                <tr>
-                  <th scope="row">주문자</th>
-                  <td>${data.resultInfo.order_nm }</td>
-                </tr>
-                <tr>
-                  <th scope="row">이메일</th>
-                  <td>${data.resultInfo.email }</td>
-                </tr>
-                <tr>
-                  <th scope="row">주문자 휴대폰</th>
-                  <td>${data.resultInfo.rehp }</td>
-                </tr>
-                </tbody>
+                 <tbody>
+	                <tr>
+	                  <th scope="row">주문자</th>
+	                  <td>${data.resultInfo.order_nm }</td>
+	                </tr>
+	                <tr>
+	                  <th scope="row">이메일</th>
+	                  <td>${data.resultInfo.email }</td>
+	                </tr>
+	                <tr>
+	                  <th scope="row">주문자 휴대폰</th>
+	                  <td>${data.resultInfo.rehp }</td>
+	                </tr>
+	                </tbody>
                 </table>
               </div>
 
@@ -369,8 +378,8 @@ function show_receipt() {
                 <tr>
                   <th scope="row">배송지 주소</th>
                   <td>
-                    <p>(${data.resultInfo.re_zipcd }) ${data.resultInfo.re_addra }</p>
-                    <p>${data.resultInfo.re_addr1 } ${data.resultInfo.re_addr2 }</p>
+                    <p>(${data.resultInfo.re_zipcd }) ${data.resultInfo.re_addr1 }</p>
+                    <p>${data.resultInfo.re_addr2 }</p>
                   </td>
                 </tr>
                 <tr>
@@ -403,7 +412,7 @@ function show_receipt() {
               <td>
 				<c:forEach var="item" items="${data.list }" varStatus="status">
                 <div class="request_top">
-                  <p class="request_c1"><strong>상품명</strong> : ${item.part3_nm } / ${item.carmodelnm } ${item.cargradenm } (${item.caryyyy })</p>
+                  <p class="request_c1"><strong>상품명</strong> : ${item.PRODUCTNM } / (${item.MAKERNM })</p>
                   <p><strong>요청사항</strong> :  ${item.message }</p>
                 </div>
 				</c:forEach>
