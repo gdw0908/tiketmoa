@@ -264,7 +264,7 @@ body.active { overflow-y: hidden; }
 	width: 100px;
 	 height: 16px;
 	 font-size:14px;
-	 padding: 5px 10px; 
+	 padding: 5px 20px 5px 10px; 
 	 background: transparent;
 /* 	 background:url(/images/header/input_search.gif) no-repeat 340px 10px;  */
 	 border: none;

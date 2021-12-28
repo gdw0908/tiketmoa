@@ -561,7 +561,7 @@ function goStep3() {
 						              		착불
 						              	</c:when>
 										<c:when test="${item.fee_yn eq 'Y' }">
-											<select class="deliver_sel" name="cod_yn" onchange="changeCod('${item.cart_no }', this.value)">
+											<select class="delivery_sel" name="cod_yn" onchange="changeCod('${item.cart_no }', this.value)">
 												<option value="Y"
 													<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
 												<option value="N"
@@ -580,7 +580,8 @@ function goStep3() {
 				</table>
 				<ul class="sub_list_1">
 					<li><strong>티켓모아</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
-						<strong>티켓모아</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+						<strong>티켓모아</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.
+					</li>
 				</ul>
 				<p class="pay_type">2. 주문회원 정보</p>
 				<div class="sub_table_1">

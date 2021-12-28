@@ -183,22 +183,30 @@ function view(opt) {
 				<h6>다른 고객이 함께 구매한 상품</h6>
             	<div class="swiper-wrapper other_wrap">
 					<div class="swiper-slide item">
-						<img src="/images/products/gal_1.jpg">
+						<a href="javascript:void();">
+							<img src="/images/products/gal_1.jpg">
+						</a>
 						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">10,000<span>원</span></p>
+						<p class="pro_pay">10,000<span>원</span></p>						
 					</div>
 					<div class="swiper-slide item">
-						<img src="/images/products/gal_3.jpg">
+						<a href="javascript:void();">
+							<img src="/images/products/gal_3.jpg">
+						</a>
 						<p class="pro_tit">상품명</p>
 						<p class="pro_pay">30,000<span>원</span></p>
 					</div>
 					<div class="swiper-slide item">
-						<img src="/images/products/gal_5.jpg">
+						<a href="javascript:void();">
+							<img src="/images/products/gal_5.jpg">
+						</a>	
 						<p class="pro_tit">상품명</p>
 						<p class="pro_pay">50,000<span>원</span></p>
 					</div>
 					<div class="swiper-slide item">
-						<img src="/images/products/gal_7.jpg">
+						<a href="javascript:void();">
+							<img src="/images/products/gal_7.jpg">
+						</a>
 						<p class="pro_tit">상품명</p>
 						<p class="pro_pay">70,000<span>원</span></p>
 					</div>

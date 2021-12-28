@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import url('../font.css');
 
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, p, button, select, input, textarea, th, td {margin:0; padding:0;}
 body {height:100%; font-family: 'S-Core'; font-size:12px; color:#1a1e26; }
@@ -26,6 +25,14 @@ img {border:none; vertical-align:top;}
 button {
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 	border: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s;
+	 -webkit-transition: background-color 9999s ease-out;
+     -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
 }
 
 button, input[type="submit"], input[type="button"], input[type="number"] {
