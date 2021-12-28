@@ -298,9 +298,9 @@ function view(opt) {
     	        840 : {slidesPerView: 2, touchRatio: 1},
     	        700 : {slidesPerView: 2, touchRatio: 1},
     	        560 : {slidesPerView: 2, touchRatio: 1},
-    	        480 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 5},
-    	        360 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 10},
-    	        320 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 8},
+    	        480 : {slidesPerView: 1.2, touchRatio: 1, spaceBetween: 5},
+    	        360 : {slidesPerView: 1.2, touchRatio: 1, spaceBetween: 10},
+    	        320 : {slidesPerView: 1.2, touchRatio: 1, spaceBetween: 8},
     	      }
     	    });
     	  

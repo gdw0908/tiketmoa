@@ -830,6 +830,12 @@ p.color_1 {padding:15px 0 8px 0; color:#5686bd; background:url(/images/sub_2/pay
     	flex-direction: column;
 	}
 	
+	.list_item_wrap .item_wrap .item_list .img_wrap img {
+		display: block;
+		margin: auto;
+		width: auto;
+	}
+	
 	
 	.list_item_wrap .item_wrap .item_list {
 		flex-direction: column;

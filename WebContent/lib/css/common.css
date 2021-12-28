@@ -34,8 +34,18 @@ select.select_sm1 {border:none; width:100%;}
 	z-index: 1;
 }
 .mo_bg.active { display: block; }
+.mo_logo { 
+	display: none; 
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+.mo_logo a { display: block; }
+.mo_logo img {
+	width: 120px;
+}
 /* header */
 body.active { overflow-y: hidden; }
+
 
 #header {
 	position: relative;
@@ -904,7 +914,12 @@ ul.sub_list_1 li {color:#e85946; background:url(/images/sub_2/table_list_1.gif) 
 }
 
 @media screen and (max-width: 980px) {
-	#header { background: none; }
+	#header { 
+		display: flex;
+		align-items: center;
+		background: none; 
+	}
+	.mo_logo { display: block; }
 	.ham_wrap { display: block; }
 	#gnbmenu { display: none; }
 	.util_nav { display: none; }
