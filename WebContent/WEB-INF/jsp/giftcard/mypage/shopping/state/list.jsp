@@ -234,8 +234,8 @@ function goSubmit(){
           <colgroup>
           <col width="18%">
           <col width="">
-          <col width="13%">
-          <col width="15%">
+          <col width="18%">
+          <col width="18%">
           </colgroup>
 
           <thead>
@@ -290,27 +290,27 @@ function goSubmit(){
 	            <td>
 	              <p class="status_back status_${item.status }">${item.status_nm }</p>
 	              <c:if test="${item.status eq '7' || item.status eq '8' }">
-	              <p class="btn_m2"><a href="#" onclick="track('${item.cart_no}')"><img src="/images/sub_2/btn_trace.gif" alt="배송추적"></a></p>
+	              <p class="btn_m2"><a href="#" onclick="track('${item.cart_no}')">배송추적</a></p>
 	              </c:if>
 	            </td>
 	            <td class="b_none">
 	            	<c:if test="${item.status eq '99' }">
-	             		<p class="btn_m1"><a href="#" onclick="order_cancel('${item.cart_no}');"><img src="/images/sub_2/btn_type_b99.gif" alt="주문취소"></a></p>
+	             		<p class="btn_m1"><a href="#" onclick="order_cancel('${item.cart_no}');">주문취소</a></p>
 	            	</c:if>
 	            	<c:if test="${item.status eq '1' }">
-	             		<p class="btn_m1"><a href="#" onclick="cancel_popup('${item.cart_no}');"><img src="/images/sub_2/btn_type_b1.gif" alt="취소신청"></a></p>
+	             		<p class="btn_m1"><a href="#" onclick="cancel_popup('${item.cart_no}');">취소신청</a></p>
 	            	</c:if>
 	            	<c:if test="${item.status eq '8' || item.status eq '18'}">
-	              		<p class="btn_m1"><a href="#"><img src="/images/sub_2/btn_type_a1.gif" alt="수취확인"></a></p>
+	              		<p class="btn_m1"><a href="#">수취확인</a></p>
 	            	</c:if>
 	            	<c:if test="${item.status eq '8' || item.status eq '18' }">
-	             		<p class="btn_m1"><a href="#" onclick="return_popup('${item.cart_no}');"><img src="/images/sub_2/btn_type_b3.gif" alt="반품신청"></a></p>
+	             		<p class="btn_m1"><a href="#" onclick="return_popup('${item.cart_no}');">반품신청</a></p>
 	            	</c:if>
 	            	<c:if test="${item.status eq '8' }">
-	             		<p class="btn_m1"><a href="#" onclick="exchange_popup('${item.cart_no}');"><img src="/images/sub_2/btn_type_b4.gif" alt="교환신청"></a></p>
+	             		<p class="btn_m1"><a href="#" onclick="exchange_popup('${item.cart_no}');">교환신청</a></p>
 	            	</c:if>
 	            	<c:if test="${item.status eq '12' }">
-	             		<p class="btn_m1"><a href="#" onclick="refunds_popup('${item.cart_no}');"><img src="/images/sub_2/btn_type_b5.gif" alt="환불신청"></a></p>
+	             		<p class="btn_m1"><a href="#" onclick="refunds_popup('${item.cart_no}');">환불신청</a></p>
 	            	</c:if>
 	            </td>
 	          </tr>

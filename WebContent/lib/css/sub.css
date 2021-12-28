@@ -536,10 +536,11 @@ p.d_tab_roll_btng7{position: static;; bottom:0px; left:0px; width:100%; text-ali
 	color: #707070;
 	box-sizing: border-box;
 }
-.other_slide .item { width: calc(100% /4); }
+.other_slide .item { width: calc(100% / 4); }
 .other_slide .item p {
 	margin-top: 10px;
 }
+.other_slide .item a { display: block; }
 .other_slide .item .pro_tit {
 	font-size: 14px;
 	font-weight: 300;
@@ -562,7 +563,7 @@ p.d_tab_roll_btng7{position: static;; bottom:0px; left:0px; width:100%; text-ali
   #galleryWrap > .galleryView { height: 200px; margin-bottom: 40px; }
 }
 @media screen and (max-width: 786px) {
-	.product_container .side_menu { width: 180px; }
+	.product_container .side_menu { width: 220px; }
 	
 	#galleryWrap > .galleryView {
 		min-width: 100%;

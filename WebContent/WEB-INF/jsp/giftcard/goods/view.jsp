@@ -202,21 +202,6 @@ function view(opt) {
 							<p class="pro_pay">${suf:getThousand(item.user_price) }<span>원</span></p>
 						</div>
 					</c:forEach>
-					<!-- <div class="swiper-slide item">
-						<img src="/images/products/gal_3.jpg">
-						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">30,000<span>원</span></p>
-					</div>
-					<div class="swiper-slide item">
-						<img src="/images/products/gal_5.jpg">
-						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">50,000<span>원</span></p>
-					</div>
-					<div class="swiper-slide item">
-						<img src="/images/products/gal_7.jpg">
-						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">70,000<span>원</span></p>
-					</div> -->
            		</div>
           	</article>
 			
@@ -301,13 +286,13 @@ function view(opt) {
     	      },
     	      breakpoints: {
     	        1200 : {slidesPerView: 4, touchRatio: 1},
-    	        1020 : {slidesPerView: 3, touchRatio: 1},
-    	        840 : {slidesPerView: 2, touchRatio: 1},
-    	        700 : {slidesPerView: 2, touchRatio: 1},
-    	        560 : {slidesPerView: 2, touchRatio: 1},
-    	        480 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 5},
-    	        360 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 10},
-    	        320 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 8},
+    	        1020 : {slidesPerView: 4, touchRatio: 1},
+    	        840 : {slidesPerView: 3, touchRatio: 1},
+    	        700 : {slidesPerView: 3, touchRatio: 1},
+    	        560 : {slidesPerView: 2.5, touchRatio: 1},
+    	        480 : {slidesPerView: 2.2, touchRatio: 1, spaceBetween: 5},
+    	        360 : {slidesPerView: 1.8, touchRatio: 1, spaceBetween: 10},
+    	        320 : {slidesPerView: 1.5, touchRatio: 1, spaceBetween: 8},
     	      }
     	    });
     	  

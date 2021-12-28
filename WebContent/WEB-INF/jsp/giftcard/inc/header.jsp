@@ -81,6 +81,9 @@ $( document ).ready(function() {
 <div class="mo_bg"></div>
 
 <div id="header">
+
+	<div class="mo_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓모아"></a></div>
+	
 	<!--  hamburger menu  -->
 	<div class="ham_wrap">
 		<a href="#"></a>

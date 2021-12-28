@@ -120,6 +120,7 @@ if (!(rAGS_HASHDATA.equals(AGS_HASHDATA))) errResMsg = "결재금액 변조 발�
 <meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
 <title>비회원 주문완료</title>
 
+<link rel="stylesheet" href="/lib/css/sub_2.css" type="text/css">
 <script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/lib/js/jquery.lck.util.js"></script>
 <script language=javascript>//"지불처리중"팝업창 닫는 부분 (AGS_pay.html에서 submit 전에 띄운 팝업 창을 닫는 스크립트)
@@ -163,6 +164,8 @@ function show_receipt() {
 </script>
 </head>
 <body>
+<div class="c_wrap">
+      <div id="sub">
 	<div class="title_rocation">
       <div class="tr_wrap">
         <h4>주문완료</h4>
@@ -181,11 +184,12 @@ function show_receipt() {
             		<col width="">
             	</colgroup>
             	<tbody>
-            		<tr>
+            		<tr class="border">
              	 		<th scope="row" rowspan="1">결제정보</th>
               			<td>결제금액 : <b class="b_num">${suf:getThousand(data.resultInfo.payamt) }</b>원</td>
             		</tr>
-					<tr> 
+					<tr  class="border"> 
+						<th scope="row" rowspan="1">납부방식</th>
               			<td>납부방식 : <%-- ${param.rCardNm } --%>가상계좌결제 계좌번호&nbsp;<b class="b_num">110-176-113-299</b></td>
            			 </tr>
             	</tbody>
@@ -198,11 +202,11 @@ function show_receipt() {
           	<colgroup>
           		<col width="">
           		<col width="7%">
+          		<col width="15%">
           		<col width="8.5%">
           		<col width="8.5%">
-          		<col width="8.5%">
-          		<col width="12%">
-          		<col width="13%">
+          		<col width="15%">
+          		<col width="15%">
           	</colgroup>
           	<thead>
           		<tr>
@@ -403,7 +407,7 @@ function show_receipt() {
           <div class="sub_table_1">
             <table>
             <colgroup>
-            <col width="20%">
+            <col width="30%">
             <col width="">
             </colgroup>
             <tbody>
@@ -426,6 +430,8 @@ function show_receipt() {
           
           <div class="pay_btn"> <a href="/giftcard/index.do">메인화면</a> </div>
 
+    </div>
+    </div>
     </div>
 <form name="frm" method="post">
 <!--영수증출력을위해서보내주는값-------------------->

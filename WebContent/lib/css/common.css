@@ -38,6 +38,8 @@ select.select_sm1 {border:none; width:100%;}
 body.active { overflow-y: hidden; }
 
 #header {
+	display: flex;
+	align-items: center;
 	position: relative;
 	width: 100%;
 	height: 60px;
@@ -56,6 +58,15 @@ body.active { overflow-y: hidden; }
 	box-sizing: border-box;
 }
 #header .h_wrap:after {display:block; clear:both; content:"";}
+
+.mo_logo { display: none; padding-left: 20px; box-sizing: border-box; }
+.mo_logo a {
+	display: block;
+	width: 120px;
+}
+.mo_logo a img {
+	width: 100%;
+}
 
 /* hamburger menu */
 .ham_wrap {
@@ -264,7 +275,7 @@ body.active { overflow-y: hidden; }
 	width: 100px;
 	 height: 16px;
 	 font-size:14px;
-	 padding: 5px 10px; 
+	 padding: 5px 20px 5px 10px; 
 	 background: transparent;
 /* 	 background:url(/images/header/input_search.gif) no-repeat 340px 10px;  */
 	 border: none;
@@ -703,14 +714,16 @@ p.mt_img a {
 	display: block;
 	width: 100%;
 	height: 100%;
+	padding: 5px;
+	box-sizing: border-box;
 }
-p.mt_img img {width: 100%; height: 100%;  object-fit: cover; }
+p.mt_img img { display: block; margin: auto; }
 .mt_btn { display: flex; align-items: center; justify-content: space-between; width: 100%;}
 .mt_btn a {
 	width: calc(100% / 3);
 	font-size: 10px;
 	text-align: center;
-	padding: 5px;
+	padding: 10px;
 	box-sizing: border-box;
 	border: 1px solid #c5c5c5;
 	border-top: none;
@@ -730,7 +743,7 @@ p.mt_img img {width: 100%; height: 100%;  object-fit: cover; }
 	box-sizing: border-box;
 }
 .md_list ul li {
-	width: calc(100% / 5);
+	width: calc(100% / 5.5);
 	padding:20px 0;
 	background: #fff;
 	box-sizing: border-box;
@@ -820,7 +833,7 @@ status_23  거래완료
 
 /* 주문조회 */
 
-.request_top {padding:18px 0 18px 0; background:url(/images/sub_2/request_bg.gif) repeat-x bottom;}
+.request_top {padding:18px 0; box-sizing: border-box; }
 .request_bottom {padding:18px 0 0 0;}
 p.request_c1 {color:#5686bd; margin-bottom:10px;}
 
@@ -905,6 +918,7 @@ ul.sub_list_1 li {color:#e85946; background:url(/images/sub_2/table_list_1.gif) 
 
 @media screen and (max-width: 980px) {
 	#header { background: none; }
+	.mo_logo { display: block; }
 	.ham_wrap { display: block; }
 	#gnbmenu { display: none; }
 	.util_nav { display: none; }
@@ -927,6 +941,7 @@ ul.sub_list_1 li {color:#e85946; background:url(/images/sub_2/table_list_1.gif) 
 	.md_list ul li { width: 100%;  padding: 15px; }
 	
 	.product_btn { margin: 10px 0 0 0; }
+	.status_99 { background-position: -43px 0px; }
 }
 
 

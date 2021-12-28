@@ -6,7 +6,9 @@
 	flex-direction: column;
 	max-width:1400px; 
 	width: 100%; 
+	padding: 0 20px;
 	margin:0 auto;
+	box-sizing: border-box;
 }
 #container .c_wrap:after {display:block; clear:both; content:"";}
 
@@ -121,7 +123,7 @@
 	box-sizing: border-box;
 }
 
-.contents {padding:0 20px 70px 20px; margin-top: 40px; box-sizing: border-box; }
+.contents {padding:0 0 70px 0; margin-top: 40px; box-sizing: border-box; }
 .companywrap {padding:101px 0 70px 0px; }
 .company{text-align: center; font-family: 'NanumBarunGothic';}
 .company_box1{}
@@ -583,7 +585,7 @@ p.ev_img img {width:100%;}
 
 @media screen and (max-width: 768px) {
 	#container .c_wrap { flex-direction: column; }
-	.left_box { width: 100%; padding: 0 20px; }
+	.left_box { width: 100%; padding: 0; }
 	.left_box > h2 { font-size: 28px; padding: 30px 0; }
 	#left_menu > ul { flex-direction: column; }
 	#left_menu > ul > li { width: 100%; border-bottom: none; border-left: 1px solid #ccc; }
