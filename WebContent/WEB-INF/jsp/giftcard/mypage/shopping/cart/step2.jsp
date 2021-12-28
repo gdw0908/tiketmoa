@@ -29,13 +29,13 @@
 	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
 <title>나의쇼핑</title>
 
-<script language=javascript
-	src="https://www.allthegate.com/plugin/AGSWallet_utf8_ssl.js"></script>
+<!-- <script language=javascript
+	src="https://www.allthegate.com/plugin/AGSWallet_utf8_ssl.js"></script> -->
 
 <script type="text/javascript" src="/lib/js/jquery.lck.util.js"></script>
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type="text/javascript">
-StartSmartUpdate();
+//StartSmartUpdate();
 
 $(function(){
 	$("input[name='basongji_gubun']").on("change", function(){
@@ -94,7 +94,7 @@ $(function(){
 		}
 	}).trigger("change");
 	
-	Enable_Flag(frmAGS_pay);
+	//Enable_Flag(frmAGS_pay);
 });
 
 function selectJuso(seq){
@@ -451,7 +451,7 @@ function fn_checkByte(obj){
 }
 
 function goStep3() {
- 	alert("121212");
+ 	//alert("121212");
 	$("#frm").submit();
 }
 </script>

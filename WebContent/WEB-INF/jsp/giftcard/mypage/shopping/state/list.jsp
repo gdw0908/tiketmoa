@@ -265,17 +265,16 @@ function goSubmit(){
 	            </td>
 	            <td class="cart_main">
 	              <div class="product_box">
-	                <div class="pb_l"> <a href="/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a> </div>
+	                <div class="pb_l"> <a href="/giftcard/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a> </div>
 	                <div class="pb_r_2">
 	                  <p>
-	                  <a href="/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }">
+	                  <a href="/giftcard/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }">
 	                  <span>
-	                  <strong>${item.part3_nm } / ${item.carmodelnm } ${item.cargradenm } (${item.caryyyy }) / ${item.grade }급</strong>
-	                  <c:if test="${item.discount_rate > 0}">
-	                  <span class="f_style_1">${item.discount_rate }%↓</span>
-	                  </c:if>
+						<strong>${item.MAKERNM }</strong>
 	                  </span>
-	                  <span>${item.com_nm } / ${item.sigungu_nm }</span>
+	                  <span>
+						<strong>${item.productnm }</strong>
+					  </span>
 	                  </a>
 	                  </p>
 	                  <p class="last">

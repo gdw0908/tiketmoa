@@ -209,24 +209,23 @@ public class GiftCardCartService {
 			map.put("amt", cartDAO.actual_amount(map));
 			map.put("commission", cartDAO.getCommission(map));
 			map.put("paytyp", paytyp);
-			if(!paytyp.equals("virtual")){
-				//문자 보내기
-				map.put("mmsMessage", " 상품의 주문 및 결제가 완료 되었습니다.");
-				mmsService.acMMS_cartno(map);
-				logger.info("success mms");
-			}			
+			/*
+			 * if(!paytyp.equals("virtual")){ //문자 보내기 map.put("mmsMessage",
+			 * " 상품의 주문 및 결제가 완료 되었습니다."); mmsService.acMMS_cartno(map);
+			 * logger.info("success mms"); }
+			 */		
 			cartDAO.orderCart(map);
 			logger.info("success orderCart");
 			cartDAO.minusStock(map);//수량 빼기
 			logger.info("success minusStock");
 		}
 		if("N".equals(params.get("memberLogin"))){
-			if(!paytyp.equals("virtual")){
+			//if(!paytyp.equals("virtual")){
 				logger.info("success virtual");
 				params.put("mmsMessage", "상품의 주문 및 결제가 완료 되었습니다. 주문번호 : "+params.get("orderno"));
-				mmsService.guestMMS(params);
+				//mmsService.guestMMS(params);
 				logger.info("success guestMMS");
-			}
+			//}
 		}
 		return rstMap;
 	}

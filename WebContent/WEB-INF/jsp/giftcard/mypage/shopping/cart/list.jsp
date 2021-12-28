@@ -114,7 +114,7 @@
 
 		html += "<p><b class='c1'>"
 				+ $.addComma(obj.attr("prod_price") * obj.attr("qty"))
-				+ " 원</b><p>";
+				+ "원</b><p>";
 		$(".price_calc").eq(idx).html(html);
 	}
 

@@ -2,7 +2,7 @@
 <%@ page import="com.mc.common.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-PgClientBean40 agspay = (PgClientBean40)request.getAttribute("agspay");
+//PgClientBean40 agspay = (PgClientBean40)request.getAttribute("agspay");
 %>
 <html>
 <head>
@@ -17,11 +17,11 @@ $(function(){
 <form name="frmAGS_pay_ing" method=post action="/giftcard/mypage/shopping/cart/${pathIndex }.do?mode=pay_result">
 
 <!-- 각 결제 공통 사용 변수 -->
-<input type=hidden name=AuthTy value="<%=agspay.getResult("AuthTy")%>">		<!-- 결제형태 -->
+<%-- <input type=hidden name=AuthTy value="<%=agspay.getResult("AuthTy")%>">		<!-- 결제형태 -->
 <input type=hidden name=SubTy value="<%=agspay.getResult("SubTy")%>">		<!-- 서브결제형태 -->
-<input type=hidden name=rStoreId value="<%=agspay.getResult("rStoreId")%>">	<!-- 상점아이디 -->
-<input type=hidden name=rOrdNo value="<%=agspay.getResult("rOrdNo")%>">		<!-- 주문번호 -->
-<input type=hidden name=rProdNm value="<%=agspay.getResult("ProdNm")%>">	<!-- 상품명 -->
+<input type=hidden name=rStoreId value="<%=agspay.getResult("rStoreId")%>">	<!-- 상점아이디 --> --%>
+<input type=hidden name=rOrdNo value="${params.orderno }">		<!-- 주문번호 -->
+<%-- <input type=hidden name=rProdNm value="<%=agspay.getResult("ProdNm")%>">	<!-- 상품명 -->
 <input type=hidden name=rAmt value="<%=agspay.getResult("rAmt")%>">			<!-- 결제금액 -->
 <input type=hidden name=rOrdNm value="<%=agspay.getResult("OrdNm")%>">		<!-- 주문자명 -->
 
@@ -65,7 +65,7 @@ $(function(){
 <input type=hidden name=mTId value="<%=agspay.getResult("mTId")%>">								
 
 <!-- 이지스에스크로 결제 사용 변수 -->
-<input type=hidden name=ES_SENDNO value="<%=agspay.getResult("ES_SENDNO")%>">					<!-- 이지스에스크로(전문번호) -->
+<input type=hidden name=ES_SENDNO value="<%=agspay.getResult("ES_SENDNO")%>">					<!-- 이지스에스크로(전문번호) --> --%>
 
 </form>
 </body>
