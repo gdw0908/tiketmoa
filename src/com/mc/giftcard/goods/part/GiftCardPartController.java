@@ -50,6 +50,7 @@ public class GiftCardPartController {
 			request.setAttribute("message", "이 상품의 재고가 더이상 없습니다.");
 			return "message";
 		}
+		model.addAttribute("otherList", partService.other_list(params)); //함께 구매한
 		model.addAttribute("data", data);
 		return "giftcard/goods/view";
 	}

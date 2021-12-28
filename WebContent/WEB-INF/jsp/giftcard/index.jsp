@@ -164,7 +164,7 @@
 	//브랜드별최근부품
 	var lastest_timer;
 	function lastest_part(page, tab) {
-		var time = 3000;
+		var time = 15000;
 		if (!!lastest_timer) {
 			clearTimeout(lastest_timer);
 		}

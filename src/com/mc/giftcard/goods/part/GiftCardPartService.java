@@ -212,7 +212,7 @@ public class GiftCardPartService {
 	public Map other_list(Map params) throws Exception {
 		Map rstMap = new HashMap();
 		rstMap.put("list", partDAO.other_list(params));
-		rstMap.put("pagination", partDAO.other_pagination(params));
+		//rstMap.put("pagination", partDAO.other_pagination(params));
 		return rstMap;
 	}
 	

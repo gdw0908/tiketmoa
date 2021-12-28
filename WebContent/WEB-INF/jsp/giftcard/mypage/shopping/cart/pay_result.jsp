@@ -426,7 +426,7 @@ function show_receipt()
               <td class="request_type">
 				<c:forEach var="item" items="${data.list }" varStatus="status">
                 <div class="request_top">
-                  <p class="request_c1"><strong>상품명</strong> : ${item.part3_nm } / ${item.carmodelnm } ${item.cargradenm } (${item.caryyyy })</p>
+                  <p class="request_c1"><strong>상품명</strong> : ${item.PRODUCTNM } / (${item.MAKERNM })</p>
                   <p><strong>요청사항</strong> :  ${item.message }</p>
                 </div>
 				</c:forEach>

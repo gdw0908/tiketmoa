@@ -10,6 +10,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <c:set var="view" value="${data.view }" />
 <c:set var="files" value="${data.files }" />
+<c:set var="otherList" value="${otherList.list}" />
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
@@ -182,26 +183,13 @@ function view(opt) {
 			<article class="swiper-container other_slide">
 				<h6>다른 고객이 함께 구매한 상품</h6>
             	<div class="swiper-wrapper other_wrap">
-					<div class="swiper-slide item">
-						<img src="/images/products/gal_1.jpg">
-						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">10,000<span>원</span></p>
-					</div>
-					<div class="swiper-slide item">
-						<img src="/images/products/gal_3.jpg">
-						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">30,000<span>원</span></p>
-					</div>
-					<div class="swiper-slide item">
-						<img src="/images/products/gal_5.jpg">
-						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">50,000<span>원</span></p>
-					</div>
-					<div class="swiper-slide item">
-						<img src="/images/products/gal_7.jpg">
-						<p class="pro_tit">상품명</p>
-						<p class="pro_pay">70,000<span>원</span></p>
-					</div>
+					<c:forEach var="item" items="${otherList}"> 
+						<div class="swiper-slide item">
+							<a href="/giftcard/goods/view.do?seq=${item.item_seq }"><img src="${item.thumb }"></a>
+							<p class="pro_tit">${item.productnm }</p>
+							<p class="pro_pay">${suf:getThousand(item.user_price) }<span>원</span></p>
+						</div>
+					</c:forEach>
            		</div>
           	</article>
 			

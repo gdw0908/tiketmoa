@@ -121,35 +121,29 @@
 	<select id="other_list" parameterType="Map" resultType="mcmap">
 		SELECT PT1.* FROM (
             SELECT
-                ROW_NUMBER() OVER(ORDER BY a.ITEM_SEQ DESC) RN,
-                a.ITEM_SEQ, a.COM_SEQ, a.ERP_CODE, a.PRODUCTNM, a.CARYYYY, a.INQUIRY_YN,
-                a.CARMAKERSEQ, a.CARMODELSEQ, a.CARGRADESEQ,
-                a.REG_DT,
-                SUBSTR(a.PART1,-1,1) AS MENU_CODE,
-                (SELECT MAKERNM FROM V_IS_CARMAKER WHERE a.CARMAKERSEQ=CARMAKERSEQ) AS MAKERNM,
-                (SELECT CARMODELNM FROM V_IS_CARMODEL WHERE a.CARMODELSEQ=CARMODELSEQ) AS CARMODELNM,
-                (SELECT CARGRADENM FROM V_IS_CARGRADE WHERE a.CARGRADESEQ=CARGRADESEQ) AS CARGRADENM,
-                (SELECT CODENM FROM V_IS_CODEMST WHERE a.PART1=CODENO) AS PART1_NM,
-                (SELECT CODENM FROM V_IS_CODEMST WHERE a.PART2=CODENO) AS PART2_NM,
-                NVL((SELECT PARTNM FROM V_IS_CARPART WHERE a.PART3=CARPARTSEQ),a.PRODUCTNM) AS PART3_NM,
-                ('/upload/board/'||b.YYYY||'/'||b.MM||'/'||b.UUID||'_thumb') AS THUMB
-            FROM GC_GOODS a LEFT OUTER JOIN (
+                ROW_NUMBER() OVER(ORDER BY TO_CHAR(a.ORDERDATE, 'yyyyMMddHHmm') DESC, a.ORDERNO, a.ORDERDATE DESC) RN,
+                a.USERID, a.ORDERNO, a.ORDERDATE, a.RECEIVER,
+                b.CART_NO, b.STATUS, b.AMT, b.QTY, b.FEE_AMT, b.COD_YN,
+                c.ITEM_SEQ, c.PRODUCTNM, a.REG_DT, c.USER_PRICE,
+                (SELECT CODE_NM FROM MC_COMMON_CODE WHERE CODE_GROUP_SEQ = '39' AND a.PAYTYP=CODE) AS PAYTYP_NM,
+                (SELECT CODE_NM FROM MC_COMMON_CODE WHERE CODE_GROUP_SEQ = '40' AND b.STATUS=CODE) AS STATUS_NM,
+                (SELECT MAKERNM FROM V_IS_CARMAKER WHERE c.CARMAKERSEQ=CARMAKERSEQ) AS MAKERNM,
+                (SELECT CARMODELNM FROM V_IS_CARMODEL WHERE c.CARMODELSEQ=CARMODELSEQ) AS CARMODELNM,
+                ('/upload/board/'||e.YYYY||'/'||e.MM||'/'||e.UUID||'_thumb') AS THUMB
+            FROM NSH_ORDERMST a JOIN NSH_CART b
+            ON a.ORDERNO=b.ORDERNO
+            AND b.STATUS!='0'
+            JOIN GC_GOODS c
+            ON b.ITEM_SEQ = c.ITEM_SEQ
+            LEFT OUTER JOIN (
                 SELECT
                     bb.*
-                FROM (SELECT max(uuid) as uuid FROM NSH_ATTACH GROUP BY TABLE_NM, TABLE_SEQ) aa LEFT OUTER JOIN NSH_ATTACH bb
+                FROM (SELECT max(uuid) as uuid FROM NSH_ATTACH WHERE TABLE_NM='GC_GOODS' GROUP BY TABLE_NM, TABLE_SEQ) aa LEFT OUTER JOIN NSH_ATTACH bb
                 ON aa.UUID = bb.UUID
-            ) b
-            ON b.TABLE_NM='GC_GOODS' AND a.ITEM_SEQ = b.TABLE_SEQ
-            LEFT OUTER JOIN NSH_COOPERATION c
-            ON a.COM_SEQ = c.SEQ
-            LEFT OUTER JOIN V_IS_CARMAKER d ON a.CARMAKERSEQ=d.CARMAKERSEQ
-            WHERE a.COM_SEQ = (SELECT COM_SEQ FROM GC_GOODS WHERE DEL_YN='N' AND ITEM_SEQ = #{seq})
-            	AND a.DEL_YN='N'
-				AND a.APPROVAL = 'Y'
-				AND b.UUID IS NOT NULL
-				AND a.INQUIRY_YN = 'N'
+            ) e
+            ON c.ITEM_SEQ = e.TABLE_SEQ  
 		) PT1
-		WHERE CEIL(RN/NVL(#{rows},10))=NVL(#{cpage},1)
+		WHERE RN &lt; 5
 	</select>
 	
 	<select id="other_pagination" parameterType="Map" resultType="mcmap">
