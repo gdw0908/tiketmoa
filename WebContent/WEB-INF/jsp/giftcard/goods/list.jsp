@@ -166,10 +166,6 @@ function inquery_y(){
 
 //장바구니 추가
 function addCart(item_seq){
-	   
-   /*   console.log("item_seq >> " + item_seq);
-    console.log("###");
-   console.log(item_seq); */
 
    if(confirm("선택한 제품을 장바구니에 추가하시겠습니까?")){
       var seq =  $("input[name='item_seq']").val(item_seq);
@@ -198,26 +194,6 @@ function addCart(item_seq){
 	   return;
    }
    
-/*    $.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=add_cart", {
-      item_seq : obj.val()
-   }, function(data) {
-      console.log("※ data.rst >> " + data.rst);
-      if (data.rst == "1") {
-         console.log("111111");
-         alert("장바구니로 이동합니다.");
-          obj.attr("item_seq", item_seq);
-         
-          
-      } else {
-         console.log("222222");
-         alert("NO!~");
-      }
-   });    */
-   
-/*    $("#cartFrm>[name='mode']").val("add_cart");
-   $("#cartFrm>[name='seq']").val(item_seq);
-   $("#cartFrm").submit();
-   return false; */
 }
 
 function directOrder(item_seq){
