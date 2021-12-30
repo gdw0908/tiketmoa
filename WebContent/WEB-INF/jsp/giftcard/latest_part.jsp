@@ -44,8 +44,8 @@
             <!-- //brand roll_1 -->
 			</ul>
 		</div>
-		 <p class="roll_prev"><a href="javascript:lastest_part('${prev }', '${param.tab }')"><img src="/images/container/brand_arrow_l.gif" alt="이전"></a></p>
-         <p class="roll_next"><a href="javascript:lastest_part('${next }', '${param.tab }')"><img src="/images/container/brand_arrow_r.gif" alt="다음"></a></p>
+		 <p class="roll_prev"><a href="javascript:lastest_part('${prev }', '${param.tab }')"><img src="/images/common/left_arrow.png" alt="이전"></a></p>
+         <p class="roll_next"><a href="javascript:lastest_part('${next }', '${param.tab }')"><img src="/images/common/right_arrow.png" alt="다음"></a></p>
 	</div>
 </div>
 <!-- brand list -->
