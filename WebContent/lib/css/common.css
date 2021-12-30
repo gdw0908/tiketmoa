@@ -807,7 +807,7 @@ status_23  거래완료
 
 .status_back {height:18px; background:url(/images/sub_2/stage_back.png) no-repeat; text-indent:-9999px;}
 .status_99 {background-position:-19px 0px;}
-.status_2 {background-position:-19px -30px;}
+.status_2 {background-position:-30px -30px;}
 .status_1 {background-position:-19px -60px;}
 .status_3 {background-position:-19px -90px;}
 .status_4 {background-position:-19px -120px;}

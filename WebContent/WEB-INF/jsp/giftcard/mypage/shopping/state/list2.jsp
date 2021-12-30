@@ -237,10 +237,10 @@ function goSubmit(){
 
           <table class="cart_style_1 t_top_style_1">
           <colgroup>
-          <col width="12%">
+          <col width="18%">
           <col width="">
-          <col width="13%">
-          <col width="15%">
+          <col width="26%">
+          <col width="18%">
           </colgroup>
 
           <thead>

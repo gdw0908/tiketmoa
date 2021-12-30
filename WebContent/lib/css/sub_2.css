@@ -20,7 +20,7 @@
 .left_box {
 	position:relative; 
 	width: 100%; 
-	padding: 0 20px 40px 20px;
+	padding-bottom: 40px;
 	box-sizing: border-box;
 }
 .left_box > h2 {
@@ -34,6 +34,7 @@
 	display: flex;
 }
 #left_menu > ul > li {
+	position: relative;
 	width: calc(100%/ 5);
 	font-size:14px; 
 	color: #b8b8b8; 
@@ -57,27 +58,48 @@
 	color:#535E52; 
 	background: #E4E7EB; 
 }
+#left_menu > ul > li.select > a i {
+	color:#535E52; 
+}
 /* #left_menu > ul > li > a i {padding-right: 24px; } */
 #left_menu > ul > li > a:hover {}
 #left_menu > ul > li > a > span { display:block;}
+#left_menu > ul > li > a i { font-size: 18px; }
 #left_menu > ul > li > a > .plus {background:url(/images/sub_2/left_arrow_1.png) no-repeat 173px 4px;}
 #left_menu > ul > li > a > .minus {background:url(/images/sub_2/left_arrow_2.png) no-repeat 173px 4px;}
-#left_menu > ul > li > ul {
-	padding:14px 0px 8px 25px; 
+.left_menu_ul {
+	position: absolute;
+	top : 101%;
+	width: 100%;
+	display: none;
+	padding:14px 14px 14px 25px; 
 	background:#fff;
-	box-sizing: border-box;
+	box-sizing: border-box;	
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+	z-index: 1;
 }
-#left_menu > ul > li > ul > li {
+.left_menu_ul.open {
+	display: block;
+}
+.left_menu_ul li {
 	margin-bottom: 10px; 
 	font-size:14px; 
-	color:#B8B8B8; 
+	color:#B8B8B8; 	
 }
-#left_menu > ul > li > ul > li a {
+.left_menu_ul li a {
 	position: relative;
 	padding: 10px 0;
-	box-sizing: border-box;
+	box-sizing: border-box;	
 }
-#left_menu > ul > li > ul > li a::after {
+.left_menu_ul li:hover {
+	font-weight: 500; 
+	color: var(--main-color);	
+}
+.left_menu_ul li.select > a {
+	font-weight: 500; 
+	color:var(--main-color); 
+}
+.left_menu_ul li a::after {
 	content: '';
 	position: absolute;
 	bottom: 6px;
@@ -85,18 +107,11 @@
 	width: 0%;
 	height: 1px;
 	background: var(--main-color);
-	transition: width .3s ease;
+	transition: width .3s ease;	
 }
-#left_menu > ul > li > ul > li:hover {
-	font-weight: 500; 
-	color: var(--main-color);
-}
-#left_menu > ul > li > ul > li:hover a::after { width: 100%; }
-#left_menu > ul > li > ul > li.select > a {
-	font-weight: 500; 
-	color:var(--main-color); 
-}
-#left_menu > ul > li > ul > li.select > a::after  { width: 100%; }
+.left_menu_ul li.select > a::after  { width: 100%; }
+.left_menu_ul  li:hover a::after { width: 100%; }
+
 
 .left_box p.left_banner {margin-top:20px;}
 
