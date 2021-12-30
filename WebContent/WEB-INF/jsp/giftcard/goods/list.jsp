@@ -177,15 +177,14 @@ function addCart(item_seq){
 			
       }, function(data) {
 	    	  if (data.rst == "1") {
-					if(confirm("장바구니로 이동하시겠습니까?")){
-						location.href = "/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1";
-						alert("장바구니에 추가되었습니다.");
-					} else {
-						location.reload();					//새로고침
-						return alert("장바구니에 추가되었습니다.");
-						
-					}
-				alert("장바구니에 추가되었습니다.");
+				if(confirm("장바구니로 이동하시겠습니까?")){
+					location.href = "/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1";
+					alert("장바구니에 추가되었습니다.");
+				} else {
+					location.reload();					//새로고침
+					return alert("장바구니에 추가되었습니다.");
+					
+				}
 			} else {
 				alert("장바구니 추가 오류입니다.");			
 			}
