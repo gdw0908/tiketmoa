@@ -164,11 +164,60 @@ function inquery_y(){
 	alert("협의가 필요한 물품입니다.\n고객센터로 문의 바랍니다.");
 }
 
+//장바구니 추가
 function addCart(item_seq){
-	$("#cartFrm>[name='mode']").val("add_cart");
-	$("#cartFrm>[name='seq']").val(item_seq);
-	$("#cartFrm").submit();
-	return false;
+	   
+   /*   console.log("item_seq >> " + item_seq);
+    console.log("###");
+   console.log(item_seq); */
+
+   if(confirm("선택한 제품을 장바구니에 추가하시겠습니까?")){
+      var seq =  $("input[name='item_seq']").val(item_seq);
+      
+      
+      $.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=add_cartAjax", {
+			seq : item_seq,
+			qty : '1'
+			
+      }, function(data) {
+	    	  if (data.rst == "1") {
+					if(confirm("장바구니로 이동하시겠습니까?")){
+						location.href = "/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1";
+						alert("장바구니에 추가되었습니다.");
+					} else {
+						location.reload();					//새로고침
+						return alert("장바구니에 추가되었습니다.");
+						
+					}
+				alert("장바구니에 추가되었습니다.");
+			} else {
+				alert("장바구니 추가 오류입니다.");			
+			}
+		});     
+   } else {
+	   return;
+   }
+   
+/*    $.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=add_cart", {
+      item_seq : obj.val()
+   }, function(data) {
+      console.log("※ data.rst >> " + data.rst);
+      if (data.rst == "1") {
+         console.log("111111");
+         alert("장바구니로 이동합니다.");
+          obj.attr("item_seq", item_seq);
+         
+          
+      } else {
+         console.log("222222");
+         alert("NO!~");
+      }
+   });    */
+   
+/*    $("#cartFrm>[name='mode']").val("add_cart");
+   $("#cartFrm>[name='seq']").val(item_seq);
+   $("#cartFrm").submit();
+   return false; */
 }
 
 function directOrder(item_seq){
@@ -270,7 +319,8 @@ function directOrder(item_seq){
 		          					</a>
 		          					<div class="m_btn">
 		                				<a href="view.do?menu=${param.menu }&seq=${item.item_seq }" target="_blank">새창</a>
-		                				<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
+		                				<%-- <a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a> --%>
+		                				<a onclick="return addCart('${item.item_seq }')">장바구니</a>
 		                				<a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
 		                			</div>
 		          				</div>
