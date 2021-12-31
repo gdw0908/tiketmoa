@@ -326,10 +326,8 @@ function view(opt) {
                 }, function(data) {
                    if (data.rst == "1") {
                       seq.attr("qty", qty);
-                      console.log("qtr->"+qty);
                       
                       if(confirm("장바구니로 이동하시겠습니까?")){
-                         console.log("#########"+qty);
                          location.href = "/giftcard/mypage/shopping/cart/index.do";
                          alert("장바구니에 추가되었습니다.");
                       } else {
