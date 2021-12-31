@@ -158,22 +158,21 @@ function view(opt) {
 									</c:choose>
 								</a>
 							</li>
-							<c:if test="${view.FEE_YN == 'Y' }">
-								<li>
-									<a href="javascript:void();">
-										<span>수령방법</span>
-										<select name="" id="">
-											<option value="0">선택</option>
-											<option value="1">직접 수령</option>
-											<option value="2">배송 수령</option>
-										</select>
-									</a>
-								</li>
-							</c:if>
+
+							<li>
+								<a href="javascript:void();">
+									<span>수령방법</span>
+									<select name="" id="">
+										<option value="0">선택</option>
+										<option value="1">직접 수령</option>
+										<option value="2">배송 수령</option>
+									</select>
+								</a>
+							</li>
 							<li>
 								<a href="javascript:cntCalc();">
 									<span>구매수량</span>
-									<input type="number" class="count_input" name="qty" id="qty" value="1" onblur="cntCalc()" onkeyup="cntCalc()">
+									<input type="number" class="count_input" name="count" id="count" value="1" onblur="cntCalc()" onkeyup="cntCalc()">
 								</a>
 							</li>
 						</ul>
@@ -185,8 +184,9 @@ function view(opt) {
 						</p>
 					</div>
 					<div class="d_info_btn">
-						<a class="cart_btn" href="javascript:cart(${param.seq });">장바구니담기</a>
-						<a class="buy_btn" href="javascript:directOrder(${param.seq });">구매하기</a>
+						<%-- <a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1">장바구니담기</a> --%>
+						<a class="cart_btn" onclick="return addCart('${param.seq }')">장바구니 담기</a>
+						<a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
 					</div>
 				</div>
 			</div>
@@ -269,7 +269,7 @@ function view(opt) {
     	  });
     	  
     	  
-    	  $("#qty").spinner();
+    	  $("#count").spinner();
     	  
     	// slide
     	    var other_slide = new Swiper('.other_slide', {
@@ -286,13 +286,13 @@ function view(opt) {
     	      },
     	      breakpoints: {
     	        1200 : {slidesPerView: 4, touchRatio: 1},
-    	        1020 : {slidesPerView: 4, touchRatio: 1},
-    	        840 : {slidesPerView: 3, touchRatio: 1},
-    	        700 : {slidesPerView: 3, touchRatio: 1},
-    	        560 : {slidesPerView: 2.5, touchRatio: 1},
-    	        480 : {slidesPerView: 2.2, touchRatio: 1, spaceBetween: 5},
-    	        360 : {slidesPerView: 1.8, touchRatio: 1, spaceBetween: 10},
-    	        320 : {slidesPerView: 1.5, touchRatio: 1, spaceBetween: 8},
+    	        1020 : {slidesPerView: 3, touchRatio: 1},
+    	        840 : {slidesPerView: 2, touchRatio: 1},
+    	        700 : {slidesPerView: 2, touchRatio: 1},
+    	        560 : {slidesPerView: 2, touchRatio: 1},
+    	        480 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 5},
+    	        360 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 10},
+    	        320 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 8},
     	      }
     	    });
     	  
@@ -301,16 +301,48 @@ function view(opt) {
     	  function view_move() {
     		  location.href = "./question_view.do";
     	  }
+    	  
     	  function cntCalc() {
-				if($("#qty").val() > 0){
+				if($("#count").val() > 0){
 					var userPrice = Number('${view.USER_PRICE}');
-					var toPrice =Number($("#qty").val())*userPrice;
+					var toPrice =Number($("#count").val())*userPrice;
 					$(".to_price").html(String(toPrice).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 				}else{
-					$("#qty").val(''); 
+					$("#count").val(''); 
 					$(".to_price").html('0');					
 				}				
 			}
+    	  
+    	   //장바구니 추가
+    	   function addCart(item_seq){
+
+    		   if(confirm("선택한 제품을 장바구니에 추가하시겠습니까?")){
+    		      var seq =  $("input[name='seq']").eq(item_seq);
+    		  	  var qty = $("#count").val();
+    		  	  
+    		      $.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=add_cartAjax", {
+    					seq : item_seq,
+    					qty : qty
+    		      }, function(data) {
+    					if (data.rst == "1") {
+    						seq.attr("qty", qty);
+    						
+    						if(confirm("장바구니로 이동하시겠습니까?")){
+    							location.href = "/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1";
+    							alert("장바구니에 추가되었습니다.");
+    						} else {
+    							location.reload();						//새로고침
+    							return alert("장바구니에 추가되었습니다.");
+    							
+    						}
+    					} else {
+    						alert("장바구니 추가 오류입니다.");		
+    					}
+    				});     
+    		   } else {
+    			   return;
+    		   }
+    		}
 	</script>
 
 </body>

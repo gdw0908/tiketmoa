@@ -77,6 +77,25 @@ public class GiftCardCartController {
 			return "message";
 		}
 		return "redirect:/giftcard/mypage/shopping/cart/index.do?cart_no=" + params.get("cart_no");
+		//return cartService.add_cart(params);
+		
+	}
+	@ResponseBody
+	@RequestMapping(params = "mode=add_cartAjax")
+	@Transactional(rollbackFor = { Exception.class })
+	public Map add_cartAjax(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params)
+			throws Exception {
+		params.put("sessionid", session.getId());
+		MCMap member = (MCMap) session.getAttribute("member");
+		if (member != null) {
+			params.put("session_member_id", member.get("member_id"));
+			params.put("session_group_seq", member.get("group_seq"));
+		}
+		Map rstMap = cartService.add_cart(params);
+		if ("-1".equals(rstMap.get("rst"))) {
+			request.setAttribute("message", rstMap.get("msg"));
+		}
+		return rstMap;
 	}
 
 	@RequestMapping(params = "mode=direct_order")
