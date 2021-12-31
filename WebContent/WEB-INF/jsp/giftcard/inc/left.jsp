@@ -56,21 +56,42 @@
 
 <script type="text/javascript">
 $( document ).ready(function() {
+	if(location.pathname.indexOf("/mypage/carallbaro/") > -1){
+		var O = $("a[href^='/mypage/carallbaro/index.do']");
+		var fullO = $("a[href^='/mypage/carallbaro/index.do']");
+	}else{
+		if(location.pathname == "/mypage/mantoman_late/index.do"){
+			var O = $("a[href^='/mypage/mantoman/index.do']");
+			var fullO = $("a[href^='/mypage/mantoman/index.do"+location.search+"']");
+		}else{
+			var O = $("a[href^='"+location.pathname+"']");
+			var fullO = $("a[href^='"+location.pathname+location.search+"']");
+		}
+	}
+	if(fullO.size() > 0){
+		fullO.closest("li").addClass("select");
+		fullO.closest("li.left_depth2").addClass("select");
+	}else{
+		O.closest("li").addClass("select");
+		O.closest("li.left_depth2").addClass("select");
+	}
+	
+	// 2depth menu
+	$('.left_menu_a').click(function(e){
+		e.stopPropagation();
+		$('.left_menu_ul').slideUp();
+		$(this).next().slideToggle(300);
+		$(this).parent().siblings().removeClass('select');
+		$(this).parent().toggleClass('select');
+	});
+	
+	
 	//전체 카테고리
 	$("#allmenu_open").click(function() {
 		$("#all_menu").slideToggle(250);
 	});
 	$("#allmenu_close").click(function() {
 		$("#all_menu").slideToggle(250);
-	});
-	
-	// 2depth menu
-	$('.left_menu_a').click(function(e){
-		e.stopPropagation();
-		$('.left_menu_ul').slideUp();
-		$(this).next().is(":visible") || $(this).next().slideToggle(300);
-		$(this).parent().siblings().removeClass('select');
-		$(this).parent().toggleClass('select');
 	});
 	
 });

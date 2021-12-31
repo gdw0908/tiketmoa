@@ -78,9 +78,7 @@
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
 	z-index: 1;
 }
-.left_menu_ul.open {
-	display: block;
-}
+
 .left_menu_ul li {
 	margin-bottom: 10px; 
 	font-size:14px; 
