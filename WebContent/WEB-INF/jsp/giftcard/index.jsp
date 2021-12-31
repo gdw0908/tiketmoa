@@ -44,6 +44,7 @@
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script type="text/javascript" src="/lib/js/common.js"></script>
+<script type="text/javascript" src="/lib/js/common_sc.js"></script>
 <script type="text/javascript" src="/lib/js/gnb.js"></script>
 <script type="text/javascript">
 	function popup_close() {
@@ -329,12 +330,12 @@
 		f.submit();
 	}
 
-	function addCart(item_seq) {
+	/* function addCart(item_seq) {
 		$("#cartFrm>[name='mode']").val("add_cart");
 		$("#cartFrm>[name='seq']").val(item_seq);
 		$("#cartFrm").submit();
 		return false;
-	}
+	} */
 
 	function directOrder(item_seq) {
 		$("#cartFrm>[name='mode']").val("direct_order");
@@ -512,11 +513,9 @@
 										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"><img src="${mdpart.THUMB }" alt=""></a>
 									</p>
 									<p class="mt_btn">
-										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"
-											target="_blank">새창</a> <a
-											href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${mdpart.item_seq }&qty=1">장바구니</a>
-										<a
-											href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
+										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }" target="_blank">새창</a> 
+										<a href="#" onclick="return addCart('${mdpart.item_seq }')">장바구니</a>
+										<a href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
 									</p>
 								</div>
 								<div class="md_bottom">

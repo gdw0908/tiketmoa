@@ -9,6 +9,9 @@
 <c:set var="cpage" value="${empty param.cpage?'1':param.cpage }"/>
 <c:set var="prev" value="${cpage-1<=0?totalpage:cpage-1 }"/>
 <c:set var="next" value="${cpage+1>totalpage?1:cpage+1 }"/>
+<head>
+	<script type="text/javascript" src="/lib/js/common_sc.js"></script>
+</head>
 <!-- brand list -->
 <div class="brand_roll">
 	<div class="sample_bn">
@@ -24,7 +27,7 @@
                               		<p class="mt_img"><a href="/giftcard/goods/view.do?seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a></p>
                               		<p class="mt_btn">
                                 		<a href="/giftcard/goods/view.do?seq=${item.item_seq }" target="_blank">새창</a>
-                                		<a onclick="return addCart('${item.item_seq }')">장바구니</a>
+                                		<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
                                 		<c:choose><c:when test="${item.inquiry_yn eq 'Y' }"><a href="javascript:inquery_y();">바로구매</a>
                                 			</c:when><c:otherwise><a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
                                 		</c:otherwise></c:choose>
@@ -59,7 +62,7 @@ function inquery_y(){
 	alert("협의가 필요한 물품입니다.\n고객센터로 문의 바랍니다.");
 }
 
-//장바구니 추가
+/* //장바구니 추가
 function addCart(item_seq){
 
    if(confirm("선택한 제품을 장바구니에 추가하시겠습니까?")){
@@ -86,5 +89,5 @@ function addCart(item_seq){
    } else {
 	   return;
    }
-}
+} */
 </script>
