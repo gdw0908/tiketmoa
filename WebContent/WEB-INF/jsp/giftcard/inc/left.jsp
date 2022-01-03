@@ -56,25 +56,14 @@
 
 <script type="text/javascript">
 $( document ).ready(function() {
-	if(location.pathname.indexOf("/mypage/carallbaro/") > -1){
-		var O = $("a[href^='/mypage/carallbaro/index.do']");
-		var fullO = $("a[href^='/mypage/carallbaro/index.do']");
-	}else{
-		if(location.pathname == "/mypage/mantoman_late/index.do"){
-			var O = $("a[href^='/mypage/mantoman/index.do']");
-			var fullO = $("a[href^='/mypage/mantoman/index.do"+location.search+"']");
-		}else{
-			var O = $("a[href^='"+location.pathname+"']");
-			var fullO = $("a[href^='"+location.pathname+location.search+"']");
-		}
-	}
-	if(fullO.size() > 0){
-		fullO.closest("li").addClass("select");
-		fullO.closest("li.left_depth2").addClass("select");
-	}else{
-		O.closest("li").addClass("select");
-		O.closest("li.left_depth2").addClass("select");
-	}
+
+	var url = window.location.pathname,
+    	   urlRegExp = new RegExp(url.replace(/\/$/, '') + "$");
+	$('.left_menu_a').each(function () {
+  		if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
+    		$(this).parents().addClass('select');
+  		} 
+	});
 	
 	// 2depth menu
 	$('.left_menu_a').click(function(e){
