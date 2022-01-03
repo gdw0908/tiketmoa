@@ -235,7 +235,7 @@ function ImageDraw(num,yyyy,mm,uuid,attach_nm){
 	      <%-- <a href="#comment${comment.comment_seq}" onclick="commentDel('${comment.comment_seq}')"><img src="/images/article/comm_btn_1.png" alt="삭제"></a>
 	      <a href="#comment${comment.comment_seq}" onclick="commentUpdate('${comment.comment_seq}','${params.img }')"><img src="/images/article/comm_btn_2.png" alt="수정"></a> --%>
 	      </c:if>
-	      <a href="#comment${comment.comment_seq}" onclick="commentReplyOnOff('${comment.comment_seq}','open')"><img src="/images/article/comm_btn_4.png" alt="답글"></a>
+	      <a href="#comment${comment.comment_seq}" onclick="commentReplyOnOff('${comment.comment_seq}','open')">답글</a>
 	      </p>
 	    </div>
 	    <form name="commentUpdate${comment.comment_seq }" action="/pc/mypage/comment/index.do" method="post" onsubmit="return commentReply(this);">

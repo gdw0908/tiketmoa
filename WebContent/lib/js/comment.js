@@ -23,9 +23,9 @@ function commentUpdate(seq,imgsrc){
 		text = $.trim(text);
 	}
 	var html = '';
-	html += '<div>';
-    html += '<span class="textarea"><textarea class="textarea_1" name="conts">'+text+'</textarea></span>';
-    html += '<a href="#" class="comm_btn" onclick="commentReply(document.commentUpdate'+seq+');"><img src="/images/'+imgsrc+'article/comm_btn_en.gif" alt="입력하기"></a>';
+	html += '<div class="coment_wrap">';
+    html += '<textarea class="textarea" name="conts">'+text+'</textarea>';
+    html += '<a href="#" class="comm_btn" onclick="commentReply(document.commentUpdate'+seq+');">입력하기</a>';
     html += '</div>';
     $("#comm_text"+seq).attr("class","area_box");
     $("#comm_text"+seq).html(html);
@@ -70,10 +70,10 @@ function commentTreeDraw(scope, boolean, obj){
 	    if(boolean == "true"){
 	    	html += '<p class="ct_r">';
 	    	if(memberid == this.reg_id){
-	    		html += '<a href="#comment'+this.comment_seq+'" onclick="commentDel(\''+this.comment_seq+'\')"><img src="/images/article/comm_btn_1.png" alt="삭제"></a> ';
-	    		html += '<a href="#comment'+this.comment_seq+'" onclick="commentUpdate(\''+this.comment_seq+'\',\''+imgsrc+'\')"><img src="/images/article/comm_btn_2.png" alt="수정"></a> ';
+	    		html += '<a href="#comment'+this.comment_seq+'" onclick="commentDel(\''+this.comment_seq+'\')">삭제</a> ';
+	    		html += '<a href="#comment'+this.comment_seq+'" onclick="commentUpdate(\''+this.comment_seq+'\',\''+imgsrc+'\')">수정</a> ';
 	    	}	      
-	      	html += '<a href="#comment'+this.comment_seq+'" onclick="commentReplyOnOff(\''+this.comment_seq+'\',\'open\')"><img src="/images/article/comm_btn_4.png" alt="답글"></a> ';
+	      	html += '<a href="#comment'+this.comment_seq+'" onclick="commentReplyOnOff(\''+this.comment_seq+'\',\'open\')">답글</a> ';
 	      	html += '</p>';
 	    }
 	    html += '</div>';
@@ -100,9 +100,9 @@ function commentTreeDraw(scope, boolean, obj){
 		    html += '<input type="hidden" name="comment_seq" value="'+this.comment_seq+'"/>';
 		    html += '<input type="hidden" name="mode" value="commentReply"/>';
 		    html += '<p><strong class="comm_arrow">'+memberid+' @'+this.reg_id+' 님께 댓글쓰기</strong> <a class="mod" href="#comment'+this.comment_seq+'" onclick="commentReplyOnOff(\''+this.comment_seq+'\',\'close\')><img src="/images/article/comm_btn_3.png" alt="취소"></a></p>';
-		    html += '<div>';
-		    html += '<span class="textarea"><textarea class="textarea_1" name="conts"></textarea></span>';
-		    html += '<a href="#" class="comm_btn" onclick="commentReply(document.comment'+this.comment_seq+');"><img src="/images/'+imgsrc+'article/comm_btn_en.gif" alt="입력하기"></a>';
+		    html += '<div class="coment_wrap">';
+		    html += '<textarea class="textarea" name="conts"></textarea>';
+		    html += '<a href="#" class="comm_btn" onclick="commentReply(document.comment'+this.comment_seq+');">입력하기</a>';
 		    html += '</div>';
 		    html += '</form>';
 		    html += '</div>';
@@ -118,9 +118,9 @@ function commentTreeDraw(scope, boolean, obj){
     		+'<form name="comment" action="'+servletPath+'" method="post" onsubmit="return commentReply(this);">'
     		+'<input type="hidden" name="mode" value="commentInsert"/>'
     		+'<input type="hidden" name="article_seq" value="'+article_seq+'"/>'
-    		+'<div>'
-    		+'<span class="textarea"><textarea class="textarea_1" name="conts"></textarea></span>'
-    		+'<a href="#" class="comm_btn" onclick="commentReply(document.comment);"><img src="/images/'+imgsrc+'article/comm_btn_en.gif" alt="입력하기"></a>'
+    		+'<div class="coment_wrap">'
+    		+'<textarea class="textarea" name="conts"></textarea>'
+    		+'<a href="#" class="comm_btn" onclick="commentReply(document.comment);">입력하기</a>'
     		+'</div>'
     		+'</form>'
     		+'</div>'
