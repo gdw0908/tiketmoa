@@ -68,15 +68,15 @@
 #left_menu > ul > li > a > .plus {background:url(/images/sub_2/left_arrow_1.png) no-repeat 173px 4px;}
 #left_menu > ul > li > a > .minus {background:url(/images/sub_2/left_arrow_2.png) no-repeat 173px 4px;}
 .left_menu_ul {
-	position: absolute;
-	top : 101%;
+/* 	position: absolute; */
+/* 	top : 101%; */
 	width: 100%;
 	display: none;
 	padding:14px 14px 14px 25px; 
 	background:#fff;
 	box-sizing: border-box;	
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16);
-	z-index: 1;
+/* 	box-shadow: 0 3px 6px rgba(0,0,0,0.16); */
+/* 	z-index: 1; */
 }
 
 .left_menu_ul li {
