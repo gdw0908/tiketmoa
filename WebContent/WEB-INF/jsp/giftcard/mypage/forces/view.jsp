@@ -12,6 +12,7 @@
 <meta name="author" content="31system" />
 <meta name="description" content="안녕하세요  티켓모아 입니다." />
 <meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<script type="text/javascript" src="/lib/js/comment.js"></script>
 <title>문의하기</title>
 
 <script>
@@ -31,6 +32,7 @@ $(function() {
 	});
 
 });
+
 </script>
 </head>
 <div id="sub">
@@ -84,6 +86,7 @@ $(function() {
 </div>
 </c:if>
 
+<!-- 댓글 -->
 <div class="comment_box">
   <ul id="comment_list">
   <c:forEach items="${comment }" var="comment" varStatus = "status">
@@ -128,17 +131,17 @@ $(function() {
   </c:forEach>  
     <!-- 댓글 원글 달기 -->
     <li>
-    <div class="area_box area_box_2">
-    <p class="comm_txt">댓글은 <b>1000</b> 자 내외로 작성해주시기 바랍니다.</p>
-      <form name="comment" action="${servletPath }" method="post" onsubmit="return commentReply(this);">
-      <input type="hidden" name="mode" value="commentInsert"/>
-      <input type="hidden" name="article_seq" value="${view.article_seq }"/>
-      <div class="coment_wrap">
-        <textarea class="textarea" name="conts" cols="20"></textarea>
-        <a href="#" class="comm_btn" onclick="commentReply(document.comment);">입력하기</a>
-      </div>
-      </form>
-    </div>
+	    <div class="area_box area_box_2">
+	    <p class="comm_txt">댓글은 <b>1000</b> 자 내외로 작성해주시기 바랍니다.</p>
+	      <form name="comment" action="${servletPath }" method="post" onsubmit="return commentReply(this);">
+	      <input type="hidden" name="mode" value="commentInsert"/>
+	      <input type="hidden" name="article_seq" value="${view.article_seq }"/>
+		      <div class="coment_wrap">
+		        <textarea class="textarea" name="conts" cols="20"></textarea>
+		        <a href="#" class="comm_btn" onclick="commentReply(document.comment);">입력하기</a>
+		      </div>
+	      </form>
+	    </div>
     </li>
   </ul>
 </div>
