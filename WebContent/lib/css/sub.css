@@ -177,7 +177,7 @@
 	max-width: 1400px;
 	font-size: 12px;
 	font-weight: 300;
-	padding: 12px 30px;
+	padding: 12px 20px;
 	margin: auto;
 	color: #fff;
 	box-sizing: border-box;
@@ -574,7 +574,7 @@ p.d_tab_roll_btng7{position: static;; bottom:0px; left:0px; width:100%; text-ali
 @media screen and (max-width: 480px) {
 	ul.tabs li { font-size: 14px; }
 	.details_title { font-size: 24px; }
-	.sl_wrap .sl_l h3 { padding: 10px 0; }
+	.sl_wrap .sl_l h3 { font-size: 30px; padding: 10px 0; }
 	.product_container {  flex-direction: column; }
 	.product_container .side_menu {
     	width: 100%;

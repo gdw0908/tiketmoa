@@ -16,11 +16,35 @@
 #sub2 {float:left; max-width:1400px; width: 100%; }
 
 /* left_menu */
-
+.top_info_state {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	width: 100%;
+	background: var(--main-color);
+}
+.top_info_state ul {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	max-width: 1400px;
+	padding: 10px 20px;
+	margin: auto;
+	box-sizing: border-box;
+}
+.top_info_state ul li {
+	font-size: 12px;
+	font-weight: 300;
+	color: #fff;
+}
+.top_info_state ul li span {
+	margin-left: 12px;
+}
 .left_box {
 	position:relative; 
 	width: 100%; 
 	padding-bottom: 40px;
+	margin-top: 36px;
 	box-sizing: border-box;
 }
 .left_box > h2 {
@@ -41,6 +65,7 @@
 	border-top: 1px solid #ccc;
 	border-bottom:1px solid #ccc;
 	border-right: 1px solid #ccc;
+	box-sizing: border-box;
 }
 #left_menu > ul > li:first-child { border-left: 1px solid #ccc; }
 
@@ -468,7 +493,8 @@ iframe.i_hide {visibility:hidden; position:absolute; overflow:hidden; width:0; h
 	float:right;
 	display: flex;
 	align-items: center;
-	column-gap: 5px;
+	flex-wrap: wrap;
+	gap: 5px;
 }
 .period_line .inquiry_top input {width:88px; height:16px; padding:11px 0 10px 35px; background:url(/images/sub_2/calendar.gif) no-repeat 5px 6px; border:1px solid #c1c1c1; letter-spacing:-1px; font-size:14px; font-family:verdana;}
 .period_line .inquiry_top .lockup_btn {
@@ -599,7 +625,7 @@ p.ev_img img {width:100%;}
 @media screen and (max-width: 768px) {
 	#container .c_wrap { flex-direction: column; }
 	.left_box { width: 100%; padding: 0; }
-	.left_box > h2 { font-size: 28px; padding: 30px 0; }
+	.left_box > h2 { font-size: 20px; padding: 20px 10px; margin-top: 30px; }
 	#left_menu > ul { flex-direction: column; }
 	#left_menu > ul > li { width: 100%; border-bottom: none; border-left: 1px solid #ccc; }
 	#left_menu > ul > li:last-child {  border-bottom: 1px solid #ccc; }
@@ -614,4 +640,8 @@ p.ev_img img {width:100%;}
 	.pricecheck { flex-direction: column; }
 	.pricecheck .bottom p.minus { background: url(/images/sub_2/cart_icon_minus.png) no-repeat 30px 3px; }
 	.pricecheck .bottom p.equal { background: url(/images/sub_2/cart_icon_equal.png) no-repeat 30px 3px; }
+}
+@media screen and (max-width: 366px) {
+	.period_line ul li.cut,
+	.period_line ul li:last-child { margin: 5px 0 0 0; }
 }

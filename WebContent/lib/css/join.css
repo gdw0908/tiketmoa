@@ -37,7 +37,7 @@
 	border-radius: 50%;
 	box-sizing: border-box;
 }
-.join_process .icon i { color: #fff; line-height: 42px; font-style: normal; }
+.join_process .icon i { color: #fff; line-height: 39px; font-style: normal; }
 
 /* join */
 .input_j1 {
@@ -171,7 +171,6 @@ p.agreement {margin-top:12px;}
 
 
 /* join_style_1 */
-
 .join_style_1 {width:100%;}
 .join_style_1 th { text-align: left;  vertical-align:top; padding:13px 0 30px 0; font-size:16px;}
 .join_style_1 th.fs_1 {padding:5px 0 5px 0; font-size:12px;}
@@ -229,11 +228,20 @@ p.agreement {margin-top:12px;}
 	text-align: center;
 	color: var(--main-color);
 }
+
+/* join_4.do */
+.join_check_icon {
+	display: block;
+	margin: 70px auto 20px;
+}
 .join_4_tit {
-	font-size: 32px;
+	font-size: 20px;
+	font-weight: 400;
 	text-align: center;
-	color: var(--sub-color);
 	margin-bottom: 30px;
+}
+.join_btn_wrap {
+	margin: 70px 0;
 }
 
 .join_3_table th { width: 20%; }
@@ -285,6 +293,8 @@ p.agreement {margin-top:12px;}
 	float:none; 
 	margin-bottom:0;
 	}
+	
+
 	
 	
 /* login tabs */

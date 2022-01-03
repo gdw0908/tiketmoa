@@ -33,11 +33,9 @@
   </div>
 </div>
 <div class="j_wrap">
-	<h3 class="join_4_tit">회원가입이 정상적으로 완료되었습니다.</h3>
-  <div class="thanks">
-  	<h4>지금바로 로그인 하셔서 PARTS MOA의 다양한 제품을 만나보세요.<br> 협력사 / 공급사 제휴문의는 제휴문의 게시판 및 고객센터전화 1544-6444로 문의주시기 바랍니다.</h4>
-  </div>
-  <div class="j_btn1" style="margin-top:66px;">
+	<img src="/images/join/check.png" alt="회원가입 완료" class="join_check_icon"> 
+	<h3 class="join_4_tit"><b>회원가입</b>이 정상적으로 완료되었습니다.</h3>
+  <div class="j_btn1 join_btn_wrap">
   	<a href="/giftcard/index.do">메인화면</a>
   	<a href="/giftcard/login/login.do">로그인</a>
   </div>

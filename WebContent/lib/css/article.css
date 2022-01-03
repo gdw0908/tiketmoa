@@ -572,7 +572,7 @@ td.cart_main .product_box {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 400;
 }
 .product_info .info_list li a.deliver_hover .delivery_info {

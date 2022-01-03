@@ -80,7 +80,7 @@ $(function() {
 <c:if test="${(sessionScope.member != null && sessionScope.member.member_id == view.member_id) || view.reg_seq == 0}">
 <div class="vr_btn">
   <a class="clear_btn" " href="${servletPath }?mode=del&amp;article_seq=${view.article_seq }&amp;cpage=${params.cpage }&amp;rows=${params.rows }&amp;condition=${params.condition }&amp;keyword=${params.keyword }">문의취소</a>
-  <a href="${servletPath }?mode=modifyForm&amp;article_seq=${view.article_seq }&amp;cpage=${params.cpage }&amp;rows=${params.rows }&amp;condition=${params.condition }&amp;keyword=${params.keyword }">내용취소</a>
+  <a href="${servletPath }?mode=modifyForm&amp;article_seq=${view.article_seq }&amp;cpage=${params.cpage }&amp;rows=${params.rows }&amp;condition=${params.condition }&amp;keyword=${params.keyword }">내용수정</a>
 </div>
 </c:if>
 
