@@ -17,6 +17,8 @@
 	<mappers>
 				
 		<!-- 상품권관련 -->
+		<mapper resource="com/mc/giftcard/sqlmap/attach.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/admin.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/part.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/article.xml" />
  		<mapper resource="com/mc/giftcard/sqlmap/category.xml" />
