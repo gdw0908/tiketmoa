@@ -470,7 +470,7 @@ iframe.i_hide {visibility:hidden; position:absolute; overflow:hidden; width:0; h
 .period_line {overflow:hidden; padding:20px 0;}
 .period_line p.title {float:left; margin:10px 10px 0 0; font-size:16px; font-weight:bold;}
 .period_line ul {float:left;}
-.period_line ul li {float:left;}
+.period_line ul li {float:left; margin-bottom: 5px; }
 .period_line ul li.cut {margin-left:5px;}
 .period_line ul li a {
 	display:block; 

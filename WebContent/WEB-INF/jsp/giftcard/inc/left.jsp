@@ -100,8 +100,6 @@ $( document ).ready(function() {
 		$(this).next().slideToggle(300);
 		$(this).parent().siblings().removeClass('select');
 		$(this).parent().toggleClass('select');
-		$('.menu_tit').text($(this).text());
-		$('.change_state').text($(this).text());
 	});
 	
 // 	var url = window.location.pathname,
