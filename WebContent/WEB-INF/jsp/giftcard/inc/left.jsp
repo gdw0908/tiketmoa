@@ -81,12 +81,12 @@ $( document ).ready(function() {
 	if(fullO.size() > 0){
 		fullO.closest("li").addClass("select");
 		fullO.closest("li.left_depth2").addClass("select");
-		fullO.closest("ul.left_menu_ul").show();
+// 		fullO.closest("ul.left_menu_ul").show();
 		$('.menu_tit').text(tit);
 		$('.change_state').text(tit);
 	}else{
 		O.closest("li").addClass("select");
-		O.closest("li.left_depth2").addClass("select");
+// 		O.closest("li.left_depth2").addClass("select");
 		O.closest("ul.left_menu_ul").show();
 		$('.menu_tit').text(tit);
 		$('.change_state').text(tit);

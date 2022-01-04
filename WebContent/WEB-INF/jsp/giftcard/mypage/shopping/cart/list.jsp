@@ -20,7 +20,8 @@
 	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
 <title>장바구니</title>
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="/lib/css/sub_2.css" type="text/css">
 <link rel="stylesheet" href="/lib/css/join.css" type="text/css">
 <link rel="stylesheet" href="/lib/css/article.css" type="text/css">
@@ -69,7 +70,7 @@
 				});
 		chkReset();
 	});
-	
+
 	function changeQty(idx) {
 		var obj = $("input[name='chk']").eq(idx);
 		var qty = $("input[name='qty']").eq(idx).val();
@@ -168,106 +169,113 @@
 			</ul>
 			<form id="frm" name="frm" action="index.do" method="get">
 				<input type="hidden" name="mode" value="step2" />
-				<table class="cart_style_1">
-					<caption>장바구니 리스트</caption>
-					<colgroup>
-						<col width="8%">
-						<col width="42%">
-						<col width="15%">
-						<col width="17%">
-						<col width="17%">
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col"><input type="checkbox" class="chk_all"></th>
-							<th scope="col">제품정보</th>
-							<th scope="col">수량</th>
-							<th scope="col">판매가격</th>
-							<th scope="col">배송비</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:choose>
-							<c:when test="${fn:length(data.list) == 0}">
-								<td class="b_none" colspan="6"
-									style="width: 100vw; height: 240px;">
-									<p class="none_img">
-										<img src="/images/sub_2/none_cart.gif" alt="상품없음이미지">
-									</p>
-									<p class="none_text">상품이 존재하지 않습니다.</p>
-								</td>
-							</c:when>
-							<c:otherwise>
-								<c:forEach var="item" items="${data.list }" varStatus="status">
-									<tr>
-										<td class="b_none">
-											<input type="checkbox" name="chk" value="${item.cart_no }" 
-											item_seq="${item.item_seq }"  prod_price="${item.user_price }" qty="${item.qty }"
-											 fee_amt="${item.fee_amt}">
-										</td>
-										<td class="cart_main">
-											<div class="product_box">
-												<div class="pb_l">
-													<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
-														<img src="${item.thumb }" alt="">
-													</a>
-												</div>
-												<div class="pb_r ws_1">
-													<p>
-														<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
-															<span><strong>${item.MAKERNM }</strong></span> <span class="pro_name">
-															<strong>${item.PRODUCTNM }</strong></span> 
+				<article class="table_container" style="margin-bottom: 60px;">
+					<table class="cart_style_1 cart_style_list">
+						<caption>장바구니 리스트</caption>
+						<colgroup>
+							<col width="8%">
+							<col width="42%">
+							<col width="15%">
+							<col width="17%">
+							<col width="17%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col"><input type="checkbox" class="chk_all"></th>
+								<th scope="col">제품정보</th>
+								<th scope="col">수량</th>
+								<th scope="col">판매가격</th>
+								<th scope="col">배송비</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:choose>
+								<c:when test="${fn:length(data.list) == 0}">
+									<td class="b_none" colspan="6"
+										style="width: 100vw; height: 240px;">
+										<p class="none_img">
+											<img src="/images/sub_2/none_cart.gif" alt="상품없음이미지">
+										</p>
+										<p class="none_text">상품이 존재하지 않습니다.</p>
+									</td>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="item" items="${data.list }" varStatus="status">
+										<tr>
+											<td class="b_none"><input type="checkbox" name="chk"
+												value="${item.cart_no }" item_seq="${item.item_seq }"
+												prod_price="${item.user_price }" qty="${item.qty }"
+												fee_amt="${item.fee_amt}">
+											</td>
+											<td class="cart_main">
+												<div class="product_box">
+													<div class="pb_l">
+														<a
+															href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
+															<img src="${item.thumb }" alt="">
 														</a>
-													</p>
+													</div>
+													<div class="pb_r ws_1">
+														<p>
+															<a
+																href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
+																<span><strong>${item.MAKERNM }</strong></span> <span
+																class="pro_name"> <strong>${item.PRODUCTNM }</strong></span>
+															</a>
+														</p>
+													</div>
 												</div>
-											</div>
-										</td>
-										<td>
-											<p class="first">
-												<input type="text" name="qty" class="cart_type_1" value="${item.qty }" min="0" autocomplete="off">
-											</p>
-											<p>
-												<a href="javascript:changeQty('${status.index }')"><img src="/images/sub_2/cart_btn1.gif" alt="변경"></a>
-											</p>
-										</td>
-										<td class="price_calc">
-											<p>
-												<b class="c1">${suf:getThousand(item.USER_PRICE * item.QTY) }원</b>
-											<p>
-										</td>
-										<td class="b_none">
-											<c:choose>
-												<c:when test="${item.fee_yn eq 'C' }">착불</c:when>
-												<c:when test="${item.fee_yn eq 'Y' }">
-													<select class="delivery_sel" name="cod_yn" onchange="changeCod('${status.index }', this.value)">
-														<option value="Y"
-															<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
-														<option value="N"
-															<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착불</option>
-													</select>
-													<br />
+											</td>
+											<td>
+												<p class="first">
+													<input type="text" name="qty" class="cart_type_1"
+														value="${item.qty }" min="0" autocomplete="off">
+												</p>
+												<p>
+													<a href="javascript:changeQty('${status.index }')"><img
+														src="/images/sub_2/cart_btn1.gif" alt="변경"></a>
+												</p>
+											</td>
+											<td class="price_calc">
+												<p>
+													<b class="c1">${suf:getThousand(item.USER_PRICE * item.QTY) }원</b>
+												<p>
+											</td>
+											<td class="b_none"><c:choose>
+													<c:when test="${item.fee_yn eq 'C' }">착불</c:when>
+													<c:when test="${item.fee_yn eq 'Y' }">
+														<select class="delivery_sel" name="cod_yn"
+															onchange="changeCod('${status.index }', this.value)">
+															<option value="Y"
+																<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
+															<option value="N"
+																<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착불</option>
+														</select>
+														<br />
 	              										(${suf:getThousand(item.FEE_AMOUNT) } 원)
 	              									</c:when>
-												<c:otherwise>무료</c:otherwise>
-											</c:choose> 
-										</td>
-									</tr>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</tbody>
-				</table>
+													<c:otherwise>무료</c:otherwise>
+												</c:choose></td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</tbody>
+					</table>
+				</article>
 			</form>
 
 			<div class="product_btn">
 				<label><input type="checkbox" class="chk_all"> <span>전체선택</span></label>
-				<a href="javascript:removeCart()"><img src="/images/sub_2/cart_s_btn1.gif" alt="선택삭제"></a>
+				<a href="javascript:removeCart()"><img
+					src="/images/sub_2/cart_s_btn1.gif" alt="선택삭제"></a>
 			</div>
 
 			<div class="pricecheck">
 				<div class="p_check1">
 					<div class="top">
-						<span class="pt_l"><strong>정상가격</strong></span> <span class="pt_r">선택상품 : <b id="select_cnt">0</b>개
+						<span class="pt_l"><strong>정상가격</strong></span> <span class="pt_r">선택상품
+							: <b id="select_cnt">0</b>개
 						</span>
 					</div>
 					<div class="bottom">
@@ -282,11 +290,9 @@
 				</div>
 				<div class="p_check2">
 					<div class="top">
-						<span class="pt_l">
-							<strong>할인금액</strong>
-						</span>
-						<span class="pt_r">
-							<a href=""><img src="/images/sub_2/guide_btn1.gif" alt="?"></a>
+						<span class="pt_l"> <strong>할인금액</strong>
+						</span> <span class="pt_r"> <a href=""><img
+								src="/images/sub_2/guide_btn1.gif" alt="?"></a>
 						</span>
 					</div>
 					<div class="bottom">

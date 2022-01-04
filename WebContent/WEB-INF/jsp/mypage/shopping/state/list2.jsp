@@ -237,7 +237,7 @@ function goSubmit(){
           <tbody>
           <c:choose>
       	<c:when test = "${fn:length(data.list) == 0}">
-      	 <td class="b_none" colspan="4">
+      	 <td class="b_none none_td" colspan="4">
 			<p class="none_img"><img src="/images/sub_2/none_cart.gif" alt="상품없음이미지"></p>
 			<p class="none_text">상품이 존재하지 않습니다.</p>
 			</td>

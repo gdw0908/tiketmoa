@@ -205,127 +205,123 @@ function goSubmit(){
 </head>
 <body>
 <div id="sub">
-        <div class="contents">
+	<div class="contents">
+		<div class="period_line">
+        	<form id="searchFrm" name="searchFrm" action="index.do?mode=list1" method="post">
+            	<p class="title">기간별조회</p>
+            	<ul>
+              		<li><a class="first" href="#" onclick="week();">1주일</a></li>
+              		<li><a href="#"onclick="day15();">15일</a></li>
+              		<li><a href="#"onclick="month1();">1개월</a></li>
+              		<li><a href="#"onclick="month3();">3개월</a></li>
+             	 	<li class="cut"><a class="first" href="#"onclick="bmonth();">전월</a></li>
+              		<li><a href="#"onclick="cmonth();">당월</a></li>
+            	</ul>
 
-          <div class="period_line">
-          <form id="searchFrm" name="searchFrm" action="index.do?mode=list1" method="post">
-
-            <p class="title">기간별조회</p>
-
-            <ul>
-              <li><a class="first" href="#" onclick="week();">1주일</a></li>
-              <li><a href="#"onclick="day15();">15일</a></li>
-              <li><a href="#"onclick="month1();">1개월</a></li>
-              <li><a href="#"onclick="month3();">3개월</a></li>
-              <li class="cut"><a class="first" href="#"onclick="bmonth();">전월</a></li>
-              <li><a href="#"onclick="cmonth();">당월</a></li>
-            </ul>
-
-            <div class="inquiry_top">
-              <input type="text" id="sdate" name="sdate" value ="${param.sdate }">
-              ~
-              <input type="text" id="edate" name="edate" value ="${param.edate }">
-              <a href="javascript:goSubmit();" class="lockup_btn">조회하기</a>
-            </div>
-		  </form>
+            	<div class="inquiry_top">
+              		<input type="text" id="sdate" name="sdate" value ="${param.sdate }">
+              			~
+              		<input type="text" id="edate" name="edate" value ="${param.edate }">
+              		<a href="javascript:goSubmit();" class="lockup_btn">조회하기</a>
+            	</div>
+		  	</form>
           </div>
 
-          <table class="cart_style_1 t_top_style_1">
-          <colgroup>
-          <col width="18%">
-          <col width="">
-          <col width="18%">
-          <col width="18%">
-          </colgroup>
+		<article class="table_container">
+			<table class="cart_style_1 t_top_style_1">
+				<colgroup>
+          			<col width="18%">
+          			<col width="30">
+          			<col width="18%">
+          			<col width="18%">
+          		</colgroup>
 
-          <thead>
-          <tr>
-            <th scope="col">주문번호/날짜</th>
-            <th scope="col">&nbsp;</th>
-            <th scope="col">상태</th>
-            <th scope="col">확인</th>
-          </tr>
-          </thead>
+          		<thead>
+          			<tr>
+            			<th scope="col">주문번호/날짜</th>
+            			<th scope="col">&nbsp;</th>
+            			<th scope="col">상태</th>
+            			<th scope="col">확인</th>
+          			</tr>
+          		</thead>
 
-          <tbody>
-          <c:choose>
-      	<c:when test = "${fn:length(data.list) == 0}">
-      	 <td class="b_none" colspan="4">
-			<p class="none_img"><img src="/images/sub_2/none_cart.gif" alt="상품없음이미지"></p>
-			<p class="none_text">상품이 존재하지 않습니다.</p>
-		</td>
-
-      	</c:when>
-      	<c:otherwise>
-      		<c:forEach var="item" items="${data.list }" varStatus="status">
-	          <tr>
-	            <td orderno="${item.orderno }">
-	              <p class="date">${item.orderno }</p>
-	              <p>${dtf:simpleDateFormat(item.orderdate, 'yyyy-MM-dd HH:mm:ss' , 'yyyy-MM-dd') }</p>
-	            </td>
-	            <td class="cart_main">
-	              <div class="product_box">
-	                <div class="pb_l"> <a href="/giftcard/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a> </div>
-	                <div class="pb_r_2">
-	                  <p>
-	                  <a href="/giftcard/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }">
-	                  <span>
-						<strong>${item.MAKERNM }</strong>
-	                  </span>
-	                  <span>
-						<strong>${item.productnm }</strong>
-					  </span>
-	                  </a>
-	                  </p>
-	                  <p class="last">
-		                 <b class="c1">${suf:getThousand(item.amt) } 원(수량:${item.qty })</b>
-		                 <c:if test="${item.cod_yn eq 'Y' }">
-			                 <b class="c1">배송비 ${suf:getThousand(item.fee_amt) } 원</b>
-		                 </c:if>
+            	<tbody>
+          			<c:choose>
+      					<c:when test = "${fn:length(data.list) == 0}">
+      	 					<td class="b_none" colspan="4">
+								<p class="none_img"><img src="/images/sub_2/none_cart.gif" alt="상품없음이미지"></p>
+								<p class="none_text">상품이 존재하지 않습니다.</p>
+							</td>
+      					</c:when>
+      					<c:otherwise>
+      						<c:forEach var="item" items="${data.list }" varStatus="status">
+	          					<tr>
+	            					<td orderno="${item.orderno }">
+	              						<p class="date">${item.orderno }</p>
+	              						<p>${dtf:simpleDateFormat(item.orderdate, 'yyyy-MM-dd HH:mm:ss' , 'yyyy-MM-dd') }</p>
+	            					</td>
+	            					<td class="cart_main">
+	              						<div class="product_box">
+	                						<div class="pb_l">
+	                							<a href="/giftcard/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }">
+	                								<img src="${item.thumb }" alt="">
+	                							</a>
+	                						</div>
+	                						<div class="pb_r_2">
+		                  						<p>
+		                  							<a href="/giftcard/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }">
+		                  								<span><strong>${item.MAKERNM }</strong></span>
+	    	              								<span><strong>${item.productnm }</strong></span>
+	        	          							</a>
+	            	     						 </p>
+	                	  						 <p class="last">
+		                	 						<b class="c1">${suf:getThousand(item.amt) } 원(수량:${item.qty })</b>
+		                 							<c:if test="${item.cod_yn eq 'Y' }">
+			                 							<b class="c1">배송비 ${suf:getThousand(item.fee_amt) } 원</b>
+		                 							</c:if>
 	<!--                   <a href="#"><img src="/images/sub_2/cart_btn2.gif" alt="상세내역"></a> -->
-	                  </p>
-	                </div>
-	              </div>
-	            </td>
-	            <td>
-	              <p class="status_back status_${item.status }">${item.status_nm }</p>
-	              <c:if test="${item.status eq '7' || item.status eq '8' }">
-	              <p class="btn_m2"><a href="#" onclick="track('${item.cart_no}')">배송추적</a></p>
-	              </c:if>
-	            </td>
-	            <td class="b_none">
-	            	<c:if test="${item.status eq '99' }">
-	             		<%-- <p class="btn_m1"><a href="#" onclick="order_cancel('${item.cart_no}');">주문취소</a></p> --%>
-	            	 	<p class="btn_m1"><a href="#" onclick="alert('관계자에게 문의해주세요.');">주문취소</a></p>
-	            	</c:if>
-	            	<c:if test="${item.status eq '1' }">
-	             		<%-- <p class="btn_m1"><a href="#" onclick="cancel_popup('${item.cart_no}');">취소신청</a></p> --%>
-	             		<p class="btn_m1"><a href="#" onclick="alert('결제완료 상태에서 결제취소가 어렵습니다.\n관계자에게 문의해주세요.');">취소신청</a></p>
-	            	</c:if>
-	            	<c:if test="${item.status eq '8' || item.status eq '18'}">
-	              		<p class="btn_m1"><a href="#">수취확인</a></p>
-	            	</c:if>
-	            	<c:if test="${item.status eq '8' || item.status eq '18' }">
-	             		<p class="btn_m1"><a href="#" onclick="return_popup('${item.cart_no}');">반품신청</a></p>
-	            	</c:if>
-	            	<c:if test="${item.status eq '8' }">
-	             		<p class="btn_m1"><a href="#" onclick="exchange_popup('${item.cart_no}');">교환신청</a></p>
-	            	</c:if>
-	            	<c:if test="${item.status eq '12' }">
-	             		<p class="btn_m1"><a href="#" onclick="refunds_popup('${item.cart_no}');">환불신청</a></p>
-	            	</c:if>
-	            </td>
-	          </tr>
-			 </c:forEach>
-      	</c:otherwise>
-      </c:choose>
-          </tbody>
+	                  							</p>
+	                						</div>
+		              					</div>
+		            				</td>
+	    	        				<td>
+	        	      					<p class="status_back status_${item.status }">${item.status_nm }</p>
+	            	  					<c:if test="${item.status eq '7' || item.status eq '8' }">
+	              							<p class="btn_m2"><a href="#" onclick="track('${item.cart_no}')">배송추적</a></p>
+	              						</c:if>
+	            					</td>
+	            					<td class="b_none">
+	            						<c:if test="${item.status eq '99' }">
+	             						<%-- <p class="btn_m1"><a href="#" onclick="order_cancel('${item.cart_no}');">주문취소</a></p> --%>
+	            	 						<p class="btn_m1"><a href="#" onclick="alert('관계자에게 문의해주세요.');">주문취소</a></p>
+	            						</c:if>
+	            						<c:if test="${item.status eq '1' }">
+	             						<%-- <p class="btn_m1"><a href="#" onclick="cancel_popup('${item.cart_no}');">취소신청</a></p> --%>
+	             							<p class="btn_m1"><a href="#" onclick="alert('결제완료 상태에서 결제취소가 어렵습니다.\n관계자에게 문의해주세요.');">취소신청</a></p>
+	            						</c:if>
+		            					<c:if test="${item.status eq '8' || item.status eq '18'}">
+		              						<p class="btn_m1"><a href="#">수취확인</a></p>
+	    	        					</c:if>
+	        	    					<c:if test="${item.status eq '8' || item.status eq '18' }">
+	            	 						<p class="btn_m1"><a href="#" onclick="return_popup('${item.cart_no}');">반품신청</a></p>
+	            						</c:if>
+	            						<c:if test="${item.status eq '8' }">
+	             							<p class="btn_m1"><a href="#" onclick="exchange_popup('${item.cart_no}');">교환신청</a></p>
+	            						</c:if>
+	            						<c:if test="${item.status eq '12' }">
+	             							<p class="btn_m1"><a href="#" onclick="refunds_popup('${item.cart_no}');">환불신청</a></p>
+	            						</c:if>
+	            					</td>
+	          					</tr>
+			 				</c:forEach>
+      					</c:otherwise>
+	      			</c:choose>
+    	      	</tbody>
+			</table>
+		</article>
 
-          </table>
-
-        </div>
-      </div>
-      
-<div id="modal_dialog" title="취소신청">
+	</div>
 </div>
+      
+<div id="modal_dialog" title="취소신청"></div>
 </body>
