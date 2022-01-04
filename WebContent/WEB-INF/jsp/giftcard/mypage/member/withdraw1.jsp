@@ -44,7 +44,7 @@
 						</div>
 
 						<div class="secession_btn">
-							<input type="button" value="확인">
+							<input type="submit" value="확인">
 						</div>
 					</form>
 				</div>
