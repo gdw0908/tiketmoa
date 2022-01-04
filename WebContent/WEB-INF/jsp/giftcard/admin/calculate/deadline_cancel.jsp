@@ -87,11 +87,11 @@ function go_cancel(){
           <col width="*" />
           </colgroup>
         <tr>
-          <th>특정일자 재정산</th>
+          <th>특정일자 정산</th>
           <td>
             
             <input type="text" class="input_1 date" id="date" name="date" value = "${param.date }"/>
-            <span class="bt_all"><span><input type="button" value="재정산 " onclick="go_re();" class="btall"/></span></span>
+            <span class="bt_all"><span><input type="button" value="정산 " onclick="go_re();" class="btall"/></span></span>
           </td>
         </tr>
         

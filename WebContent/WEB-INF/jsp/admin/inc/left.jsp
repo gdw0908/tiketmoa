@@ -245,7 +245,7 @@ function goBody(target_url){
           </ul>
         </li>
         <li class="last">
-          <div> <span class="name2"><a href="#" onclick="goBody('/admin/system/code/index.do')">공통코드관리</a></span> </div>
+          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/system/code/index.do')">공통코드관리</a></span> </div>
         </li>
         <li>
       </ul>

@@ -295,10 +295,12 @@ function goSubmit(){
 	            </td>
 	            <td class="b_none">
 	            	<c:if test="${item.status eq '99' }">
-	             		<p class="btn_m1"><a href="#" onclick="order_cancel('${item.cart_no}');">주문취소</a></p>
+	             		<%-- <p class="btn_m1"><a href="#" onclick="order_cancel('${item.cart_no}');">주문취소</a></p> --%>
+	            	 	<p class="btn_m1"><a href="#" onclick="alert('관계자에게 문의해주세요.');">주문취소</a></p>
 	            	</c:if>
 	            	<c:if test="${item.status eq '1' }">
-	             		<p class="btn_m1"><a href="#" onclick="cancel_popup('${item.cart_no}');">취소신청</a></p>
+	             		<%-- <p class="btn_m1"><a href="#" onclick="cancel_popup('${item.cart_no}');">취소신청</a></p> --%>
+	             		<p class="btn_m1"><a href="#" onclick="alert('결제완료 상태에서 결제취소가 어렵습니다.\n관계자에게 문의해주세요.');">취소신청</a></p>
 	            	</c:if>
 	            	<c:if test="${item.status eq '8' || item.status eq '18'}">
 	              		<p class="btn_m1"><a href="#">수취확인</a></p>

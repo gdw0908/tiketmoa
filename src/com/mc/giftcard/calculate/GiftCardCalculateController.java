@@ -226,8 +226,8 @@ public class GiftCardCalculateController {
 		}
 		
 		List<MCMap> yesterdayCalclist = scheduleDAO.yesterdayCalcList("", date);	//결제
-		List<MCMap> yesterdayCancellist = scheduleDAO.yesterdayCalcList("C", date);	//취소
-		List<MCMap> yesterdayRefundclist = scheduleDAO.yesterdayCalcList("R", date);	//환불
+		//List<MCMap> yesterdayCancellist = scheduleDAO.yesterdayCalcList("C", date);	//취소
+		//List<MCMap> yesterdayRefundclist = scheduleDAO.yesterdayCalcList("R", date);	//환불
 		List<MCMap> yesterdayOrderlist = scheduleDAO.yesterdayCalcList("O", date);	//주문
 		for(MCMap map : scheduleDAO.selectCooperationList(date)){
 			String com_seq = map.getStr("com_seq");
@@ -303,7 +303,7 @@ public class GiftCardCalculateController {
 				}
 			}
 			
-			for(MCMap cancel_map : yesterdayCancellist){
+			/*for(MCMap cancel_map : yesterdayCancellist){
 				if(com_seq.equals(cancel_map.get("com_seq"))){
 					int cash_sum = cancel_map.getIntNumber("iche") + cancel_map.getIntNumber("virtual");
 					int cash_cnt = cancel_map.getIntNumber("iche_cnt") + cancel_map.getIntNumber("virtual_cnt");
@@ -341,7 +341,7 @@ public class GiftCardCalculateController {
 					map.put("refund_card_qty", card_qty);
 					break;
 				}
-			}
+			}*/
 			
 			for(MCMap order_map : yesterdayOrderlist){
 				if(com_seq.equals(order_map.get("com_seq"))){

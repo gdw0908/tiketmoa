@@ -28,14 +28,14 @@
  		<!-- <mapper resource="com/mc/web/sqlmap/main.xml" /> -->
  		<!-- <mapper resource="com/mc/web/sqlmap/cart.xml" /> -->
  		<mapper resource="com/mc/web/sqlmap/popupzone.xml" />
- 		<mapper resource="com/mc/web/sqlmap/spell.xml" />
+ 		<!-- <mapper resource="com/mc/web/sqlmap/spell.xml" /> -->
  		<!-- <mapper resource="com/mc/web/sqlmap/state.xml" /> -->
  		<mapper resource="com/mc/web/sqlmap/seller.xml" />
  		<mapper resource="com/mc/web/sqlmap/mail_send.xml" />
  		<mapper resource="com/mc/web/sqlmap/mail_target.xml" />
  		<mapper resource="com/mc/web/sqlmap/mail_templet.xml" />
  		<mapper resource="com/mc/web/sqlmap/event.xml" />
- 		<mapper resource="com/mc/web/sqlmap/calculate.xml" />
+ 		<!-- <mapper resource="com/mc/web/sqlmap/calculate.xml" /> -->
  		<mapper resource="com/mc/web/sqlmap/mmsInfo.xml" />
  		<mapper resource="com/mc/web/sqlmap/admin.xml" />
  		<mapper resource="com/mc/web/sqlmap/sales.xml" />
@@ -56,6 +56,8 @@
 		<mapper resource="com/mc/giftcard/sqlmap/code.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/member.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/state.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/spell.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/calculate.xml" />
 		 
 	</mappers>
 </configuration>
