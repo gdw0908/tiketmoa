@@ -89,9 +89,6 @@
 	      </div>
 	    </form>
 	    
-	    
-	    
-	    
 	    <c:if test="${sessionScope.member != null }">
 	    <div class="area_box" id="commentReply${comment.comment_seq}" style="display:none;"><!-- 댓글 로그인 사용자만 -->
 	      <form name="comment${comment.comment_seq }" action="${servletPath }" method="post" onsubmit="return commentReply(this);">

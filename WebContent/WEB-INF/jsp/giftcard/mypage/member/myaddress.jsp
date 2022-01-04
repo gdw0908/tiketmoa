@@ -124,53 +124,56 @@ function go_update(seq)
 
 				<h4 class="hs_1">배송지 주소록</h4>
 
-				<table class="s_style_1">
-					<colgroup>
-						<col width="18%">
-						<col width="9%">
-						<col width="">
-						<col width="14%">
-						<col width="16%">
-					</colgroup>
+				<article class="table_container">
+					<table class="s_style_1">
+						<colgroup>
+							<col width="18%">
+							<col width="9%">
+							<col width="">
+							<col width="14%">
+							<col width="16%">
+						</colgroup>
 
-					<thead>
-						<tr>
-							<th scope="col" class="left"><label> 배송지명</label></th>
-							<th scope="col">수취인명</th>
-							<th scope="col">&nbsp;</th>
-							<th scope="col">휴대폰/연락처</th>
-							<th scope="col" class="b_none">선택</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<c:forEach items="${list }" var="article" varStatus="status">
+						<thead>
 							<tr>
-								<td class="left"><label><input type="checkbox"
-										id="default_yn" name="default_yn" class="check"
-										value="${article.seq}"
-										<c:if test = "${article.default_yn eq 'Y'}">checked</c:if>>
-										<c:choose>
-											<c:when test="${article.default_yn eq 'Y'}">기본 배송지</c:when>
-											<c:otherwise>${article.receiver_title}</c:otherwise>
-										</c:choose> </label></td>
-								<td>${article.receiver_nm}</td>
-								<td class="left">
-									<p>[${article.zip_cd}]${article.addr1}</p>
-									<p>${article.addr2}</p>
-								</td>
-								<td>
-									<p>${article.cell}</p>
-									<p>${article.tel}</p>
-								</td>
-								<td class="b_none"><a href="#"
+								<th scope="col" class="left"><label> 배송지명</label></th>
+								<th scope="col">수취인명</th>
+								<th scope="col">&nbsp;</th>
+								<th scope="col">휴대폰/연락처</th>
+								<th scope="col" class="b_none">선택</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<c:forEach items="${list }" var="article" varStatus="status">
+								<tr>
+									<td class="left">
+										<label>
+											<input type="checkbox" id="default_yn" name="default_yn" class="check" value="${article.seq}"
+												<c:if test = "${article.default_yn eq 'Y'}">checked</c:if>>
+												<c:choose>
+												<c:when test="${article.default_yn eq 'Y'}">기본 배송지</c:when>
+												<c:otherwise>${article.receiver_title}</c:otherwise>
+												</c:choose> 
+										</label>
+									</td>
+									<td>${article.receiver_nm}</td>
+									<td class="left">
+										<p>[${article.zip_cd}]${article.addr1}</p>
+										<p>${article.addr2}</p>
+									</td>
+									<td>
+										<p>${article.cell}</p>
+										<p>${article.tel}</p>
+									</td>
+									<td class="b_none"><a href="#"
 									onclick="go_update(${article.seq});">수정</a> <a href="#"
 									onclick="go_delete(${article.seq});">삭제</a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-
-				</table>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</article>
 				<div class="d_btn_bottom">
 					<a href="javascript:;" onclick="default_add();">선택한 주소를 기본배송지로</a>
 				</div>

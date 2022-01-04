@@ -39,8 +39,10 @@
 <meta name="twitter:url" content="#" />
 <meta name="twitter:image" content="./images/kakao_img.png" />
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script type="text/javascript" src="/lib/js/common.js"></script>
@@ -351,13 +353,19 @@
 <body>
 	<main class="container">
 		<div class="swiper mainSwiper">
-      		<div class="swiper-wrapper">
-       			 <div class="swiper-slide"><img src="../images/banner/banner3.png" alt="상품권싸게사자"></div>
-        		 <div class="swiper-slide"><img src="../images/banner/banner2.png" alt="상품권 구매는 티켓모아"></div>
-        		 <div class="swiper-slide"><img src="../images/banner/banner1.png" alt="할인이 쏟아진다"></div>
-      		</div>
-      		<div class="swiper-pagination"></div>
-    	</div>
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="../images/banner/banner3.png" alt="상품권싸게사자">
+				</div>
+				<div class="swiper-slide">
+					<img src="../images/banner/banner2.png" alt="상품권 구매는 티켓모아">
+				</div>
+				<div class="swiper-slide">
+					<img src="../images/banner/banner1.png" alt="할인이 쏟아진다">
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
 	</main>
 
 	<!-- side_banner -->
@@ -372,7 +380,7 @@
 		</c:if>
 	</c:forEach>
 	<c:if test="${left == 'true'}">
-		<div class="side_banner_l"> 
+		<div class="side_banner_l">
 			<ul>
 				<c:forEach var="item" items="${list.quick_popup }"
 					varStatus="status">
@@ -384,10 +392,9 @@
 					</c:if>
 				</c:forEach>
 			</ul>
-			<span id="close_l">
-				<a href="javascript:closePop();">
-					<img src="/images/container/side_banner_close.gif" alt="닫기">
-				</a>
+			<span id="close_l"> <a href="javascript:closePop();"> <img
+					src="/images/container/side_banner_close.gif" alt="닫기">
+			</a>
 			</span>
 		</div>
 	</c:if>
@@ -400,8 +407,8 @@
 					<c:if test="${item.rl == 'R' }">
 						<li><a
 							<c:choose><c:when test="${item.link_yn == 'Y' }">href="${item.link_url }" target="${item.link_target }"</c:when><c:otherwise>href="#"</c:otherwise></c:choose>><
-								src="${item.file_path }" alt="${item.alt }"
-								style="width: 100px;"></a></li>
+								src="${item.file_path }" alt="${item.alt }" style="width:
+								100px;"></a></li>
 					</c:if>
 				</c:forEach>
 			</ul>
@@ -424,10 +431,12 @@
 								<h3>인기 상품</h3>
 								<p>카테고리</p>
 								<ul class="category_tab">
-									<c:forEach var="item" items="${list.category }" varStatus="status">
-										<li id="tabNavTitle020${status.count}" class="on">
-											<a href="javascript:void();" onclick="shwoTabNav2(${status.count}); return false;" onfocus="this.onclick();">${item.makernm }</a>
-										</li>
+									<c:forEach var="item" items="${list.category }"
+										varStatus="status">
+										<li id="tabNavTitle020${status.count}" class="on"><a
+											href="javascript:void();"
+											onclick="shwoTabNav2(${status.count}); return false;"
+											onfocus="this.onclick();">${item.makernm }</a></li>
 									</c:forEach>
 									<!-- <li id="tabNavTitle0201" class="on">
 										<a href="javascript:void();" onclick="shwoTabNav2(1); return false;" onfocus="this.onclick();">롯데</a>
@@ -442,44 +451,6 @@
 							</div>
 							<div id="tabNav0201" class="animated"></div>
 						</section>
-						<script type="text/javascript">
-							function shwoTabNav(eName, totalNum, showNum) {
-								for (i = 1; i <= totalNum; i++) {
-									var zero = (i >= 10) ? "" : "0";
-									var e = document.getElementById("tabNav"
-											+ eName + zero + i);
-									var eTitle = document
-											.getElementById("tabNavTitle"
-													+ eName + zero + i);
-									e.style.display = "none";
-									eTitle.className = "";
-								}
-
-								var zero = (showNum >= 10) ? "" : "0";
-								var e = document.getElementById("tabNav"
-										+ eName + zero + showNum);
-								var eTitle = document
-										.getElementById("tabNavTitle" + eName
-												+ zero + showNum);
-								e.style.display = "block";
-								eTitle.className = "on";
-							}
-							
-							$(function() {		
-								// main slide
-								var swiper = new Swiper(".mainSwiper", {
-									loop: true,
-									autoplay: true,
-						        	pagination: {
-						          	el: ".swiper-pagination",
-						          	clickable: true,
-						          	renderBullet: function (index, className) {
-						            return '<span class="' + className + '">' + (index + 1) + "</span>";
-						          },
-						        },
-						      });
-							})
-						</script>
 					</article>
 					<!-- //brand tab -->
 					<p class="more">
@@ -510,12 +481,14 @@
 							<li>
 								<div class="md_top">
 									<p class="mt_img">
-										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"><img src="${mdpart.THUMB }" alt=""></a>
+										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"><img
+											src="${mdpart.THUMB }" alt=""></a>
 									</p>
 									<p class="mt_btn">
-										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }" target="_blank">새창</a> 
-										<a href="#" onclick="return addCart('${mdpart.item_seq }')">장바구니</a>
-										<a href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
+										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"
+											target="_blank">새창</a> <a href="#"
+											onclick="return addCart('${mdpart.item_seq }')">장바구니</a> <a
+											href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
 									</p>
 								</div>
 								<div class="md_bottom">
@@ -545,7 +518,39 @@
 			name="seq" value="" /> <input type="hidden" name="qty" value="1" />
 	</form>
 
+
 	<script>
+		function shwoTabNav(eName, totalNum, showNum) {
+			for (i = 1; i <= totalNum; i++) {
+				var zero = (i >= 10) ? "" : "0";
+				var e = document.getElementById("tabNav" + eName + zero + i);
+				var eTitle = document.getElementById("tabNavTitle" + eName + zero + i);
+						e.style.display = "none";
+						eTitle.className = "";
+			}
+
+			var zero = (showNum >= 10) ? "" : "0";
+			var e = document.getElementById("tabNav" + eName + zero + showNum);
+			var eTitle = document.getElementById("tabNavTitle" + eName + zero + showNum);
+				   e.style.display = "block";
+				   eTitle.className = "on";
+		}
+							
+		$(function() {		
+			// main slide
+			var swiper = new Swiper(".mainSwiper", {
+				loop: true,
+				autoplay: true,
+				pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+					renderBullet: function (index, className) {
+						return '<span class="' + className + '">' + (index + 1) + "</span>";
+					},
+			 	},
+			});
+		});
+		
 		(function(i, s, o, g, r, a, m) {
 			i['GoogleAnalyticsObject'] = r;
 			i[r] = i[r] || function() {
@@ -571,7 +576,6 @@
 				ti : "22097", /*광고주 코드*/
 				ty : "Home", /*트래킹태그 타입*/
 				device : "web" /*디바이스 종류 (web 또는 mobile)*/
-
 			};
 		}));
 	</script>

@@ -28,7 +28,7 @@
 			}
 			if(cpage > 1){
 		%>
-			<a class="p_first" href="<%=servletPath %>?cpage=<%=cpage - 1 %>&amp;rows=<%=rows%>&amp;condition=<%=condition%>&amp;keyword=<%=keyword%>" onclick="return goPage(<%=cpage - 1 %>);">&lt;이전</a> 
+			<a class="p_first" href="<%=servletPath %>?cpage=<%=cpage - 1 %>&amp;rows=<%=rows%>&amp;condition=<%=condition%>&amp;keyword=<%=keyword%>" onclick="return goPage(<%=cpage - 1 %>);">이전</a> 
 		<%
 			}
 			%>
@@ -48,7 +48,7 @@
 			<%
 			if(cpage < totalpage){
 		%>
-				<a class="p_last" href="<%=servletPath %>?cpage=<%=cpage + 1 %>&amp;rows=<%=rows%>&amp;condition=<%=condition%>&amp;keyword=<%=keyword%>" onclick="return goPage(<%=cpage + 1 %>);">다음&gt;</a>
+				<a class="p_last" href="<%=servletPath %>?cpage=<%=cpage + 1 %>&amp;rows=<%=rows%>&amp;condition=<%=condition%>&amp;keyword=<%=keyword%>" onclick="return goPage(<%=cpage + 1 %>);">다음</a>
 		<%
 			}
 			if(end  < totalpage){
