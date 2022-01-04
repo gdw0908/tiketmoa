@@ -15,6 +15,6 @@
 		<package name="com.mc.web"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="com/mc/web/sqlmap/mms.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/mms.xml" />
 	</mappers>
 </configuration>

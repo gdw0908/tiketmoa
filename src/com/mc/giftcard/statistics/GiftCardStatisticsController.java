@@ -9,6 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mc.common.util.StringUtil;
+import com.mc.giftcard.calculate.GiftCardCalculateDAO;
+import com.mc.web.MCMap;
+
 import jxl.CellView;
 import jxl.Workbook;
 import jxl.format.Alignment;
@@ -22,17 +32,6 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.mc.common.util.StringUtil;
-import com.mc.giftcard.calculate.GiftCardCalculateDAO;
-import com.mc.web.MCMap;
-import com.mc.web.calculate.CalculateDAO;
 
 @Controller
 public class GiftCardStatisticsController {

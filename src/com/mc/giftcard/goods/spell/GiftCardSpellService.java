@@ -8,12 +8,12 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mc.giftcard.code.GiftCardCodeDAO;
+import com.mc.giftcard.shopping.cart.GiftCardErpDAO;
+import com.mc.giftcard.shopping.order_state.GiftCardStateDAO;
 import com.mc.web.Globals;
 import com.mc.web.MCMap;
-import com.mc.web.code.CodeDAO;
 import com.mc.web.mms.MmsService;
-import com.mc.web.shopping.cart.ErpDAO;
-import com.mc.web.shopping.order_state.StateDAO;
 
 
 @Service
@@ -25,16 +25,16 @@ public class GiftCardSpellService {
 	private Globals globals;
 	
 	@Autowired
-	private ErpDAO erpDAO;
+	private GiftCardErpDAO erpDAO;
 
 	@Autowired
 	private GiftCardSpellDAO spellDAO;
 	
 	@Autowired
-	private CodeDAO codeDAO;
+	private GiftCardCodeDAO codeDAO;
 
 	@Autowired
-	private StateDAO stateDAO;
+	private GiftCardStateDAO stateDAO;
 	
 	@Autowired
 	private MmsService mmsService;

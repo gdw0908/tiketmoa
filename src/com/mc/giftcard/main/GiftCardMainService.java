@@ -16,9 +16,6 @@ import com.googlecode.ehcache.annotations.Cacheable;
 import com.mc.common.util.StringUtil;
 import com.mc.giftcard.code.GiftCardCodeDAO;
 import com.mc.giftcard.goods.part.GiftCardPartDAO;
-import com.mc.web.MCMap;
-import com.mc.web.code.CodeDAO;
-import com.mc.web.goods.part.PartDAO;
 
 @Service
 public class GiftCardMainService {

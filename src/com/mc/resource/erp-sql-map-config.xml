@@ -15,9 +15,9 @@
 		<package name="com.mc.web"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="com/mc/web/sqlmap/erp.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/erp.xml" />
 		
 		<!-- TODO 데이터이관용 나중에 삭제해주기 -->
-		<mapper resource="com/mc/web/sqlmap/transfer.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/transfer.xml" />
 	</mappers>
 </configuration>
