@@ -75,35 +75,35 @@ function goBody(target_url){
           <div> <span class="name2"><a href="#">주문관리</a></span> </div>
           <ul>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=all')">전체</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=all')">전체</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=1')">주문접수</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=1')">주문접수</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=2')">결제완료</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=2')">결제완료</a></span> </div>
+            </li>
+            <!-- <li class="last">
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=3')">결제취소중</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=3')">결제취소중</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=4')">결제취소완료</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=4')">결제취소완료</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=5')">배송준비중</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=5')">배송준비중</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=6')">반품신청중</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=6')">반품신청중</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=7')">교환신청중</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=7')">교환신청중</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=8')">환불신청중</a></span> </div>
             </li>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=8')">환불신청중</a></span> </div>
-            </li>
-            <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/spell/index.do?tab=9')">거래완료</a></span> </div>
-            </li>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/spell/index.do?tab=9')">거래완료</a></span> </div>
+            </li> -->
           </ul>
         </li>
       </ul>
@@ -119,8 +119,11 @@ function goBody(target_url){
              </li>
              <li class="last">
                 <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/system/board/forces/index.do')">문의사항</a></span> </div>
-             </li>
+             </li>             
           </ul>
+        </li>
+		<li class="last">
+          <div> <span class="name2"><a href="#" onclick="goBody('/giftcard/admin/system/code/index.do')">공통코드관리</a></span> </div>
         </li>
       </ul>
 	  <!-- 회원관리시작-->

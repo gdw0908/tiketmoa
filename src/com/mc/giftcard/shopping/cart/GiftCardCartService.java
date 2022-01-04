@@ -295,10 +295,10 @@ public class GiftCardCartService {
 		cartDAO.virAcctResult1(params);
 		cartDAO.virAcctResult2(params);
 		//문자 보내기
-		params.put("mmsMessage", " 상품의 주문 및 결제가 완료 되었습니다.");
+		/*params.put("mmsMessage", " 상품의 주문 및 결제가 완료 되었습니다.");
 		mmsService.acMMS_orderno(params);
 		params.put("mmsMessage", "상품의 주문 및 결제가 완료 되었습니다. 주문번호 : "+params.get("orderno"));
-		mmsService.guestVirMMS(params);
+		mmsService.guestVirMMS(params);*/
 		
 	}
 

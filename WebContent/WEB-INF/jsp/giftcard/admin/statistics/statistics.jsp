@@ -117,24 +117,24 @@ function go_excel(){
           <col width="6%" />
           <col width="6%" />
           <col width="6%" />
+          <%-- <col width="6%" />
           <col width="6%" />
-          <col width="6%" />
-          <col width="6%" />
+          <col width="6%" /> --%>
           <col width="*" />
         </colgroup>
         <tr>
           <th rowspan="2">업체명</th>
-          <th colspan="3">주문</th>
-          <th colspan="3">반품</th>
-          <th rowspan="2">합계</th>
+          <th colspan="4">주문</th>
+          <!-- <th colspan="3">반품</th> -->
+          <th rowspan="2" colspan="2">합계</th>
         </tr>
         <tr>
           <th>주문건수</th>
           <th>주문수량</th>
-          <th>금액</th>
-          <th>반품건수</th>
+          <th colspan="2">금액</th>
+          <!-- <th>반품건수</th>
           <th>반품수량</th>
-          <th>금액</th>
+          <th>금액</th> -->
         </tr>
         
         <c:forEach items = "${list }" var = "vo">
@@ -142,11 +142,11 @@ function go_excel(){
           <td>${vo.com_nm == null ? '합계' : vo.com_nm }</td>
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.u_cnt + vo.c_cnt}" /></td>
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.u_qty + vo.c_qty}" /></td>
-          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.u_sum + vo.c_sum}" /></td>
-          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.refund_cash_cnt + vo.refund_card_cnt}" /></td>
+          <td colspan="2"><fmt:formatNumber type="number" pattern="###,###" value="${vo.u_sum + vo.c_sum}" /></td>
+          <%-- <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.refund_cash_cnt + vo.refund_card_cnt}" /></td>
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.refund_cash_qty + vo.refund_card_qty}" /></td>
-          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.refund_cash_sum + vo.refund_card_sum}" /></td>
-          <td><fmt:formatNumber type="number" pattern="###,###" value="${(vo.u_sum + vo.c_sum) - (vo.refund_cash_sum + vo.refund_card_sum)}" /></td>
+          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.refund_cash_sum + vo.refund_card_sum}" /></td> --%>
+          <td colspan="2"><fmt:formatNumber type="number" pattern="###,###" value="${(vo.u_sum + vo.c_sum)}" /></td>
         </tr>
         </c:forEach>
       </table>

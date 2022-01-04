@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mc.giftcard.shopping.cart.GiftCardCartService;
 import com.mc.web.MCMap;
-import com.mc.web.shopping.cart.CartService;
 /**
  *
  * @Description : 
@@ -43,7 +43,7 @@ public class GiftCardStateController {
 	private GiftCardStateService stateService;
 
 	@Autowired
-	private CartService cartService;
+	private GiftCardCartService cartService;
 
 	/**
 	 * 

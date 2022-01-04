@@ -15,37 +15,7 @@
 		<package name="com.mc.web"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="com/mc/web/sqlmap/test.xml" />
-		<!-- <mapper resource="com/mc/web/sqlmap/code.xml" /> -->
-		<!-- <mapper resource="com/mc/web/sqlmap/old_code.xml" /> -->
-		<!-- <mapper resource="com/mc/web/sqlmap/member.xml" /> -->
-		<mapper resource="com/mc/web/sqlmap/cooperation.xml" />
-		<mapper resource="com/mc/web/sqlmap/repair.xml" />
- 		<!-- <mapper resource="com/mc/web/sqlmap/article.xml" />-->
- 		<mapper resource="com/mc/web/sqlmap/attach.xml" /> 
- 		<!-- <mapper resource="com/mc/web/sqlmap/category.xml" /> -->
- 		<!-- <mapper resource="com/mc/web/sqlmap/part.xml" /> -->
- 		<!-- <mapper resource="com/mc/web/sqlmap/main.xml" /> -->
- 		<!-- <mapper resource="com/mc/web/sqlmap/cart.xml" /> -->
- 		<mapper resource="com/mc/web/sqlmap/popupzone.xml" />
- 		<mapper resource="com/mc/web/sqlmap/spell.xml" />
- 		<!-- <mapper resource="com/mc/web/sqlmap/state.xml" /> -->
- 		<mapper resource="com/mc/web/sqlmap/seller.xml" />
- 		<mapper resource="com/mc/web/sqlmap/mail_send.xml" />
- 		<mapper resource="com/mc/web/sqlmap/mail_target.xml" />
- 		<mapper resource="com/mc/web/sqlmap/mail_templet.xml" />
- 		<mapper resource="com/mc/web/sqlmap/event.xml" />
- 		<mapper resource="com/mc/web/sqlmap/calculate.xml" />
- 		<mapper resource="com/mc/web/sqlmap/mmsInfo.xml" />
- 		<mapper resource="com/mc/web/sqlmap/admin.xml" />
- 		<mapper resource="com/mc/web/sqlmap/sales.xml" />
- 		<mapper resource="com/mc/web/sqlmap/selfcamera.xml" />
- 		<mapper resource="com/mc/web/sqlmap/carallbaro.xml" />
- 		<mapper resource="com/mc/web/sqlmap/application.xml" />
- 		
- 		<!-- 데이터 이관 -->
-		<mapper resource="com/mc/web/sqlmap/transfer.xml" />
-		
+				
 		<!-- 상품권관련 -->
 		<mapper resource="com/mc/giftcard/sqlmap/part.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/article.xml" />
@@ -56,6 +26,8 @@
 		<mapper resource="com/mc/giftcard/sqlmap/code.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/member.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/state.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/spell.xml" />
+		<mapper resource="com/mc/giftcard/sqlmap/calculate.xml" />
 		 
 	</mappers>
 </configuration>

@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import kr.co.allthegate.mobile.AGSMobile;
-import net.sf.json.JSONObject;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -19,20 +16,21 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import aegis.pgclient.PgClientBean40;
 
 import com.mc.common.util.Encryption;
 import com.mc.common.util.StringUtil;
 import com.mc.common.util.Util;
+import com.mc.giftcard.shopping.cart.GiftCardCartDAO;
+import com.mc.giftcard.shopping.cart.GiftCardErpDAO;
 import com.mc.web.Globals;
 import com.mc.web.MCMap;
 import com.mc.web.mms.MmsInfoDAO;
 import com.mc.web.mms.MmsService;
-import com.mc.web.shopping.cart.CartDAO;
-import com.mc.web.shopping.cart.ErpDAO;
+
+import aegis.pgclient.PgClientBean40;
+import kr.co.allthegate.mobile.AGSMobile;
+import net.sf.json.JSONObject;
 
 @Service
 public class GiftCardStateService {
@@ -43,10 +41,10 @@ public class GiftCardStateService {
 	private GiftCardStateDAO stateDAO;
 	
 	@Autowired
-	private ErpDAO erpDAO;
+	private GiftCardErpDAO erpDAO;
 	
 	@Autowired
-	private CartDAO cartDAO;
+	private GiftCardCartDAO cartDAO;
 	
 	@Autowired
 	private Globals globals;

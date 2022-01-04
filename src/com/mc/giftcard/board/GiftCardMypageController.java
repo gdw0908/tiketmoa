@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -27,9 +25,7 @@ import com.mc.common.util.StringUtil;
 import com.mc.web.Globals;
 import com.mc.web.MCController;
 import com.mc.web.MCMap;
-import com.mc.web.code.CodeDAO;
-import com.mc.web.common.FileDAO;
-import com.mc.web.common.FileUtil;
+import com.mc.giftcard.code.GiftCardCodeDAO;
 import com.mc.web.mms.MmsService;
 /**
  *
@@ -57,7 +53,7 @@ public class GiftCardMypageController extends MCController {
 	private GiftCardBoardDAO boardDAO;
 	
 	@Autowired
-	private CodeDAO codeDAO;
+	private GiftCardCodeDAO codeDAO;
 	
 	private Encryption encryption;
 	

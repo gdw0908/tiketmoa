@@ -20,7 +20,7 @@
 			}).error(function(jqXHR,textStatus,errorThrown){
 				if(jqXHR.status == 999){
 					if(confirm("세션이 끊어졌습니다.\n로그인 후 다시 시도해 주세요.\n로그인페이지로 이동하시겠습니까?")){
-						window.top.location.href = "/admin/login.do";
+						window.top.location.href = "/giftcard/admin/login.do";
 					}
 				}else{
 					alert("=================오류내용=================\n" + jqXHR.responseText+"\n===================END==================");
@@ -54,7 +54,7 @@
 			}).error(function(jqXHR,textStatus,errorThrown){
 				if(jqXHR.status == 999){
 					if(confirm("세션이 끊어졌습니다.\n로그인 후 다시 시도해 주세요.\n로그인페이지로 이동하시겠습니까?")){
-						window.top.location.href = "/admin/login.do";
+						window.top.location.href = "/giftcard/admin/login.do";
 					}
 				}else{
 					alert("=================오류내용=================\n" + jqXHR.responseText+"\n===================END==================");
@@ -88,7 +88,7 @@
 			}).error(function(jqXHR,textStatus,errorThrown){
 				if(jqXHR.status == 999){
 					if(confirm("세션이 끊어졌습니다.\n로그인 후 다시 시도해 주세요.\n로그인페이지로 이동하시겠습니까?")){
-						window.top.location.href = "/admin/login.do";
+						window.top.location.href = "/giftcard/admin/login.do";
 					}
 				}else{
 					alert("=================오류내용=================\n" + jqXHR.responseText+"\n===================END==================");
