@@ -82,7 +82,7 @@ $( document ).ready(function() {
 
 <div id="header">
 
-	<div class="mo_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓모아"></a></div>
+	<div class="mo_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓크루"></a></div>
 	
 	<!--  hamburger menu  -->
 	<div class="ham_wrap">
@@ -140,7 +140,7 @@ $( document ).ready(function() {
      </ul>
      <jsp:include page="/giftcard/inc/all_menu_box.do" />
      
-     <h1 class="top_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓모아"></a></h1>
+     <h1 class="top_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓크루"></a></h1>
      
      <ul>
        <li>
@@ -244,7 +244,7 @@ function search_all()
 }
 
 function headerSnsLink(gubun){
-	var title = encodeURIComponent(":: 국내최대 상품권 사이트 티켓모아! ::");
+	var title = encodeURIComponent(":: 국내최대 상품권 사이트 티켓크루! ::");
 	if(gubun == "twt"){
 		window.open("http://twitter.com/home?status=" + title + ":http://www.partsmoa.co.kr");
 	}else if(gubun == "face"){

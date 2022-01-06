@@ -454,7 +454,7 @@ iframe.i_hide {visibility:hidden; position:absolute; overflow:hidden; width:0; h
 #galleryWrap  .thumbnails_body li .thumbitem.active {  border:#000000 solid 2px; }
 #galleryWrap  .board_bottom {  float:none;position: relative;width:610px;height:20px;margin:auto;text-align:right; }
 
-.details_title {margin-bottom:15px; font-size:20px; font-family:'Malgun Gothic'; letter-spacing:-1px;}
+.details_title {margin-bottom:15px; font-size:20px; letter-spacing:-1px;}
 .details_1 {overflow:hidden; padding:34px 0 0 0;}
 .details_1 .details_img {float:left;}
 .details_1 .details_info {float:right; width:365px;}

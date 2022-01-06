@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="Keywords" content="티켓모아, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>회원탈퇴</title>
 <link rel="stylesheet" href="/lib/css/sub_2.css" type="text/css">
 <script type = "text/javascript">
