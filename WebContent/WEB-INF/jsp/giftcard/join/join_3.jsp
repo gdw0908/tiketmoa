@@ -134,7 +134,8 @@
          jQuery("#cell3").val("");
          jQuery("#cell3").focus();
          return false;
-      } else if (jQuery("#check_member_cell").html() == "") { //중복체크 추가
+      } else if (jQuery("#check_member_cell").html() == ""
+    		|| jQuery("#check_member_cell").html() == "이미 가입 되어있는 번호입니다.") { //중복체크 추가
           alert("휴대폰번호 중복확인을 진행해주세요.");
           return false;
       } else if (jQuery("#email1").val() == "") {
@@ -241,7 +242,7 @@
                jQuery("#check_member_cell").html("사용 가능한 번호입니다.");
                return; 
             } else {
-               jQuery("#check_member_cell").html("이미 가입 되어있는 번호 입니다.");
+               jQuery("#check_member_cell").html("이미 가입 되어있는 번호입니다.");
                jQuery("#cell2").val("");
                jQuery("#cell3").val("");
                return;

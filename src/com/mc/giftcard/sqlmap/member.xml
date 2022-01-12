@@ -291,7 +291,6 @@
            AND  CELL = #{cell1} || '-' || #{cell2} || '-' || #{cell3}
     </select>
 	
-	
 	<insert id="insertMemberData" parameterType="Map">
 		INSERT INTO MC_MEMBER(
 			MEMBER_SEQ, MEMBER_ID, MEMBER_PW, IPIN, MEMBER_NM, MEMBER_BIRTH, MEMBER_SEX, CELL, 
@@ -349,17 +348,6 @@
 		AND
 			EMAIL = #{email}
         </if>
-        
-          <if test="!(com_nm == null or com_nm == '')" >
-		AND
-			BUSI_NM = #{busi_nm}
-        </if>
-        
-        <if test="!(busi_no == null or busi_no == '')" >
-		AND
-			BUSI_NO = #{busi_no}
-        </if>
-        
 	</select>
 	
 	<select id="joined" parameterType="Map" resultType="mcmap">
