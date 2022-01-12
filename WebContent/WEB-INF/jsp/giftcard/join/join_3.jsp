@@ -153,6 +153,10 @@
          jQuery("#email2").val("");
          jQuery("#email2").focus();
          return false;
+      } else if (jQuery("#check_member_email").html() == ""
+    		|| jQuery("#check_member_email").html() == "이미 가입 되어있는 이메일입니다.") { //중복체크 추가
+          alert("이메일 중복확인을 진행해주세요.");
+          return false;
       }
 
       else if (jQuery("#zip_cd1").val() == "" || jQuery("#addr1").val() == "") {
@@ -239,12 +243,47 @@
             });
             
             if (data.length <= 0) {
-               jQuery("#check_member_cell").html("사용 가능한 번호입니다.");
+               jQuery("#check_member_cell").css('color', 'blue').html("사용 가능한 번호입니다.");
                return; 
             } else {
-               jQuery("#check_member_cell").html("이미 가입 되어있는 번호입니다.");
+               jQuery("#check_member_cell").css('color', 'red').html("이미 가입 되어있는 번호입니다.");
                jQuery("#cell2").val("");
                jQuery("#cell3").val("");
+               return;
+            }
+         });
+      }
+   }
+    
+    
+	/* 이메일 중복체크 추가 */
+	function chk_member_emailChk() {
+      if (jQuery("#email1").val() == "") {
+         alert("이메일을 입력하세요.");
+         jQuery("#email1").val("");
+         jQuery("#email1").focus();
+         return;
+      } else {
+    	  
+    	  getJSON("/json/list/member.getMemberEmailCheck.do", {
+          		"email1" : jQuery("#email1").val(),
+           		"email2" : jQuery("#email2").val()
+           		
+          }, function(data) {
+        	$.each(chk_member_emailChk, function() {
+                var data = this["email1"] + this["email2"];
+            });
+            
+            console.log("########");
+            console.log("data >" + data);
+            console.log("data.length >" + data.length);
+            
+            if (data.length <= 0) {
+               jQuery("#check_member_email").css("color", "blue").html("사용 가능한 이메일입니다.");
+               return; 
+            } else {
+               jQuery("#check_member_email").css("color", "red").html("이미 가입 되어있는 이메일입니다.");
+               jQuery("#email1").val("");
                return;
             }
          });
@@ -290,8 +329,8 @@
          </ul>
       </div>
    </div>
-   <div class="j_wrap" style="max-width: 640px">
-      <div id="tabNav_j1" class="join_tab" style="max-width: 640px">
+   <div class="j_wrap" style="max-width: 720px">
+      <div id="tabNav_j1" class="join_tab" style="max-width: 720px">
          <!--     <h4 id="tabNavTitle0101" class="on"><a href="#" >사업자회원</a></h4> -->
          <div id="tabNav0101" style="display: block; padding: 30px 0 0 0;">
             <form method="post" name="join_form" id="join_form"
@@ -397,22 +436,28 @@
                         </tr>
                         <tr>
                            <th scope="row"><b>*</b> 이메일</th>
-                           <td><input type="text" id="email1" name="email1"
-                              class="input_j1 ws_5"> @ <input type="text"
-                              id="email2" name="email2" class="input_j1 ws_5"> 
-                              <select id="" name="" class="select_j2" onchange="inputEmail2(this.value);">
-                                 <option value="hanmail.net">hanmail.net</option>
-                                 <option value="naver.com">naver.com</option>
-                                 <option value="daum.net">daum.net</option>
-                                 <option value="nate.com">nate.com</option>
-                                 <option value="gmail.com">gmail.com</option>
-                                 <option value="korea.com">korea.com</option>
-                                 <option value="dreamwiz.com">dreamwiz.com</option>
-                                 <option value="hotmail.com">hotmail.com</option>
-                                 <option value="yahoo.co.kr">yahoo.co.kr</option>
-                                 <option value="sportal.or.kr">sportal.or.kr</option>
-                                 <option value="" selected>직접입력</option>
-                              </select></td>
+                           <td>
+	                           <p>
+	                           	<input type="text" id="email1" name="email1"
+	                              class="input_j1 ws_5"> @ <input type="text"
+	                              id="email2" name="email2" class="input_j1 ws_5"> 
+	                              <select id="" name="" class="select_j2" onchange="inputEmail2(this.value);">
+	                                 <option value="hanmail.net">hanmail.net</option>
+	                                 <option value="naver.com">naver.com</option>
+	                                 <option value="daum.net">daum.net</option>
+	                                 <option value="nate.com">nate.com</option>
+	                                 <option value="gmail.com">gmail.com</option>
+	                                 <option value="korea.com">korea.com</option>
+	                                 <option value="dreamwiz.com">dreamwiz.com</option>
+	                                 <option value="hotmail.com">hotmail.com</option>
+	                                 <option value="yahoo.co.kr">yahoo.co.kr</option>
+	                                 <option value="sportal.or.kr">sportal.or.kr</option>
+	                                 <option value="" selected>직접입력</option>
+	                              </select>
+	                              <a href="javascript:;" onclick="chk_member_emailChk();" class="overlap_btn" style="color: #fff;">이메일 중복확인</a>
+	                            </p>
+                              <div id="check_member_email"></div>
+                            </td>
                         </tr>
                         <tr>
                            <th scope="row" class="fs_1">광고성 메일 수신</th>
