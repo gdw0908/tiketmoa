@@ -13,11 +13,12 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 
 <title>회원정보수정</title>
 <link rel="stylesheet" href="/lib/css/sub_2.css" type="text/css">
+<link rel="stylesheet" href="/lib/css/join.css" type="text/css">
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type="text/javascript">
 	function inputEmail2(value) {
@@ -147,7 +148,11 @@
 			jQuery("#cell2").focus();
 			return false;
 
-		} else if (jQuery("#email").val() == "") {
+		} else if (jQuery("#check_member_cell").html() == "") { //중복체크 추가
+        	alert("휴대폰번호 중복확인을 진행해주세요.");
+	       	return false;
+		        	
+	    } else if (jQuery("#email").val() == "") {
 			alert("이메일을 입력하세요.");
 			jQuery("#email").val("");
 			jQuery("#email").focus();
@@ -166,6 +171,21 @@
 			jQuery("#addr1").val("");
 			return false;
 
+		} else if (jQuery("#check_member_email").html() == "") { //중복체크 추가
+	          alert("이메일 중복확인을 진행해주세요.");
+	          return false;
+	          
+	    } else if (jQuery("#check_member_cell").html() == "이미 등록 되어있는 번호입니다."
+	    		|| jQuery("#check_member_email").html() == "이미 등록 되어있는 이메일입니다.") { //중복체크 추가
+	          if(confirm("이미 가입 되어있는 휴대폰번호 및 이메일입니다. 그대로 진행하시겠습니까?")){
+		        	return true;
+		        	
+		          } else{
+		        	alert("휴대폰번호 및 이메일을 변경해주세요.");
+			       	return false;
+			       	
+		          }
+			        	
 		} else {
 			if (confirm("수정 하시겠습니까?")) {
 				return true;
@@ -174,6 +194,80 @@
 			}
 		}
 	}
+	
+	/* 휴대폰 번호 중복체크 추가 */
+	function chk_member_cellChk() {
+      if (jQuery("#cell").val() == "") {
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell").val("");
+         jQuery("#cell").focus();
+         return;
+      } else if(jQuery("#cell1").val() == ""){
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell1").val("");
+         jQuery("#cell1").focus();
+         return;         
+      } else if(jQuery("#cell3").val() == ""){
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell2").val("");
+         jQuery("#cell2").focus();
+         return;         
+      } else {
+         getJSON("/json/list/member.getMemberCellCheck.do", {
+            "cell1" : jQuery("#cell").val(),
+            "cell2" : jQuery("#cell1").val(),
+            "cell3" : jQuery("#cell2").val()
+         }, function(data) {
+            $("body").data("chk_member_cell", data);
+            var chk_member_cell = $("body").data("chk_member_cell");
+
+            $.each(chk_member_cell, function() {
+               var data = this["cell"] + this["cell1"] + this["cell2"] ;
+            });
+            
+            if (data.length <= 0) {
+               jQuery("#check_member_cell").css('color', 'blue').html("사용 가능한 번호입니다.");
+               return; 
+            } else {
+               jQuery("#check_member_cell").css('color', 'blue').html("이미 등록 되어있는 번호입니다.");
+               return;
+            }
+         });
+      }
+    }
+	
+	/* 이메일 중복체크 추가 */
+	function chk_member_emailChk() {
+      if (jQuery("#email").val() == "") {
+         alert("이메일을 입력하세요.");
+         jQuery("#email").val("");
+         jQuery("#email").focus();
+         return;
+      } else {
+    	  
+    	  getJSON("/json/list/member.getMemberEmailCheck.do", {
+          		"email1" : jQuery("#email").val(),
+           		"email2" : jQuery("#email1").val()
+           		
+          }, function(data) {
+        	$.each(chk_member_emailChk, function() {
+                var data = this["email"] + this["email1"];
+            });
+            
+            console.log("########");
+            console.log("data >" + data);
+            console.log("data.length >" + data.length);
+            
+            if (data.length <= 0) {
+               jQuery("#check_member_email").css("color", "blue").html("사용 가능한 이메일입니다.");
+               return; 
+            } else {
+               jQuery("#check_member_email").css("color", "blue").html("이미 등록 되어있는 이메일입니다.");
+               return;
+            }
+         });
+      }
+   }
 </script>
 </head>
 
@@ -190,43 +284,32 @@
 
 					<div class="user_info_box">
 						<table class="user_table_1">
-							<colgroup>
-								<col width="20%">
-								<col width="">
-							</colgroup>
 							<tbody>
-
 								<tr>
-									<th scope="row"><b>*</b> 아이디</th>
+									<th scope="row">아이디</th>
 									<td class="fs_style_1">${userData.member_id }</td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 기존 비밀번호</th>
-									<td><input type="password" id="member_pw_df" value=""
-										name="member_pw_df" class="input_3 ws_1"
-										placeholder="현재 비밀번호를 입력해 주세요"></td>
+									<th scope="row"> 기존 비밀번호</th>
+									<td>
+										<input type="password" id="member_pw_df" value="" name="member_pw_df" class="input_3 ws_1" placeholder="현재 비밀번호를 입력해 주세요"></td>
 								</tr>
-
 								<tr>
 									<th scope="row">새 비밀번호</th>
-									<td><input type="password" id="member_pw" name="member_pw"
-										class="input_3 ws_1" placeholder="새 비밀번호를 입력해 주세요"> <span
-										class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span></td>
+									<td>
+										<input type="password" id="member_pw" name="member_pw" class="input_3 ws_1" placeholder="새 비밀번호를 입력해 주세요">
+										<span class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span></td>
 								</tr>
-
 								<tr>
 									<th scope="row">새 비밀번호확인</th>
-									<td><input type="password" id="member_pw_check"
-										name="member_pw_check" class="input_3 ws_1"
-										placeholder="새 비밀번호를 다시한번 입력해 주세요"></td>
+									<td>
+										<input type="password" id="member_pw_check" name="member_pw_check" class="input_3 ws_1" placeholder="새 비밀번호를 다시한번 입력해 주세요">
+									</td>
 								</tr>
-
 								<tr>
 									<th scope="row">이름 (실명)</th>
 									<td class="fs_style_1">${userData.member_nm }</td>
 								</tr>
-
 								<tr>
 									<th scope="row">전화번호</th>
 									<td><select id="tel" name="tel" class="select_u1">
@@ -273,94 +356,98 @@
 										type="text" id="tel2" name="tel2" class="input_3 ws_2"
 										value="${tel2 }" maxlength="4"></td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 휴대폰번호</th>
-									<td><input type="text" id="cell" name="cell"
-										class="input_3 ws_2" value="${cell }" maxlength="3"> -
-										<input type="text" id="cell1" name="cell1"
-										class="input_3 ws_2" value="${cell1 }" maxlength="4">
-										- <input type="text" id="cell2" name="cell2"
-										class="input_3 ws_2" value="${cell2 }" maxlength="4">
+									<th scope="row">휴대폰번호</th>
+									<td>
+										<p>
+											<select type="text" id="cell" name="cell" class="select_u1" value="${cell }" maxlength="3">
+												<option value="010">010</option>
+			                                 	<option value="011">011</option>
+											</select> -
+											<input type="text" id="cell1" name="cell1" class="input_3 ws_2" value="${cell1 }" maxlength="4">- 
+											<input type="text" id="cell2" name="cell2" class="input_3 ws_2" value="${cell2 }" maxlength="4">
+											<a href="javascript:;" onclick="chk_member_cellChk();" class="overlap_btn" style="color: #fff;">휴대폰 중복확인</a>
+										</p>
+										<div id="check_member_cell"></div>
 									</td>
 								</tr>
-
 								<tr>
 									<th scope="row" class="fs_1">알림 설정</th>
-									<td><label><input type="checkbox" id="sms_yn"
-											name="sms_yn" class="check" value="Y"
-											<c:if test = "${userData.sms_yn eq 'Y' }">checked</c:if>>
-											휴대폰 알림문자를 받겠습니다.</label></td>
+									<td>
+										<label>
+											<input type="checkbox" id="sms_yn" name="sms_yn" class="check" value="Y"
+												<c:if test = "${userData.sms_yn eq 'Y' }">checked</c:if>>
+												휴대폰 알림문자를 받겠습니다.
+										</label>
+									</td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 이메일</th>
-									<td><input type="text" id="email" name="email"
-										class="input_3" value="${email }"> @ <input
-										type="text" id="email1" name="email1" class="input_3"
-										value="${email1 }"> <select id="choice_email"
-										name="choice_email" class="select_1"
-										onchange="inputEmail2(this.value);">
-											<option value=""
-												<c:if test = "${email1 ne 'hanmail.net' || email1 ne 'naver.com' || email1 ne 'daum.net' || email1 ne 'nate.com' || email1 ne 'gmail.com' || email1 ne 'korea.com' || email1 ne 'dreamwiz.com' || email1 ne 'hotmail.com' || email1 ne 'yahoo.co.kr' || email1 ne 'sportal.or.kr'}">selected</c:if>>직접입력</option>
-											<option value="hanmail.net"
-												<c:if test = "${email1 eq 'hanmail.net' }">selected</c:if>>hanmail.net</option>
-											<option value="naver.com"
-												<c:if test = "${email1 eq 'naver.com'  }">selected</c:if>>naver.com</option>
-											<option value="daum.net"
-												<c:if test = "${email1 eq 'daum.net'  }">selected</c:if>>daum.net</option>
-											<option value="nate.com"
-												<c:if test = "${email1 eq 'nate.com'  }">selected</c:if>>nate.com</option>
-											<option value="gmail.com"
-												<c:if test = "${email1 eq 'gmail.com'  }">selected</c:if>>gmail.com</option>
-											<option value="korea.com"
-												<c:if test = "${email1 eq 'korea.com'  }">selected</c:if>>korea.com</option>
-											<option value="dreamwiz.com"
-												<c:if test = "${email1 eq 'dreamwiz.com'  }">selected</c:if>>dreamwiz.com</option>
-											<option value="hotmail.com"
-												<c:if test = "${email1 eq 'hotmail.com'  }">selected</c:if>>hotmail.com</option>
-											<option value="yahoo.co.kr"
-												<c:if test = "${email1 eq 'yahoo.co.kr'  }">selected</c:if>>yahoo.co.kr</option>
-											<option value="sportal.or.kr"
-												<c:if test = "${email1 eq 'sportal.or.kr'  }">selected</c:if>>sportal.or.kr</option>
-									</select></td>
+									<th scope="row">이메일</th>
+									<td>
+										<p>
+											<input type="text" id="email" name="email" class="input_3" value="${email }"> @ 
+											<input type="text" id="email1" name="email1" class="input_3" value="${email1 }">
+											<select id="choice_email" name="choice_email" class="select_1" onchange="inputEmail2(this.value);">
+												<option value=""
+													<c:if test = "${email1 ne 'hanmail.net' || email1 ne 'naver.com' || email1 ne 'daum.net' || email1 ne 'nate.com' || email1 ne 'gmail.com' || email1 ne 'korea.com' || email1 ne 'dreamwiz.com' || email1 ne 'hotmail.com' || email1 ne 'yahoo.co.kr' || email1 ne 'sportal.or.kr'}">selected</c:if>>직접입력</option>
+												<option value="hanmail.net"
+													<c:if test = "${email1 eq 'hanmail.net' }">selected</c:if>>hanmail.net</option>
+												<option value="naver.com"
+													<c:if test = "${email1 eq 'naver.com'  }">selected</c:if>>naver.com</option>
+												<option value="daum.net"
+													<c:if test = "${email1 eq 'daum.net'  }">selected</c:if>>daum.net</option>
+												<option value="nate.com"
+													<c:if test = "${email1 eq 'nate.com'  }">selected</c:if>>nate.com</option>
+												<option value="gmail.com"
+													<c:if test = "${email1 eq 'gmail.com'  }">selected</c:if>>gmail.com</option>
+												<option value="korea.com"
+													<c:if test = "${email1 eq 'korea.com'  }">selected</c:if>>korea.com</option>
+												<option value="dreamwiz.com"
+													<c:if test = "${email1 eq 'dreamwiz.com'  }">selected</c:if>>dreamwiz.com</option>
+												<option value="hotmail.com"
+													<c:if test = "${email1 eq 'hotmail.com'  }">selected</c:if>>hotmail.com</option>
+												<option value="yahoo.co.kr"
+													<c:if test = "${email1 eq 'yahoo.co.kr'  }">selected</c:if>>yahoo.co.kr</option>
+												<option value="sportal.or.kr"
+													<c:if test = "${email1 eq 'sportal.or.kr'  }">selected</c:if>>sportal.or.kr</option>
+											</select>
+											<a href="javascript:;" onclick="chk_member_emailChk();" class="overlap_btn" style="color: #fff;">이메일 중복확인</a>
+										</p>
+										<div id="check_member_email"></div>
+									</td>
 								</tr>
-
 								<tr>
 									<th scope="row" class="fs_1">광고성 메일 수신</th>
-									<td><label><input type="radio" id="email_yn"
-											name="email_yn" value="Y" class="check"
-											<c:if test = "${userData.email_yn eq 'Y' }">checked</c:if>>
-											수신함</label> <label style="margin-left: 15px;"><input
-											type="radio" id="email_yn" name="email_yn" value="N"
-											class="check"
-											<c:if test = "${userData.email_yn eq 'N' }">checked</c:if>>
-											수신안함</label> <span class="c2">※ 주요 공지사항 및 알림 등은 설정에 관계 없이
-											발송됩니다.</span></td>
+									<td>
+										<label>
+											<input type="radio" id="email_yn" name="email_yn" value="Y" class="check"
+												<c:if test = "${userData.email_yn eq 'Y' }">checked</c:if>>
+												수신함
+										</label>
+										<label style="margin-left: 15px;">
+											<input type="radio" id="email_yn" name="email_yn" value="N" class="check"
+												<c:if test = "${userData.email_yn eq 'N' }">checked</c:if>>
+												수신안함
+										</label>
+										<span class="c2">※ 주요 공지사항 및 알림 등은 설정에 관계 없이 발송됩니다.</span>
+									</td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 주소</th>
+									<th scope="row">주소</th>
 									<td class="adress">
 										<p>
-											<input type="text" id="zip_cd" name="zip_cd"
-												class="input_3 ws_2" readonly value="${zip_code1 }">
-											- <input type="text" id="zip_cd1" name="zip_cd1"
-												class="input_3 ws_2" readonly
-												value="<c:if test="${!(zip_code2 == null or zip_code2 == '' or zip_code2 == 'null')}">${zip_code2 }</c:if>">
+											<input type="text" id="zip_cd" name="zip_cd" class="input_3 ws_2" readonly value="${zip_code1 }">- 
+											<input type="text" id="zip_cd1" name="zip_cd1" class="input_3 ws_2" readonly value="<c:if test="${!(zip_code2 == null or zip_code2 == '' or zip_code2 == 'null')}">${zip_code2 }</c:if>">
 											<a href="javascript:open_zipcode();" class="address_btn">주소검색</a>
 										</p>
 										<p>
-											<input type="text" id="addr1" name="addr1"
-												class="input_3 ws_3" value="${userData.addr1 }" readonly>
+											<input type="text" id="addr1" name="addr1" class="input_3 ws_3" value="${userData.addr1 }" readonly>
 										</p>
 										<p class="last">
-											<input type="text" id="addr2" name="addr2"
-												class="input_3 ws_3" value="${userData.addr2 }">
+											<input type="text" id="addr2" name="addr2" class="input_3 ws_3" value="${userData.addr2 }">
 										</p>
 									</td>
 								</tr>
-
 							</tbody>
 						</table>
 					</div>
