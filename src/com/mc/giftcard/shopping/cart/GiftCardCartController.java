@@ -538,8 +538,67 @@ public class GiftCardCartController {
 		*
 		****************************************************************************/
 		String cancelReq = "false";
-		String rSuccYn = "y";
+		String rSuccYn = "n";
+		//TODO: 이부분에서 가상결제계좌 가져오는거 처리
+		//일단 가상계좌만 가져오는걸루 구현
+		JSONArray jsonArray = new JSONArray();
+		jsonArray.add("007");
+		JSONObject jsonData = new JSONObject();
+		jsonData.put("banks", jsonArray);
+		JSONObject jsonData2 = new JSONObject();
+		jsonData2.put("vact", jsonData);
 		
+		//TODO: PLUSPAY에 보내게 될경우 파라미터 셋팅값 URL도 변경해야한다.
+		/*JSONObject jsonData = new JSONObject();
+		jsonData.put("withdrawBankCd", params.get("bankCd"));
+		jsonData.put("withdrawAccount", params.get("account"));
+		jsonData.put("orderNo", params.get("OrdNo"));
+		
+		JSONObject jsonData2 = new JSONObject();
+		jsonData2.put("jsonInfo", jsonData);*/
+		String res = paymentUtil.vactWithDrawReq(jsonData2);
+		
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse( res );
+		JSONObject jsonObj = (JSONObject) obj;
+		JSONObject jsonObj1 = (JSONObject)jsonObj.get("result");
+		log.debug("가상계좌 번호 요청 처리결과==="+jsonObj1.get("resultCd"));
+		
+		if("0000".equals(StringUtil.nvl((String)jsonObj1.get("resultCd"), ""))) {
+			JSONObject jsonObj2 = (JSONObject)jsonObj.get("vact");
+			JSONArray jsonResArray = new JSONArray();
+			jsonResArray = (JSONArray)jsonObj2.get("vacts"); 
+			jsonObj2 =(JSONObject)jsonResArray.get(0); 
+			log.debug("처리결과 가상계좌번호출력 ==" + jsonObj2.get("pretty"));
+			params.put("virAcct", jsonObj2.get("pretty"));//가상계좌번호				
+			
+			//TODO : 가상계좌 받고 출금정보 등록 요청까지 하고 결과로 업데이트 까지
+			jsonData = new JSONObject();
+			jsonData.put("mchtId", "teptest"); //가맹점 아이디
+			jsonData.put("trxType", "0"); //거래구분 0:등록, 2:변경
+			jsonData.put("account", jsonObj2.get("account")); //가상계좌
+			jsonData.put("withdrawBankCd", params.get("bankCd")); //출금계좌 은행코드
+			jsonData.put("withdrawAccount", params.get("account")); //출금계좌 계좌번호
+			jsonData.put("trackId", params.get("OrdNo")); //주문번호			
+			
+			jsonData2 = new JSONObject();
+			jsonData2.put("vact", jsonData);			
+			
+			res = paymentUtil.vactInfoRegReq(jsonData2);			
+			
+			parser = new JSONParser();
+			obj = parser.parse( res );
+			jsonObj = (JSONObject) obj;
+			jsonObj1 = (JSONObject)jsonObj.get("result");
+			log.debug("가상계좌 등록 처리결과==="+jsonObj1.get("resultCd"));
+			if("0000".equals(StringUtil.nvl((String)jsonObj1.get("resultCd"), ""))) {
+				rSuccYn = "y";
+				jsonObj2 = (JSONObject)jsonObj.get("vact");
+				params.put("rapprno", StringUtil.nvl((String)jsonObj2.get("issueId"), (String)jsonObj2.get("issueId ")));//승인번호(가상계좌 발행 번호)
+			}else {
+				rSuccYn = "n";
+			}			
+		}
 		
 		if(StringUtil.nvl(rSuccYn, "y").equals("y")){ 
 			/*
@@ -548,10 +607,9 @@ public class GiftCardCartController {
 			 * params.put("rinstmt", agspay.getResult("rInstmt"));//할부개월
 			 * params.put("rapprtm", agspay.getResult("rApprTm"));//승인시각
 			 */			
-			params.put("rapprno", params.get("rapprno"));//승인번호
-			params.put("rdealno", params.get("rdealno"));//거래번호
+			params.put("rdealno", "");//거래번호
 			//params.put("rinstmt", "12");//할부개월
-			params.put("rapprtm", params.get("rapprtm"));//승인시각
+			params.put("rapprtm", "");//승인시각
 			
 			params.put("cart_no_arr", cart_no);
 			params.put("msg_arr", message);

@@ -18,13 +18,13 @@
           <col width="*" />
           </colgroup>
           <tr>
-            <th>상품선택</th>
+            <th>상품권선택</th>
             <td class="selsize" colspan="3">
 	          	<select title="유통사선택" data-ng-model="form.carmakerseq" data-ng-options="item.carmakerseq as item.makernm for item in carmaker" data-ng-change="changeCarmaker()" required>
-	          		<option value="">카테고리</option>
+	          		<option value="">유통사</option>
 	            </select>
 	          	<select title="상품권선택" data-ng-model="form.carmodelseq" data-ng-options="item.carmodelseq as item.carmodelnm for item in carmodel" data-ng-change="changeCarmodel()" required>
-	          		<option value="">모델명</option>
+	          		<option value="">상품권</option>
 	            </select>
             </td>
           </tr>
@@ -108,8 +108,8 @@
               <label><input type="checkbox" data-ng-model="form.eventyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.eventyn='N'"/>이벤트</label>
               <label><input type="checkbox" data-ng-model="form.newyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.newyn='N'"/>신상품</label>
               <label><input type="checkbox" data-ng-model="form.publicyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.publicyn='N'"/>인기</label> -->
-              <label><input type="checkbox" data-ng-model="form.recommyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.recommyn='N'"/>추천</label>
-              <!--<label><input type="checkbox" data-ng-model="form.saleyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.saleyn='N'"/>세일</label>
+              <!-- <label><input type="checkbox" data-ng-model="form.recommyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.recommyn='N'"/>추천</label>
+              <label><input type="checkbox" data-ng-model="form.saleyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.saleyn='N'"/>세일</label>
               <label><input type="checkbox" data-ng-model="form.planyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.planyn='N'"/>기획</label>
               <p style="font-size:11px; padding:10px 0 0 0px;">- 베스트 : 상품이 실제로 많이 팔리는 제품이 아니라 관리자가 임의로 지정한 것임</p>
               <p style="font-size:11px; padding:5px 0 0 0px;">- 이벤트 : 이벤트 매장에 노출</p>

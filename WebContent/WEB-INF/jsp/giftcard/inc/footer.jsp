@@ -33,9 +33,9 @@
 	  </ul>
 	  </div>
       <div class="c_bottom">
-	  	<p><strong>대표자</strong> : 이상민 ㅣ <strong>상호</strong> : (주)주식회사 페어링 ㅣ  <br>
-	  		<strong>사업자등록번호</strong> : 240-87-01710 <strong>사업자주소</strong> : 경기도 성남시 분당구 장미로 42, 3층 303호 ㅣ <br>
-	  	<p><strong>TEL</strong> : 1522-7622 ㅣ <strong>E-mail</strong> : pairingpayments@gmail.com<br><span>Copyrightⓒpairingpayments.All Rights Reserved.</span></p>
+	  	<p><strong>대표자</strong> : 박지선 ㅣ <strong>상호</strong> : (주)에이블시스템 ㅣ <strong>개인정보 관리책임자</strong> : 김경선 ㅣ <br>
+	  		<strong>사업자등록번호</strong> : 367-81-02079 <strong>사업자주소</strong> : 인천광역시 연수구 갯벌로 129, 203호(산업기술연구직접센터) ㅣ <br>
+	  	<p><strong>TEL</strong> : 1661-8431 ㅣ <strong>E-mail</strong> : sales@31pluspay.com<br><span>Copyrightⓒ31SYSTEM.All Rights Reserved.</span></p>
 	  </div>
     </div>
 	<p class="top"><a href="#" class="top_btn"><img src="/images/footer/f_top.png" alt="top"></a></p>

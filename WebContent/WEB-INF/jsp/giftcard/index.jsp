@@ -18,23 +18,23 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  페어링 오디오 쇼핑몰 입니다." />
-<meta name="Keywords" content="음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
-<title>페어링 오디오</title>
+<meta name="description" content="안녕하세요  티켓모아 입니다." />
+<meta name="Keywords" content="티켓모아, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<title>티켓모아</title>
 
 <!-- og -->
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="페어링" />
-<meta property="og:title" content="페어링 입니다." />
-<meta property="og:description" content="안녕하세요 페어링 입니다." />
+<meta property="og:site_name" content="티켓모아" />
+<meta property="og:title" content="티켓모아 입니다." />
+<meta property="og:description" content="안녕하세요 티켓모아 입니다." />
 <meta property="og:url" content="#" />
 <meta property="og:image" content="./images/kakao_img.png" />
 <meta property="og:image:width" content="800" />
 <meta property="og:image:height" content="400" />
 
 <!-- twitter -->
-<meta name="twitter:title" content="페어링" />
-<meta name="twitter:description" content="안녕하세요 페어링 입니다." />
+<meta name="twitter:title" content="티켓모아" />
+<meta name="twitter:description" content="안녕하세요 티켓모아 입니다." />
 <meta name="twitter:url" content="#" />
 <meta name="twitter:image" content="./images/kakao_img.png" />
 
@@ -354,10 +354,10 @@
 		<div class="swiper mainSwiper">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<img src="../images/banner/banner3.png" alt="페어링 오디오">
+					<img src="../images/banner/banner3.png" alt="상품권싸게사자">
 				</div>
 				<div class="swiper-slide">
-					<img src="../images/banner/banner2.png" alt="음향기기 구매는 페어링 오디오">
+					<img src="../images/banner/banner2.png" alt="상품권 구매는 티켓모아">
 				</div>
 				<div class="swiper-slide">
 					<img src="../images/banner/banner1.png" alt="할인이 쏟아진다">

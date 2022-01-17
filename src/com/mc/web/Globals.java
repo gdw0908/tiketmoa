@@ -1,9 +1,7 @@
 package com.mc.web;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -219,6 +217,4 @@ public class Globals {
 	public static final List<String> IMAGE_EXTENTSIONS = Arrays.asList(new String[]{"gif", "jpg", "jpeg", "png", "bmp"});
 	public static final List<String> HTML_EXTENTSIONS = Arrays.asList(new String[]{"htm", "html", "jsp", "do"});
 	public static final List<String> BROWSER_EXTENTSIONS = Arrays.asList(new String[]{"chrome","firefox","safari","opera","iphone","ipod","android","blackberry","windows ce", "nokia","webos","opera mini","sonyericsson","opera mobi","iemobile"});	//브라우져
-	
-	public static Map danalMap= new HashMap();	//다날결제관련 상수 맵
 }

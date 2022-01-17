@@ -230,8 +230,8 @@ public class GiftCardCartService {
 			map.put("commission", cartDAO.getCommission(map));
 			map.put("paytyp", paytyp);
 			//취소 환불에 대비한 입금 은행코드와 은행계좌번호 업데이트
-			//map.put("bankCd", params.get("bankCd"));//은행코드
-			//map.put("account", params.get("account"));//입금계좌번호 
+			map.put("bankCd", params.get("bankCd"));//은행코드
+			map.put("account", params.get("account"));//입금계좌번호 
 			/*
 			 * if(!paytyp.equals("virtual")){ //문자 보내기 map.put("mmsMessage",
 			 * " 상품의 주문 및 결제가 완료 되었습니다."); mmsService.acMMS_cartno(map);

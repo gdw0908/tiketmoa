@@ -174,8 +174,9 @@
           <!-- <td>{{item.erp_code}}</td>
           <td>{{item.com_nm}}</td> -->
           <td>{{item.paytyp_nm}}</td>
-          <td data-ng-if="!item.trans_id">PC</td>
-          <td data-ng-if="!!item.trans_id">MOBILE</td>
+          <td>PC</td>
+<!--           <td data-ng-if="!item.trans_id">PC</td>
+          <td data-ng-if="!!item.trans_id">MOBILE</td> -->
         </tr>
         <tr>
         <tr>

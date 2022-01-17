@@ -62,8 +62,8 @@ function  go_delete()
     <div class="tab_menu">
       <ul class="tab">
         <!-- <li ><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate.do?codeno=0509');">공통코드</a></li> -->
-        <li class="on"><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate2.do');">카테고리</a></li>
-        <li><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate3.do');">모델명</a></li>
+        <li class="on"><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate2.do');">유통사</a></li>
+        <li><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate3.do');">상품권</a></li>
         <!-- <li><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate4.do');">차량모델명</a></li>
         <li><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate5.do');">부품정보</a></li> -->
       </ul>

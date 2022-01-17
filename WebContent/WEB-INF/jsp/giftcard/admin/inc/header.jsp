@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>DBSOUND 관리시스템</title>
+<title>파츠모아 관리시스템</title>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link href="/lib/css/cmsbase.css" rel="stylesheet" type="text/css" />
 <link href="/lib/css/cmsadmin.css" rel="stylesheet" type="text/css" />
@@ -18,7 +18,7 @@ function logout(){
 <body>
 <div id="headerwrap">
 
-  <h1><a href="javascript:window.top.location.reload();"><img src="/images/admin/header/logo.svg" alt="DBSOUND 홈페이지 관리시스템" /></a><span>상품관리&nbsp;<span>통합관리시스템</span></span></h1>
+  <h1><a href="javascript:window.top.location.reload();"><img src="/images/admin/header/logo.svg" alt="상품권 홈페이지 관리시스템" /></a><span>상품권관리&nbsp;<span>통합관리시스템</span></span></h1>
   
 	  <div class="admin_profile">
 	<%--   <c:if test = "${sessionScope.member.group_seq ne '8' }">
