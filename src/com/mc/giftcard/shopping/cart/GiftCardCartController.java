@@ -1,6 +1,9 @@
 package com.mc.giftcard.shopping.cart;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,11 +25,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import aegis.pgclient.PgClientBean40;
-
+import com.mc.common.util.HttpApiUtil;
 import com.mc.common.util.StringUtil;
 import com.mc.web.Globals;
 import com.mc.web.MCMap;
+import com.mc.web.common.ShorturlController;
+import com.mc.common.util.PaymentUtil;
 
 /**
  * 
@@ -47,6 +53,9 @@ public class GiftCardCartController {
 
 	@Autowired
 	private GiftCardCartService cartService;
+	
+	@Autowired
+	private PaymentUtil paymentUtil;
 
 	@RequestMapping(params = "!mode")
 	public String index(ModelMap model, HttpServletRequest request, HttpServletResponse response, HttpSession session,
@@ -508,21 +517,7 @@ public class GiftCardCartController {
 	@RequestMapping(params="mode=pay_ing")
 	@Transactional(rollbackFor = { Exception.class })
 	public String pay_int(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params, @PathVariable("index") String index, @RequestParam(value="cart_no", required=true, defaultValue="") String[] cart_no, @RequestParam(value="message", required=false, defaultValue="[]") String[] message) throws Exception{
-		/*
-		 * if(StringUtil.isEmpty(request.getParameter("devTest")) ) {
-		 * 
-		 * request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
-		 * request.setAttribute("redirect",
-		 * "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
-		 * 
-		 * return "message"; }else if(request.getParameter("devTest").equals("T") ) {
-		 * request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
-		 * request.setAttribute("redirect",
-		 * "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
-		 * 
-		 * return "message"; }
-		 */
-		
+
 		request.setCharacterEncoding("UTF-8");
 		/*공통사용*/
 		/****************************************************************************
@@ -530,18 +525,11 @@ public class GiftCardCartController {
 		*  결제결과에 따른 상점DB 저장 및 기타 필요한 처리작업을 수행하는 부분입니다.
 		*
 		*	아래의 결과값들을 통하여 각 결제수단별 결제결과값을 사용하실 수 있습니다.
-		*	
-		*	-- 공통사용 --
-		*	업체ID : agspay.getResult("rStoreId")
-		*	주문번호 : agspay.getResult("rOrdNo")
-		*	상품명 : agspay.getResult("rProdNm")
-		*	거래금액 : agspay.getResult("rAmt")
-		*	성공여부 : agspay.getResult("rSuccYn") (성공:y 실패:n)
-		*	결과메시지 : agspay.getResult("rResMsg")
 		*
 		*	1.가상계좌
 		*	가상계좌의 결제성공은 가상계좌발급의 성공만을 의미하며 입금대기상태로 실제 고객이 입금을 완료한 것은 아닙니다.
 		*	따라서 가상계좌 결제완료시 결제완료로 처리하여 상품을 배송하시면 안됩니다.
+		*
 		*	결제후 고객이 발급받은 계좌로 입금이 완료되면 MallPage(상점 입금통보 페이지(가상계좌))로 입금결과가 전송되며
 		*	이때 비로소 결제가 완료되게 되므로 결제완료에 대한 처리(배송요청 등)은  MallPage에 작업해주셔야 합니다.
 		*	결제종류 : agspay.getResult("rAuthTy") (가상계좌 일반 : vir_n 유클릭 : vir_u 에스크로 : vir_s)
@@ -551,7 +539,8 @@ public class GiftCardCartController {
 		****************************************************************************/
 		String cancelReq = "false";
 		String rSuccYn = "y";
-		//TODO: 이부분은 실제 데이터 통신으로 처리해야함
+		
+		
 		if(StringUtil.nvl(rSuccYn, "y").equals("y")){ 
 			/*
 			 * params.put("rdealno", agspay.getResult("rDealNo"));//거래번호
@@ -559,10 +548,10 @@ public class GiftCardCartController {
 			 * params.put("rinstmt", agspay.getResult("rInstmt"));//할부개월
 			 * params.put("rapprtm", agspay.getResult("rApprTm"));//승인시각
 			 */			
-			params.put("rdealno", "509642");//거래번호
-			params.put("rapprno", "00614925");//승인번호
+			params.put("rapprno", params.get("rapprno"));//승인번호
+			params.put("rdealno", params.get("rdealno"));//거래번호
 			//params.put("rinstmt", "12");//할부개월
-			params.put("rapprtm", "20211227234807");//승인시각
+			params.put("rapprtm", params.get("rapprtm"));//승인시각
 			
 			params.put("cart_no_arr", cart_no);
 			params.put("msg_arr", message);
@@ -576,6 +565,7 @@ public class GiftCardCartController {
 			params.put("paytyp", StringUtil.nvl((String)params.get("AuthTy"), "virtual"));//결재타입
 			params.put("subty", params.get("SubTy"));//서브결재형태
 			params.put("payamt", params.get("Amt"));//결재금액
+
 		
 			MCMap member = (MCMap) session.getAttribute("member");
 			if(member != null){
@@ -817,4 +807,56 @@ public class GiftCardCartController {
 		return "OK";
 	}
 
+	@ResponseBody
+	@RequestMapping(params = "mode=userAcctChk")
+	@Transactional(rollbackFor = { Exception.class })
+	public Map userAcctChk(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params)
+			throws Exception {
+		MCMap member = (MCMap) session.getAttribute("member");
+		Map rstMap = new HashMap();
+		String res = "";
+		String memberNm = (String)params.get("memberNm");
+		if (member != null) {
+			params.put("session_member_id", (String) member.get("member_id"));
+			params.put("session_member_seq", (String) member.get("member_seq"));
+			params.put("session_member_nm", (String) member.get("member_nm"));
+			params.put("ip", request.getRemoteHost());
+		}
+		try {
+			JSONObject jsonData = new JSONObject();
+			jsonData.put("bankCd", params.get("bankCd"));
+			jsonData.put("account", params.get("account"));			
+			JSONObject jsonData2 = new JSONObject();
+			jsonData2.put("accnt", jsonData);				
+			
+			res = paymentUtil.settleAccntReq(jsonData2); //예금주 조회
+			
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse( res );
+			JSONObject jsonObj = (JSONObject) obj;
+			JSONObject jsonObj1 = (JSONObject)jsonObj.get("result");
+			log.debug("처리결과==="+jsonObj1.get("resultCd"));
+			
+			rstMap.put("rst", false);
+			if("0000".equals(jsonObj1.get("resultCd"))) {
+				JSONObject jsonObj2 = (JSONObject)jsonObj.get("accnt");
+				log.debug("처리결과 예금주명 ==" + jsonObj2.get("holder"));
+				//계좌 검증!!!
+				if(StringUtil.nvl(memberNm,"").equals(StringUtil.nvl((String)jsonObj2.get("holder"),""))) {
+					rstMap.put("rst", "1");
+				}
+				// TODO: 일단 관리자만 통과 추후 이소스 제거 
+				if("admin".equals(member.get("member_id"))) {
+					rstMap.put("rst", true);
+				}else {				
+					rstMap.put("rst", false);
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw e;
+		}		
+		return rstMap;
+	}
+	
 }

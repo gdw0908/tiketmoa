@@ -24,8 +24,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  페어링사운드 입니다." />
+<meta name="Keywords" content="페어링사운드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>나의쇼핑</title>
 
 <!-- <script language=javascript
@@ -448,12 +448,71 @@ function fn_checkByte(obj){
     document.getElementById("titleByte").innerText = totalByte;
   }
 }
-
+var resdat = "";
 function goStep3() {
 	if(Check_Common(frm) == true){
-		$("#frm").submit();
+		goDanalPayPop();
 	}
 }
+
+function goDanalPayPop(){
+	//window.open('/danal/Ready.do?orderid=PT130122000039&amount=70000&itemname=페어링마이크&useragent=PC&dt=20220113&username=구매자&userid=admin&useremail=gdw0908@nate.com&SERVICETYPE=DANALCARD','player','width=550, height=515, scrollbars=yes, resizable=no, top=1, left=1');
+	var pop_title="다날카드결제시스템";
+	
+	if($("#username").val() == ""){
+		$("#username").val($("#m_member_nm").val());	
+	}
+	if($("#userid").val() == ""){
+		$("#userid").val($("#m_member_nm").val());	
+	}
+		 
+	if(Number($("#totalQty").val()) > 1){
+		var itemname = $("#itemname").val()+" 외"+$("#totalQty").val()+"개";
+		$("#itemname").val(itemname);
+	}
+	var isMobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ? true : false;
+	console.log("isMobile==="+isMobile);
+	$("#useragent").val("PC");
+	if(isMobile){
+		$("#useragent").val("MOBILE");	
+	}
+    var date = new Date();
+    var year = date.getFullYear().toString();
+    var month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+    var day = date.getDate();
+    day = day < 10 ? '0' + day.toString() : day.toString();    
+	var dt = year+month+day;
+	console.log("dt==="+dt);
+	$("#dt").val(dt);
+	//get 방식 
+	var actionUrl ='/danal/Ready.do?orderid='+$("#orderid").val()+'&amount='+$("#amount").val()+'&itemname='+$("#itemname").val()+'&useragent='+$("#useragent").val()+'&dt='+$("#dt").val()+'&username='+$("#username").val()+'&userid='+$("#userid").val()+'&useremail='+$("#useremail").val()+'&SERVICETYPE='+$("#SERVICETYPE").val();
+	window.open(actionUrl,'player','width=550, height=515, scrollbars=yes, resizable=no, top=1, left=1');
+	//post 방식 
+	//window.open('',pop_title,'width=550, height=515, scrollbars=yes, resizable=no, top=1, left=1');	
+	//$("#danalFrm").submit();
+}
+
+window.addEventListener('message', function(e) {
+	  console.log(e.data); // { hello: 'parent' }	  
+	  try{
+		  var resObj = new Object();
+		  resObj = JSON.stringify(e.data);		  
+		  var result = JSON.parse(resObj);
+		  console.log(result.data.payment_info.returncode);		  	  
+		  
+		  if(result.data.payment_info.returncode== "0000"){
+				$("#rapprno").val(result.data.payment_info.tid);
+				$("#rdealno").val(result.data.payment_info.tid);
+				$("#rapprtm").val(result.data.payment_info.trandate+result.data.payment_info.trantime);
+				$("#AuthTy").val("danal");
+			  	$("#frm").submit();
+		  }
+	  }catch{		  
+	  }
+});
+
+
 </script>
 </head>
 <body>
@@ -489,11 +548,16 @@ function goStep3() {
 						</tr>
 					</thead>
 					<tbody>
+						<c:set var="user_price_l" 	value=""/>
+						<c:set var="productNm" 		value=""/>
+						<c:set var="qty" 	value=""/>
 						<c:forEach var="item" items="${data.list }" varStatus="status">
 							<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
 							<c:set var="prod_price" value="${prod_price + user_price_l }"/>							
 							<c:set var="discount_price_l" value="0" />
 							<c:set var="fee_price_l" value="0" />
+							<c:set var="qty" 	value="${item.qty}"/>
+							<c:set var="productNm" value="${status.index == 0 ? item.PRODUCTNM : item.PRODUCTNM+'' }"/>
 							<%-- <c:choose>
 					       		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
 					       			<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
@@ -579,8 +643,8 @@ function goStep3() {
 					</tbody>
 				</table>
 				<ul class="sub_list_1">
-					<li><strong>티켓모아</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
-						<strong>티켓모아</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+					<li><strong>페어링사운드</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
+						<strong>페어링사운드</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
 				</ul>
 				<p class="pay_type">2. 주문회원 정보</p>
 				<div class="sub_table_1">
@@ -614,6 +678,24 @@ function goStep3() {
 								<th scope="row">주문자 연락처</th>
 								<td>${memberInfo.tel }</td>
 							</tr>
+							<%-- <tr>
+				              <th scope="row"><span>입금은행</span></th>
+				              <td>
+				              	<select id="bankCd" name="bankCd" class="select_1" onchange = "" style="width:170px;">
+				              			<option value="">선택해주세요.</option>	
+				              		<c:forEach var="item" items="${data.bankList }" varStatus="status">
+				              			<option value="${item.CODE}">${item.CODE_NM}</option>
+				              		</c:forEach>
+				              	</select>				              
+				              	<span>&nbsp;&nbsp;상품권 결제는 가상 계좌 입금으로 결제가 처리되며 주문자와 동일한 입금계좌 정보를 입력해주세요.</span>
+				              </td>
+				            </tr>
+				            <tr>
+				              <th scope="row"><span>입금계좌번호</span></th>
+				              <td><input type="text" id="account" name="account" class="input_2 ws_3"  style="width:200px;" placeholder="입금 계좌번호를 입력해주세요."> 
+				              		<span class="c1" id="acctChkRes" style="display:none;"><strong>&nbsp;&nbsp;※ 주의! : 계좌검증실패. 반드시 주문자와 동일한 입금 계좌 정보를 확인해주세요.</strong></span>
+				              </td>
+				            </tr> --%>
 						</tbody>
 					</table>
 				</div>
@@ -853,6 +935,8 @@ function goStep3() {
 
 		String AGS_HASHDATA = strBuf.toString();
 		%>
+		
+	 
 		<input type="hidden" name="m_member_nm"
 			value="${memberInfo.member_nm }" /> <input type="hidden"
 			name="m_zip_cd" value="${memberInfo.zip_cd }" /> <input type="hidden"
@@ -890,7 +974,7 @@ function goStep3() {
 		<!-- 각 결제 공통 사용 변수 -->
 		<input type=hidden name=Flag value="">
 		<!-- 스크립트결제사용구분플래그 -->
-		<input type=hidden name=AuthTy value="">
+		<input type=hidden name=AuthTy value="" id="AuthTy">
 		<!-- 결제형태 -->
 		<input type=hidden name=SubTy value="">
 		<!-- 서브결제형태 -->
@@ -1033,6 +1117,24 @@ function goStep3() {
 		<!-- 텔레뱅킹계좌이체 휴대폰번호 -->
 
 		<!-- 스크립트 및 플러그인에서 값을 설정하는 Hidden 필드  !!수정을 하시거나 삭제하지 마십시오-->
-
+		<!-- 다날결제결과같이 보낼데이터 form Start -->
+		<input type="hidden" name="rapprno"  id="rapprno" 	value="" />
+		<input type="hidden" name="rdealno"  id="rdealno" 	value="" />
+		<input type="hidden" name="rapprtm"  id="rapprtm" 	value="" />
+		
+	</form>
+	<form name="danalFrm"  id="danalFrm" method="post" action="/danal/Ready.do" >
+		<!-- 다날결제관련 form Start -->
+		 <input type="hidden" name="orderid"  id="orderid" 	value="<%=OrdNo%>" />
+		 <input type="hidden" name="amount"  id="amount" 	value="${user_price_l }" />
+		 <input type="hidden" name="itemname"  id="itemname" 	value="${productNm}" />		 
+		 <input type="hidden" name="useragent"  id="useragent" 	value="" />
+		 <input type="hidden" name="dt"  id="dt" 	value="" />
+		 <input type="hidden" name="username"  id="username" 	value="${memberInfo.member_nm }" />
+		 <input type="hidden" name="userid"  id="userid" 	value="${memberInfo.member_id }" />
+		 <input type="hidden" name="useremail"  id="useremail" 	value="${memberInfo.email }" />
+		 <input type="hidden" name="SERVICETYPE"  id="SERVICETYPE" 	value="DANALCARD" />
+		 <input type="hidden" name="totalQty"  id="totalQty" 	value="${qty }" />
+		 <!-- 다날결제관련 form End --> 
 	</form>
 </body>

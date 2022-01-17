@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.mc.common.util.Encryption;
 import com.mc.common.util.StringUtil;
+import com.mc.giftcard.code.GiftCardCodeDAO;
 import com.mc.web.Globals;
 import com.mc.web.MCMap;
-import com.mc.web.mms.MmsInfoDAO;
 import com.mc.web.mms.MmsService;
 
 @Service
@@ -26,6 +26,9 @@ public class GiftCardCartService {
 	
 	@Autowired
 	private GiftCardErpDAO erpDAO;
+	
+	@Autowired
+	private GiftCardCodeDAO codeDAO;
 	
 	@Autowired
 	private Globals globals;
@@ -64,6 +67,11 @@ public class GiftCardCartService {
 		}
 		rstMap.put("orderno", params.get("orderno"));
 		rstMap.put("list", list);
+		
+		params.put("code_group_seq", "47");
+		params.put("use_yn", "Y");
+		rstMap.put("bankList", codeDAO.codeList(params));
+		
 		return rstMap;
 	}
 	
@@ -138,7 +146,7 @@ public class GiftCardCartService {
 	}
 	
 	public Map direct_order(Map params) throws Exception {
-		Map rstMap = new HashMap();
+		Map rstMap = new HashMap(); 
 		
 		params.put("item_seq", params.get("seq"));
 		/*MCMap mcmap = cartDAO.inquiry_yn(params);
@@ -171,7 +179,11 @@ public class GiftCardCartService {
 		}
 		rstMap.put("orderno", params.get("orderno"));
 		rstMap.put("list", cartDAO.dir_cart(params));
- 		rstMap.put("rst", "1");
+		params.put("code_group_seq", "47");
+		params.put("use_yn", "Y");
+		rstMap.put("bankList", codeDAO.codeList(params));
+		
+ 		rstMap.put("rst", "1"); 		
 		return rstMap;
 	}
 
@@ -217,6 +229,9 @@ public class GiftCardCartService {
 			map.put("amt", cartDAO.actual_amount(map));
 			map.put("commission", cartDAO.getCommission(map));
 			map.put("paytyp", paytyp);
+			//취소 환불에 대비한 입금 은행코드와 은행계좌번호 업데이트
+			//map.put("bankCd", params.get("bankCd"));//은행코드
+			//map.put("account", params.get("account"));//입금계좌번호 
 			/*
 			 * if(!paytyp.equals("virtual")){ //문자 보내기 map.put("mmsMessage",
 			 * " 상품의 주문 및 결제가 완료 되었습니다."); mmsService.acMMS_cartno(map);

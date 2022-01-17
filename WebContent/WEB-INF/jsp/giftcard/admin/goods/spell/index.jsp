@@ -265,7 +265,7 @@ app.controller("listCtrl", function($scope, $window, $routeParams, $compile, aja
 app.controller("modifyCtrl", function($scope, $window, $routeParams, ajaxService, dialogService, $filter, $timeout) {
 	$scope.form = {};
 	var angularDateFilter = $filter('myDate');
-	ajaxService.getJSON("/admin/goods/spell/index.do?mode=view", {cart_no : $routeParams.cart_no}, function(data){
+	ajaxService.getJSON("/giftcard/admin/goods/spell/index.do?mode=view", {cart_no : $routeParams.cart_no}, function(data){
 		$scope.view = data.view;
 		$scope.form = {
 			cart_no : 	data.view.cart_no,

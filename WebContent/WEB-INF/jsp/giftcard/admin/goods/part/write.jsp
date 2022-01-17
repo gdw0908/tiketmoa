@@ -18,13 +18,13 @@
           <col width="*" />
           </colgroup>
           <tr>
-            <th>상품권선택</th>
+            <th>상품선택</th>
             <td class="selsize" colspan="3">
 	          	<select title="유통사선택" data-ng-model="form.carmakerseq" data-ng-options="item.carmakerseq as item.makernm for item in carmaker" data-ng-change="changeCarmaker()" required>
-	          		<option value="">유통사</option>
+	          		<option value="">카테고리</option>
 	            </select>
 	          	<select title="상품권선택" data-ng-model="form.carmodelseq" data-ng-options="item.carmodelseq as item.carmodelnm for item in carmodel" data-ng-change="changeCarmodel()" required>
-	          		<option value="">상품권</option>
+	          		<option value="">모델명</option>
 	            </select>
             </td>
           </tr>

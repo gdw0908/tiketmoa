@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/giftcard/danalPay/Cancel.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/giftcard/danalPay/Success.jsp=UTF-8
 encoding//WebContent/lib/js/partials/partsearch.html=UTF-8
 encoding//src/properties/mc.properties=UTF-8
 encoding//src/properties/real.properties=UTF-8

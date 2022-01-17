@@ -76,8 +76,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요 페어링사운드 입니다." />
+<meta name="Keywords" content="페어링사운드 , 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>비밀번호찾기</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -210,7 +210,7 @@ function search_email_form_fnc()
         </div>
       </div>
       <div class="b_gui_2">
-        <p><strong>위의 방법으로도 비밀번호를 찾지 못했다면, 티켓크루 쇼핑몰 고객센터로 문의주십시오.</strong><br>
+        <p><strong>위의 방법으로도 비밀번호를 찾지 못했다면, 페어링사운드 쇼핑몰 고객센터로 문의주십시오.</strong><br>
           고객센터 전화문의 : 1566-6444 (상담가능시간: 평일 오전 9시~오후 6시)</p>
       </div>
     </div>
@@ -219,7 +219,7 @@ function search_email_form_fnc()
         </div>
       </form>
       <div class="b_gui_2">
-        <p><strong>위의 방법으로도 찾지 못했다면, 티켓크루쇼핑몰 고객센터로 문의주십시오</strong><br>
+        <p><strong>위의 방법으로도 찾지 못했다면, 페어링사운드 쇼핑몰 고객센터로 문의주십시오</strong><br>
           고객센터 전화문의 : 11661-8431 (상담가능시간: 평일 오전 9시~오후 6시)</p>
       </div>
     </div>

@@ -21,6 +21,7 @@ $(function(){
 <input type=hidden name=SubTy value="<%=agspay.getResult("SubTy")%>">		<!-- 서브결제형태 -->
 <input type=hidden name=rStoreId value="<%=agspay.getResult("rStoreId")%>">	<!-- 상점아이디 --> --%>
 <input type=hidden name=rOrdNo value="${params.orderno }">		<!-- 주문번호 -->
+<input type=hidden name=virAcct value="${params.virAcct }">		<!-- 가상결제계좌번호 -->
 <%-- <input type=hidden name=rProdNm value="<%=agspay.getResult("ProdNm")%>">	<!-- 상품명 -->
 <input type=hidden name=rAmt value="<%=agspay.getResult("rAmt")%>">			<!-- 결제금액 -->
 <input type=hidden name=rOrdNm value="<%=agspay.getResult("OrdNm")%>">		<!-- 주문자명 -->

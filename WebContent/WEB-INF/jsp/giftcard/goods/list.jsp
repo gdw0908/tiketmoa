@@ -224,9 +224,10 @@ function directOrder(item_seq){
         <div class="sl_wrap">
           <div class="sl_l" id="content_view">
              <c:choose>
-                <c:when test="${param.menu eq 'menu1' }"><h3>롯데</h3></c:when>
-                <c:when test="${param.menu eq 'menu2' }"><h3>신세계</h3></c:when>
-                <c:when test="${param.menu eq 'menu3' }"><h3>갤러리아</h3></c:when>                
+                <c:when test="${param.menu eq 'menu1' }"><h3>마이크</h3></c:when>
+                <c:when test="${param.menu eq 'menu2' }"><h3>엠프/스피커</h3></c:when>
+                <c:when test="${param.menu eq 'menu3' }"><h3>오디오믹서</h3></c:when>
+                <c:when test="${param.menu eq 'menu4' }"><h3>악세서리</h3></c:when>                
              </c:choose>
             <c:if test = "${not empty param.menu}">
             <span>${param.cname }</span>

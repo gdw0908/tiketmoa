@@ -82,7 +82,7 @@ $( document ).ready(function() {
 
 <div id="header">
 
-	<div class="mo_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓크루"></a></div>
+	<div class="mo_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="페어링오디오"></a></div>
 	
 	<!--  hamburger menu  -->
 	<div class="ham_wrap">
@@ -140,17 +140,17 @@ $( document ).ready(function() {
      </ul>
      <jsp:include page="/giftcard/inc/all_menu_box.do" />
      
-     <h1 class="top_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓크루"></a></h1>
+     <h1 class="top_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="페어링오디오"></a></h1>
      
      <ul>
        <li>
          <div class="search_box">
           <form action="/giftcard/goods/list.do" id="search_all_form" name="search_all_form" method="post" onsubmit = "return search_all();">
             <fieldset>
-      	      <legend>상품권 통합검색</legend>
+      	      <legend>페어링오디오 통합검색</legend>
       		  <div class="search_top ui-widget">
        		    <span class="search">
-       		      <input type="text" id="search_all_text" autocomplete="off" name="search_all_text" value = "${param.search_all_text }" class="main_search" title="partsmoa 통합검색">
+       		      <input type="text" id="search_all_text" autocomplete="off" name="search_all_text" value = "${param.search_all_text }" class="main_search" title="페어링 통합검색">
        		      <i class="xi-search" ></i>
        		    </span>
       		  </div>
@@ -244,7 +244,7 @@ function search_all()
 }
 
 function headerSnsLink(gubun){
-	var title = encodeURIComponent(":: 국내최대 상품권 사이트 티켓크루! ::");
+	var title = encodeURIComponent(":: 국내최대 음향기기 사이트 페어링 오디오! ::");
 	if(gubun == "twt"){
 		window.open("http://twitter.com/home?status=" + title + ":http://www.partsmoa.co.kr");
 	}else if(gubun == "face"){

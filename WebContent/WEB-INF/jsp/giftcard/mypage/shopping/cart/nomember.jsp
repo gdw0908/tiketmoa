@@ -22,8 +22,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />" />
+<meta name="description" content="안녕하세요  페어링사운드  입니다." />
+<meta name="Keywords" content="페어링사운드 , 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />" />
 <title>주문/결제</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -435,11 +435,69 @@ $(function(){
 		$(this).autocomplete("search");
 	});
 });
+
 function goStep3() {
 	if(Check_Common(frm) == true){
-		$("#frm").submit();
+		goDanalPayPop();
 	}
 }
+
+function goDanalPayPop(){
+	//window.open('/danal/Ready.do?orderid=PT130122000039&amount=70000&itemname=페어링마이크&useragent=PC&dt=20220113&username=구매자&userid=admin&useremail=gdw0908@nate.com&SERVICETYPE=DANALCARD','player','width=550, height=515, scrollbars=yes, resizable=no, top=1, left=1');
+	var pop_title="다날카드결제시스템";
+	
+	if($("#username").val() == ""){
+		$("#username").val($("#m_member_nm").val());	
+	}
+	if($("#userid").val() == ""){
+		$("#userid").val($("#m_member_nm").val());	
+	}
+		 
+	if(Number($("#totalQty").val()) > 1){
+		var itemname = $("#itemname").val()+" 외"+$("#totalQty").val()+"개";
+		$("#itemname").val(itemname);
+	}
+	var isMobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ? true : false;
+	console.log("isMobile==="+isMobile);
+	$("#useragent").val("PC");
+	if(isMobile){
+		$("#useragent").val("MOBILE");	
+	}
+    var date = new Date();
+    var year = date.getFullYear().toString();
+    var month = date.getMonth() + 1;
+    month = month < 10 ? '0' + month.toString() : month.toString();
+    var day = date.getDate();
+    day = day < 10 ? '0' + day.toString() : day.toString();    
+	var dt = year+month+day;
+	console.log("dt==="+dt);
+	$("#dt").val(dt);
+	//get 방식 
+	var actionUrl ='/danal/Ready.do?orderid='+$("#orderid").val()+'&amount='+$("#amount").val()+'&itemname='+$("#itemname").val()+'&useragent='+$("#useragent").val()+'&dt='+$("#dt").val()+'&username='+$("#username").val()+'&userid='+$("#userid").val()+'&useremail='+$("#useremail").val()+'&SERVICETYPE='+$("#SERVICETYPE").val();
+	window.open(actionUrl,'player','width=550, height=515, scrollbars=yes, resizable=no, top=1, left=1');
+	//post 방식 
+	//window.open('',pop_title,'width=550, height=515, scrollbars=yes, resizable=no, top=1, left=1');	
+	//$("#danalFrm").submit();
+}
+
+window.addEventListener('message', function(e) {
+	  console.log(e.data); // { hello: 'parent' }	  
+	  try{
+		  var resObj = new Object();
+		  resObj = JSON.stringify(e.data);		  
+		  var result = JSON.parse(resObj);
+		  console.log(result.data.payment_info.returncode);		  	  
+		  
+		  if(result.data.payment_info.returncode== "0000"){
+				$("#rapprno").val(result.data.payment_info.tid);
+				$("#rdealno").val(result.data.payment_info.tid);
+				$("#rapprtm").val(result.data.payment_info.trandate+result.data.payment_info.trantime);
+				$("#AuthTy").val("danal");
+			  	$("#frm").submit();
+		  }
+	  }catch{		  
+	  }
+});
 </script>
 </head>
 <body>
@@ -547,7 +605,7 @@ function goStep3() {
           </table>
           
           <ul class="sub_list_1">
-            <li><strong>티켓모아</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 <strong>티켓모아</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+            <li><strong>페어링사운드 </strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 <strong>페어링사운드 </strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
           </ul>
           
           <h5 class="no_mem_type">2. 주문회원 정보<span>( <i>필수입력사항입니다.)</i></span></h5>
@@ -764,7 +822,7 @@ function goStep3() {
 
 <!-- 각 결제 공통 사용 변수 -->
 <input type=hidden name=Flag value="">				<!-- 스크립트결제사용구분플래그 -->
-<input type=hidden name=AuthTy value="">			<!-- 결제형태 -->
+<input type=hidden name=AuthTy value="" id="AuthTy">			<!-- 결제형태 -->
 <input type=hidden name=SubTy value="">				<!-- 서브결제형태 -->
 <input type="hidden" name="AGS_HASHDATA" value="<%=AGS_HASHDATA%>">		<!-- 전역 해쉬 변수 -->
 

@@ -47,13 +47,13 @@ function goBody(target_url){
   <c:choose>
   <c:when test = "${sessionScope.member.group_seq ne '8' and (sessionScope.member.carall eq 'N' or sessionScope.member.group_seq eq '1' )}">
     <li>
-      <div> <span class="name1"><a href="#">상품권관리</a></span> </div>
+      <div> <span class="name1"><a href="#">상품관리</a></span> </div>
       <ul>
         <li>
           <div> <span class="name2"><a href="#">상품등록</a></span> </div>
           <ul>
             <li class="last">
-              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/part/index.do')">상품권등록</a></span> </div>
+              <div> <span class="name3"><a href="#" onclick="goBody('/giftcard/admin/goods/part/index.do')">상품등록</a></span> </div>
             </li>
             <!-- <li class="last">
               <div> <span class="name3"><a href="#" onclick="goBody('/admin/goods/car/index.do?gubun=2')">수입차(부품용)등록</a></span> </div>

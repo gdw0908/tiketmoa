@@ -1,7 +1,9 @@
 package com.mc.web;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -76,6 +78,18 @@ public class Globals {
 	
 	@Value("#{config['pg.commission.hp']}")
 	public String PG_COMMISSION_HP;
+	
+	@Value("#{config['vc.acctApi.key']}")
+	public String VC_ACCTAPI_KEY;
+	
+	@Value("#{config['vc.settle.accnt.url']}")
+	public String VC_SETTLE_ACCNT_URL;
+	
+	@Value("#{config['vc.vact.withdrawGet.url']}")
+	public String VC_VACT_WITHDRAWGET_URL;
+	
+	@Value("#{config['vc.vact.reg.url']}")
+	public String VC_VACT_REG_URL;
 	
 	public String getPG_COMMISSION_CARD1() {
 		return PG_COMMISSION_CARD1;
@@ -158,7 +172,40 @@ public class Globals {
 
 	public void setMAIL_FILE_IN_PATH(String mAIL_FILE_IN_PATH) {
 		MAIL_FILE_IN_PATH = mAIL_FILE_IN_PATH;
+	}	
+
+	public String getVC_ACCTAPI_KEY() {
+		return VC_ACCTAPI_KEY;
 	}
+
+	public void setVC_ACCTAPI_KEY(String vC_ACCTAPI_KEY) {
+		VC_ACCTAPI_KEY = vC_ACCTAPI_KEY;
+	}
+
+	public String getVC_SETTLE_ACCNT_URL() {
+		return VC_SETTLE_ACCNT_URL;
+	}
+
+	public void setVC_SETTLE_ACCNT_URL(String vC_SETTLE_ACCNT_URL) {
+		VC_SETTLE_ACCNT_URL = vC_SETTLE_ACCNT_URL;
+	}
+
+	public String getVC_VACT_WITHDRAWGET_URL() {
+		return VC_VACT_WITHDRAWGET_URL;
+	}
+
+	public void setVC_VACT_WITHDRAWGET_URL(String vC_VACT_WITHDRAWGET_URL) {
+		VC_VACT_WITHDRAWGET_URL = vC_VACT_WITHDRAWGET_URL;
+	}
+
+	public String getVC_VACT_REG_URL() {
+		return VC_VACT_REG_URL;
+	}
+
+	public void setVC_VACT_REG_URL(String vC_VACT_REG_URL) {
+		VC_VACT_REG_URL = vC_VACT_REG_URL;
+	}
+
 
 
 	public static final String JOIN_MENU_ID = "0702000000";
@@ -172,4 +219,6 @@ public class Globals {
 	public static final List<String> IMAGE_EXTENTSIONS = Arrays.asList(new String[]{"gif", "jpg", "jpeg", "png", "bmp"});
 	public static final List<String> HTML_EXTENTSIONS = Arrays.asList(new String[]{"htm", "html", "jsp", "do"});
 	public static final List<String> BROWSER_EXTENTSIONS = Arrays.asList(new String[]{"chrome","firefox","safari","opera","iphone","ipod","android","blackberry","windows ce", "nokia","webos","opera mini","sonyericsson","opera mobi","iemobile"});	//브라우져
+	
+	public static Map danalMap= new HashMap();	//다날결제관련 상수 맵
 }
